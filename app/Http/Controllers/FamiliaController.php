@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Personal;
 use App\Models\Familia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class FamiliaController extends Controller
@@ -48,8 +49,11 @@ class FamiliaController extends Controller
             'estado_v_m_f' => '',
             'nacionalidad_f' => '',
         ]);
-        $personal = Personal::latest('id')->first();
-        $personal->familia()->create($validate);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+        if ($user == $personal->user_id) {
+            $personal->familia()->create($validate);
+        }
         return redirect(route('personal.create'));
     }
 
@@ -82,9 +86,27 @@ class FamiliaController extends Controller
      * @param  \App\Models\Familia  $familia
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Familia $familia)
+    public function update(Request $request, Familia $familium)
     {
-        //
+        $validate = $request->validate([
+            't_relacion_f' => '',
+            'apellidos_nombres_f' => '',
+            'tipo_documento_f' => '',
+            'dni_f' => '',
+            'carnet_extranjeria_f' => '',
+            'partida_nacimiento_f' => '',
+            'otro_documento_f' => '',
+            'genero_f' => '',
+            'fecha_nacimiento_f' => '',
+            'estado_civil_f' => '',
+            'estado_v_m_f' => '',
+            'nacionalidad_f' => '',
+        ]);
+        // $familia = Familia::find($familium);
+        // dd($request, $familium);
+        // dd($validate);
+        $familium->update($validate);
+        return redirect(route('personal.create'));
     }
 
     /**
@@ -93,8 +115,9 @@ class FamiliaController extends Controller
      * @param  \App\Models\Familia  $familia
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Familia $familia)
+    public function destroy(Familia $familium)
     {
-        //
+        $familium->delete();
+        return redirect(route('personal.create'));
     }
 }

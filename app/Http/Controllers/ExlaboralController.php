@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exlaboral;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ExlaboralController extends Controller
@@ -51,13 +52,19 @@ class ExlaboralController extends Controller
             'tipo_elpu' => '',
             'num_tipo_elpu' => '',
         ]);
-        $personal = Personal::latest('id')->first();
-        $personal->exlaboral()->create($validate);
-        $exlaboral = Exlaboral::latest('id')->first();
-        if ($validate['t_lugar_ex_el'] == 'PRIVADA') {
-            $exlaboral->exlabprivada()->create($validate);
-        } else if ($validate['t_lugar_ex_el'] == 'PUBLICA') {
-            $exlaboral->exlabpublica()->create($validate);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+        if ($user == $personal->user_id) {
+
+
+            $personal->exlaboral()->create($validate);
+            $exlaboral = Exlaboral::latest('id')->first();
+            // dd($exlaboral->id);
+            if ($validate['t_lugar_ex_el'] == 'PRIVADA') {
+                $exlaboral->exlabprivada()->create($validate);
+            } else if ($validate['t_lugar_ex_el'] == 'PUBLICA') {
+                $exlaboral->exlabpublica()->create($validate);
+            }
         }
         return redirect(route('personal.create'));
     }
@@ -93,7 +100,39 @@ class ExlaboralController extends Controller
      */
     public function update(Request $request, Exlaboral $exlaboral)
     {
-        //
+        $validate = $request->validate([
+            'cargo_desempeniado_el' => '',
+            'fecha_inicio_el' => '',
+            'fecha_culminacion_el' => '',
+            't_lugar_ex_el' => '',
+            //PRIVADA
+            'empresa_elpr' => '',
+            //PUBLICA
+            'dependencia_elpu' => '',
+            'tipo_elpu' => '',
+            'num_tipo_elpu' => '',
+        ]);
+        $validatePu = $request->validate([
+            //PRIVADA
+            'empresa_elpr' => '',
+        ]);
+        $validatePr = $request->validate([
+            //PUBLICA
+            'dependencia_elpu' => '',
+            'tipo_elpu' => '',
+            'num_tipo_elpu' => '',
+        ]);
+
+        // dd($validate['dependencia_elpu'], $validate['tipo_elpu'], $validate['num_tipo_elpu']);
+
+
+        $exlaboral->update($validate);
+        if ($validate['t_lugar_ex_el'] == 'PRIVADA') {
+            $exlaboral->exlabprivada()->update($validatePu);
+        } else if ($validate['t_lugar_ex_el'] == 'PUBLICA') {
+            $exlaboral->exlabpublica()->update($validatePr);
+        }
+        return redirect(route('personal.create'));
     }
 
     /**
@@ -104,6 +143,14 @@ class ExlaboralController extends Controller
      */
     public function destroy(Exlaboral $exlaboral)
     {
-        //
+        // dd($exlaboral['t_lugar_ex_el']);
+        $exlaboral->delete();
+
+        if ($exlaboral['t_lugar_ex_el'] == 'PRIVADA') {
+            $exlaboral->exlabprivada()->delete();
+        } else if ($exlaboral['t_lugar_ex_el'] == 'PUBLICA') {
+            $exlaboral->exlabpublica()->delete();
+        }
+        return redirect(route('personal.create'));
     }
 }

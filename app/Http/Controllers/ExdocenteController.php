@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Exdocente;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class ExdocenteController extends Controller
@@ -48,8 +49,12 @@ class ExdocenteController extends Controller
             'fecha_inicio_ed' => '',
             'fecha_culminacion_ed' => '',
         ]);
-        $personal = Personal::latest('id')->first();
-        $personal->exdocente()->create($validate);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+
+        if ($user == $personal->user_id) {
+            $personal->exdocente()->create($validate);
+        }
         return redirect(route('personal.create'));
     }
 
@@ -84,7 +89,16 @@ class ExdocenteController extends Controller
      */
     public function update(Request $request, Exdocente $exdocente)
     {
-        //
+        $validate = $request->validate([
+            'institucion_ed' => '',
+            'catedra_ed' => '',
+            'categoria_ed' => '',
+            'regimen_pensionario_ed' => '',
+            'fecha_inicio_ed' => '',
+            'fecha_culminacion_ed' => '',
+        ]);
+        $exdocente->update($validate);
+        return redirect(route('personal.create'));
     }
 
     /**
@@ -95,6 +109,7 @@ class ExdocenteController extends Controller
      */
     public function destroy(Exdocente $exdocente)
     {
-        //
+        $exdocente->delete();
+        return redirect(route('personal.create'));
     }
 }

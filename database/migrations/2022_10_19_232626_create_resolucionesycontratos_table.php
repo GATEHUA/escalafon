@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('cod_res')->nullable();
             $table->string('tipo_res')->nullable();
             $table->date('fecha_dic_res')->nullable();
-            $table->string('des_art_pri_res')->nullable();
+            $table->longText('des_art_pri_res')->nullable();
             $table->date('vigencia_res')->nullable();
             $table->string('categoria_alcanz_res')->nullable();
             $table->string('nivel_alcanz_res')->nullable();

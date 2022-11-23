@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Neducativo;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class NeducativoController extends Controller
@@ -47,13 +49,19 @@ class NeducativoController extends Controller
             'fecha_culminacion_ne' => '',
             'documento_val_ne' => '',
         ]);
+        // dd($request->file('documento_val_ne'), $validate['documento_val_ne']);
+        // dd($request);
         if ($validate['documento_val_ne'] != '') {
             $dtemporal = time() . '.' . $validate['documento_val_ne']->extension();
             $validate['documento_val_ne']->storeAs('documento_val_ne_Per', $dtemporal, 'public');
             $validate['documento_val_ne'] = $dtemporal;
+            // $validate['documento_val_ne'] = $request->file('documento_val_ne')->store('documento_val_ne_Per', 'public');
         }
-        $personal = Personal::latest('id')->first();
-        $personal->neducativo()->create($validate);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+        if ($user == $personal->user_id) {
+            $personal->neducativo()->create($validate);
+        }
         return redirect(route('personal.create'));
     }
 
@@ -76,7 +84,16 @@ class NeducativoController extends Controller
      */
     public function edit(Neducativo $neducativo)
     {
-        //
+        $user = Auth::id();
+
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first()->id;
+
+        // dd($neducativo->personal_id);
+        if ($personal == $neducativo->personal_id) {
+            return Inertia::render('Personal/NeducativoEdit', [
+                'neducativoDataEdit' => $neducativo
+            ]);
+        }
     }
 
     /**
@@ -88,7 +105,40 @@ class NeducativoController extends Controller
      */
     public function update(Request $request, Neducativo $neducativo)
     {
-        //
+        $validate = $request->validate([
+            'nivel_educativo_ne' => '',
+            'etapa_ne' => '',
+            'nombre_institucion_ne' => '',
+            'descripcion_ne' => '',
+            'fecha_culminacion_ne' => '',
+            'documento_val_ne' => '',
+        ]);
+
+        // dd($request);
+        // $url = Storage::url('app/public/documento_val_ne_Per/' . $neducativo->documento_val_ne);
+        // dd($url);
+        //dd(asset('storage/app/public/documento_val_ne_Per/' . $neducativo->documento_val_ne));
+        // dd(asset(Storage::disk("public")->url($neducativo->documento_val_ne)));
+
+        if (is_string($validate['documento_val_ne']) === false && $validate['documento_val_ne']) {
+            Storage::delete('public/documento_val_ne_Per/' . $neducativo->documento_val_ne);
+
+            $dtemporal = time() . '.' . $validate['documento_val_ne']->extension();
+            $validate['documento_val_ne']->storeAs('documento_val_ne_Per', $dtemporal, 'public');
+            $validate['documento_val_ne'] = $dtemporal;
+            // Storage::delete('public/' . $validate['documento_val_ne']);
+            // $validate['documento_val_ne'] = $validate['documento_val_ne']->store('documento_val_ne_Per', 'public');
+            // $neducativo->update($validate);
+        }
+        // elseif (is_string($neducativo->documento_val_ne)) {
+
+        // }
+        $neducativo->update($validate);
+
+
+
+
+        return redirect(route('neducativo.edit', $neducativo->id));
     }
 
     /**
@@ -99,6 +149,12 @@ class NeducativoController extends Controller
      */
     public function destroy(Neducativo $neducativo)
     {
-        //
+
+        if (Storage::delete('public/documento_val_ne_Per/' . $neducativo->documento_val_ne || $neducativo->documento_val_ne == null)) {
+            $neducativo->delete();
+        }
+
+
+        return redirect(route('personal.create'));
     }
 }

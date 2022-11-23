@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('personal_id')->constrained()->cascadeOnDelete();
             $table->string('docente_t')->nullable();
-            $table->string('docente_t_nivel')->nullable();
+            // $table->string('docente_t_nivel')->nullable();
+            $table->string('facultad')->nullable();
+            $table->string('escuela')->nullable();
             $table->string('dedicacion_t')->nullable();
             $table->time('horas_d', $precision = 0)->nullable();
             $table->timestamps();

@@ -17,7 +17,9 @@ class Docente extends Model
         //'personal_id',
         'docente_t',
         'dedicacion_t',
-        'docente_t_nivel',
+        // 'docente_t_nivel',
+        'facultad',
+        'escuela',
         'horas_d'
     ];
 }

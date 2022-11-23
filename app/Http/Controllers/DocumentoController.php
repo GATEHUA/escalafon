@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Documento;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class DocumentoController extends Controller
@@ -43,8 +45,11 @@ class DocumentoController extends Controller
             $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
             $validate['documento_d'] = $dtemporal;
         }
-        $personal = Personal::latest('id')->first();
-        $personal->documento()->create($validate);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+        if ($user == $personal->user_id) {
+            $personal->documento()->create($validate);
+        }
         return redirect(route('personal.create'));
     }
 
@@ -67,7 +72,9 @@ class DocumentoController extends Controller
      */
     public function edit(Documento $documento)
     {
-        //
+        return Inertia::render('Personal/DocumentoEdit', [
+            'documentoDataEdit' => $documento
+        ]);
     }
 
     /**
@@ -79,7 +86,20 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, Documento $documento)
     {
-        //
+        $validate = $request->validate([
+            't_nombre_documento_d' => '',
+            'descripcion_documento_d' => '',
+            'documento_d' => '',
+            'fecha_documento_d' => '',
+        ]);
+        if (is_string($validate['documento_d']) === false && $validate['documento_d']) {
+            Storage::delete('public/documentoPer/' . $documento->documento_d);
+            $dtemporal = time() . '.' . $validate['documento_d']->extension();
+            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
+            $validate['documento_d'] = $dtemporal;
+        }
+        $documento->update($validate);
+        return redirect(route('documento.edit', $documento->id));
     }
 
     /**
@@ -90,6 +110,11 @@ class DocumentoController extends Controller
      */
     public function destroy(Documento $documento)
     {
-        //
+        if (Storage::delete('public/documentoPer/' . $documento->documento_d || $documento->documento_d == null)) {
+            $documento->delete();
+        }
+
+
+        return redirect(route('personal.create'));
     }
 }

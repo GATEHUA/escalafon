@@ -60,11 +60,13 @@ class Personal extends Model
     protected $fillable = [
         // 'user_id',
         'fecha_Ingreso_undac',
+        'nombra_fecha',
+        // 'fecha_nombramiento_undac',
         'condicion',
         'situacion',
         'foto',
-        'facultad',
-        'escuela',
+        // 'facultad',
+        // 'escuela',
         'estado',
         'fecha_jubilacion',
         'nombres',
@@ -76,9 +78,14 @@ class Personal extends Model
         'departamento',
         'provincia',
         'distrito',
+        // 'dni',
+        // 'carnet_extranjeria',
+        // 'carnet_identidad',
+        'tipo_documento',
         'dni',
         'carnet_extranjeria',
-        'carnet_identidad',
+        'partida_nacimiento',
+        'otro_documento',
         'regimen_pensionario',
         'nombre_afp',
         'ruc',
@@ -93,6 +100,8 @@ class Personal extends Model
         'codigo',
         'val_dni',
         'regimen_laboral',
+
+
 
     ];
 }

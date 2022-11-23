@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Otrotrabajo;
 use App\Models\Personal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class OtrotrabajoController extends Controller
@@ -48,8 +49,11 @@ class OtrotrabajoController extends Controller
             'hora_entrada_ot' => '',
             'hora_salida_ot' => '',
         ]);
-        $personal = Personal::latest('id')->first();
-        $personal->otrotrabajo()->create($validate);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+        if ($user == $personal->user_id) {
+            $personal->otrotrabajo()->create($validate);
+        }
         return redirect(route('personal.create'));
     }
 
@@ -72,7 +76,16 @@ class OtrotrabajoController extends Controller
 
     public function update(Request $request, Otrotrabajo $otrotrabajo)
     {
-        //
+        $validate = $request->validate([
+            'estado_ot' => '',
+            'cargo_ot' => '',
+            'nombre_institucion_ot' => '',
+            'frecuencia_diaria_ot' => '',
+            'hora_entrada_ot' => '',
+            'hora_salida_ot' => '',
+        ]);
+        $otrotrabajo->update($validate);
+        return redirect(route('personal.create'));
     }
 
     /**
@@ -83,6 +96,7 @@ class OtrotrabajoController extends Controller
      */
     public function destroy(Otrotrabajo $otrotrabajo)
     {
-        //
+        $otrotrabajo->delete();
+        return redirect(route('personal.create'));
     }
 }

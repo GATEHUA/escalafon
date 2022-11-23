@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('personal_id')->constrained()->cascadeOnDelete();
             $table->string('administrativo_t')->nullable();
-            $table->string('administrativo_t_nivel')->nullable();
+            $table->string('dependencia')->nullable();
+            // $table->string('administrativo_t_nivel')->nullable();
             $table->string('nivel_remunerativo')->nullable();
             $table->timestamps();
         });

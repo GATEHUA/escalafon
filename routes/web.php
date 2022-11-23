@@ -26,35 +26,38 @@ use Inertia\Inertia;
 */
 
 Route::resource('personal', PersonalController::class)
-    ->only(['index', 'create', 'store', 'update', 'destroy'])
+    ->only(['index', 'create', 'store', 'update', 'destroy', 'edit', 'show'])
+    ->middleware(['auth']);
+
+Route::get('personal/{personal}/Pdf', [PersonalController::class, 'vistaPdf'])->name('personal.vistaPdf')
     ->middleware(['auth']);
 
 Route::resource('familia', FamiliaController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::resource('neducativo', NeducativoController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::resource('documento', DocumentoController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::resource('exdocente', ExdocenteController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::resource('exlaboral', ExlaboralController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::resource('otrotrabajo', OtrotrabajoController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::resource('resolucionesycontrato', ResolucionesycontratoController::class)
-    ->only(['index', 'store', 'update', 'destroy'])
+    ->only(['index', 'store', 'update', 'destroy', 'edit'])
     ->middleware(['auth']);
 
 Route::get('/', function () {

@@ -1,9 +1,12 @@
 import React from 'react'
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout' 
+const Index = ({auth,personal})=>{
 
-const Index = ()=>{
-
+    console.log(personal);
     return (
-        <>Index</>
+        <AuthenticatedLayout auth={auth}>
+            asdasf
+        </AuthenticatedLayout>
     )
 
 }

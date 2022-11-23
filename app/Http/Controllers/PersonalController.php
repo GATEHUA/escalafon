@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Documento;
@@ -14,47 +15,94 @@ use App\Models\Personal;
 use App\Models\Resolucionesycontrato;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PersonalController extends Controller
 {
     public function index()
     {
-        return Inertia::render('Personal/Create', [
+        return Inertia::render('Personal/Index', [
             'personal' => Personal::with(['user', 'administrativo', 'docente', 'familia', 'neducativo', 'exlaboral' => ['exlabprivada', 'exlabpublica'], 'exdocente', 'otrotrabajo', 'documento', 'resolucionesycontrato'])->latest('id')->get()
         ]);
+    }
+
+    public function vistaPdf(Personal $personal)
+    {
+        // dd(
+        //     asset(Storage::disk('public')->url('fotoPer/' . $personal->foto)),
+        //     Storage::disk('public')->url('fotoPer/' . $personal->foto)
+        // );
+        if ($personal) {
+            return Inertia::render('Personal/Pdf_personal_one', [
+                'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->with('administrativo', 'docente')->get(),
+                'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'exdocenteData' => Exdocente::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'exlaboralData' => Exlaboral::where('personal_id', '=', $personal->id)->with('exlabprivada', 'exlabpublica')->latest('id')->get(),
+                'familiaData' => Familia::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'neducativoData' => Neducativo::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'otrotrabajoData' => Otrotrabajo::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'resolucionesycontratoData' => Resolucionesycontrato::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                // 'img' => asset('storage/app/public/fotoPer' . $personal->foto),
+                // 'img' => Storage::disk('public')->url('fotoPer/' . $personal->foto)
+                'img' => Storage::url('fotoPer/' . $personal->foto)
+            ]);
+        } else {
+            return Inertia::render('Personal/Pdf_personal_one', [
+                'personalData' => [1],
+                'documentoData' => [],
+                'exdocenteData' => [],
+                'exlaboralData' => [],
+                'familiaData' => [],
+                'neducativoData' => [],
+                'otrotrabajoData' => [],
+                'resolucionesycontratoData' => [],
+            ]);
+        }
+
+        // $pdf = Pdf::loadView('zxc');
+
+
+        // return $pdf->stream();
     }
 
     public function create()
     {
 
-        $user = Auth::id();;
+        $user = Auth::id();
 
         $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
 
 
-        // if ($user == $personal->user_id) {
-        return Inertia::render('Personal/Create', [
-            'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->get(),
-            'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),
-            'exdocenteData' => Exdocente::where('personal_id', '=', $personal->id)->latest('id')->get(),
-            'exlaboralData' => Exlaboral::where('personal_id', '=', $personal->id)->with('exlabprivada', 'exlabpublica')->latest('id')->get(),
-            'familiaData' => Familia::where('personal_id', '=', $personal->id)->latest('id')->get(),
-            'neducativoData' => Neducativo::where('personal_id', '=', $personal->id)->latest('id')->get(),
-            'otrotrabajoData' => Otrotrabajo::where('personal_id', '=', $personal->id)->latest('id')->get(),
-            'resolucionesycontratoData' => Resolucionesycontrato::where('personal_id', '=', $personal->id)->latest('id')->get()
-        ]);
-        // } else {
-        //     return Inertia::render('Personal/Create', [
-        //         'personalData' => [],
-        //         'documentoData' => [],
-        //         'exdocenteData' => [],
-        //         'exlaboralData' => [],
-        //         'familiaData' => [],
-        //         'neducativoData' => [],
-        //         'otrotrabajoData' => [],
-        //         'resolucionesycontratoData' => [],
-        //     ]);
-        // }
+        if ($personal) {
+            return Inertia::render('Personal/Create', [
+                'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->get(),
+                'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'exdocenteData' => Exdocente::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'exlaboralData' => Exlaboral::where('personal_id', '=', $personal->id)->with('exlabprivada', 'exlabpublica')->latest('id')->get(),
+                'familiaData' => Familia::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'neducativoData' => Neducativo::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'otrotrabajoData' => Otrotrabajo::where('personal_id', '=', $personal->id)->latest('id')->get(),
+                'resolucionesycontratoData' => Resolucionesycontrato::where('personal_id', '=', $personal->id)->latest('id')->get()
+
+                // dd($request);
+                // $url = Storage::url('app/public/documento_val_ne_Per/' . $neducativo->documento_val_ne);
+                // dd($url);
+                //dd(asset('storage/app/public/documento_val_ne_Per/' . $neducativo->documento_val_ne));
+                // dd(asset(Storage::disk("public")->url($neducativo->documento_val_ne)));
+
+            ]);
+        } else {
+            return Inertia::render('Personal/Create', [
+                'personalData' => [1],
+                'documentoData' => [],
+                'exdocenteData' => [],
+                'exlaboralData' => [],
+                'familiaData' => [],
+                'neducativoData' => [],
+                'otrotrabajoData' => [],
+                'resolucionesycontratoData' => [],
+            ]);
+        }
     }
 
     public function store(Request $request)
@@ -63,11 +111,10 @@ class PersonalController extends Controller
             // 'user_id' => '',
             //PERSONAL:
             'fecha_Ingreso_undac' => '',
+            'nombra_fecha' => '',
             'condicion' => '',
             'situacion' => '',
             'foto' => '',
-            'facultad' => '',
-            'escuela' => '',
             'estado' => '',
             'fecha_jubilacion' => '',
             'nombres' => '',
@@ -79,9 +126,15 @@ class PersonalController extends Controller
             'departamento' => '',
             'provincia' => '',
             'distrito' => '',
+            // 'dni' => '',
+            // 'carnet_extranjeria' => '',
+            // 'carnet_identidad' => '',
+            'tipo_documento' => '',
             'dni' => '',
             'carnet_extranjeria' => '',
-            'carnet_identidad' => '',
+            'partida_nacimiento' => '',
+            'otro_documento' => '',
+            //
             'regimen_pensionario' => '',
             'nombre_afp' => '',
             'ruc' => '',
@@ -98,11 +151,14 @@ class PersonalController extends Controller
             'regimen_laboral' => '',
             //ADMINISTRATIVO:
             'administrativo_t' => '',
-            'administrativo_t_nivel' => '',
+            // 'administrativo_t_nivel' => '',
+            'dependencia' => '',
             'nivel_remunerativo' => '',
             //DOCENTE:
             'docente_t' => '',
-            'docente_t_nivel' => '',
+            // 'docente_t_nivel' => '',
+            'facultad' => '',
+            'escuela' => '',
             'dedicacion_t' => '',
             'horas_d' => ''
 
@@ -114,11 +170,12 @@ class PersonalController extends Controller
         // ]);
 
 
-        // dd($validate);
+        // dd($validate['foto']);
+        //$validate['foto']->getClientOriginalName() . Nombre del archivo
 
         if ($validate['foto'] != '') {
             $dtemporal = time() . '.' . $validate['foto']->extension();
-            $validate['foto']->storeAs('fotoPer', $dtemporal, 'public');
+            $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
             $validate['foto'] = $dtemporal;
         }
         if ($validate['val_dni'] != '') {
@@ -127,6 +184,7 @@ class PersonalController extends Controller
             $validate['val_dni'] = $dtemporal;
         }
 
+        // dd(gettype($validate['nombra_fecha']));
         $request->user()->personal()->create($validate);
         // $personal =  Personal::create($validate);
 

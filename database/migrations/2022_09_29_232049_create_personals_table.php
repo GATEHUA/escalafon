@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->date('fecha_Ingreso_undac')->nullable();
+            $table->date('nombra_fecha')->nullable();
             $table->string('situacion')->nullable();
             $table->string('condicion')->nullable();
             $table->string('foto')->nullable();
-            $table->string('facultad')->nullable();
-            $table->string('escuela')->nullable();
+            // $table->string('facultad')->nullable();
+            // $table->string('escuela')->nullable();
+
             $table->string('estado')->nullable();
             $table->date('fecha_jubilacion')->nullable();
             $table->string('nombres')->nullable();
@@ -33,9 +35,17 @@ return new class extends Migration
             $table->string('departamento')->nullable();
             $table->string('provincia')->nullable();
             $table->string('distrito')->nullable();
-            $table->integer('dni')->unsigned()->nullable();
+            // $table->string('dni')->nullable();
+            // $table->string('carnet_extranjeria')->nullable();
+            // $table->string('carnet_identidad')->nullable();
+
+            $table->string('tipo_documento')->nullable();
             $table->string('carnet_extranjeria')->nullable();
-            $table->string('carnet_identidad')->nullable();
+            $table->string('dni')->nullable();
+            $table->string('partida_nacimiento')->nullable();
+            $table->string('otro_documento')->nullable();
+
+
             $table->string('regimen_pensionario')->nullable();
             $table->string('nombre_afp')->nullable();
             $table->string('ruc')->nullable();
@@ -45,10 +55,10 @@ return new class extends Migration
             $table->string('provincia_domicilio')->nullable();
             $table->string('departamento_domicilio')->nullable();
             $table->string('email')->nullable();
-            $table->integer('telefono_fijo')->unsigned()->nullable();
-            $table->integer('telefono_celular')->unsigned()->nullable();
-            $table->integer('codigo')->unsigned()->nullable();
-            $table->integer('val_dni')->nullable();
+            $table->string('telefono_fijo')->nullable();
+            $table->string('telefono_celular')->nullable();
+            $table->string('codigo')->nullable();
+            $table->string('val_dni')->nullable();
             $table->string('regimen_laboral')->nullable();
             $table->timestamps();
         });

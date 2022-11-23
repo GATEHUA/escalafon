@@ -17,7 +17,8 @@ class Administrativo extends Model
     protected $fillable = [
         // 'personal_id',
         'administrativo_t',
-        'administrativo_t_nivel',
+        // 'administrativo_t_nivel',
+        'dependencia',
         'nivel_remunerativo',
     ];
 }
