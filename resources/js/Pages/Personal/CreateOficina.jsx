@@ -1858,7 +1858,7 @@ cargo_desempeniado_el:'',fecha_inicio_el: '',fecha_culminacion_el: '',t_lugar_ex
           empresa_elpr:'',
           //PUBLICA
             dependencia_elpu:'',tipo_elpu:'',num_tipo_elpu:'',*/}
-          {/* <div className="bg-gray-200 p-4 mb-4 rounded-lg">
+          <div className="bg-gray-200 p-4 mb-4 rounded-lg">
           <form onSubmit={exlaboral} encType="multipart/form-data">
           <div className="bg-white shadow-md rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
           <h3 className='uppercase tracking-wide text-black border-b border-gray-400 text-xm font-bold mb-3'>EXPERIENCIA LABORAL</h3>
@@ -1966,13 +1966,15 @@ cargo_desempeniado_el:'',fecha_inicio_el: '',fecha_culminacion_el: '',t_lugar_ex
             {exlaboralData.map(exlaboralDat=>
               <ExlaboralData key={exlaboralDat.id} exlaboralDat={exlaboralDat}/>)}
            
-           
+            {/* {exlaboralData.map(exlaboralDat=>
+              <ExlaboralData key={exlaboralDat.id} exlaboralDat={exlaboralDat}/>)}
+           */}
           </div>
-          </div> */}
+          </div>
           {/* //EXPERIENCIA DOCENTE
         institucion_ed : '',catedra_ed : '',categoria_ed : '',regimen_pensionario_ed : '',
 fecha_inicio_ed: '',fecha_culminacion_ed : '', */}
-          {/* <div className="bg-gray-200 p-4 mb-4 rounded-lg">
+          <div className="bg-gray-200 p-4 mb-4 rounded-lg">
           <form onSubmit={exdocente} encType="multipart/form-data">
           <div className="bg-white shadow-md rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
           <h3 className='uppercase tracking-wide text-black border-b border-gray-400 text-xm font-bold mb-3'>EXPERIENCIA DOCENTE</h3>
@@ -2057,16 +2059,81 @@ fecha_inicio_ed: '',fecha_culminacion_ed : '', */}
             </div>
           </form>
           <div>
-          
+            {/* {exdocenteData.map(exdocenteDat=>
+              <div key={exdocenteDat.id}>
+                <div className="bg-white shadow-md border border-sky-500 rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
+                     <div className="-mx-3 md:flex mb-2">
+                     <div className="w-1/4 px-3 mb-6 md:mb-0">
+                         <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="catedra_ed">
+                           catedra
+                         </label>
+                         
+                         <div id="catedra_ed" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded h-7 py-1 px-4 font-medium' name="catedra_ed">
+                         {exdocenteDat.catedra_ed}
+                         </div>
+                     </div>
+                     <div className="w-1/4 px-3 mb-6 md:mb-0">
+                         <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="categoria_ed">
+                         CATEGORIA
+                         </label>
+                         
+                         <div id="categoria_ed" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded h-7 py-1 px-4 font-medium' name="categoria_ed">
+                         {exdocenteDat.categoria_ed}
+                         </div>
+                     </div>
+                     <div className="w-1/4 px-3 mb-6 md:mb-0">
+                         <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="fecha_inicio_ed">
+                           FECHA DE INICIO
+                         </label>
+                         
+                         <div id="fecha_inicio_ed" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded h-7 py-1 px-4 font-medium' name="fecha_inicio_ed">
+                         {exdocenteDat.fecha_inicio_ed}
+                         </div>
+                     </div>
+                     <div className="w-1/4 px-3 mb-6 md:mb-0">
+                         <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="fecha_culminacion_ed">
+                           FECHA DE CULMINACION
+                         </label>
+                         
+                         <div id="fecha_culminacion_ed" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded h-7 py-1 px-4 font-medium' name="fecha_culminacion_ed">
+                         {exdocenteDat.fecha_culminacion_ed}
+                         </div>
+                     </div>
+                     
+                 </div>
+                 
+                 <div className='-mx-3 md:flex mb-2'>
+                 <div className="w-1/2 px-3 mb-6 md:mb-0">
+                  
+                         <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="institucion_ed">
+                         NOMBRE DE LA INSTITUCION
+                         </label>
+                         
+                         <div id="institucion_ed" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded h-7 py-1 px-4 font-medium' name="institucion_ed">
+                         {exdocenteDat.institucion_ed}
+                         </div>
+                     </div>
+                     <div className="w-1/2 px-3 mb-6 md:mb-0">
+                         <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="regimen_pensionario_ed">                   
+                         REGIMEN PENSIONARIO
+                         </label>
+                         
+                         <div id="regimen_pensionario_ed" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded h-7 py-1 px-4 font-medium' name="regimen_pensionario_ed">
+                         {exdocenteDat.regimen_pensionario_ed}
+                         </div>
+                     </div>
+                 </div>
+            </div>
+              </div>)} */}
               {exdocenteData.map(exdocenteDat=>
                 <ExdocenteData key={exdocenteDat.id} exdocenteDat={exdocenteDat}/>)}
           </div>
-          </div> */}
+          </div>
           {/* RESOLUCIONES->cod_res : '',tipo_res : '',fecha_dic_res : '',des_art_pri_res : '',
         vigencia_res : '',categoria_alcanz_res : '',nivel_alcanz_res : '',
         antiguedad_in_res : '',antiguedad_sa_res : '',condicion_res : '',
         dependencia_res : '',observacion_res : '',documento_val_res : '', */}
-        {/* <div className="bg-gray-200 p-4 mb-4 rounded-lg">
+        <div className="bg-gray-200 p-4 mb-4 rounded-lg">
           <form onSubmit={resolucionesycontrato} encType="multipart/form-data">
           
           <div className="bg-white shadow-md rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
@@ -2076,7 +2143,8 @@ fecha_inicio_ed: '',fecha_culminacion_ed : '', */}
                   <label className="uppercase tracking-wide text-black text-xs font-bold mb-2" htmlFor="tipo_res">
                     tipo
                   </label>
-                 <select value={data.tipo_res} onChange={e=>setData('tipo_res',e.target.value)} id="tipo_res" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded py-3 px-4 mb-3 font-medium' name="tipo_res">
+                  {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
+                  <select value={data.tipo_res} onChange={e=>setData('tipo_res',e.target.value)} id="tipo_res" className='hover:bg-gray-300 w-full bg-gray-200 text-black border border-gray-200 text-sm rounded py-3 px-4 mb-3 font-medium' name="tipo_res">
                     <option value="">-Seleccione-</option>
                     <option value="INGRESO">INGRESO</option>
                     <option value="NOMBRAMIENTO">NOMBRAMIENTO</option>
@@ -2212,7 +2280,20 @@ fecha_inicio_ed: '',fecha_culminacion_ed : '', */}
                     </span>
                     
               </PrimaryButton>
-             
+              {/* <div className="w-8"></div> */}
+              {/* <button
+                    className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-red-600 rounded-md cursor-pointer group ring-offset-2 ring-1 ring-red-300 ring-offset-red-200 hover:ring-offset-red-500 ease focus:outline-none"
+                    // disabled = {processing}
+                    onClick={()=>setPopup(false)}
+                    type="button"
+                >
+                    <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+                    <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
+                    <span className="relative z-20 flex items-center text-sm">
+                    <svg className="relative w-5 h-5 mr-2 text-white" stroke="currentColor" fill="currentColor" strokeWidth="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 10v-2h-5v-2h5v-2l3 3zM11 9v4h-5v3l-6-3v-13h11v5h-1v-4h-8l4 2v9h4v-3z"></path></svg>
+                    CERRAR
+                    </span>
+              </button> */}
             </div>
           </form>
           <div>
@@ -2220,11 +2301,11 @@ fecha_inicio_ed: '',fecha_culminacion_ed : '', */}
               {resolucionesycontratoData.map(resolucionesycontratoDat=>
                 <Resolucionesycontrato key={resolucionesycontratoDat.id} resolucionesycontratoDat={resolucionesycontratoDat}/>)}
           </div>
-          </div> */}
+          </div>
           {/* DOCUMENTO EXTRA
         t_nombre_documento_d : '',descripcion_documento_d : '',documento_d : '',
         fecha_documento_d : '', */ }
-        {/* <div className="bg-gray-200 p-4 mb-4 rounded-lg">
+        <div className="bg-gray-200 p-4 mb-4 rounded-lg">
           <form onSubmit={documento} encType="multipart/form-data">
           
           <div className="bg-white shadow-md rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
@@ -2293,7 +2374,7 @@ fecha_inicio_ed: '',fecha_culminacion_ed : '', */}
             {documentoData.map(documentoDat=>
               <DocumentoData key={documentoDat.id} documentoDat={documentoDat}/>)}
           </div>
-          </div> */}
+          </div>
 {/* 
         //OTRO TRABAJO
         estado_ot : '',cargo_ot : '',nombre_institucion_ot : '',frecuencia_diaria_ot : '',

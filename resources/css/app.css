@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
+.imagen-w-f{
+    filter: brightness(50%);
+}
+.fondo-nav{
+    background-color: white;
+}
+.fondo-princ{
+    /* background: rgba(0, 89, 255, 0.266) ; */
+    background: rgba(0, 0, 0, 0.5) ;
+
+    
+}
+.titulo{
+    font-family: 'Roboto', sans-serif;
+   
+}
+.fondo-reg{
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://img.freepik.com/foto-gratis/portatil-libreta-vasos-mesa_23-2148036976.jpg?w=740&t=st=1669810156~exp=1669810756~hmac=c6061a857a5038381cdba44654f848b6c0fee0a39f3dd789e22eee7b9bbd42ef");
+}
+
+

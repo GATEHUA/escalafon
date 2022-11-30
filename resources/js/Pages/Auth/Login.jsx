@@ -38,7 +38,7 @@ export default function Login({ status, canResetPassword }) {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel forInput="email" value="Email" />
+                    <InputLabel forInput="email" value="Correo Electrónico" />
 
                     <TextInput
                         type="text"
@@ -54,7 +54,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel forInput="password" value="Password" />
+                    <InputLabel forInput="password" value="Contraseña" />
 
                     <TextInput
                         type="password"
@@ -72,22 +72,25 @@ export default function Login({ status, canResetPassword }) {
                     <label className="flex items-center">
                         <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
 
-                        <span className="ml-2 text-sm text-gray-600">Remember me</span>
+                        <span className="ml-2 text-sm text-gray-300">Recordar mi cuenta</span>
                     </label>
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
-                    {canResetPassword && (
+                <div className="flex items-center justify-between mt-4">
+                    {/* {canResetPassword && (
                         <Link
                             href={route('password.request')}
                             className="underline text-sm text-gray-600 hover:text-gray-900"
                         >
                             Forgot your password?
                         </Link>
-                    )}
+                    )} */}
+                    <Link href={route('register')} className="underline text-sm text-white hover:text-gray-500">
+                       Crear una cuenta
+                    </Link>
 
                     <PrimaryButton className="ml-4" processing={processing}>
-                        Log in
+                        Iniciar Sesión
                     </PrimaryButton>
                 </div>
             </form>
