@@ -175,12 +175,12 @@ class PersonalController extends Controller
 
         if ($validate['foto'] != '') {
             $dtemporal = time() . '.' . $validate['foto']->extension();
-            $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
+            $validate['foto']->storeAs('fotoPer',  $dtemporal, 'do');
             $validate['foto'] = $dtemporal;
         }
         if ($validate['val_dni'] != '') {
             $dtemporal = time() . '.' . $validate['val_dni']->extension();
-            $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal, 'public');
+            $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal, 'do');
             $validate['val_dni'] = $dtemporal;
         }
 
