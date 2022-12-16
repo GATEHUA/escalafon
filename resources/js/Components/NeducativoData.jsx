@@ -55,6 +55,7 @@ function NeducativoData({neducativoDat}) {
                                     as='button'
                                     href={route('neducativo.destroy',neducativoDat.id)}
                                     method='delete'
+                                    preserveScroll={true}
                                     >
                                       Eliminar
                                     </Dropdown.Link>

@@ -51,14 +51,16 @@ class NeducativoController extends Controller
         ]);
         // dd($request->file('documento_val_ne'), $validate['documento_val_ne']);
         // dd($request);
+        $user = Auth::id();
+        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+        //dd($personal->apellido_paterno, $personal->apellido_materno, $personal->nombres);
         if ($validate['documento_val_ne'] != '') {
-            $dtemporal = time() . '.' . $validate['documento_val_ne']->extension();
+            $dtemporal = $validate['nivel_educativo_ne'] . ' - ' . $personal->apellido_paterno . ' ' . $personal->apellido_materno . '_' . $personal->nombres . time() . '.' . $validate['documento_val_ne']->extension();
             $validate['documento_val_ne']->storeAs('documento_val_ne_Per', $dtemporal, 'public');
             $validate['documento_val_ne'] = $dtemporal;
             // $validate['documento_val_ne'] = $request->file('documento_val_ne')->store('documento_val_ne_Per', 'public');
         }
-        $user = Auth::id();
-        $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
+
         if ($user == $personal->user_id) {
             $personal->neducativo()->create($validate);
         }

@@ -17,7 +17,7 @@ function OtrotrabajoData({otrotrabajoDat}) {
   })
   const otrotrabajoEdit = (e)=>{
     e.preventDefault()
-    put(route('otrotrabajo.update',otrotrabajoDat.id),{onSuccess: ()=>setEditingOtr(false)})
+    put(route('otrotrabajo.update',otrotrabajoDat.id),{preserveScroll: true,onSuccess: ()=>setEditingOtr(false)})
   }
   return (
     <div className="bg-white shadow-md rounded border border-sky-500 rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
@@ -41,6 +41,7 @@ function OtrotrabajoData({otrotrabajoDat}) {
                                     as='button'
                                     href={route('otrotrabajo.destroy',otrotrabajoDat.id)}
                                     method='delete'
+                                    preserveScroll={true}
                                     >
                                       Eliminar
                                     </Dropdown.Link>

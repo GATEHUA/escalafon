@@ -70,12 +70,13 @@ const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-whit
     );
 };
 
-const DropdownLink = ({ href, method = 'post', as = 'a', children }) => {
+const DropdownLink = ({ href, method = 'post', as = 'a', children, preserveScroll }) => {
     return (
         <Link
             href={href}
             method={method}
             as={as}
+            preserveScroll={preserveScroll}
             className="block w-full px-4 py-2 text-left text-sm font-bold leading-5 text-gray-700 hover:bg-gray-500 hover:text-white focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out"
         >
             {children}

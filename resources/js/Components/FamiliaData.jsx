@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Dropdown from '@/Components/Dropdown'
 import InputError from '@/Components/InputError'
+import { Inertia } from '@inertiajs/inertia';
 import PrimaryButton from '@/Components/PrimaryButton'
 import {useForm, usePage} from '@inertiajs/inertia-react'
 
@@ -27,7 +28,7 @@ function FamiliafamiliaDat({familiaDat}) {
     e.preventDefault()
     console.log('familiaDat.id')
     console.log(familiaDat.id)
-    put(route('familia.update',familiaDat.id),{onSuccess: ()=>setEditingFam(false)})
+    put(route('familia.update',familiaDat.id),{preserveScroll: true,onSuccess: ()=>setEditingFam(false)})
   }
   return (
     
@@ -48,10 +49,12 @@ function FamiliafamiliaDat({familiaDat}) {
                                     >
                                        Editar     
                                     </button>
+                                  
                                     <Dropdown.Link
                                     as='button'
                                     href={route('familia.destroy',familiaDat.id)}
                                     method='delete'
+                                    preserveScroll={true}
                                     >
                                       Eliminar
                                     </Dropdown.Link>

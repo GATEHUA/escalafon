@@ -50,7 +50,7 @@ function ExlaboralData({exlaboralDat}) {
    
     console.log(data.dependencia_elpu)
 
-    put(route('exlaboral.update',exlaboralDat.id),{onSuccess: ()=>setEditingExl(false)})
+    put(route('exlaboral.update',exlaboralDat.id),{preserveScroll: true,onSuccess: ()=>setEditingExl(false)})
   }
   return (
  
@@ -75,6 +75,7 @@ function ExlaboralData({exlaboralDat}) {
                                     as='button'
                                     href={route('exlaboral.destroy',exlaboralDat.id)}
                                     method='delete'
+                                    preserveScroll={true}
                                     >
                                       Eliminar
                                     </Dropdown.Link>

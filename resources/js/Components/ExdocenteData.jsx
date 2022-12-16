@@ -18,7 +18,7 @@ function ExdocenteData({exdocenteDat}) {
     e.preventDefault()
     console.log('exdocenteDat.id')
     console.log(exdocenteDat.id)
-    put(route('exdocente.update',exdocenteDat.id),{onSuccess: ()=>setEditingExd(false)})
+    put(route('exdocente.update',exdocenteDat.id),{preserveScroll: true,onSuccess: ()=>setEditingExd(false)})
   }
   return (
     
@@ -43,6 +43,7 @@ function ExdocenteData({exdocenteDat}) {
                                     as='button'
                                     href={route('exdocente.destroy',exdocenteDat.id)}
                                     method='delete'
+                                    preserveScroll={true}
                                     >
                                       Eliminar
                                     </Dropdown.Link>

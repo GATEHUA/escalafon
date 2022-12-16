@@ -35,6 +35,7 @@ function Resolucionesycontrato({resolucionesycontratoDat}) {
                                     as='button'
                                     href={route('resolucionesycontrato.destroy',resolucionesycontratoDat.id)}
                                     method='delete'
+                                    preserveScroll={true}
                                     >
                                       Eliminar
                                     </Dropdown.Link>

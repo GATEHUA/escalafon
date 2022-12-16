@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Inertia } from '@inertiajs/inertia'
 import { Link } from '@inertiajs/inertia-react'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import InputError from '@/Components/InputError'
@@ -343,11 +344,13 @@ const Create=({auth,personalData,documentoData,exdocenteData,exlaboralData,famil
   //     },
   //   },
   // })
+  // Inertia.reload({ only: ['neducativoData'] })
 
     const [avatar,setAvatar] = useState();
     const [nuevo,setNuevo] =useState("flex");
     const [nuevo2,setNuevo2] =useState("none");
     const [most,setMost] = useState(true);
+    const [bgImage,setBgImage]= useState(false);
     const [popup,setPopup] = useState(false);
     const {data, setData, post, processing, reset, errors} = useForm({
         fecha_Ingreso_undac:'',
@@ -502,41 +505,53 @@ const Create=({auth,personalData,documentoData,exdocenteData,exlaboralData,famil
 
     const submit = (e)=>{
         e.preventDefault()
-        post(route('personal.store'),{onSuccess: ()=>{reset();setAvatar('');cambionew()}})
+        post(route('personal.store'),{preserveScroll: true,onSuccess: ()=>{reset();setAvatar('');cambionew()}})
     }
     const familia = (e)=>{
       e.preventDefault()
       // console.log(data)
-      post(route('familia.store'),{onSuccess: ()=>reset()})
+      post(route('familia.store'),{preserveScroll: true,onSuccess: ()=>reset()})
     }
+//     function blank(){
+//       setData('nivel_educativo_ne',"")
+//       setData('etapa_ne',"")
+// setData('nombre_institucion_ne',"")
+// setData('descripcion_ne',"")
+// setData('fecha_culminacion_ne',"")
+// setData('documento_val_ne',"")
+//     }
     const neducativo = (e)=>{
       e.preventDefault()
-      console.log(data)
-      post(route('neducativo.store'),{onSuccess: ()=>reset()})
+      
+      post(route('neducativo.store'),{preserveScroll: true,onSuccess: ()=>reset()})
+      // await blank();
+      //  Inertia.reload({ only: ['neducativoData','errors'] })
+      // setData('fecha_Ingreso_undac',e.target.value)
+      
     }
     const exlaboral = (e)=>{
       e.preventDefault()
       console.log(data)
-      post(route('exlaboral.store'),{onSuccess: ()=>reset()})
+      post(route('exlaboral.store'),{preserveScroll: true,onSuccess: ()=>reset()})
     }
     const exdocente = (e)=>{
       e.preventDefault()
       console.log(data)
-      post(route('exdocente.store'),{onSuccess: ()=>reset()})
+      post(route('exdocente.store'),{preserveScroll: true,onSuccess: ()=>reset()})
     }
     const otrotrabajo = (e)=>{
       e.preventDefault()
       console.log(data)
-      post(route('otrotrabajo.store'),{onSuccess: ()=>reset()})
+      post(route('otrotrabajo.store'),{preserveScroll: true,onSuccess: ()=>reset()})
     }
     const resolucionesycontrato = (e)=>{
       e.preventDefault()
       console.log(data)
-      post(route('resolucionesycontrato.store'),{onSuccess: ()=>reset()})
+      post(route('resolucionesycontrato.store'),{preserveScroll: true,onSuccess: ()=>reset()})
     }
     const documento = (e)=>{
       e.preventDefault()
-      post(route('documento.store'),{onSuccess: ()=>reset()})
+      post(route('documento.store'),{preserveScroll: true,onSuccess: ()=>reset()})
   }
 
   const cambionew = ()=>{
@@ -550,9 +565,21 @@ const Create=({auth,personalData,documentoData,exdocenteData,exlaboralData,famil
     setNuevo2("none")
     setMost(true)
   }
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setBgImage(true)
+  };
+  const handleDragLeave = (e)=>{
+    e.preventDefault();
+    setBgImage(false)
+  }
+  const handleDrop = (e) => {
+    e.preventDefault();
+    console.log(e.dataTransfer.files[0])
+    // setAvatar(event.dataTransfer.files[0])
+  };
   // console.log(data.documento_val_ne);
-  console.log("personalData");
-  console.log(personalData[0]);
+  
   return (
     <AuthenticatedLayout auth={auth}>
         <Head title='Personal'/>  
@@ -676,12 +703,17 @@ const Create=({auth,personalData,documentoData,exdocenteData,exlaboralData,famil
                 
                   <img src={avatar} style={{maxWidth:'112px'}} className=' h-32 rounded-lg' alt="" />
                   </div>
-                    <label htmlFor="dropzone-file" className="w-28 h-32 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-gray-400 border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 hover:bg-gray-300 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                        <div className="flex flex-col justify-center items-center pt-5 pb-6">
+                    <div onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+            onDrop={handleDrop} htmlFor="dropzone-file"
+             className={bgImage?"w-28 h-32 flex flex-col justify-center items-center bg-gray-300 rounded-lg border-2 border-gray-400 border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600":'w-28 h-32 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-gray-400 border-dashed dark:hover:bg-bray-300 dark:bg-gray-700 hover:bg-gray-300 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600'} 
+           
+           >
+                        <div className="flex flex-col justify-center items-center">
                         <svg
                           aria-hidden="true"
                           fill="none"
-                          className="mb-3 w-10 h-10 text-gray-400"
+                          className=" w-10 h-10 text-gray-400"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                           xmlns="http://www.w3.org/2000/svg"
@@ -694,10 +726,14 @@ const Create=({auth,personalData,documentoData,exdocenteData,exlaboralData,famil
                             d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6h.1a5 5 0 0 1 1 9.9M15 13l-3-3m0 0-3 3m3-3v12"
                           />
                         </svg>
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">Añadir Imagen</p>
+                            <button className="flex flex-col justify-center items-center w-28 h-32 text-sm text-gray-500 dark:text-gray-400">Añadir Foto</button>
                         </div>
-                        <input name='foto' onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}} id="dropzone-file" type="file" className="hidden" />
-                    </label>                
+                        
+                        <input name='foto' 
+                        // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}} 
+                        onChange={e=>console.log(e.target.files[0])}
+                        id="dropzone-file" type="file" className="" />
+                    </div>                
                     <InputError message={errors.foto} className="mt-.5 flex justify-end" />    
                 </div>
                 

@@ -6,7 +6,7 @@ export default function Welcome(props) {
     return (
         <>
             <Head title="Welcome" />
-            <img  className='imagen-w-f h-screen w-full' src="https://undac.edu.pe/wp-content/uploads/2020/11/JVR8659-1-scaled.jpg" alt="" srcset="" />
+            <img  className='imagen-w-f h-screen w-full' src="https://undac.edu.pe/wp-content/uploads/2020/11/JVR8659-1-scaled.jpg" alt="" />
             <div  className=" absolute items-top justify-center min-h-screen dark:bg-gray-900 sm:items-center sm:pt-0">
                 <div className=' titulo fixed w-full px-64  ' style={{top:'37%'}}>
                  
