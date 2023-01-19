@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap");
+.imagen-w-f {
+    filter: brightness(50%);
+}
+.fondo-nav {
+    background-color: white;
+}
+.fondo-nav-yaloged {
+    background: rgba(0, 0, 0, 0.65);
+}
+.fondo-princ {
+    /* background: rgba(0, 89, 255, 0.266); */
+    background: rgba(0, 0, 0, 0.4);
+}
+.fondo-princ-table {
+    background: rgba(0, 0, 0, 0.3);
+}
+.fondo-princ-table-head {
+    background: rgba(0, 0, 0, 0.4);
+}
+.fondo-princ-table-body {
+    background: rgba(0, 0, 0, 0.05);
+}
+.fondo-princ-table-body:hover {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.sombrao {
+    background: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 3px 1px rgba(0, 0, 0, 0.37);
+}
+/* .fondo-princ:hover {
+    
+    background: rgba(0, 0, 0, 0.37);
+} */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"><path fill="white" d="M4 8 L12 16 L20 8"/></svg>');
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 10px);
+    background-position-y: 50%;
+}
+
+/* select::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid white;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -2.5px;
+    pointer-events: none;
+} */
+
+.fondo-foto-perfil {
+    /* background: rgba(0, 89, 255, 0.266); */
+    background: rgba(0, 0, 0, 0.1);
+}
+.fondo-foto-perfil:hover {
+    /* background: rgba(0, 89, 255, 0.266); */
+    background: rgba(0, 0, 0, 0.3);
+}
+.fondo-princ-form {
+    /* background: rgba(0, 89, 255, 0.266); */
+    background: rgba(0, 0, 0, 0.4);
+}
+.titulo {
+    font-family: "Roboto", sans-serif;
+}
+.fondo-reg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("https://img.freepik.com/foto-gratis/portatil-libreta-vasos-mesa_23-2148036976.jpg?w=740&t=st=1669810156~exp=1669810756~hmac=c6061a857a5038381cdba44654f848b6c0fee0a39f3dd789e22eee7b9bbd42ef");
+}
+
+.fondo-nav-q {
+    /* background: #2a7afc; */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='105' viewBox='0 0 80 105'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='death-star' fill='%2361e254' fill-opacity='0.53'%3E%3Cpath d='M20 10a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm15 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zM20 75a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zm30-65a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V10zm0 65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V75zM35 10a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zM5 45a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10zm60 35a5 5 0 0 1 10 0v50a5 5 0 0 1-10 0V45zm0-35a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0V10z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+select option {
+    /* background-color: rgb(100 116 139); */
+    color: black;
+}
+.fondo-general {
+    background-image: linear-gradient(
+        to right top,
+        #6d327c,
+        #485da6,
+        #00a1ba,
+        #00bf98,
+        #36c486
+    );
+    /* background-image: linear-gradient(
+        to right,
+        #863c66,
+        #7a416f,
+        #6c4676,
+        #5d4a79,
+        #4e4e7a,
+        #445884,
+        #38618b,
+        #2b6a90,
+        #107d9e,
+        #0090a8,
+        #00a3ac,
+        #25b5ac
+    ); */
+}
+/* select option:hover {
+    background: red;
+} */
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    color: white;
+} */
+/* .datepicker-days .day {
+    color: red;
+} */
+
+/* input {
+    color-scheme: dark;
+} */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+/* .visible-scrollbar,
+.invisible-scrollbar,
+.mostly-customized-scrollbar {
+  display: block;
+  width: 10em;
+  overflow: auto;
+  height: 2em;
+} */
+
+/* *::-webkit-scrollbar {
+    display: none;
+} */
+
+/* Demonstrate a "mostly customized" scrollbar
+ * (won't be visible otherwise if width/height is specified) */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 13px;
+    background-color: transparent;
+    /* or add it to the track */
+}
+
+/* Add a thumb */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(209 213 219);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(178, 185, 197);
+}
+::-webkit-scrollbar-thumb:active {
+    background: rgb(156, 163, 175);
+}
+
+/* Up */
+::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    border-right: 13px solid rgb(209 213 219);
+    border-top: 6.5px solid transparent;
+    border-bottom: 6.5px solid transparent;
+}
+::-webkit-scrollbar-button:single-button:horizontal:increment {
+    border-left: 13px solid rgb(209 213 219);
+    border-top: 6.5px solid transparent;
+    border-bottom: 6.5px solid transparent;
+}
+::-webkit-scrollbar-button:single-button:horizontal:decrement:hover {
+    border-right: 13px solid rgb(178, 185, 197);
+}
+::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
+    border-left: 13px solid rgb(178, 185, 197);
+}
+::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
+    border-right: 13px solid rgb(156, 163, 175);
+}
+::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+    border-left: 13px solid rgb(156, 163, 175);
+}
+
+/* ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+    border-color: transparent transparent #777777 transparent;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+    border-width: 8px 8px 0 8px;
+    border-color: #555555 transparent transparent transparent;
+}
+
+::-webkit-scrollbar-button:vertical:single-button:increment:hover {
+    border-color: #777777 transparent transparent transparent;
+} */
