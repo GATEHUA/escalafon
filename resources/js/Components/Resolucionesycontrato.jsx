@@ -3,6 +3,8 @@ import Dropdown from "@/Components/Dropdown";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
+import Swal from "sweetalert2";
 
 function Resolucionesycontrato({ resolucionesycontratoDat }) {
     const [editingRes, setEditingRes] = useState(false);
@@ -22,6 +24,38 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
         documento_val_res: resolucionesycontratoDat.documento_val_res,
         _method: "put",
     });
+    const handleDestroyRes = (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Estás seguro?`,
+            text: `Se eliminara el registro de su resolucion: ${
+                data.tipo_res != "" ? data.tipo_res : "(No definido)"
+            }, de manera permanente`,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(
+                    route(
+                        "resolucionesycontrato.destroy",
+                        resolucionesycontratoDat.id
+                    ),
+                    {
+                        preserveScroll: true,
+                    }
+                );
+                Swal.fire(
+                    "¡Eliminado!",
+                    "Su registro ha sido eliminado",
+                    "success"
+                );
+            }
+        });
+    };
     const resolucionesycontratoEdit = (e) => {
         e.preventDefault();
         post(
@@ -50,7 +84,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                     </Dropdown.Trigger>
                     <Dropdown.Content>
                         <button
-                            className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-transparent focus:bg-gray-100 transition duration-150 ease-in-out"
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-gray-500 hover:text-white focus:bg-gray-100 transition duration-150 ease-in-out"
                             onClick={() => setEditingRes(true)}
                         >
                             Editar
@@ -66,7 +100,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                         >
                             Editar
                         </Dropdown.Link> */}
-                        <Dropdown.Link
+                        {/* <Dropdown.Link
                             as="button"
                             href={route(
                                 "resolucionesycontrato.destroy",
@@ -76,7 +110,13 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                             preserveScroll={true}
                         >
                             Eliminar
-                        </Dropdown.Link>
+                        </Dropdown.Link> */}
+                        <button
+                            onClick={handleDestroyRes}
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-red-500 hover:text-white transition duration-150 ease-in-out"
+                        >
+                            Eliminar
+                        </button>
                     </Dropdown.Content>
                 </Dropdown>
             </div>

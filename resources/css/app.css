@@ -204,3 +204,35 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 ::-webkit-scrollbar-button:vertical:single-button:increment:hover {
     border-color: #777777 transparent transparent transparent;
 } */
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.responsive-alert {
+    width: 90%;
+    max-width: 500px;
+}
+
+@media (max-width: 600px) {
+    .responsive-alert {
+        width: 80%;
+    }
+}
+
+@media (max-width: 400px) {
+    .responsive-alert {
+        width: 70%;
+    }
+}

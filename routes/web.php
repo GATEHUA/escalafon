@@ -29,8 +29,8 @@ Route::resource('personal', PersonalController::class)
     ->only(['index', 'create', 'store', 'update', 'destroy', 'edit', 'show'])
     ->middleware(['auth']);
 
-Route::get('personal/{personal}/Pdf', [PersonalController::class, 'vistaPdf'])->name('personal.vistaPdf')
-    ->middleware(['auth']);
+// Route::get('personal/{personal}/Pdf', [PersonalController::class, 'vistaPdf'])->name('personal.vistaPdf')
+//     ->middleware(['auth']);
     
 Route::get('personal/{personal}/Editextra', [PersonalController::class, 'extraedit'])->name('personal.extraedit')
     ->middleware(['auth']);

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Dropdown from "@/Components/Dropdown";
 import InputError from "@/Components/InputError";
+import { Inertia } from "@inertiajs/inertia";
+import Swal from "sweetalert2";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 
@@ -62,6 +64,32 @@ function ExlaboralData({ exlaboralDat }) {
         // tipo_elpu:exlaboralDat.exlabpublica,
         // num_tipo_elpu:exlaboralDat.exlabpublica,
     });
+    const handleDestroyExl = (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Estás seguro?`,
+            text: `Se eliminara el registro de su experiencia laboral:  ${
+                data.t_lugar_ex_el != "" ? data.t_lugar_ex_el : "(No definido)"
+            }, de manera permanente`,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(route("exlaboral.destroy", exlaboralDat.id), {
+                    preserveScroll: true,
+                });
+                Swal.fire(
+                    "¡Eliminado!",
+                    "Su registro ha sido eliminado",
+                    "success"
+                );
+            }
+        });
+    };
     const exlaboralEdit = (e) => {
         e.preventDefault();
 
@@ -93,14 +121,20 @@ function ExlaboralData({ exlaboralDat }) {
                         >
                             Editar
                         </button>
-                        <Dropdown.Link
+                        {/* <Dropdown.Link
                             as="button"
                             href={route("exlaboral.destroy", exlaboralDat.id)}
                             method="delete"
                             preserveScroll={true}
                         >
                             Eliminar
-                        </Dropdown.Link>
+                        </Dropdown.Link> */}
+                        <button
+                            onClick={handleDestroyExl}
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-red-500 hover:text-white transition duration-150 ease-in-out"
+                        >
+                            Eliminar
+                        </button>
                     </Dropdown.Content>
                 </Dropdown>
             </div>

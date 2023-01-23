@@ -1,22 +1,52 @@
 import React, { useState } from "react";
+import { Inertia } from "@inertiajs/inertia";
 import Dropdown from "@/Components/Dropdown";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
+import Swal from "sweetalert2";
 
 function NeducativoData({ neducativoDat }) {
     const [editingNed, setEditingNed] = useState(false);
     const { data, setData, post, processing, reset, errors } = useForm({
-        nivel_educativo_ne: neducativoDat.nivel_educativo_ne,
-        etapa_ne: neducativoDat.etapa_ne,
-        nombre_institucion_ne: neducativoDat.nombre_institucion_ne,
-        descripcion_ne: neducativoDat.descripcion_ne,
-        fecha_culminacion_ne: neducativoDat.fecha_culminacion_ne,
-        documento_val_ne: neducativoDat.documento_val_ne,
+        nivel_educativo_ne: neducativoDat.nivel_educativo_ne || "",
+        etapa_ne: neducativoDat.etapa_ne || "",
+        nombre_institucion_ne: neducativoDat.nombre_institucion_ne || "",
+        descripcion_ne: neducativoDat.descripcion_ne || "",
+        fecha_culminacion_ne: neducativoDat.fecha_culminacion_ne || "",
+        documento_val_ne: neducativoDat.documento_val_ne || "",
         _method: "put",
     });
     console.log("data.documento_val_ne");
     console.log(data.nivel_educativo_ne);
+    const handleDestroyNed = (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Estás seguro?`,
+            text: `Se eliminara el registro de su grado academico:  ${
+                data.nivel_educativo_ne != ""
+                    ? data.nivel_educativo_ne
+                    : "(No definido)"
+            }, de manera permanente`,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(route("neducativo.destroy", neducativoDat.id), {
+                    preserveScroll: true,
+                });
+                Swal.fire(
+                    "¡Eliminado!",
+                    "Su registro ha sido eliminado",
+                    "success"
+                );
+            }
+        });
+    };
     const neducativoEdit = (e) => {
         e.preventDefault();
         post(route("neducativo.update", neducativoDat.id), {
@@ -58,7 +88,7 @@ function NeducativoData({ neducativoDat }) {
                     </Dropdown.Trigger>
                     <Dropdown.Content>
                         <button
-                            className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-transparent focus:bg-gray-100 transition duration-150 ease-in-out"
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-gray-500 hover:text-white focus:bg-gray-100 transition duration-150 ease-in-out"
                             onClick={() => setEditingNed(true)}
                         >
                             Editar
@@ -71,14 +101,20 @@ function NeducativoData({ neducativoDat }) {
                         >
                             Editar
                         </Dropdown.Link> */}
-                        <Dropdown.Link
+                        {/* <Dropdown.Link
                             as="button"
                             href={route("neducativo.destroy", neducativoDat.id)}
                             method="delete"
                             preserveScroll={true}
                         >
                             Eliminar
-                        </Dropdown.Link>
+                        </Dropdown.Link> */}
+                        <button
+                            onClick={handleDestroyNed}
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-red-500 hover:text-white transition duration-150 ease-in-out"
+                        >
+                            Eliminar
+                        </button>
                     </Dropdown.Content>
                 </Dropdown>
             </div>

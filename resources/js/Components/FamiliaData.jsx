@@ -1,38 +1,78 @@
 import React, { useState } from "react";
+
 import Dropdown from "@/Components/Dropdown";
 import InputError from "@/Components/InputError";
 import { Inertia } from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
+import { toast, ToastContainer } from "react-toastify";
+import Swal from "sweetalert2";
 
 function FamiliafamiliaDat({ familiaDat }) {
     // const {auth} = usePage().props
     const [editingFam, setEditingFam] = useState(false);
     const { data, setData, put, processing, reset, errors } = useForm({
-        t_relacion_f: familiaDat.t_relacion_f,
-        apellidos_nombres_f: familiaDat.apellidos_nombres_f,
-        tipo_documento_f: familiaDat.tipo_documento_f,
-        dni_f: familiaDat.dni_f,
-        carnet_extranjeria_f: familiaDat.carnet_extranjeria_f,
-        partida_nacimiento_f: familiaDat.partida_nacimiento_f,
-        otro_documento_f: familiaDat.otro_documento_f,
+        t_relacion_f: familiaDat.t_relacion_f || "",
+        apellidos_nombres_f: familiaDat.apellidos_nombres_f || "",
+        tipo_documento_f: familiaDat.tipo_documento_f || "",
+        dni_f: familiaDat.dni_f || "",
+        carnet_extranjeria_f: familiaDat.carnet_extranjeria_f || "",
+        partida_nacimiento_f: familiaDat.partida_nacimiento_f || "",
+        otro_documento_f: familiaDat.otro_documento_f || "",
         genero_f: familiaDat.genero_f,
-        fecha_nacimiento_f: familiaDat.fecha_nacimiento_f,
-        estado_civil_f: familiaDat.estado_civil_f,
-        estado_v_m_f: familiaDat.estado_v_m_f,
-        nacionalidad_f: familiaDat.nacionalidad_f,
+        fecha_nacimiento_f: familiaDat.fecha_nacimiento_f || "",
+        estado_civil_f: familiaDat.estado_civil_f || "",
+        estado_v_m_f: familiaDat.estado_v_m_f || "",
+        nacionalidad_f: familiaDat.nacionalidad_f || "",
     });
+
+    const handleDestroyFam = (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Estás seguro?`,
+            text: `Se eliminara el registro del familiar:  ${
+                data.apellidos_nombres_f != ""
+                    ? data.apellidos_nombres_f
+                    : "(Sin Nombre)"
+            }, de manera permanente`,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(route("familia.destroy", familiaDat.id), {
+                    preserveScroll: true,
+                });
+                Swal.fire(
+                    "¡Eliminado!",
+                    "Su registro ha sido eliminado",
+                    "success"
+                );
+            }
+        });
+    };
+
     const familiaEdit = (e) => {
         e.preventDefault();
-        console.log("familiaDat.id");
-        console.log(familiaDat.id);
         put(route("familia.update", familiaDat.id), {
             preserveScroll: true,
             onSuccess: () => setEditingFam(false),
         });
+        // Swal.fire({
+        //     icon: "info",
+        //     title: "Datos actualizados correctamente",
+        //     showConfirmButton: false,
+        //     timer: 1500,
+        //     // iconColor: "green",
+        // });
     };
+
     return (
         <div className="bg-transparent shadow-md rounded border border-white px-7 pt-5 pb-5 mb-4 flex flex-col">
+            <ToastContainer />
             <div className="flex justify-end">
                 <Dropdown>
                     <Dropdown.Trigger>
@@ -55,14 +95,20 @@ function FamiliafamiliaDat({ familiaDat }) {
                             Editar
                         </button>
 
-                        <Dropdown.Link
+                        {/* <Dropdown.Link
                             as="button"
                             href={route("familia.destroy", familiaDat.id)}
                             method="delete"
                             preserveScroll={true}
                         >
                             Eliminar
-                        </Dropdown.Link>
+                        </Dropdown.Link> */}
+                        <button
+                            onClick={handleDestroyFam}
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-red-500 hover:text-white transition duration-150 ease-in-out"
+                        >
+                            Eliminar
+                        </button>
                     </Dropdown.Content>
                 </Dropdown>
             </div>

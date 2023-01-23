@@ -12,6 +12,8 @@ import ExdocenteData from "@/Components/ExdocenteData";
 import Resolucionesycontrato from "@/Components/Resolucionesycontrato";
 import DocumentoData from "@/Components/DocumentoData";
 import OtrotrabajoData from "@/Components/OtrotrabajoData";
+import Swal from "sweetalert2";
+import PdfContent from "./PdfContent";
 
 function PersonalEditExtra({
     auth,
@@ -159,6 +161,13 @@ function PersonalEditExtra({
             preserveScroll: true,
             onSuccess: () => reset(),
         });
+        // Swal.fire({
+        //     icon: "success",
+        //     title: "Datos del familiar almacenados correctamente",
+        //     showConfirmButton: false,
+        //     timer: 1500,
+        //     // iconColor: "green",
+        // });
     };
     //     function blank(){
     //       setData('nivel_educativo_ne',"")
@@ -257,12 +266,18 @@ function PersonalEditExtra({
         };
         setData("foto", e.dataTransfer.files[0]);
     };
+    console.log("personalData[0].foto");
+    console.log(personalData[0].foto);
 
     return (
         <AuthenticatedLayout auth={auth}>
             <div className="p-6 rounded-lg">
-                <div className="flex justify-end">
-                    <a
+                <div className="flex justify-between items-center">
+                    <h3 className="uppercase tracking-wide mb-4 text-white text-xl  font-bold ">
+                        Escalafon - Hoja de registro
+                    </h3>
+                    <Link
+                        method="get"
                         href={route("personal.edit", personalData[0].id)}
                         className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600  to-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                     >
@@ -283,7 +298,7 @@ function PersonalEditExtra({
                             </svg>
                             EDITAR DATOS PRINCIPALES
                         </span>
-                    </a>
+                    </Link>
                 </div>
                 <div className="fondo-princ text-white items-center text-sm text-center uppercase shadow-md rounded px-7 pt-2 pb-2 mb-4 flex ">
                     <p className="mr-2 font-bold">Datos adicionales de:</p>
@@ -300,7 +315,11 @@ function PersonalEditExtra({
                     }`}</p>
                     <img
                         className="ml-5 w-10 h-10 rounded-full"
-                        src={`${img}fotoPer/${personalData[0].foto}`}
+                        src={
+                            personalData[0].foto
+                                ? `${img}fotoPer/${personalData[0].foto}`
+                                : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                        }
                         alt=""
                     />
                 </div>
@@ -1744,115 +1763,126 @@ function PersonalEditExtra({
                         ))}
                     </div>
                 </div>
-                <div className="fondo-princ p-4 mb-4 rounded-lg">
-                    <form
-                        onSubmit={resolucionesycontrato}
-                        encType="multipart/form-data"
-                    >
-                        <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                RESOLUCIONES
-                            </h3>
-                            <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="tipo_res"
-                                    >
-                                        tipo
-                                    </label>
-                                    <select
-                                        value={data.tipo_res}
-                                        onChange={(e) =>
-                                            setData("tipo_res", e.target.value)
-                                        }
-                                        id="tipo_res"
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white text-sm rounded py-3 px-4 mb-3 font-medium"
-                                        name="tipo_res"
-                                    >
-                                        <option value="">-Seleccione-</option>
-                                        <option value="INGRESO">INGRESO</option>
-                                        <option value="NOMBRAMIENTO">
-                                            NOMBRAMIENTO
-                                        </option>
-                                        <option value="RATIFICACION">
-                                            RATIFICACION
-                                        </option>
-                                        <option value="CONTRATO">
-                                            CONTRATO
-                                        </option>
-                                        <option value="OTRO">OTRO</option>
-                                    </select>
-                                    <InputError
-                                        message={errors.tipo_res}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="w-1/4 px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="cod_res"
-                                    >
-                                        N° de RESOLUCION
-                                    </label>
-                                    <input
-                                        value={data.cod_res}
-                                        onChange={(e) =>
-                                            setData("cod_res", e.target.value)
-                                        }
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="cod_res"
-                                        type="text"
-                                        placeholder=""
-                                    />
-                                    <InputError
-                                        message={errors.cod_res}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="fecha_dic_res"
-                                    >
-                                        Fecha deL DOCUMENTO
-                                    </label>
-                                    <input
-                                        value={data.fecha_dic_res}
-                                        onChange={(e) =>
-                                            setData(
-                                                "fecha_dic_res",
-                                                e.target.value
-                                            )
-                                        }
-                                        type="date"
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
-                                        id="fecha_dic_res"
-                                    />
-                                    <InputError
-                                        message={errors.fecha_dic_res}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="w-1/4 px-3">
-                                    <label
-                                        htmlFor="dropzone-file_res"
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                    >
-                                        documento de validacion
-                                    </label>
+                {auth.user.id <= 5 ? (
+                    <div className="fondo-princ p-4 mb-4 rounded-lg">
+                        <form
+                            onSubmit={resolucionesycontrato}
+                            encType="multipart/form-data"
+                        >
+                            <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
+                                <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                                    RESOLUCIONES
+                                </h3>
+                                <div className="-mx-3 md:flex mb-2">
+                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="tipo_res"
+                                        >
+                                            tipo
+                                        </label>
+                                        <select
+                                            value={data.tipo_res}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "tipo_res",
+                                                    e.target.value
+                                                )
+                                            }
+                                            id="tipo_res"
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white text-sm rounded py-3 px-4 mb-3 font-medium"
+                                            name="tipo_res"
+                                        >
+                                            <option value="">
+                                                -Seleccione-
+                                            </option>
+                                            <option value="INGRESO">
+                                                INGRESO
+                                            </option>
+                                            <option value="NOMBRAMIENTO">
+                                                NOMBRAMIENTO
+                                            </option>
+                                            <option value="RATIFICACION">
+                                                RATIFICACION
+                                            </option>
+                                            <option value="CONTRATO">
+                                                CONTRATO
+                                            </option>
+                                            <option value="OTRO">OTRO</option>
+                                        </select>
+                                        <InputError
+                                            message={errors.tipo_res}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="w-1/4 px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="cod_res"
+                                        >
+                                            N° de RESOLUCION
+                                        </label>
+                                        <input
+                                            value={data.cod_res}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "cod_res",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="cod_res"
+                                            type="text"
+                                            placeholder=""
+                                        />
+                                        <InputError
+                                            message={errors.cod_res}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="fecha_dic_res"
+                                        >
+                                            Fecha deL DOCUMENTO
+                                        </label>
+                                        <input
+                                            value={data.fecha_dic_res}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "fecha_dic_res",
+                                                    e.target.value
+                                                )
+                                            }
+                                            type="date"
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                            id="fecha_dic_res"
+                                        />
+                                        <InputError
+                                            message={errors.fecha_dic_res}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="w-1/4 px-3">
+                                        <label
+                                            htmlFor="dropzone-file_res"
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                        >
+                                            documento de validacion
+                                        </label>
 
-                                    <input
-                                        name="documento_val_res"
-                                        onChange={(e) => {
-                                            setData(
-                                                "documento_val_res",
-                                                e.target.files[0]
-                                            );
-                                        }}
-                                        id="dropzone-file_res"
-                                        type="file"
-                                        className="
+                                        <input
+                                            name="documento_val_res"
+                                            onChange={(e) => {
+                                                setData(
+                                                    "documento_val_res",
+                                                    e.target.files[0]
+                                                );
+                                            }}
+                                            id="dropzone-file_res"
+                                            type="file"
+                                            className="
                   text-sm text-white border rounded-full border-white hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600
              file:py-3 file:px-3
             file:rounded-full file:border-0
@@ -1860,297 +1890,312 @@ function PersonalEditExtra({
             file:text-md file:font-semibold  file:text-white
             file:bg-blue-600 
             hover:file:cursor-pointer hover:file:opacity-90 w-full "
-                                    />
+                                        />
 
-                                    <InputError
-                                        message={errors.documento_val_res}
-                                        className="mt-.5 flex justify-end"
-                                    />
+                                        <InputError
+                                            message={errors.documento_val_res}
+                                            className="mt-.5 flex justify-end"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="-mx-3 md:flex ">
+                                    <div className="w-2/5 px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="des_art_pri_res"
+                                        >
+                                            SE RESUELVE (ARTICULO)
+                                        </label>
+                                        <textarea
+                                            rows="8"
+                                            value={data.des_art_pri_res}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "des_art_pri_res",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent  text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="des_art_pri_res"
+                                            type="text"
+                                            placeholder=""
+                                        ></textarea>
+                                        <InputError
+                                            message={errors.des_art_pri_res}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="w-3/5">
+                                        <div className="flex ">
+                                            <div className="w-1/3 px-3 mb-6 md:mb-0">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="vigencia_res"
+                                                >
+                                                    vigencia
+                                                </label>
+                                                <input
+                                                    value={data.vigencia_res}
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "vigencia_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    type="date"
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                                    id="vigencia_res"
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.vigencia_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                            <div className="w-1/3 px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="categoria_alcanz_res"
+                                                >
+                                                    categoria alcanzada(o)
+                                                </label>
+                                                <input
+                                                    value={
+                                                        data.categoria_alcanz_res
+                                                    }
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "categoria_alcanz_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="categoria_alcanz_res"
+                                                    type="text"
+                                                    placeholder=""
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.categoria_alcanz_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                            <div className="w-1/3 px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="nivel_alcanz_res"
+                                                >
+                                                    nivel alcanzada(o)
+                                                </label>
+                                                <input
+                                                    value={
+                                                        data.nivel_alcanz_res
+                                                    }
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "nivel_alcanz_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="nivel_alcanz_res"
+                                                    type="text"
+                                                    placeholder=""
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.nivel_alcanz_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="flex ">
+                                            <div className="w-1/4 px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="antiguedad_in_res"
+                                                >
+                                                    antiguedad desde
+                                                </label>
+                                                <input
+                                                    value={
+                                                        data.antiguedad_in_res
+                                                    }
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "antiguedad_in_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="antiguedad_in_res"
+                                                    type="date"
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.antiguedad_in_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                            <div className="w-1/4 px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="antiguedad_sa_res"
+                                                >
+                                                    antiguedad hasta
+                                                </label>
+                                                <input
+                                                    value={
+                                                        data.antiguedad_sa_res
+                                                    }
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "antiguedad_sa_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="antiguedad_sa_res"
+                                                    type="date"
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.antiguedad_sa_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                            <div className="w-1/4 px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="condicion_res"
+                                                >
+                                                    condicion
+                                                </label>
+                                                <input
+                                                    value={data.condicion_res}
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "condicion_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="condicion_res"
+                                                    type="text"
+                                                    placeholder=""
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.condicion_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                            <div className="w-1/4 px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="dependencia_res"
+                                                >
+                                                    dependencia
+                                                </label>
+                                                <input
+                                                    value={data.dependencia_res}
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "dependencia_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="dependencia_res"
+                                                    type="text"
+                                                    placeholder=""
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.dependencia_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="flex ">
+                                            <div className="w-full px-3">
+                                                <label
+                                                    className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                                    htmlFor="observacion_res"
+                                                >
+                                                    observaciones
+                                                </label>
+                                                <input
+                                                    value={data.observacion_res}
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            "observacion_res",
+                                                            e.target.value
+                                                        )
+                                                    }
+                                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                                    id="observacion_res"
+                                                    type="text"
+                                                    placeholder=""
+                                                />
+                                                <InputError
+                                                    message={
+                                                        errors.observacion_res
+                                                    }
+                                                    className="mt-.5"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="-mx-3 md:flex ">
-                                <div className="w-2/5 px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="des_art_pri_res"
-                                    >
-                                        SE RESUELVE (ARTICULO)
-                                    </label>
-                                    <textarea
-                                        rows="8"
-                                        value={data.des_art_pri_res}
-                                        onChange={(e) =>
-                                            setData(
-                                                "des_art_pri_res",
-                                                e.target.value
-                                            )
+
+                            <div className="flex">
+                                <PrimaryButton
+                                    className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
+                                    disabled={processing}
+                                >
+                                    <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                                    <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                                    <span className="relative z-20 flex items-center text-sm">
+                                        <svg
+                                            className="relative w-5 h-5 mr-2 text-white"
+                                            stroke="currentColor"
+                                            fill="currentColor"
+                                            strokeWidth="0"
+                                            viewBox="0 0 1024 1024"
+                                            height="1em"
+                                            width="1em"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
+                                        </svg>
+                                        AGREGAR
+                                    </span>
+                                </PrimaryButton>
+                            </div>
+                        </form>
+                        <div>
+                            {resolucionesycontratoData.map(
+                                (resolucionesycontratoDat) => (
+                                    <Resolucionesycontrato
+                                        key={resolucionesycontratoDat.id}
+                                        resolucionesycontratoDat={
+                                            resolucionesycontratoDat
                                         }
-                                        className="hover:border-blue-600 w-full bg-transparent  text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="des_art_pri_res"
-                                        type="text"
-                                        placeholder=""
-                                    ></textarea>
-                                    <InputError
-                                        message={errors.des_art_pri_res}
-                                        className="mt-.5"
                                     />
-                                </div>
-                                <div className="w-3/5">
-                                    <div className="flex ">
-                                        <div className="w-1/3 px-3 mb-6 md:mb-0">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="vigencia_res"
-                                            >
-                                                vigencia
-                                            </label>
-                                            <input
-                                                value={data.vigencia_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "vigencia_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                type="date"
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
-                                                id="vigencia_res"
-                                            />
-                                            <InputError
-                                                message={errors.vigencia_res}
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                        <div className="w-1/3 px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="categoria_alcanz_res"
-                                            >
-                                                categoria alcanzada(o)
-                                            </label>
-                                            <input
-                                                value={
-                                                    data.categoria_alcanz_res
-                                                }
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "categoria_alcanz_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="categoria_alcanz_res"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                            <InputError
-                                                message={
-                                                    errors.categoria_alcanz_res
-                                                }
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                        <div className="w-1/3 px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="nivel_alcanz_res"
-                                            >
-                                                nivel alcanzada(o)
-                                            </label>
-                                            <input
-                                                value={data.nivel_alcanz_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "nivel_alcanz_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="nivel_alcanz_res"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                            <InputError
-                                                message={
-                                                    errors.nivel_alcanz_res
-                                                }
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="flex ">
-                                        <div className="w-1/4 px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="antiguedad_in_res"
-                                            >
-                                                antiguedad desde
-                                            </label>
-                                            <input
-                                                value={data.antiguedad_in_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "antiguedad_in_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="antiguedad_in_res"
-                                                type="date"
-                                            />
-                                            <InputError
-                                                message={
-                                                    errors.antiguedad_in_res
-                                                }
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                        <div className="w-1/4 px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="antiguedad_sa_res"
-                                            >
-                                                antiguedad hasta
-                                            </label>
-                                            <input
-                                                value={data.antiguedad_sa_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "antiguedad_sa_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="antiguedad_sa_res"
-                                                type="date"
-                                            />
-                                            <InputError
-                                                message={
-                                                    errors.antiguedad_sa_res
-                                                }
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                        <div className="w-1/4 px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="condicion_res"
-                                            >
-                                                condicion
-                                            </label>
-                                            <input
-                                                value={data.condicion_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "condicion_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="condicion_res"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                            <InputError
-                                                message={errors.condicion_res}
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                        <div className="w-1/4 px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="dependencia_res"
-                                            >
-                                                dependencia
-                                            </label>
-                                            <input
-                                                value={data.dependencia_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "dependencia_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="dependencia_res"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                            <InputError
-                                                message={errors.dependencia_res}
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="flex ">
-                                        <div className="w-full px-3">
-                                            <label
-                                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                                htmlFor="observacion_res"
-                                            >
-                                                observaciones
-                                            </label>
-                                            <input
-                                                value={data.observacion_res}
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "observacion_res",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                                id="observacion_res"
-                                                type="text"
-                                                placeholder=""
-                                            />
-                                            <InputError
-                                                message={errors.observacion_res}
-                                                className="mt-.5"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                )
+                            )}
                         </div>
-
-                        <div className="flex">
-                            <PrimaryButton
-                                className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
-                                disabled={processing}
-                            >
-                                <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
-                                <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
-                                <span className="relative z-20 flex items-center text-sm">
-                                    <svg
-                                        className="relative w-5 h-5 mr-2 text-white"
-                                        stroke="currentColor"
-                                        fill="currentColor"
-                                        strokeWidth="0"
-                                        viewBox="0 0 1024 1024"
-                                        height="1em"
-                                        width="1em"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
-                                    </svg>
-                                    AGREGAR
-                                </span>
-                            </PrimaryButton>
-                        </div>
-                    </form>
-                    <div>
-                        {resolucionesycontratoData.map(
-                            (resolucionesycontratoDat) => (
-                                <Resolucionesycontrato
-                                    key={resolucionesycontratoDat.id}
-                                    resolucionesycontratoDat={
-                                        resolucionesycontratoDat
-                                    }
-                                />
-                            )
-                        )}
                     </div>
-                </div>
+                ) : null}
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={documento} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
@@ -2534,7 +2579,7 @@ function PersonalEditExtra({
                         />
                     ))}
                 </div>
-                <Link
+                {/* <Link
                     href={route("personal.vistaPdf", personalData[0].id)}
                     method="get"
                     style={{ background: "red" }}
@@ -2559,8 +2604,20 @@ function PersonalEditExtra({
                         </svg>
                         GENERAR PDF
                     </span>
-                </Link>
+                </Link> */}
             </div>
+            <PdfContent
+                auth={auth}
+                personalData={personalData}
+                documentoData={documentoData}
+                exdocenteData={exdocenteData}
+                exlaboralData={exlaboralData}
+                familiaData={familiaData}
+                neducativoData={neducativoData}
+                otrotrabajoData={otrotrabajoData}
+                resolucionesycontratoData={resolucionesycontratoData}
+                img={img}
+            />
         </AuthenticatedLayout>
     );
 }

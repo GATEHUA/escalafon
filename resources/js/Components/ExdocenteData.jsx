@@ -3,6 +3,8 @@ import Dropdown from "@/Components/Dropdown";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
+import Swal from "sweetalert2";
 
 function ExdocenteData({ exdocenteDat }) {
     const [editingExd, setEditingExd] = useState(false);
@@ -14,6 +16,30 @@ function ExdocenteData({ exdocenteDat }) {
         fecha_inicio_ed: exdocenteDat.fecha_inicio_ed,
         fecha_culminacion_ed: exdocenteDat.fecha_culminacion_ed,
     });
+    const handleDestroyExd = (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Estás seguro?`,
+            text: `Se eliminara el registro de su experiencia docenete, de manera permanente`,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(route("exdocente.destroy", exdocenteDat.id), {
+                    preserveScroll: true,
+                });
+                Swal.fire(
+                    "¡Eliminado!",
+                    "Su registro ha sido eliminado",
+                    "success"
+                );
+            }
+        });
+    };
     const exdocenteEdit = (e) => {
         e.preventDefault();
         console.log("exdocenteDat.id");
@@ -46,14 +72,12 @@ function ExdocenteData({ exdocenteDat }) {
                         >
                             Editar
                         </button>
-                        <Dropdown.Link
-                            as="button"
-                            href={route("exdocente.destroy", exdocenteDat.id)}
-                            method="delete"
-                            preserveScroll={true}
+                        <button
+                            onClick={handleDestroyExd}
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-red-500 hover:text-white transition duration-150 ease-in-out"
                         >
                             Eliminar
-                        </Dropdown.Link>
+                        </button>
                     </Dropdown.Content>
                 </Dropdown>
             </div>

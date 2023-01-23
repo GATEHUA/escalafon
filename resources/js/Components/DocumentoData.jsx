@@ -3,16 +3,46 @@ import Dropdown from "@/Components/Dropdown";
 import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
+import { Inertia } from "@inertiajs/inertia";
+import Swal from "sweetalert2";
 
 function DocumentoData({ documentoDat }) {
     const [editingDoc, setEditingDoc] = useState(false);
     const { data, setData, post, processing, reset, errors } = useForm({
-        t_nombre_documento_d: documentoDat.t_nombre_documento_d,
-        descripcion_documento_d: documentoDat.descripcion_documento_d,
-        documento_d: documentoDat.documento_d,
-        fecha_documento_d: documentoDat.fecha_documento_d,
+        t_nombre_documento_d: documentoDat.t_nombre_documento_d || "",
+        descripcion_documento_d: documentoDat.descripcion_documento_d || "",
+        documento_d: documentoDat.documento_d || "",
+        fecha_documento_d: documentoDat.fecha_documento_d || "",
         _method: "put",
     });
+    const handleDestroyDoc = (e) => {
+        e.preventDefault();
+        Swal.fire({
+            title: `¿Estás seguro?`,
+            text: `Se eliminara el registro de su docuento con nombre: ${
+                data.t_nombre_documento_d != ""
+                    ? data.t_nombre_documento_d
+                    : "(No definido)"
+            }, de manera permanente`,
+            icon: "warning",
+            showCancelButton: true,
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "¡Sí, bórralo!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Inertia.delete(route("documento.destroy", documentoDat.id), {
+                    preserveScroll: true,
+                });
+                Swal.fire(
+                    "¡Eliminado!",
+                    "Su registro ha sido eliminado",
+                    "success"
+                );
+            }
+        });
+    };
     const documentoEdit = (e) => {
         e.preventDefault();
         post(route("documento.update", documentoDat.id), {
@@ -38,7 +68,7 @@ function DocumentoData({ documentoDat }) {
                     </Dropdown.Trigger>
                     <Dropdown.Content>
                         <button
-                            className="block w-full px-4 py-2 text-left text-sm leading-5 text-gray-700 hover:bg-transparent focus:bg-gray-100 transition duration-150 ease-in-out"
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-gray-500 hover:text-white focus:bg-gray-100 transition duration-150 ease-in-out"
                             onClick={() => setEditingDoc(true)}
                         >
                             Edit
@@ -51,14 +81,20 @@ function DocumentoData({ documentoDat }) {
                         >
                             Editar
                         </Dropdown.Link> */}
-                        <Dropdown.Link
+                        {/* <Dropdown.Link
                             as="button"
                             href={route("documento.destroy", documentoDat.id)}
                             method="delete"
                             preserveScroll={true}
                         >
                             Eliminar
-                        </Dropdown.Link>
+                        </Dropdown.Link> */}
+                        <button
+                            onClick={handleDestroyDoc}
+                            className="block w-full px-4 py-2 text-left font-bold text-sm leading-5 text-gray-700 hover:bg-red-500 hover:text-white transition duration-150 ease-in-out"
+                        >
+                            Eliminar
+                        </button>
                     </Dropdown.Content>
                 </Dropdown>
             </div>

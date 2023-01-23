@@ -5,6 +5,7 @@ import InputError from "@/Components/InputError";
 import PrimaryButton from "@/Components/PrimaryButton";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import Swal from "sweetalert2";
+import NavLink from "@/Components/NavLink";
 
 function PersonalEdit({ auth, personalData, img, file }) {
     console.log(img);
@@ -219,21 +220,25 @@ function PersonalEdit({ auth, personalData, img, file }) {
         post(route("personal.update", personalData[0].id), {
             preserveScroll: true,
         });
-        Swal.fire({
-            icon: "success",
-            title: "Datos actualizados correctamente",
-            showConfirmButton: false,
-            timer: 1500,
-        });
+        // Swal.fire({
+        //     icon: "success",
+        //     title: "Datos actualizados correctamente",
+        //     showConfirmButton: false,
+        //     timer: 1500,
+        // });
     };
     console.log(file);
     return (
         <AuthenticatedLayout auth={auth}>
             <div className="p-6 rounded-lg">
-                <div className="flex justify-end">
+                <div className="flex justify-between items-center">
                     {/* <a href={file}>la imagen ;</a> */}
-                    <a
+                    <h3 className="uppercase tracking-wide mb-4 text-white text-xl  font-bold ">
+                        Escalafon - Hoja de registro
+                    </h3>
+                    <Link
                         href={route("personal.extraedit", personalData[0].id)}
+                        method="get"
                         className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600  to-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                     >
                         <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 fondo-princ opacity-10 group-hover:translate-x-0"></span>
@@ -253,7 +258,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </svg>
                             EDITAR DATOS ADICIONALES
                         </span>
-                    </a>
+                    </Link>
                 </div>
                 <div className="border-2 border-white p-4 mb-4 rounded-lg">
                     <form onSubmit={PersonalEdit} encType="multipart/form-data">
@@ -2641,7 +2646,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                         </div>
                     </form>
                 </div>
-                <Link
+                {/* <Link
                     href={route("personal.vistaPdf", personalData[0].id)}
                     method="get"
                     style={{ background: "red" }}
@@ -2666,7 +2671,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                         </svg>
                         GENERAR PDF
                     </span>
-                </Link>
+                </Link> */}
             </div>
         </AuthenticatedLayout>
     );

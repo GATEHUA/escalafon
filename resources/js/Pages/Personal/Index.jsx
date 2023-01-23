@@ -1197,7 +1197,8 @@ const Index = ({ auth, personal, files }) => {
                                         className="py-3 px-6 text-center"
                                     >
                                         <div className="flex item-center justify-center">
-                                            <a
+                                            <Link
+                                                method="get"
                                                 href={route(
                                                     "personal.edit",
                                                     person.id
@@ -1217,7 +1218,7 @@ const Index = ({ auth, personal, files }) => {
                                                         d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                                                     />
                                                 </svg>
-                                            </a>
+                                            </Link>
                                             <button
                                                 onClick={() => {
                                                     Swal.fire({

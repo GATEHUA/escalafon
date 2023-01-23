@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect, forwardRef } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from "@inertiajs/inertia-react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
@@ -12,9 +12,12 @@ import ExdocenteData from "@/Components/ExdocenteData";
 import Resolucionesycontrato from "@/Components/Resolucionesycontrato";
 import DocumentoData from "@/Components/DocumentoData";
 import OtrotrabajoData from "@/Components/OtrotrabajoData";
+import Swal from "sweetalert2";
+// import { Inertia } from "@inertiajs/inertia";
 
 const Create = ({
     auth,
+    personId,
     // personalData,
     // documentoData,
     // exdocenteData,
@@ -24,6 +27,7 @@ const Create = ({
     // otrotrabajoData,
     // resolucionesycontratoData,
 }) => {
+    console.log(personId);
     const [avatar, setAvatar] = useState();
     const [nuevo, setNuevo] = useState("flex");
     const [nuevo2, setNuevo2] = useState("none");
@@ -144,6 +148,21 @@ const Create = ({
         documento_d: "",
         fecha_documento_d: "",
     });
+
+    const componentRefAP = useRef(null);
+    const componentRefAM = useRef(null);
+    const componentRefNo = useRef(null);
+
+    const ScrollOnError = forwardRef(({ error }, ref) => {
+        useEffect(() => {
+            if (error) {
+                ref.current.scrollIntoView({ behavior: "smooth" });
+            }
+        }, [error, ref]);
+
+        return null;
+    });
+
     // function flattenObject(ob) {
     //   const toReturn = {};
     //   Object.keys(ob).map(i => {
@@ -178,6 +197,51 @@ const Create = ({
     //   });
     // }
 
+    // const submit2 = async (e) => {
+    //     e.preventDefault();
+    //     await post(route("personal.store"), {
+    //         // preserveScroll: true,
+    //         onSuccess: () => {
+    //             reset();
+    //             setAvatar("");
+    //             // cambionew();
+    //         },
+    //     });
+    //     const response = await post(route("personal.store"), {
+    //         // preserveScroll: true,
+    //         onSuccess: () => {
+    //             reset();
+    //             setAvatar("");
+    //             // cambionew();
+    //         },
+    //     });
+    //     // console.log(data.apellido_paterno);
+    //     // if (
+    //     //     // data.apellido_materno != "" &&
+    //     //     // data.apellido_paterno != "" &&
+    //     //     // data.nombres != ""
+    //     //     personId
+    //     // ) {
+    //     // Swal.fire({
+    //     //     title: "Datos principales almacenados correctamente",
+    //     //     icon: "success",
+    //     //     text: "Something went wrong!",
+    //     //     showDenyButton: true,
+    //     //     showCancelButton: true,
+    //     //     confirmButtonText: "Continuar",
+    //     //     denyButtonText: "Dont save",
+    //     //     allowOutsideClick: false,
+    //     // }).then((result) => {
+    //     //     /* Read more about isConfirmed, isDenied below */
+    //     //     if (result.isConfirmed) {
+    //     //         Swal.fire("Saved!", "", "success");
+    //     //     } else if (result.isDenied) {
+    //     //         Swal.fire("Changes are not saved", "", "info");
+    //     //     }
+    //     // });
+    //     // }
+    // };
+
     const submit = (e) => {
         e.preventDefault();
         post(route("personal.store"), {
@@ -185,9 +249,43 @@ const Create = ({
             onSuccess: () => {
                 reset();
                 setAvatar("");
-                cambionew();
+                // cambionew();
             },
         });
+        console.log(data.apellido_paterno);
+        // if (
+        //     data.apellido_materno != "" &&
+        //     data.apellido_paterno != "" &&
+        //     data.nombres != ""
+        //     // personId
+        // ) {
+        //     Swal.fire(
+        //         "The Internet?",
+        //         "That thing is still around?",
+        //         "question"
+        //     );
+        // Swal.fire({
+        //     title: "Datos principales almacenados correctamente",
+        //     icon: "success",
+        //     text: "Something went wrong!",
+        //     showDenyButton: true,
+        //     // showCancelButton: true,
+        //     confirmButtonText: "Continuar",
+        //     confirmButtonColor: "rgb(34 197 94)",
+        //     denyButtonColor: "rgb(59 130 246)",
+        //     denyButtonText: "Dont save",
+        //     allowOutsideClick: false,
+        // }).then((result) => {
+        //     /* Read more about isConfirmed, isDenied below */
+        //     if (result.isConfirmed) {
+        //         Swal.fire("Saved!", "", "success");
+        //     } else if (result.isDenied) {
+        //         Swal.fire("Changes are not saved", "", "info");
+        //     } else if (result.isDismissed) {
+        //         Swal.fire("Changes are not savedzxczxc", "", "warn");
+        //     }
+        // });
+        // }
     };
     const familia = (e) => {
         e.preventDefault();
@@ -1744,7 +1842,10 @@ const Create = ({
                                 </h3>
 
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div
+                                        ref={componentRefAP}
+                                        className="w-1/4 px-3 mb-6 md:mb-0"
+                                    >
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="apellido_paterno"
@@ -1752,7 +1853,7 @@ const Create = ({
                                             Apellido Paterno
                                         </label>
                                         <input
-                                            required
+                                            // required
                                             value={data.apellido_paterno}
                                             onChange={(e) =>
                                                 setData(
@@ -1769,9 +1870,16 @@ const Create = ({
                                             message={errors.apellido_paterno}
                                             className="mt-.5"
                                         />
+                                        <ScrollOnError
+                                            ref={componentRefAP}
+                                            error={errors.apellido_paterno}
+                                        />
                                     </div>
 
-                                    <div className="w-1/4 px-3">
+                                    <div
+                                        ref={componentRefAM}
+                                        className="w-1/4 px-3"
+                                    >
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="apellido_materno"
@@ -1779,7 +1887,7 @@ const Create = ({
                                             Apellido Materno
                                         </label>
                                         <input
-                                            required
+                                            // required
                                             value={data.apellido_materno}
                                             onChange={(e) =>
                                                 setData(
@@ -1796,10 +1904,17 @@ const Create = ({
                                             message={errors.apellido_materno}
                                             className="mt-.5"
                                         />
+                                        <ScrollOnError
+                                            ref={componentRefAM}
+                                            error={errors.apellido_materno}
+                                        />
                                     </div>
 
                                     <div className="w-1/2 flex ">
-                                        <div className="w-2/3 px-3">
+                                        <div
+                                            className="w-2/3 px-3"
+                                            ref={componentRefNo}
+                                        >
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="nombres"
@@ -1807,7 +1922,7 @@ const Create = ({
                                                 Nombres
                                             </label>
                                             <input
-                                                required
+                                                // required
                                                 value={data.nombres}
                                                 onChange={(e) =>
                                                     setData(
@@ -1823,6 +1938,10 @@ const Create = ({
                                             <InputError
                                                 message={errors.nombres}
                                                 className="mt-.5"
+                                            />
+                                            <ScrollOnError
+                                                ref={componentRefNo}
+                                                error={errors.nombres}
                                             />
                                         </div>
                                         <div className="w-1/3 px-3">
