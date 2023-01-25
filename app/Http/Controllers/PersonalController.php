@@ -196,6 +196,7 @@ class PersonalController extends Controller
         // dd($validate['foto']);
         //$validate['foto']->getClientOriginalName() . Nombre del archivo
 
+        // dd($validate['val_dni']->getSize(),$validate['foto']->getSize());
         if ($validate['foto'] != '') {
             $dtemporal = $validate['apellido_paterno'].' '.$validate['apellido_materno'].' '.$validate['nombres'].' '.time() . '.' . $validate['foto']->extension();
             // $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
@@ -226,7 +227,7 @@ class PersonalController extends Controller
             $personal->docente()->create($validate);
         }
         // dd($personal->id,$user->name);
-        return redirect(route("personal.extraedit", $personal));    
+        return redirect(route("personal.extraedit", $personal))->with('message', 'Datos almacenados correctamente, por favor continue con el formulario.');    
     }
 
     public function show(Personal $personal)
@@ -480,7 +481,10 @@ class PersonalController extends Controller
         $personal->update($validate);
 
 
-        return redirect(route('personal.edit', $personal->id));
+        // return redirect(route('personal.edit', $personal->id))->with('message',"Datos actualizados correctamente");
+        // return redirect(back())->with('message',"Datos actualizados correctamente");
+        return redirect(route("personal.extraedit", $personal))->with('message', 'Datos principales actualizados correctamente.');    
+
 
     }
 

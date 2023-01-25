@@ -116,7 +116,7 @@ function FamiliafamiliaDat({ familiaDat }) {
             {editingFam ? (
                 <form onSubmit={familiaEdit} encType="multipart/form-data">
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 tipo de relacion
                             </label>
@@ -139,7 +139,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 <option value="HIJO">HIJO</option>
                             </select>
                         </div>
-                        <div className="w-1/2 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/2 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 apellidos y nombre(s)
                             </label>
@@ -160,7 +160,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 tipo de documento
                             </label>
@@ -192,7 +192,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                     </div>
                     <div className="-mx-3 md:flex mb-2">
                         {data.tipo_documento_f == "DNI" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 md:mb-0">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     D.N.I.
                                 </label>
@@ -209,7 +209,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                         ) : null}
 
                         {data.tipo_documento_f == "CARNET DE EXTRANJERIA" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 md:mb-0">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     CARNET DE EXTRANJERIA
                                 </label>
@@ -233,7 +233,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                         ) : null}
 
                         {data.tipo_documento_f == "PARTIDA DE NACIMIENTO" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 md:mb-0">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     partida de nacimiento
                                 </label>
@@ -257,7 +257,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                         ) : null}
 
                         {data.tipo_documento_f == "OTRO DOCUMENTO" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 md:mb-0">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     OTO DOCUMENTO
                                 </label>
@@ -280,7 +280,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                             </div>
                         ) : null}
 
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 Fecha de nacimiento
                             </label>
@@ -300,7 +300,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                             />
                         </div>
-                        <div className=" w-1/6 px-3">
+                        <div className=" md:w-1/6 md:px-3">
                             <div className=" items-center ml-1">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2 ">
                                     vive
@@ -353,7 +353,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 genero
                             </label>
@@ -372,7 +372,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 <option value="OTRO">OTRO</option>
                             </select>
                         </div>
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 estado civil
                             </label>
@@ -403,7 +403,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                             </select>
                         </div>
 
-                        <div className="w-1/6 px-3">
+                        <div className="md:w-1/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 nacionalidad
                             </label>
@@ -424,7 +424,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                     </div>
                     <InputError message={errors.message} className="mt-2" />
 
-                    <div className="flex">
+                    <div className="flex justify-center md:justify-start">
                         <PrimaryButton className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-blue-600 ring-offset-blue-200 hover:ring-offset-blue-500 ease focus:outline-none">
                             <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
                             <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
@@ -471,7 +471,7 @@ function FamiliafamiliaDat({ familiaDat }) {
             ) : (
                 <>
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 tipo de relacion
                             </label>
@@ -489,7 +489,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/2 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/2 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 apellidos y nombre(s)
                             </label>
@@ -506,7 +506,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3 md:mb-0">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 tipo de documento
                             </label>
@@ -526,7 +526,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                     </div>
                     <div className="-mx-3 md:flex mb-2">
                         {familiaDat.tipo_documento_f == "DNI" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 ">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     D.N.I.
                                 </label>
@@ -547,7 +547,7 @@ function FamiliafamiliaDat({ familiaDat }) {
 
                         {familiaDat.tipo_documento_f ==
                         "CARNET DE EXTRANJERIA" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 ">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     CARNET DE EXTRANJERIA
                                 </label>
@@ -568,7 +568,7 @@ function FamiliafamiliaDat({ familiaDat }) {
 
                         {familiaDat.tipo_documento_f ==
                         "PARTIDA DE NACIMIENTO" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 ">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     partida de nacimiento
                                 </label>
@@ -588,7 +588,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                         ) : null}
 
                         {familiaDat.tipo_documento_f == "OTRO DOCUMENTO" ? (
-                            <div className="w-1/6 px-3 mb-6 md:mb-0">
+                            <div className="md:w-1/6 md:px-3 ">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                     OTO DOCUMENTO
                                 </label>
@@ -606,7 +606,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                             </div>
                         ) : null}
 
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3 ">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 Fecha de nacimiento
                             </label>
@@ -621,7 +621,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 className=" w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                             />
                         </div>
-                        <div className=" w-1/6 px-3">
+                        <div className=" md:w-1/6 md:px-3">
                             <div className=" items-center ml-1">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2 ">
                                     vive
@@ -662,7 +662,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 genero
                             </label>
@@ -678,7 +678,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 estado civil
                             </label>
@@ -694,7 +694,7 @@ function FamiliafamiliaDat({ familiaDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/6 px-3">
+                        <div className="md:w-1/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 nacionalidad
                             </label>

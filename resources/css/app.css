@@ -74,6 +74,15 @@ select {
 }
 .titulo {
     font-family: "Roboto", sans-serif;
+    top: 37%;
+}
+@media screen and (max-width: 850px) {
+    .titulo {
+        font-family: "Roboto", sans-serif;
+        width: 100%;
+        padding: 0 27px;
+        top: 33%;
+    }
 }
 .fondo-reg {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),

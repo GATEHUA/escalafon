@@ -126,7 +126,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                     encType="multipart/form-data"
                 >
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="tipo_res"
@@ -159,7 +159,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="cod_res"
@@ -181,7 +181,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="fecha_dic_res"
@@ -202,7 +202,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 htmlFor="dropzone-file_res"
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -237,7 +237,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                         </div>
                     </div>
                     <div className="-mx-3 md:flex ">
-                        <div className="w-2/5 px-3">
+                        <div className="md:w-2/5 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="des_art_pri_res"
@@ -260,9 +260,9 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-3/5">
-                            <div className="flex ">
-                                <div className="w-1/3 px-3 mb-6 md:mb-0">
+                        <div className="md:w-3/5">
+                            <div className="md:flex ">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="vigencia_res"
@@ -286,7 +286,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="categoria_alcanz_res"
@@ -311,7 +311,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="nivel_alcanz_res"
@@ -337,8 +337,8 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex ">
-                                <div className="w-1/4 px-3">
+                            <div className="md:flex ">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="antiguedad_in_res"
@@ -362,7 +362,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="antiguedad_sa_res"
@@ -386,7 +386,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="condicion_res"
@@ -411,7 +411,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="dependencia_res"
@@ -438,7 +438,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 </div>
                             </div>
                             <div className="flex ">
-                                <div className="w-full px-3">
+                                <div className="w-full md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="observacion_res"
@@ -467,7 +467,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                         </div>
                     </div>
 
-                    <div className="flex">
+                    <div className="flex justify-center md:justify-start">
                         <PrimaryButton className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-blue-600 ring-offset-blue-200 hover:ring-offset-blue-500 ease focus:outline-none">
                             <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
                             <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
@@ -513,8 +513,8 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                 </form>
             ) : (
                 <>
-                    <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                    <div className="-mx-3 md:flex md:mb-2">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 tipo
                             </label>
@@ -529,7 +529,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 N° de RESOLUCION
                             </label>
@@ -542,7 +542,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
                             />
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 Fecha deL DOCUMENTO
                             </label>
@@ -556,7 +556,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 documento de validacion
                             </label>
@@ -573,7 +573,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                         </div>
                     </div>
                     <div className="-mx-3 md:flex ">
-                        <div className="w-2/5 px-3">
+                        <div className="md:w-2/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 SE RESUELVE (ARTICULO)
                             </label>
@@ -589,9 +589,9 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 placeholder=""
                             ></textarea>
                         </div>
-                        <div className="w-3/5">
-                            <div className="flex ">
-                                <div className="w-1/3 px-3 mb-6 md:mb-0">
+                        <div className="md:w-3/5">
+                            <div className="md:flex ">
+                                <div className="md:w-1/3 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         vigencia
                                     </label>
@@ -605,7 +605,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
                                     />
                                 </div>
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         categoria alcanzada(o)
                                     </label>
@@ -620,7 +620,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
                                     />
                                 </div>
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         nivel alcanzada(o)
                                     </label>
@@ -636,8 +636,8 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                     />
                                 </div>
                             </div>
-                            <div className="flex ">
-                                <div className="w-1/4 px-3">
+                            <div className="md:flex ">
+                                <div className="md:w-1/4 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         antiguedad desde
                                     </label>
@@ -651,7 +651,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         antiguedad hasta
                                     </label>
@@ -665,7 +665,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         condicion
                                     </label>
@@ -680,7 +680,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         dependencia
                                     </label>
@@ -697,7 +697,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 </div>
                             </div>
                             <div className="flex ">
-                                <div className="w-full px-3">
+                                <div className="w-full md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         observaciones
                                     </label>

@@ -101,7 +101,7 @@ function DocumentoData({ documentoDat }) {
             {editingDoc ? (
                 <form onSubmit={documentoEdit} encType="multipart/form-data">
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/5 px-3">
+                        <div className="md:w-1/5 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="t_nombre_documento_d"
@@ -126,7 +126,7 @@ function DocumentoData({ documentoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-2/5 px-3">
+                        <div className="md:w-2/5 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="descripcion_documento_d"
@@ -151,7 +151,7 @@ function DocumentoData({ documentoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/6 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="fecha_documento_d"
@@ -172,7 +172,7 @@ function DocumentoData({ documentoDat }) {
                                 className="mt-.5"
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 htmlFor="dropzone-file_docext"
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -204,7 +204,7 @@ function DocumentoData({ documentoDat }) {
                         </div>
                     </div>
 
-                    <div className="flex">
+                    <div className="flex justify-center md:justify-start">
                         <PrimaryButton className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-blue-600 ring-offset-blue-200 hover:ring-offset-blue-500 ease focus:outline-none">
                             <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
                             <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
@@ -250,7 +250,7 @@ function DocumentoData({ documentoDat }) {
                 </form>
             ) : (
                 <div className="-mx-3 md:flex mb-2">
-                    <div className="w-1/5 px-3">
+                    <div className="md:w-1/5 md:px-3">
                         <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                             nombre
                         </label>
@@ -262,7 +262,7 @@ function DocumentoData({ documentoDat }) {
                             placeholder=""
                         />
                     </div>
-                    <div className="w-2/5 px-3">
+                    <div className="md:w-2/5 md:px-3">
                         <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                             descripcion
                         </label>
@@ -274,7 +274,7 @@ function DocumentoData({ documentoDat }) {
                             placeholder=""
                         />
                     </div>
-                    <div className="w-1/6 px-3 mb-6 md:mb-0">
+                    <div className="md:w-1/6 md:px-3">
                         <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                             Fecha deL DOCUMENTO
                         </label>
@@ -285,7 +285,7 @@ function DocumentoData({ documentoDat }) {
                             className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                         />
                     </div>
-                    <div className="w-1/4 px-3">
+                    <div className="md:w-1/4 md:px-3">
                         <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                             documento de validacion
                         </label>

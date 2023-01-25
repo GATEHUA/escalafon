@@ -28,120 +28,121 @@ function PersonalEditExtra({
     img,
 }) {
     console.log(personalData[0]);
-    const { data, setData, post, processing, reset, errors } = useForm({
-        fecha_Ingreso_undac: "",
-        nombra_fecha: "",
-        situacion: "ADMINISTRATIVO",
-        docente_t: "J. PRACTICA",
-        dedicacion_t: "DEDICACION EXCLUSIVA",
-        horas_d: "",
-        administrativo_t: "PROFESIONAL",
-        nivel_remunerativo: "A.",
-        condicion: "NOMBRADO",
-        foto: "",
-        // facultad:'',
-        tipo_documento: "DNI",
-        dni: "",
-        carnet_extranjeria: "",
-        partida_nacimiento: "",
-        otro_documento: "",
-        // escuela:'',
-        estado: "",
-        fecha_jubilacion: "",
-        nombres: "",
-        apellido_paterno: "",
-        apellido_materno: "",
-        genero: "",
-        fecha_nacimiento: "",
-        pais: "",
-        departamento: "",
-        provincia: "",
-        distrito: "",
+    const { data, setData, post, processing, reset, errors, progress } =
+        useForm({
+            fecha_Ingreso_undac: "",
+            nombra_fecha: "",
+            situacion: "ADMINISTRATIVO",
+            docente_t: "J. PRACTICA",
+            dedicacion_t: "DEDICACION EXCLUSIVA",
+            horas_d: "",
+            administrativo_t: "PROFESIONAL",
+            nivel_remunerativo: "A.",
+            condicion: "NOMBRADO",
+            foto: "",
+            // facultad:'',
+            tipo_documento: "DNI",
+            dni: "",
+            carnet_extranjeria: "",
+            partida_nacimiento: "",
+            otro_documento: "",
+            // escuela:'',
+            estado: "",
+            fecha_jubilacion: "",
+            nombres: "",
+            apellido_paterno: "",
+            apellido_materno: "",
+            genero: "",
+            fecha_nacimiento: "",
+            pais: "",
+            departamento: "",
+            provincia: "",
+            distrito: "",
 
-        regimen_pensionario: "19990",
-        nombre_afp: "",
-        ruc: "",
-        estado_civil: "SOLTERO(A)",
-        domicilio_actual: "",
-        distrito_domicilio: "",
-        provincia_domicilio: "",
-        departamento_domicilio: "",
-        email: "",
-        telefono_fijo: "",
-        telefono_celular: "",
-        codigo: "",
-        val_dni: "",
-        regimen_laboral: "",
-        // administrativo_t_nivel: '',
-        // docente_t_nivel: '',
-        dependencia: "",
-        facultad: "",
-        escuela: "",
-        //FAMILIARES
-        t_relacion_f: "",
-        apellidos_nombres_f: "",
-        tipo_documento_f: "DNI",
-        dni_f: "",
-        carnet_extranjeria_f: "",
-        partida_nacimiento_f: "",
-        otro_documento_f: "",
-        genero_f: "",
-        fecha_nacimiento_f: "",
-        estado_civil_f: "",
-        estado_v_m_f: "SI",
-        nacionalidad_f: "",
-        //NIVEL EDUCATIVO
-        nivel_educativo_ne: "",
-        etapa_ne: "",
-        nombre_institucion_ne: "",
-        descripcion_ne: "",
-        fecha_culminacion_ne: "",
-        documento_val_ne: "",
-        //EXPERIENCIA LABORAL
-        cargo_desempeniado_el: "",
-        fecha_inicio_el: "",
-        fecha_culminacion_el: "",
-        t_lugar_ex_el: "PUBLICA",
-        //PRIVADA
-        empresa_elpr: "",
-        //PUBLICA
-        dependencia_elpu: "",
-        tipo_elpu: "",
-        num_tipo_elpu: "",
-        //EXPERIENCIA DOCENTE
-        institucion_ed: "",
-        catedra_ed: "",
-        categoria_ed: "",
-        regimen_pensionario_ed: "",
-        fecha_inicio_ed: "",
-        fecha_culminacion_ed: "",
-        //RESOLUCIONES   :
-        cod_res: "",
-        tipo_res: "",
-        fecha_dic_res: "",
-        des_art_pri_res: "",
-        vigencia_res: "",
-        categoria_alcanz_res: "",
-        nivel_alcanz_res: "",
-        antiguedad_in_res: "",
-        antiguedad_sa_res: "",
-        condicion_res: "",
-        dependencia_res: "",
-        observacion_res: "",
-        documento_val_res: "",
-        //OTRO TRABAJO
-        estado_ot: "SI",
-        cargo_ot: "",
-        nombre_institucion_ot: "",
-        frecuencia_diaria_ot: "",
-        hora_entrada_ot: "",
-        hora_salida_ot: "",
-        //DOCUMENTO EXTRA
-        t_nombre_documento_d: "",
-        descripcion_documento_d: "",
-        documento_d: "",
-        fecha_documento_d: "",
-    });
+            regimen_pensionario: "19990",
+            nombre_afp: "",
+            ruc: "",
+            estado_civil: "SOLTERO(A)",
+            domicilio_actual: "",
+            distrito_domicilio: "",
+            provincia_domicilio: "",
+            departamento_domicilio: "",
+            email: "",
+            telefono_fijo: "",
+            telefono_celular: "",
+            codigo: "",
+            val_dni: "",
+            regimen_laboral: "",
+            // administrativo_t_nivel: '',
+            // docente_t_nivel: '',
+            dependencia: "",
+            facultad: "",
+            escuela: "",
+            //FAMILIARES
+            t_relacion_f: "",
+            apellidos_nombres_f: "",
+            tipo_documento_f: "DNI",
+            dni_f: "",
+            carnet_extranjeria_f: "",
+            partida_nacimiento_f: "",
+            otro_documento_f: "",
+            genero_f: "",
+            fecha_nacimiento_f: "",
+            estado_civil_f: "",
+            estado_v_m_f: "SI",
+            nacionalidad_f: "",
+            //NIVEL EDUCATIVO
+            nivel_educativo_ne: "",
+            etapa_ne: "",
+            nombre_institucion_ne: "",
+            descripcion_ne: "",
+            fecha_culminacion_ne: "",
+            documento_val_ne: "",
+            //EXPERIENCIA LABORAL
+            cargo_desempeniado_el: "",
+            fecha_inicio_el: "",
+            fecha_culminacion_el: "",
+            t_lugar_ex_el: "PUBLICA",
+            //PRIVADA
+            empresa_elpr: "",
+            //PUBLICA
+            dependencia_elpu: "",
+            tipo_elpu: "",
+            num_tipo_elpu: "",
+            //EXPERIENCIA DOCENTE
+            institucion_ed: "",
+            catedra_ed: "",
+            categoria_ed: "",
+            regimen_pensionario_ed: "",
+            fecha_inicio_ed: "",
+            fecha_culminacion_ed: "",
+            //RESOLUCIONES   :
+            cod_res: "",
+            tipo_res: "",
+            fecha_dic_res: "",
+            des_art_pri_res: "",
+            vigencia_res: "",
+            categoria_alcanz_res: "",
+            nivel_alcanz_res: "",
+            antiguedad_in_res: "",
+            antiguedad_sa_res: "",
+            condicion_res: "",
+            dependencia_res: "",
+            observacion_res: "",
+            documento_val_res: "",
+            //OTRO TRABAJO
+            estado_ot: "SI",
+            cargo_ot: "",
+            nombre_institucion_ot: "",
+            frecuencia_diaria_ot: "",
+            hora_entrada_ot: "",
+            hora_salida_ot: "",
+            //DOCUMENTO EXTRA
+            t_nombre_documento_d: "",
+            descripcion_documento_d: "",
+            documento_d: "",
+            fecha_documento_d: "",
+        });
 
     const submit = (e) => {
         e.preventDefault();
@@ -271,15 +272,15 @@ function PersonalEditExtra({
 
     return (
         <AuthenticatedLayout auth={auth}>
-            <div className="p-6 rounded-lg">
+            <div className="md:p-6 p-3 rounded-lg">
                 <div className="flex justify-between items-center">
-                    <h3 className="uppercase tracking-wide mb-4 text-white text-xl  font-bold ">
+                    <h3 className="uppercase tracking-wide mb-4 pt-4 text-white md:text-xl text-base  font-bold ">
                         Escalafon - Hoja de registro
                     </h3>
                     <Link
                         method="get"
                         href={route("personal.edit", personalData[0].id)}
-                        className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600  to-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
+                        className="box-border relative z-30 inline-flex  items-center justify-center w-auto md:px-3  md:py-3 px-2 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600  to-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                     >
                         <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
                         <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
@@ -300,7 +301,7 @@ function PersonalEditExtra({
                         </span>
                     </Link>
                 </div>
-                <div className="fondo-princ text-white items-center text-sm text-center uppercase shadow-md rounded px-7 pt-2 pb-2 mb-4 flex ">
+                <div className="fondo-princ text-white text-center items-center text-sm uppercase shadow-md rounded px-7 pt-2 pb-2 mb-4 md:flex ">
                     <p className="mr-2 font-bold">Datos adicionales de:</p>
                     <p>{`${
                         personalData[0].apellido_paterno
@@ -313,25 +314,27 @@ function PersonalEditExtra({
                     } ${
                         personalData[0].nombres ? personalData[0].nombres : ""
                     }`}</p>
-                    <img
-                        className="ml-5 w-10 h-10 rounded-full"
-                        src={
-                            personalData[0].foto
-                                ? `${img}fotoPer/${personalData[0].foto}`
-                                : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
-                        }
-                        alt=""
-                    />
+                    <div className="flex justify-center">
+                        <img
+                            className="md:ml-5 w-10 h-10 rounded-full"
+                            src={
+                                personalData[0].foto
+                                    ? `${img}fotoPer/${personalData[0].foto}`
+                                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                            }
+                            alt=""
+                        />
+                    </div>
                 </div>
 
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={familia} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                            <h3 className="text-center md:text-left uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                 FAMILIARES DIRECTOS
                             </h3>
-                            <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                            <div className="-mx-3 md:flex md:mb-2">
+                                <div className="md:w-1/4 md:px-3 md:mb-0">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="t_relacion_f"
@@ -362,7 +365,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/2 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/2 md:px-3 md:mb-0">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="apellidos_nombres_f"
@@ -387,7 +390,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3 md:mb-0">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="tipo_documento_f"
@@ -424,9 +427,9 @@ function PersonalEditExtra({
                                     />
                                 </div>
                             </div>
-                            <div className="-mx-3 md:flex mb-2">
+                            <div className="-mx-3 md:flex md:mb-2">
                                 {data.tipo_documento_f == "DNI" ? (
-                                    <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/6 md:px-3 md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="dni_f"
@@ -452,7 +455,7 @@ function PersonalEditExtra({
 
                                 {data.tipo_documento_f ==
                                 "CARNET DE EXTRANJERIA" ? (
-                                    <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/6 md:px-3 md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="carnet_extranjeria_f"
@@ -483,7 +486,7 @@ function PersonalEditExtra({
 
                                 {data.tipo_documento_f ==
                                 "PARTIDA DE NACIMIENTO" ? (
-                                    <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/6 md:px-3 md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="partida_nacimiento_f"
@@ -513,7 +516,7 @@ function PersonalEditExtra({
                                 ) : null}
 
                                 {data.tipo_documento_f == "OTRO DOCUMENTO" ? (
-                                    <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/6 md:px-3 md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="otro_documento_f"
@@ -540,7 +543,7 @@ function PersonalEditExtra({
                                     </div>
                                 ) : null}
 
-                                <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/6 md:px-3 md:mb-0">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_nacimiento_f"
@@ -564,7 +567,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className=" w-1/6 px-3">
+                                <div className=" md:w-1/6 md:px-3">
                                     <div className=" items-center ml-1">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -632,7 +635,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/6 md:px-3 md:mb-0">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="genero_f"
@@ -663,7 +666,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/6 md:px-3 md:mb-0">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="estado_civil_f"
@@ -707,7 +710,7 @@ function PersonalEditExtra({
                                     />
                                 </div>
 
-                                <div className="w-1/6 px-3">
+                                <div className="md:w-1/6 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="nacionalidad_f"
@@ -736,7 +739,7 @@ function PersonalEditExtra({
                             <></>
                         </div>
 
-                        <div className="flex">
+                        <div className="flex justify-center md:justify-start">
                             <PrimaryButton
                                 className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-green-600 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                 disabled={processing}
@@ -909,11 +912,11 @@ function PersonalEditExtra({
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={neducativo} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                            <h3 className="uppercase text-center md:text-left tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                 NIVEL EDUCATIVO
                             </h3>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="nivel_educativo_ne"
@@ -962,7 +965,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="etapa_ne"
@@ -1046,7 +1049,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3 ">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_culminacion_ne"
@@ -1070,7 +1073,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         htmlFor="dropzone-file_NE"
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -1108,7 +1111,7 @@ function PersonalEditExtra({
                                 {data.nivel_educativo_ne == "PRIMARIA" ||
                                 data.nivel_educativo_ne == "SECUNDARIA" ? (
                                     <>
-                                        <div className="w-full px-3">
+                                        <div className="w-full md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="nombre_institucion_ne"
@@ -1140,7 +1143,7 @@ function PersonalEditExtra({
                                     </>
                                 ) : (
                                     <>
-                                        <div className="w-1/2 px-3">
+                                        <div className="md:w-1/2 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="nombre_institucion_ne"
@@ -1169,7 +1172,7 @@ function PersonalEditExtra({
                                                 className="mt-.5"
                                             />
                                         </div>
-                                        <div className="w-1/2 px-3">
+                                        <div className="md:w-1/2 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="descripcion_ne"
@@ -1199,7 +1202,7 @@ function PersonalEditExtra({
                             </div>
                         </div>
 
-                        <div className="flex">
+                        <div className="flex justify-center md:justify-start">
                             <PrimaryButton
                                 className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                 disabled={processing}
@@ -1249,11 +1252,11 @@ function PersonalEditExtra({
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={exlaboral} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                            <h3 className="text-center md:text-start uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                 EXPERIENCIA LABORAL
                             </h3>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className=" w-1/5 px-3">
+                                <div className="md:w-1/5 md:px-3">
                                     <div className=" items-center ml-1">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -1323,7 +1326,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-2/5 px-3">
+                                <div className="md:w-2/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="cargo_desempeniado_el"
@@ -1348,7 +1351,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/5 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_inicio_el"
@@ -1372,7 +1375,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/5 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_culminacion_el"
@@ -1399,7 +1402,7 @@ function PersonalEditExtra({
                             </div>
                             <div className="-mx-3 md:flex mb-2">
                                 {data.t_lugar_ex_el == "PRIVADA" ? (
-                                    <div className="w-full px-3">
+                                    <div className="w-full md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="empresa_elpr"
@@ -1427,7 +1430,7 @@ function PersonalEditExtra({
                                 ) : null}
                                 {data.t_lugar_ex_el == "PUBLICA" ? (
                                     <>
-                                        <div className="w-4/6 px-3">
+                                        <div className="md:w-4/6 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="dependencia_elpu"
@@ -1454,7 +1457,7 @@ function PersonalEditExtra({
                                                 className="mt-.5"
                                             />
                                         </div>
-                                        <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                        <div className="md:w-1/6 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="tipo_elpu"
@@ -1489,7 +1492,7 @@ function PersonalEditExtra({
                                                 className="mt-.5"
                                             />
                                         </div>
-                                        <div className="w-1/6 px-3">
+                                        <div className="md:w-1/6 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="num_tipo_elpu"
@@ -1518,7 +1521,7 @@ function PersonalEditExtra({
                                 ) : null}
                             </div>
                         </div>
-                        <div className="flex">
+                        <div className="flex justify-center md:justify-start">
                             <PrimaryButton
                                 className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                 disabled={processing}
@@ -1556,11 +1559,11 @@ function PersonalEditExtra({
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={exdocente} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                            <h3 className="text-center md:text-start uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                 EXPERIENCIA DOCENTE
                             </h3>
-                            <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/4 px-3">
+                            <div className="-mx-3 md:flex md:mb-2">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="catedra_ed"
@@ -1585,7 +1588,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="categoria_ed"
@@ -1625,7 +1628,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_inicio_ed"
@@ -1649,7 +1652,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_culminacion_ed"
@@ -1675,7 +1678,7 @@ function PersonalEditExtra({
                                 </div>
                             </div>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-4/6 px-3">
+                                <div className="md:w-4/6 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="institucion_ed"
@@ -1701,7 +1704,7 @@ function PersonalEditExtra({
                                     />
                                 </div>
 
-                                <div className="w-2/6 px-3">
+                                <div className="md:w-2/6 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="regimen_pensionario_ed"
@@ -1729,7 +1732,7 @@ function PersonalEditExtra({
                                 </div>
                             </div>
                         </div>
-                        <div className="flex">
+                        <div className="flex md:justify-start justify-center">
                             <PrimaryButton
                                 className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                 disabled={processing}
@@ -1770,11 +1773,11 @@ function PersonalEditExtra({
                             encType="multipart/form-data"
                         >
                             <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                                <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                                <h3 className="uppercase text-center md:text-start tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                     RESOLUCIONES
                                 </h3>
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3 ">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="tipo_res"
@@ -1815,7 +1818,7 @@ function PersonalEditExtra({
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-1/4 px-3">
+                                    <div className="md:w-1/4 md:px-3 ">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="cod_res"
@@ -1840,7 +1843,7 @@ function PersonalEditExtra({
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3 ">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="fecha_dic_res"
@@ -1864,7 +1867,7 @@ function PersonalEditExtra({
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-1/4 px-3">
+                                    <div className="md:w-1/4 md:px-3 ">
                                         <label
                                             htmlFor="dropzone-file_res"
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -1899,7 +1902,7 @@ function PersonalEditExtra({
                                     </div>
                                 </div>
                                 <div className="-mx-3 md:flex ">
-                                    <div className="w-2/5 px-3">
+                                    <div className="md:w-2/5 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="des_art_pri_res"
@@ -1925,9 +1928,9 @@ function PersonalEditExtra({
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-3/5">
-                                        <div className="flex ">
-                                            <div className="w-1/3 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-3/5">
+                                        <div className="md:flex ">
+                                            <div className="md:w-1/3 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="vigencia_res"
@@ -1953,7 +1956,7 @@ function PersonalEditExtra({
                                                     className="mt-.5"
                                                 />
                                             </div>
-                                            <div className="w-1/3 px-3">
+                                            <div className="md:w-1/3 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="categoria_alcanz_res"
@@ -1982,7 +1985,7 @@ function PersonalEditExtra({
                                                     className="mt-.5"
                                                 />
                                             </div>
-                                            <div className="w-1/3 px-3">
+                                            <div className="md:w-1/3 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="nivel_alcanz_res"
@@ -2012,8 +2015,8 @@ function PersonalEditExtra({
                                                 />
                                             </div>
                                         </div>
-                                        <div className="flex ">
-                                            <div className="w-1/4 px-3">
+                                        <div className="md:flex ">
+                                            <div className="md:w-1/4 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="antiguedad_in_res"
@@ -2041,7 +2044,7 @@ function PersonalEditExtra({
                                                     className="mt-.5"
                                                 />
                                             </div>
-                                            <div className="w-1/4 px-3">
+                                            <div className="md:w-1/4 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="antiguedad_sa_res"
@@ -2069,7 +2072,7 @@ function PersonalEditExtra({
                                                     className="mt-.5"
                                                 />
                                             </div>
-                                            <div className="w-1/4 px-3">
+                                            <div className="md:w-1/4 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="condicion_res"
@@ -2096,7 +2099,7 @@ function PersonalEditExtra({
                                                     className="mt-.5"
                                                 />
                                             </div>
-                                            <div className="w-1/4 px-3">
+                                            <div className="md:w-1/4 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="dependencia_res"
@@ -2125,7 +2128,7 @@ function PersonalEditExtra({
                                             </div>
                                         </div>
                                         <div className="flex ">
-                                            <div className="w-full px-3">
+                                            <div className="w-full md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="observacion_res"
@@ -2157,7 +2160,7 @@ function PersonalEditExtra({
                                 </div>
                             </div>
 
-                            <div className="flex">
+                            <div className="flex md:justify-start justify-center">
                                 <PrimaryButton
                                     className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                     disabled={processing}
@@ -2199,11 +2202,11 @@ function PersonalEditExtra({
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={documento} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                            <h3 className="md:text-left text-center uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                 documentos extra
                             </h3>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/5 px-3">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="t_nombre_documento_d"
@@ -2228,7 +2231,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-2/5 px-3">
+                                <div className="md:w-2/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="descripcion_documento_d"
@@ -2253,7 +2256,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/6 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/6 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_documento_d"
@@ -2277,7 +2280,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         htmlFor="dropzone-file_docext"
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -2313,7 +2316,7 @@ function PersonalEditExtra({
                             </div>
                         </div>
 
-                        <div className="flex">
+                        <div className="flex md:justify-start justify-center">
                             <PrimaryButton
                                 className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                 disabled={processing}
@@ -2350,11 +2353,11 @@ function PersonalEditExtra({
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={otrotrabajo} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                            <h3 className="text-center md:text-left uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
                                 A LA FECHA LABORA EN OTRA INSTITUCION
                             </h3>
-                            <div className="-mx-3 md:flex mb-2">
-                                <div className=" w-1/5 px-3">
+                            <div className="-mx-3 md:flex md:mb-2">
+                                <div className=" md:w-1/5 md:px-3">
                                     <div className=" items-center ml-1">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2422,7 +2425,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-2/5 px-3">
+                                <div className="md:w-2/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="cargo_ot"
@@ -2444,7 +2447,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/5 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="hora_entrada_ot"
@@ -2468,7 +2471,7 @@ function PersonalEditExtra({
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/5 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="hora_salida_ot"
@@ -2494,7 +2497,7 @@ function PersonalEditExtra({
                                 </div>
                             </div>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-4/6 px-3">
+                                <div className="md:w-4/6 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="nombre_institucion_ot"
@@ -2520,7 +2523,7 @@ function PersonalEditExtra({
                                     />
                                 </div>
 
-                                <div className="w-2/6 px-3">
+                                <div className="md:w-2/6 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="frecuencia_diaria_ot"
@@ -2547,7 +2550,7 @@ function PersonalEditExtra({
                                 </div>
                             </div>
                         </div>
-                        <div className="flex">
+                        <div className="flex md:justify-start justify-center">
                             <PrimaryButton
                                 className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                                 disabled={processing}

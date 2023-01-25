@@ -122,7 +122,7 @@ function NeducativoData({ neducativoDat }) {
             {editingNed ? (
                 <form onSubmit={neducativoEdit} encType="multipart/form-data">
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3 ">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="nivel_educativo_ne"
@@ -158,7 +158,7 @@ function NeducativoData({ neducativoDat }) {
                                 </option>
                             </select>
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="etapa_ne"
@@ -223,7 +223,7 @@ function NeducativoData({ neducativoDat }) {
                                 ) : null}
                             </select>
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3 ">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 Fecha de culminacion
                             </label>
@@ -239,7 +239,7 @@ function NeducativoData({ neducativoDat }) {
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label
                                 htmlFor="dropzone-file_NE"
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -271,7 +271,7 @@ function NeducativoData({ neducativoDat }) {
                         {data.nivel_educativo_ne == "PRIMARIA" ||
                         data.nivel_educativo_ne == "SECUNDARIA" ? (
                             <>
-                                <div className="w-full px-3">
+                                <div className="w-full md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="nombre_institucion_ne"
@@ -295,7 +295,7 @@ function NeducativoData({ neducativoDat }) {
                             </>
                         ) : (
                             <>
-                                <div className="w-1/2 px-3">
+                                <div className="md:w-1/2 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="nombre_institucion_ne"
@@ -316,7 +316,7 @@ function NeducativoData({ neducativoDat }) {
                                         placeholder=""
                                     />
                                 </div>
-                                <div className="w-1/2 px-3">
+                                <div className="md:w-1/2 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="descripcion_ne"
@@ -342,7 +342,7 @@ function NeducativoData({ neducativoDat }) {
                     </div>
                     <InputError message={errors.message} className="mt-2" />
 
-                    <div className="flex">
+                    <div className="flex justify-center md:justify-start">
                         <PrimaryButton className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-blue-600 ring-offset-blue-200 hover:ring-offset-blue-500 ease focus:outline-none">
                             <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
                             <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-white opacity-10 group-hover:translate-x-0"></span>
@@ -389,7 +389,7 @@ function NeducativoData({ neducativoDat }) {
             ) : (
                 <>
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 tipo
                             </label>
@@ -405,7 +405,7 @@ function NeducativoData({ neducativoDat }) {
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                             />
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 ETAPA
                             </label>
@@ -420,7 +420,7 @@ function NeducativoData({ neducativoDat }) {
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                             />
                         </div>
-                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 Fecha de culminacion
                             </label>
@@ -436,7 +436,7 @@ function NeducativoData({ neducativoDat }) {
                                 id="fecha_culminacion_ne"
                             />
                         </div>
-                        <div className="w-1/4 px-3">
+                        <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 documento de validacion
                             </label>
@@ -457,7 +457,7 @@ function NeducativoData({ neducativoDat }) {
                         {neducativoDat.nivel_educativo_ne == "PRIMARIA" ||
                         neducativoDat.nivel_educativo_ne == "SECUNDARIA" ? (
                             <>
-                                <div className="w-full px-3">
+                                <div className="w-full md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         NOMBRE DE LA INSTITUCION
                                     </label>
@@ -477,7 +477,7 @@ function NeducativoData({ neducativoDat }) {
                             </>
                         ) : (
                             <>
-                                <div className="w-1/2 px-3">
+                                <div className="md:w-1/2 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         NOMBRE DE LA INSTITUCION
                                     </label>
@@ -494,7 +494,7 @@ function NeducativoData({ neducativoDat }) {
                                         placeholder=""
                                     />
                                 </div>
-                                <div className="w-1/2 px-3">
+                                <div className="md:w-1/2 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                         DESCRIPCION
                                     </label>

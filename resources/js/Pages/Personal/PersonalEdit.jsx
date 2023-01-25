@@ -167,58 +167,59 @@ function PersonalEdit({ auth, personalData, img, file }) {
         est_horas_d = "";
     }
 
-    const { data, setData, post, processing, reset, errors } = useForm({
-        fecha_Ingreso_undac: personalData[0].fecha_Ingreso_undac,
-        nombra_fecha: personalData[0].nombra_fecha,
-        condicion: personalData[0].condicion,
-        situacion: personalData[0].situacion,
-        foto: personalData[0].foto,
-        estado: personalData[0].estado,
-        fecha_jubilacion: personalData[0].fecha_jubilacion,
-        nombres: personalData[0].nombres,
-        apellido_paterno: personalData[0].apellido_paterno,
-        apellido_materno: personalData[0].apellido_materno,
-        genero: personalData[0].genero,
-        fecha_nacimiento: personalData[0].fecha_nacimiento,
-        pais: personalData[0].pais,
-        departamento: personalData[0].departamento,
-        provincia: personalData[0].provincia,
-        distrito: personalData[0].distrito,
-        tipo_documento: personalData[0].tipo_documento,
-        dni: personalData[0].dni,
-        carnet_extranjeria: personalData[0].carnet_extranjeria,
-        partida_nacimiento: personalData[0].partida_nacimiento,
-        otro_documento: personalData[0].otro_documento,
-        regimen_pensionario: personalData[0].regimen_pensionario,
-        nombre_afp: personalData[0].nombre_afp,
-        ruc: personalData[0].ruc,
-        estado_civil: personalData[0].estado_civil,
-        domicilio_actual: personalData[0].domicilio_actual,
-        distrito_domicilio: personalData[0].distrito_domicilio,
-        provincia_domicilio: personalData[0].provincia_domicilio,
-        departamento_domicilio: personalData[0].departamento_domicilio,
-        email: personalData[0].email,
-        telefono_fijo: personalData[0].telefono_fijo,
-        telefono_celular: personalData[0].telefono_celular,
-        codigo: personalData[0].codigo,
-        val_dni: personalData[0].val_dni,
-        regimen_laboral: personalData[0].regimen_laboral,
-        administrativo_t: est_administrativo_t,
-        dependencia: est_dependencia,
-        nivel_remunerativo: est_nivel_remunerativo,
-        docente_t: est_docente_t,
-        dedicacion_t: est_dedicacion_t,
-        facultad: est_facultad,
-        escuela: est_escuela,
-        horas_d: est_horas_d,
-        _method: "put",
-    });
+    const { data, setData, post, processing, reset, errors, progress } =
+        useForm({
+            fecha_Ingreso_undac: personalData[0].fecha_Ingreso_undac,
+            nombra_fecha: personalData[0].nombra_fecha,
+            condicion: personalData[0].condicion,
+            situacion: personalData[0].situacion,
+            foto: personalData[0].foto,
+            estado: personalData[0].estado,
+            fecha_jubilacion: personalData[0].fecha_jubilacion,
+            nombres: personalData[0].nombres,
+            apellido_paterno: personalData[0].apellido_paterno,
+            apellido_materno: personalData[0].apellido_materno,
+            genero: personalData[0].genero,
+            fecha_nacimiento: personalData[0].fecha_nacimiento,
+            pais: personalData[0].pais,
+            departamento: personalData[0].departamento,
+            provincia: personalData[0].provincia,
+            distrito: personalData[0].distrito,
+            tipo_documento: personalData[0].tipo_documento,
+            dni: personalData[0].dni,
+            carnet_extranjeria: personalData[0].carnet_extranjeria,
+            partida_nacimiento: personalData[0].partida_nacimiento,
+            otro_documento: personalData[0].otro_documento,
+            regimen_pensionario: personalData[0].regimen_pensionario,
+            nombre_afp: personalData[0].nombre_afp,
+            ruc: personalData[0].ruc,
+            estado_civil: personalData[0].estado_civil,
+            domicilio_actual: personalData[0].domicilio_actual,
+            distrito_domicilio: personalData[0].distrito_domicilio,
+            provincia_domicilio: personalData[0].provincia_domicilio,
+            departamento_domicilio: personalData[0].departamento_domicilio,
+            email: personalData[0].email,
+            telefono_fijo: personalData[0].telefono_fijo,
+            telefono_celular: personalData[0].telefono_celular,
+            codigo: personalData[0].codigo,
+            val_dni: personalData[0].val_dni,
+            regimen_laboral: personalData[0].regimen_laboral,
+            administrativo_t: est_administrativo_t,
+            dependencia: est_dependencia,
+            nivel_remunerativo: est_nivel_remunerativo,
+            docente_t: est_docente_t,
+            dedicacion_t: est_dedicacion_t,
+            facultad: est_facultad,
+            escuela: est_escuela,
+            horas_d: est_horas_d,
+            _method: "put",
+        });
     console.log(personalData[0].id);
 
     const PersonalEdit = (e) => {
         e.preventDefault();
         post(route("personal.update", personalData[0].id), {
-            preserveScroll: true,
+            // preserveScroll: true,
         });
         // Swal.fire({
         //     icon: "success",
@@ -230,22 +231,22 @@ function PersonalEdit({ auth, personalData, img, file }) {
     console.log(file);
     return (
         <AuthenticatedLayout auth={auth}>
-            <div className="p-6 rounded-lg">
+            <div className="md:p-6 p-3 rounded-lg">
                 <div className="flex justify-between items-center">
                     {/* <a href={file}>la imagen ;</a> */}
-                    <h3 className="uppercase tracking-wide mb-4 text-white text-xl  font-bold ">
+                    <h3 className="uppercase tracking-wide pt-4 mb-4 text-white md:text-xl text-base font-bold ">
                         Escalafon - Hoja de registro
                     </h3>
                     <Link
                         href={route("personal.extraedit", personalData[0].id)}
                         method="get"
-                        className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600  to-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
+                        className="box-border relative z-30 inline-flex items-center justify-center w-auto md:px-3  md:py-3 px-2 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-gradient-to-r from-cyan-600  to-blue-600 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
                     >
                         <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 fondo-princ opacity-10 group-hover:translate-x-0"></span>
                         <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 fondo-princ opacity-10 group-hover:translate-x-0"></span>
                         <span className="relative z-20 flex items-center text-sm">
                             <svg
-                                className="relative w-5 h-5 mr-2 text-white"
+                                className="relative md:w-5 md:h-5 w-8 h-8 mr-2 text-white"
                                 stroke="currentColor"
                                 fill="currentColor"
                                 strokeWidth="0"
@@ -260,12 +261,12 @@ function PersonalEdit({ auth, personalData, img, file }) {
                         </span>
                     </Link>
                 </div>
-                <div className="border-2 border-white p-4 mb-4 rounded-lg">
+                <div className="border-2 border-white md:p-4 p-2 mb-4 rounded-lg">
                     <form onSubmit={PersonalEdit} encType="multipart/form-data">
                         <div className="fondo-princ shadow-md rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
                             <div className="-mx-3 md:flex mb-4">
-                                <div className="w-1/3 px-3 flex md:mb-0">
-                                    <div className="w-2/3 pr-3">
+                                <div className="md:w-1/3 md:px-3 md:flex md:mb-0">
+                                    <div className="md:w-2/3 md:pr-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-1"
                                             htmlFor="fecha_Ingreso_undac"
@@ -312,7 +313,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="codigo"
@@ -338,8 +339,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         />
                                     </div>
                                 </div>
-
-                                <div className="w-1/6 px-3">
+                                <div className="md:w-1/6 md:px-3">
                                     <div className="items-center">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -348,7 +348,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             situacion
                                         </label>
                                     </div>
-                                    <div className="my-3">
+                                    <div className="my-3 md:block flex justify-around">
                                         <div className="flex items-center ">
                                             <input
                                                 checked={
@@ -408,7 +408,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-                                <div className="w-1/6 px-3">
+                                <div className="md:w-1/6 md:px-3">
                                     <div className="items-center">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -417,7 +417,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             CONDICION
                                         </label>
                                     </div>
-                                    <div className="my-3">
+                                    <div className="md:my-3 py-1 md:py-0 ">
                                         <div className="flex items-center">
                                             <input
                                                 checked={
@@ -509,120 +509,73 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
 
-                                <div className="flex w-1/3 px-3">
+                                <div className="md:flex block md:w-1/3 md:px-3">
                                     <label
                                         htmlFor="dropzone-file"
                                         className=" mr-12 uppercase tracking-wide text-white text-xs font-bold mb-2"
                                     >
                                         Foto actual
                                     </label>
-                                    <div className="mr-4">
-                                        <img
-                                            src={avatar}
-                                            style={{ maxWidth: "112px" }}
-                                            className=" h-32 rounded-lg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    {/* <div
-                                        onDragOver={handleDragOver}
-                                        onDragLeave={handleDragLeave}
-                                        onDrop={handleDrop}
-                                        htmlFor="dropzone-file"
-                                        className={
-                                            bgImage
-                                                ? "w-28 h-32 flex flex-col justify-center items-center bg-gray-300 rounded-lg border-2 border-gray-400 border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                                                : "w-28 h-32 flex flex-col justify-center items-center bg-transparent rounded-lg border-2 border-gray-400 border-dashed dark:hover:bg-bray-300 dark:bg-gray-700 hover:border-blue-600 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                                        }
-                                    >
-                                        <div className="flex flex-col justify-center items-center">
-                                            <button
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    inputRefFoto.current.click();
-                                                }}
-                                                className="flex flex-col justify-center items-center w-28 h-32 text-sm text-gray-500 dark:text-gray-400"
-                                            >
-                                                <svg
-                                                    aria-hidden="true"
-                                                    fill="none"
-                                                    className="mb-4 w-10 h-10 text-gray-400"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={2}
-                                                        d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6h.1a5 5 0 0 1 1 9.9M15 13l-3-3m0 0-3 3m3-3v12"
-                                                    />
-                                                </svg>
-                                                Añadir Foto de Perfil
-                                            </button>
+                                    <div className="flex">
+                                        <div className="mr-4">
+                                            <img
+                                                src={avatar}
+                                                style={{ maxWidth: "112px" }}
+                                                className=" h-32 rounded-lg"
+                                                alt=""
+                                            />
                                         </div>
 
-                                        <input
-                                            name="foto"
-                                            // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
-                                            onChange={(e) => {
-                                                fotoPerfil(e);
-                                            }}
-                                            ref={inputRefFoto}
-                                            id="dropzone-file"
-                                            type="file"
-                                            className=""
-                                        />
-                                    </div> */}
-                                    <div
-                                        onDragOver={handleDragOver}
-                                        onDragLeave={handleDragLeave}
-                                        onDrop={handleDrop}
-                                        htmlFor="dropzone-file"
-                                        className={
-                                            bgImage
-                                                ? "w-28 h-32 flex flex-col justify-center items-center fondo-foto-perfil rounded-lg border-2 border-white border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                                                : "w-28 h-32 flex flex-col justify-center items-center bg-transparent rounded-lg border-2 border-white border-dashed dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                                        }
-                                    >
-                                        <div className="flex flex-col justify-center rounded-lg fondo-foto-perfil items-center">
-                                            <button
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    inputRefFoto.current.click();
-                                                }}
-                                                className="flex flex-col justify-center items-center w-28 h-32 text-sm text-white dark:text-gray-400"
-                                            >
-                                                <svg
-                                                    aria-hidden="true"
-                                                    fill="none"
-                                                    className="mb-4 w-10 h-10 text-white"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                    xmlns="http://www.w3.org/2000/svg"
+                                        <div
+                                            onDragOver={handleDragOver}
+                                            onDragLeave={handleDragLeave}
+                                            onDrop={handleDrop}
+                                            htmlFor="dropzone-file"
+                                            className={
+                                                bgImage
+                                                    ? "w-28 h-32 flex flex-col justify-center items-center fondo-foto-perfil rounded-lg border-2 border-white border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                                                    : "w-28 h-32 flex flex-col justify-center items-center bg-transparent rounded-lg border-2 border-white border-dashed dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                                            }
+                                        >
+                                            <div className="flex flex-col justify-center rounded-lg fondo-foto-perfil items-center">
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        inputRefFoto.current.click();
+                                                    }}
+                                                    className="flex flex-col justify-center items-center w-28 h-32 text-sm text-white dark:text-gray-400"
                                                 >
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        strokeWidth={2}
-                                                        d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6h.1a5 5 0 0 1 1 9.9M15 13l-3-3m0 0-3 3m3-3v12"
-                                                    />
-                                                </svg>
-                                                Añadir Foto de Perfil
-                                            </button>
-                                        </div>
+                                                    <svg
+                                                        aria-hidden="true"
+                                                        fill="none"
+                                                        className="mb-4 w-10 h-10 text-white"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg"
+                                                    >
+                                                        <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth={2}
+                                                            d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6h.1a5 5 0 0 1 1 9.9M15 13l-3-3m0 0-3 3m3-3v12"
+                                                        />
+                                                    </svg>
+                                                    Añadir Foto de Perfil
+                                                </button>
+                                            </div>
 
-                                        <input
-                                            name="foto"
-                                            // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
-                                            onChange={(e) => {
-                                                fotoPerfil(e);
-                                            }}
-                                            ref={inputRefFoto}
-                                            id="dropzone-file"
-                                            type="file"
-                                            className=""
-                                        />
+                                            <input
+                                                name="foto"
+                                                // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
+                                                onChange={(e) => {
+                                                    fotoPerfil(e);
+                                                }}
+                                                ref={inputRefFoto}
+                                                id="dropzone-file"
+                                                type="file"
+                                                className=""
+                                            />
+                                        </div>
                                     </div>
                                     <InputError
                                         message={errors.foto}
@@ -633,7 +586,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             <div className="-mx-3 md:flex mb-2">
                                 {data.situacion == "DOCENTE" ? (
                                     <>
-                                        <div className="w-1/4 px-3">
+                                        <div className="md:w-1/4 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="facultad"
@@ -659,7 +612,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             />
                                         </div>
 
-                                        <div className="w-1/4 px-3">
+                                        <div className="md:w-1/4 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="escuela"
@@ -688,7 +641,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                 ) : null}
                                 {data.situacion == "ADMINISTRATIVO" ? (
                                     <>
-                                        <div className="w-1/2 px-3">
+                                        <div className="md:w-1/2 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="dependencia"
@@ -720,7 +673,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     </>
                                 ) : null}
 
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="estado"
@@ -752,7 +705,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
 
                                 {data.estado == "CESADO" ||
                                 data.estado == "FALLECIDO" ? (
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3 md:">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="fecha_jubilacion"
@@ -785,7 +738,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         {data.situacion}
                                     </h3>
                                     <div className="flex">
-                                        <div className="mb-2 w-full pr-3">
+                                        <div className="md:mb-2 w-full md:pr-3">
                                             <div className=" items-center ">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -794,8 +747,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                     categoria
                                                 </label>
                                             </div>
-                                            <div className="flex my-4 justify-between">
-                                                <div className="flex items-center ">
+                                            <div className="md:flex md:my-4 my-1 md:justify-between">
+                                                <div className="flex py-1 md:py-0 items-center ">
                                                     <input
                                                         checked={
                                                             data.docente_t ==
@@ -822,7 +775,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         J. PRACTICA
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center">
+                                                <div className="flex py-1 md:py-0 items-center">
                                                     <input
                                                         checked={
                                                             data.docente_t ==
@@ -849,7 +802,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         AUXILIAR
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center">
+                                                <div className="flex py-1 md:py-0 items-center">
                                                     <input
                                                         checked={
                                                             data.docente_t ==
@@ -876,7 +829,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         ASOCIADO
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center">
+                                                <div className="flex py-1 md:py-0 items-center">
                                                     <input
                                                         checked={
                                                             data.docente_t ==
@@ -903,7 +856,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         PRINCIPAL
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center">
+                                                <div className="flex py-1 md:py-0 items-center">
                                                     <input
                                                         checked={
                                                             data.docente_t ==
@@ -956,7 +909,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 </label>
                                             </div>
                                             {data.docente_t == "DCU" ? (
-                                                <div className="flex my-4 justify-around">
+                                                <div className="flex my-4 md:justify-around justify-between">
                                                     <div className="flex items-center ">
                                                         <input
                                                             checked={
@@ -1022,8 +975,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                     />
                                                 </div>
                                             ) : (
-                                                <div className="flex my-4 justify-between">
-                                                    <div className="flex items-center ">
+                                                <div className="md:flex md:my-4 my-2 justify-between">
+                                                    <div className="py-1 md:py-0 flex items-center ">
                                                         <input
                                                             checked={
                                                                 data.dedicacion_t ==
@@ -1048,10 +1001,10 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                             htmlFor="inline-radio-D"
                                                             className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
                                                         >
-                                                            DEDICACION EXCLUSIVA
+                                                            DEDICACION&nbsp;EXCLUSIVA
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center ">
+                                                    <div className="py-1 md:py-0 flex items-center ">
                                                         <input
                                                             checked={
                                                                 data.dedicacion_t ==
@@ -1079,7 +1032,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                             TIEMPO COMPLETO
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center ">
+                                                    <div className="py-1 md:py-0 flex items-center ">
                                                         <input
                                                             checked={
                                                                 data.dedicacion_t ==
@@ -1116,7 +1069,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 </div>
                                             )}
                                         </div>
-                                        <div className="w-1/5 px-3">
+                                        <div className="md:w-1/5 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="regimen_laboral"
@@ -1142,7 +1095,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             />
                                         </div>
 
-                                        <div className="w-1/5 px-3 ">
+                                        <div className="md:w-1/5 md:px-3 ">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="horas_d"
@@ -1185,8 +1138,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                     categoria
                                                 </label>
                                             </div>
-                                            <div className="flex my-4 justify-between">
-                                                <div className="flex items-center ">
+                                            <div className="md:flex md:my-4 py-1 md:py-0 md:justify-between">
+                                                <div className="flex items-center py-1 md:py-0">
                                                     <input
                                                         checked={
                                                             data.administrativo_t ==
@@ -1213,7 +1166,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         PROFESIONAL
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center ">
+                                                <div className="flex items-center py-1 md:py-0">
                                                     <input
                                                         checked={
                                                             data.administrativo_t ==
@@ -1240,7 +1193,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         TECNICO
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center ">
+                                                <div className="flex items-center py-1 md:py-0">
                                                     <input
                                                         checked={
                                                             data.administrativo_t ==
@@ -1267,7 +1220,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         AUXILIAR
                                                     </label>
                                                 </div>
-                                                <div className="flex items-center ">
+                                                <div className="flex items-center py-1 md:py-0">
                                                     <input
                                                         checked={
                                                             data.administrativo_t ==
@@ -1311,7 +1264,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                 </div> */}
                                     </div>
                                     <div className="-mx-3 md:flex mb-2">
-                                        <div className=" w-4/5 pr-3 ml-3">
+                                        <div className=" md:w-4/5 md:pr-3 ml-3">
                                             <div className=" items-center ml-1">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -1474,8 +1427,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 </>
                                             ) : (
                                                 <>
-                                                    <div className="flex my-4 justify-between">
-                                                        <div className="flex items-center ">
+                                                    <div className="md:flex md:my-4 py-1 md:py-0 justify-between">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
@@ -1503,7 +1456,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 A.
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
@@ -1531,7 +1484,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 B.
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
@@ -1559,7 +1512,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 C.
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
@@ -1587,7 +1540,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 D.
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
@@ -1615,7 +1568,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 E.
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
@@ -1653,7 +1606,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 </>
                                             )}
                                         </div>
-                                        <div className="w-1/5 px-3">
+                                        <div className="md:w-1/5 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="regimen_laboral"
@@ -1689,7 +1642,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </h3>
 
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="apellido_paterno"
@@ -1715,7 +1668,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
 
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="apellido_materno"
@@ -1741,8 +1694,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
 
-                                <div className="w-1/2 flex ">
-                                    <div className="w-2/3 px-3">
+                                <div className="md:w-1/2 md:flex ">
+                                    <div className="md:w-2/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="nombres"
@@ -1767,7 +1720,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="genero"
@@ -1806,7 +1759,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </div>
 
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/5 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="fecha_nacimiento"
@@ -1830,8 +1783,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-
-                                <div className="w-1/5 px-3">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="pais"
@@ -1853,8 +1805,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-
-                                <div className="w-1/5 px-3">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="departamento"
@@ -1879,8 +1830,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-
-                                <div className="w-1/5 px-3">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="provincia"
@@ -1902,8 +1852,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-
-                                <div className="w-1/5 px-3">
+                                <div className="md:w-1/5 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="distrito"
@@ -1928,7 +1877,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </div>
 
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="tipo_documento"
@@ -1965,7 +1914,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
                                 {data.tipo_documento == "DNI" ? (
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="dni_f"
@@ -1991,7 +1940,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
 
                                 {data.tipo_documento ==
                                 "CARNET DE EXTRANJERIA" ? (
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="carnet_extranjeria"
@@ -2020,7 +1969,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
 
                                 {data.tipo_documento ==
                                 "PARTIDA DE NACIMIENTO" ? (
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="partida_nacimiento"
@@ -2048,7 +1997,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                 ) : null}
 
                                 {data.tipo_documento == "OTRO DOCUMENTO" ? (
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="otro_documento_f"
@@ -2098,7 +2047,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                   <input value={data.carnet_identidad} onChange={e=>setData('carnet_identidad',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-gray-200 rounded py-3 px-4 mb-3" id="carnet_identidad" type="text" placeholder=""/>
                   <InputError message={errors.carnet_identidad} className="mt-.5" />
                 </div> */}
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         htmlFor="dropzone-file_P"
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
@@ -2124,13 +2073,25 @@ function PersonalEdit({ auth, personalData, img, file }) {
             file:bg-blue-600 
             hover:file:cursor-pointer hover:file:opacity-90 w-full "
                                     />
-
+                                    {/* {progress && (
+                                        <div className="w-full mt-1 bg-gray-200 rounded-full dark:bg-gray-700">
+                                            <div
+                                                className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                                                style={{
+                                                    width: `${progress.percentage}%`,
+                                                }}
+                                            >
+                                                {" "}
+                                                {progress.percentage}%
+                                            </div>
+                                        </div>
+                                    )} */}
                                     <InputError
                                         message={errors.val_dni}
                                         className="mt-.5 flex justify-end"
                                     />
                                 </div>
-                                <div className="w-1/4 px-3">
+                                <div className="md:w-1/4 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="title"
@@ -2155,7 +2116,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </div>
 
                             <div className="-mx-3 md:flex mb-2 ">
-                                <div className="w-full px-3">
+                                <div className="w-full md:px-3">
                                     <div className="items-center">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2164,8 +2125,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             estado civil
                                         </label>
                                     </div>
-                                    <div className="flex my-4 justify-between">
-                                        <div className="flex items-center ">
+                                    <div className="md:flex md:my-4 py-1 md:py-0 justify-between">
+                                        <div className="flex items-center py-1 md:py-0 ">
                                             <input
                                                 checked={
                                                     data.estado_civil ==
@@ -2192,7 +2153,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 SOLTERO(A)
                                             </label>
                                         </div>
-                                        <div className="flex items-center">
+                                        <div className="flex items-center py-1 md:py-0">
                                             <input
                                                 checked={
                                                     data.estado_civil ==
@@ -2219,7 +2180,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 CASADO(A)
                                             </label>
                                         </div>
-                                        <div className="flex items-center">
+                                        <div className="flex items-center py-1 md:py-0">
                                             <input
                                                 checked={
                                                     data.estado_civil ==
@@ -2246,7 +2207,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 VIUDO(A)
                                             </label>
                                         </div>
-                                        <div className="flex items-center">
+                                        <div className="flex items-center py-1 md:py-0">
                                             <input
                                                 checked={
                                                     data.estado_civil ==
@@ -2273,7 +2234,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 DIVORCIADO(A)
                                             </label>
                                         </div>
-                                        <div className="flex items-center">
+                                        <div className="flex items-center py-1 md:py-0">
                                             <input
                                                 checked={
                                                     data.estado_civil ==
@@ -2309,7 +2270,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </div>
 
                             <div className="-mx-3 md:flex mb-3">
-                                <div className="md:w-full px-3">
+                                <div className="md:w-full md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="domicilio_actual"
@@ -2337,7 +2298,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </div>
 
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="distrito_actual"
@@ -2362,8 +2323,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="provincia_actual"
@@ -2388,8 +2348,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         className="mt-.5"
                                     />
                                 </div>
-
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="departamaneto_actual"
@@ -2417,7 +2376,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                             </div>
 
                             <div className="-mx-3 md:flex mb-2">
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="distrito_actual"
@@ -2443,7 +2402,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
 
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="provincia_actual"
@@ -2469,7 +2428,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
 
-                                <div className="w-1/3 px-3">
+                                <div className="md:w-1/3 md:px-3">
                                     <label
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="departamaneto_actual"
@@ -2493,7 +2452,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                 </div>
                             </div>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className=" w-1/2 px-3">
+                                <div className=" md:w-1/2 md:px-3">
                                     <div className=" items-center ml-1">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2592,7 +2551,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                 </div>
 
                                 {data.regimen_pensionario == "AFP" ? (
-                                    <div className="w-1/2 px-2  md:mb-0">
+                                    <div className="md:w-1/2 md:px-2  md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="company"

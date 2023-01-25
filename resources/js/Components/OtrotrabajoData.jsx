@@ -95,8 +95,8 @@ function OtrotrabajoData({ otrotrabajoDat }) {
             </div>
             {editingOtr ? (
                 <form onSubmit={otrotrabajoEdit} encType="multipart/form-data">
-                    <div className="-mx-3 md:flex mb-2">
-                        <div className=" w-1/5 px-3">
+                    <div className="-mx-3 md:flex md:mb-2">
+                        <div className="md:w-1/5 md:px-3">
                             <div className=" items-center ml-1">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2 ">
                                     ESTADO
@@ -145,7 +145,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-2/5 px-3">
+                        <div className="md:w-2/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 CARGO DESEMPEÑADO
                             </label>
@@ -160,7 +160,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/5 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 hora de entrada
                             </label>
@@ -178,7 +178,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 id="hora_entrada_ot"
                             />
                         </div>
-                        <div className="w-1/5 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 hora de salida
                             </label>
@@ -198,7 +198,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                         </div>
                     </div>
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-4/6 px-3">
+                        <div className="md:w-4/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 nombre de la institucion
                             </label>
@@ -220,8 +220,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 placeholder=""
                             />
                         </div>
-
-                        <div className="w-2/6 px-3">
+                        <div className="md:w-2/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 FRECUENCIA DIARIA
                             </label>
@@ -247,7 +246,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
 
                     <InputError message={errors.message} className="mt-2" />
 
-                    <div className="flex">
+                    <div className="flex justify-center md:justify-start">
                         <PrimaryButton className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-blue-600 ring-offset-blue-200 hover:ring-offset-blue-500 ease focus:outline-none">
                             <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
                             <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 bg-transparent opacity-10 group-hover:translate-x-0"></span>
@@ -293,8 +292,8 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                 </form>
             ) : (
                 <>
-                    <div className="-mx-3 md:flex mb-2">
-                        <div className=" w-1/5 px-3">
+                    <div className="-mx-3 md:flex md:mb-2">
+                        <div className="md:w-1/5 md:px-3">
                             <div className=" items-center ml-1">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2 ">
                                     ESTADO
@@ -335,7 +334,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-2/5 px-3">
+                        <div className="md:w-2/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 CARGO DESEMPEÑADO
                             </label>
@@ -348,7 +347,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 placeholder=""
                             />
                         </div>
-                        <div className="w-1/5 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 hora de entrada
                             </label>
@@ -360,7 +359,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 id="hora_entrada_ot"
                             />
                         </div>
-                        <div className="w-1/5 px-3 mb-6 md:mb-0">
+                        <div className="md:w-1/5 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 hora de salida
                             </label>
@@ -374,7 +373,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                         </div>
                     </div>
                     <div className="-mx-3 md:flex mb-2">
-                        <div className="w-4/6 px-3">
+                        <div className="md:w-4/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 nombre de la institucion
                             </label>
@@ -389,8 +388,7 @@ function OtrotrabajoData({ otrotrabajoDat }) {
                                 placeholder=""
                             />
                         </div>
-
-                        <div className="w-2/6 px-3">
+                        <div className="md:w-2/6 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
                                 FRECUENCIA DIARIA
                             </label>

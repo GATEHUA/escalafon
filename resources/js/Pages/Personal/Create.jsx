@@ -34,120 +34,121 @@ const Create = ({
     const [most, setMost] = useState(true);
     const [bgImage, setBgImage] = useState(false);
     const [popup, setPopup] = useState(false);
-    const { data, setData, post, processing, reset, errors } = useForm({
-        fecha_Ingreso_undac: "",
-        nombra_fecha: "",
-        situacion: "ADMINISTRATIVO",
-        docente_t: "J. PRACTICA",
-        dedicacion_t: "DEDICACION EXCLUSIVA",
-        horas_d: "",
-        administrativo_t: "PROFESIONAL",
-        nivel_remunerativo: "A.",
-        condicion: "NOMBRADO",
-        foto: "",
-        // facultad:'',
-        tipo_documento: "DNI",
-        dni: "",
-        carnet_extranjeria: "",
-        partida_nacimiento: "",
-        otro_documento: "",
-        // escuela:'',
-        estado: "",
-        fecha_jubilacion: "",
-        nombres: "",
-        apellido_paterno: "",
-        apellido_materno: "",
-        genero: "",
-        fecha_nacimiento: "",
-        pais: "",
-        departamento: "",
-        provincia: "",
-        distrito: "",
+    const { data, setData, post, processing, progress, reset, errors } =
+        useForm({
+            fecha_Ingreso_undac: "",
+            nombra_fecha: "",
+            situacion: "ADMINISTRATIVO",
+            docente_t: "J. PRACTICA",
+            dedicacion_t: "DEDICACION EXCLUSIVA",
+            horas_d: "",
+            administrativo_t: "PROFESIONAL",
+            nivel_remunerativo: "A.",
+            condicion: "NOMBRADO",
+            foto: "",
+            // facultad:'',
+            tipo_documento: "DNI",
+            dni: "",
+            carnet_extranjeria: "",
+            partida_nacimiento: "",
+            otro_documento: "",
+            // escuela:'',
+            estado: "",
+            fecha_jubilacion: "",
+            nombres: "",
+            apellido_paterno: "",
+            apellido_materno: "",
+            genero: "",
+            fecha_nacimiento: "",
+            pais: "",
+            departamento: "",
+            provincia: "",
+            distrito: "",
 
-        regimen_pensionario: "19990",
-        nombre_afp: "",
-        ruc: "",
-        estado_civil: "SOLTERO(A)",
-        domicilio_actual: "",
-        distrito_domicilio: "",
-        provincia_domicilio: "",
-        departamento_domicilio: "",
-        email: "",
-        telefono_fijo: "",
-        telefono_celular: "",
-        codigo: "",
-        val_dni: "",
-        regimen_laboral: "",
-        // administrativo_t_nivel: '',
-        // docente_t_nivel: '',
-        dependencia: "",
-        facultad: "",
-        escuela: "",
-        //FAMILIARES
-        t_relacion_f: "",
-        apellidos_nombres_f: "",
-        tipo_documento_f: "DNI",
-        dni_f: "",
-        carnet_extranjeria_f: "",
-        partida_nacimiento_f: "",
-        otro_documento_f: "",
-        genero_f: "",
-        fecha_nacimiento_f: "",
-        estado_civil_f: "",
-        estado_v_m_f: "SI",
-        nacionalidad_f: "",
-        //NIVEL EDUCATIVO
-        nivel_educativo_ne: "",
-        etapa_ne: "",
-        nombre_institucion_ne: "",
-        descripcion_ne: "",
-        fecha_culminacion_ne: "",
-        documento_val_ne: "",
-        //EXPERIENCIA LABORAL
-        cargo_desempeniado_el: "",
-        fecha_inicio_el: "",
-        fecha_culminacion_el: "",
-        t_lugar_ex_el: "PUBLICA",
-        //PRIVADA
-        empresa_elpr: "",
-        //PUBLICA
-        dependencia_elpu: "",
-        tipo_elpu: "",
-        num_tipo_elpu: "",
-        //EXPERIENCIA DOCENTE
-        institucion_ed: "",
-        catedra_ed: "",
-        categoria_ed: "",
-        regimen_pensionario_ed: "",
-        fecha_inicio_ed: "",
-        fecha_culminacion_ed: "",
-        //RESOLUCIONES   :
-        cod_res: "",
-        tipo_res: "",
-        fecha_dic_res: "",
-        des_art_pri_res: "",
-        vigencia_res: "",
-        categoria_alcanz_res: "",
-        nivel_alcanz_res: "",
-        antiguedad_in_res: "",
-        antiguedad_sa_res: "",
-        condicion_res: "",
-        dependencia_res: "",
-        observacion_res: "",
-        documento_val_res: "",
-        //OTRO TRABAJO
-        estado_ot: "SI",
-        cargo_ot: "",
-        nombre_institucion_ot: "",
-        frecuencia_diaria_ot: "",
-        hora_entrada_ot: "",
-        hora_salida_ot: "",
-        //DOCUMENTO EXTRA
-        t_nombre_documento_d: "",
-        descripcion_documento_d: "",
-        documento_d: "",
-        fecha_documento_d: "",
-    });
+            regimen_pensionario: "19990",
+            nombre_afp: "",
+            ruc: "",
+            estado_civil: "SOLTERO(A)",
+            domicilio_actual: "",
+            distrito_domicilio: "",
+            provincia_domicilio: "",
+            departamento_domicilio: "",
+            email: "",
+            telefono_fijo: "",
+            telefono_celular: "",
+            codigo: "",
+            val_dni: "",
+            regimen_laboral: "",
+            // administrativo_t_nivel: '',
+            // docente_t_nivel: '',
+            dependencia: "",
+            facultad: "",
+            escuela: "",
+            //FAMILIARES
+            t_relacion_f: "",
+            apellidos_nombres_f: "",
+            tipo_documento_f: "DNI",
+            dni_f: "",
+            carnet_extranjeria_f: "",
+            partida_nacimiento_f: "",
+            otro_documento_f: "",
+            genero_f: "",
+            fecha_nacimiento_f: "",
+            estado_civil_f: "",
+            estado_v_m_f: "SI",
+            nacionalidad_f: "",
+            //NIVEL EDUCATIVO
+            nivel_educativo_ne: "",
+            etapa_ne: "",
+            nombre_institucion_ne: "",
+            descripcion_ne: "",
+            fecha_culminacion_ne: "",
+            documento_val_ne: "",
+            //EXPERIENCIA LABORAL
+            cargo_desempeniado_el: "",
+            fecha_inicio_el: "",
+            fecha_culminacion_el: "",
+            t_lugar_ex_el: "PUBLICA",
+            //PRIVADA
+            empresa_elpr: "",
+            //PUBLICA
+            dependencia_elpu: "",
+            tipo_elpu: "",
+            num_tipo_elpu: "",
+            //EXPERIENCIA DOCENTE
+            institucion_ed: "",
+            catedra_ed: "",
+            categoria_ed: "",
+            regimen_pensionario_ed: "",
+            fecha_inicio_ed: "",
+            fecha_culminacion_ed: "",
+            //RESOLUCIONES   :
+            cod_res: "",
+            tipo_res: "",
+            fecha_dic_res: "",
+            des_art_pri_res: "",
+            vigencia_res: "",
+            categoria_alcanz_res: "",
+            nivel_alcanz_res: "",
+            antiguedad_in_res: "",
+            antiguedad_sa_res: "",
+            condicion_res: "",
+            dependencia_res: "",
+            observacion_res: "",
+            documento_val_res: "",
+            //OTRO TRABAJO
+            estado_ot: "SI",
+            cargo_ot: "",
+            nombre_institucion_ot: "",
+            frecuencia_diaria_ot: "",
+            hora_entrada_ot: "",
+            hora_salida_ot: "",
+            //DOCUMENTO EXTRA
+            t_nombre_documento_d: "",
+            descripcion_documento_d: "",
+            documento_d: "",
+            fecha_documento_d: "",
+        });
 
     const componentRefAP = useRef(null);
     const componentRefAM = useRef(null);
@@ -397,19 +398,19 @@ const Create = ({
         <AuthenticatedLayout auth={auth}>
             <Head title="Personal" />
             <div className="">
-                <div className=" p-6 rounded-lg">
+                <div className=" md:p-6 p-3 rounded-lg">
                     <div className="flex justify-between">
-                        <h3 className="uppercase tracking-wide mb-4 text-white text-xl  font-bold ">
+                        <h3 className="text-center uppercase tracking-wide mb-4 text-white text-xl  font-bold ">
                             Escalafon - Hoja de registro
                         </h3>
                     </div>
 
-                    <div className="bg-transparent border-2 border-white p-4 mb-4 rounded-lg">
+                    <div className="bg-transparent border-2 border-white p-2 md:p-4 mb-4 rounded-lg">
                         <form onSubmit={submit} encType="multipart/form-data">
                             <div className="fondo-princ shadow-md rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
                                 <div className="-mx-3 md:flex mb-4">
-                                    <div className="w-1/3 px-3 flex md:mb-0">
-                                        <div className="w-2/3 pr-3">
+                                    <div className="md:w-1/3 md:px-3 md:flex md:mb-0">
+                                        <div className="md:w-2/3 md:pr-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-1"
                                                 htmlFor="fecha_Ingreso_undac"
@@ -458,7 +459,7 @@ const Create = ({
                                                 className="mt-.5"
                                             />
                                         </div>
-                                        <div className="w-1/3 px-3">
+                                        <div className="md:w-1/3 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="codigo"
@@ -485,7 +486,7 @@ const Create = ({
                                         </div>
                                     </div>
 
-                                    <div className="w-1/6 px-3">
+                                    <div className="md:w-1/6 md:px-3">
                                         <div className="items-center">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -494,7 +495,7 @@ const Create = ({
                                                 situacion
                                             </label>
                                         </div>
-                                        <div className="my-3">
+                                        <div className="my-3 md:block flex justify-around">
                                             <div className="flex items-center ">
                                                 <input
                                                     checked={
@@ -522,7 +523,7 @@ const Create = ({
                                                     ADMINISTRATIVO
                                                 </label>
                                             </div>
-                                            <div className="flex items-center mt-2">
+                                            <div className="flex items-center md:mt-2">
                                                 <input
                                                     checked={
                                                         data.situacion ==
@@ -555,7 +556,7 @@ const Create = ({
                                             className="mt-.5"
                                         />
                                     </div>
-                                    <div className="w-1/6 px-3">
+                                    <div className="md:w-1/6 md:px-3">
                                         <div className="items-center">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -564,8 +565,8 @@ const Create = ({
                                                 CONDICION
                                             </label>
                                         </div>
-                                        <div className="my-3">
-                                            <div className="flex items-center">
+                                        <div className="md:my-3 py-1 md:py-0 ">
+                                            <div className="flex items-center py-1 md:py-0 ">
                                                 <input
                                                     checked={
                                                         data.condicion ==
@@ -592,7 +593,7 @@ const Create = ({
                                                     NOMBRADO
                                                 </label>
                                             </div>
-                                            <div className="flex items-center mt-2">
+                                            <div className="flex items-center  py-1 md:py-0 md:mt-2">
                                                 <input
                                                     checked={
                                                         data.condicion ==
@@ -622,7 +623,7 @@ const Create = ({
                                             {data.situacion ==
                                             "ADMINISTRATIVO" ? (
                                                 <>
-                                                    <div className="flex items-center mt-2">
+                                                    <div className="flex items-center  py-1 md:py-0 md:mt-2">
                                                         <input
                                                             checked={
                                                                 data.condicion ==
@@ -659,71 +660,76 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="flex w-1/3 px-3">
+                                    <div className="md:flex block md:w-1/3 md:px-3">
                                         <label
                                             htmlFor="dropzone-file"
                                             className=" mr-12 uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         >
                                             Foto actual
                                         </label>
-                                        <div className="mr-4">
-                                            <img
-                                                src={avatar}
-                                                style={{ maxWidth: "112px" }}
-                                                className=" h-32 rounded-lg"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div
-                                            onDragOver={handleDragOver}
-                                            onDragLeave={handleDragLeave}
-                                            onDrop={handleDrop}
-                                            htmlFor="dropzone-file"
-                                            className={
-                                                bgImage
-                                                    ? "w-28 h-32 flex flex-col justify-center items-center fondo-foto-perfil rounded-lg border-2 border-white border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                                                    : "w-28 h-32 flex flex-col justify-center items-center bg-transparent rounded-lg border-2 border-white border-dashed dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                                            }
-                                        >
-                                            <div className="flex flex-col justify-center rounded-lg fondo-foto-perfil items-center">
-                                                <button
-                                                    onClick={(e) => {
-                                                        e.preventDefault();
-                                                        inputRefFoto.current.click();
+                                        <div className="flex ">
+                                            <div className="mr-4">
+                                                <img
+                                                    src={avatar}
+                                                    style={{
+                                                        maxWidth: "112px",
                                                     }}
-                                                    className="flex flex-col justify-center items-center w-28 h-32 text-sm text-white dark:text-gray-400"
-                                                >
-                                                    <svg
-                                                        aria-hidden="true"
-                                                        fill="none"
-                                                        className="mb-4 w-10 h-10 text-white"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
-                                                        xmlns="http://www.w3.org/2000/svg"
-                                                    >
-                                                        <path
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            strokeWidth={2}
-                                                            d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6h.1a5 5 0 0 1 1 9.9M15 13l-3-3m0 0-3 3m3-3v12"
-                                                        />
-                                                    </svg>
-                                                    Añadir Foto de Perfil
-                                                </button>
+                                                    className=" h-32 rounded-lg"
+                                                    alt=""
+                                                />
                                             </div>
+                                            <div
+                                                onDragOver={handleDragOver}
+                                                onDragLeave={handleDragLeave}
+                                                onDrop={handleDrop}
+                                                htmlFor="dropzone-file"
+                                                className={
+                                                    bgImage
+                                                        ? "w-28 h-32 flex flex-col justify-center items-center fondo-foto-perfil rounded-lg border-2 border-white border-dashed cursor-pointer dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                                                        : "w-28 h-32 flex flex-col justify-center items-center bg-transparent rounded-lg border-2 border-white border-dashed dark:hover:bg-bray-300 dark:bg-gray-700 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                                                }
+                                            >
+                                                <div className="flex flex-col justify-center rounded-lg fondo-foto-perfil items-center">
+                                                    <button
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            inputRefFoto.current.click();
+                                                        }}
+                                                        className="flex flex-col justify-center items-center w-28 h-32 text-sm text-white dark:text-gray-400"
+                                                    >
+                                                        <svg
+                                                            aria-hidden="true"
+                                                            fill="none"
+                                                            className="mb-4 w-10 h-10 text-white"
+                                                            stroke="currentColor"
+                                                            viewBox="0 0 24 24"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                        >
+                                                            <path
+                                                                strokeLinecap="round"
+                                                                strokeLinejoin="round"
+                                                                strokeWidth={2}
+                                                                d="M7 16a4 4 0 0 1-.88-7.903A5 5 0 1 1 15.9 6h.1a5 5 0 0 1 1 9.9M15 13l-3-3m0 0-3 3m3-3v12"
+                                                            />
+                                                        </svg>
+                                                        Añadir Foto de Perfil
+                                                    </button>
+                                                </div>
 
-                                            <input
-                                                name="foto"
-                                                // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
-                                                onChange={(e) => {
-                                                    fotoPerfil(e);
-                                                }}
-                                                ref={inputRefFoto}
-                                                id="dropzone-file"
-                                                type="file"
-                                                className=""
-                                            />
+                                                <input
+                                                    name="foto"
+                                                    // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
+                                                    onChange={(e) => {
+                                                        fotoPerfil(e);
+                                                    }}
+                                                    ref={inputRefFoto}
+                                                    id="dropzone-file"
+                                                    type="file"
+                                                    className=""
+                                                />
+                                            </div>
                                         </div>
+
                                         <InputError
                                             message={errors.foto}
                                             className="mt-.5 flex justify-end"
@@ -733,7 +739,7 @@ const Create = ({
                                 <div className="-mx-3 md:flex mb-2">
                                     {data.situacion == "DOCENTE" ? (
                                         <>
-                                            <div className="w-1/4 px-3">
+                                            <div className="md:w-1/4 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="facultad"
@@ -759,7 +765,7 @@ const Create = ({
                                                 />
                                             </div>
 
-                                            <div className="w-1/4 px-3">
+                                            <div className="md:w-1/4 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="escuela"
@@ -788,7 +794,7 @@ const Create = ({
                                     ) : null}
                                     {data.situacion == "ADMINISTRATIVO" ? (
                                         <>
-                                            <div className="w-1/2 px-3">
+                                            <div className="md:w-1/2 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="dependencia"
@@ -816,7 +822,7 @@ const Create = ({
                                         </>
                                     ) : null}
 
-                                    <div className="w-1/4 px-3">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="estado"
@@ -856,7 +862,7 @@ const Create = ({
 
                                     {data.estado == "CESADO" ||
                                     data.estado == "FALLECIDO" ? (
-                                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <div className="md:-1/4 md:px-3 mb-2 md:mb-0">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="fecha_jubilacion"
@@ -891,7 +897,7 @@ const Create = ({
                                             {data.situacion}
                                         </h3>
                                         <div className="flex">
-                                            <div className="mb-2 w-full pr-3">
+                                            <div className="md:mb-2 md:w-full md:pr-3">
                                                 <div className=" items-center ">
                                                     <label
                                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -900,8 +906,8 @@ const Create = ({
                                                         categoria
                                                     </label>
                                                 </div>
-                                                <div className="flex my-4 justify-between">
-                                                    <div className="flex items-center ">
+                                                <div className="md:flex md:my-4 my-1 md:justify-between ">
+                                                    <div className="flex py-1 md:py-0 items-center ">
                                                         <input
                                                             checked={
                                                                 data.docente_t ==
@@ -929,7 +935,7 @@ const Create = ({
                                                             J. PRACTICA
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center text-white">
+                                                    <div className="flex py-1 md:py-0 items-center text-white">
                                                         <input
                                                             checked={
                                                                 data.docente_t ==
@@ -957,7 +963,7 @@ const Create = ({
                                                             AUXILIAR
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center">
+                                                    <div className="flex py-1 md:py-0 items-center">
                                                         <input
                                                             checked={
                                                                 data.docente_t ==
@@ -985,7 +991,7 @@ const Create = ({
                                                             ASOCIADO
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center">
+                                                    <div className="flex py-1 md:py-0 items-center">
                                                         <input
                                                             checked={
                                                                 data.docente_t ==
@@ -1013,7 +1019,7 @@ const Create = ({
                                                             PRINCIPAL
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center">
+                                                    <div className="flex py-1 md:py-0 items-center">
                                                         <input
                                                             checked={
                                                                 data.docente_t ==
@@ -1067,7 +1073,7 @@ const Create = ({
                                                     </label>
                                                 </div>
                                                 {data.docente_t == "DCU" ? (
-                                                    <div className="flex my-4 justify-around">
+                                                    <div className="flex md:my-4 my-2 md:justify-around justify-between">
                                                         <div className="flex items-center ">
                                                             <input
                                                                 checked={
@@ -1133,8 +1139,8 @@ const Create = ({
                                                         />
                                                     </div>
                                                 ) : (
-                                                    <div className="flex my-4 justify-between">
-                                                        <div className="flex items-center ">
+                                                    <div className="md:flex md:my-4 my-2 justify-between">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.dedicacion_t ==
@@ -1159,11 +1165,10 @@ const Create = ({
                                                                 htmlFor="inline-radio-D"
                                                                 className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
                                                             >
-                                                                DEDICACION
-                                                                EXCLUSIVA
+                                                                DEDICACION&nbsp;EXCLUSIVA
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.dedicacion_t ==
@@ -1188,10 +1193,10 @@ const Create = ({
                                                                 htmlFor="inline-2-radio-D"
                                                                 className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
                                                             >
-                                                                TIEMPO COMPLETO
+                                                                TIEMPO&nbsp;COMPLETO
                                                             </label>
                                                         </div>
-                                                        <div className="flex items-center ">
+                                                        <div className="flex items-center py-1 md:py-0">
                                                             <input
                                                                 checked={
                                                                     data.dedicacion_t ==
@@ -1228,7 +1233,7 @@ const Create = ({
                                                     </div>
                                                 )}
                                             </div>
-                                            <div className="w-1/5 px-3">
+                                            <div className="md:w-1/5 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="regimen_laboral"
@@ -1256,7 +1261,7 @@ const Create = ({
                                                 />
                                             </div>
 
-                                            <div className="w-1/5 px-3 ">
+                                            <div className="md:w-1/5 md:px-3 ">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="horas_d"
@@ -1299,8 +1304,8 @@ const Create = ({
                                                         categoria
                                                     </label>
                                                 </div>
-                                                <div className="flex my-4 justify-between">
-                                                    <div className="flex items-center ">
+                                                <div className="md:flex md:my-4 py-1 md:py-0 md:justify-between">
+                                                    <div className="flex items-center py-1 md:py-0">
                                                         <input
                                                             checked={
                                                                 data.administrativo_t ==
@@ -1328,7 +1333,7 @@ const Create = ({
                                                             PROFESIONAL
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center ">
+                                                    <div className="flex items-center py-1 md:py-0">
                                                         <input
                                                             checked={
                                                                 data.administrativo_t ==
@@ -1356,7 +1361,7 @@ const Create = ({
                                                             TECNICO
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center ">
+                                                    <div className="flex items-center py-1 md:py-0">
                                                         <input
                                                             checked={
                                                                 data.administrativo_t ==
@@ -1384,7 +1389,7 @@ const Create = ({
                                                             AUXILIAR
                                                         </label>
                                                     </div>
-                                                    <div className="flex items-center ">
+                                                    <div className="flex items-center py-1 md:py-0">
                                                         <input
                                                             checked={
                                                                 data.administrativo_t ==
@@ -1429,7 +1434,7 @@ const Create = ({
                 </div> */}
                                         </div>
                                         <div className="-mx-3 md:flex mb-2">
-                                            <div className=" w-4/5 pr-3 ml-3">
+                                            <div className=" md:w-4/5 md:pr-3 ml-3">
                                                 <div className=" items-center ml-1">
                                                     <label
                                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -1607,8 +1612,8 @@ const Create = ({
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <div className="flex my-4 justify-between">
-                                                            <div className="flex items-center ">
+                                                        <div className="md:flex md:my-4 py-1 md:py-0 justify-between">
+                                                            <div className="flex items-center py-1 md:py-0 ">
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
@@ -1639,7 +1644,7 @@ const Create = ({
                                                                     A.
                                                                 </label>
                                                             </div>
-                                                            <div className="flex items-center ">
+                                                            <div className="flex items-center py-1 md:py-0 ">
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
@@ -1670,7 +1675,7 @@ const Create = ({
                                                                     B.
                                                                 </label>
                                                             </div>
-                                                            <div className="flex items-center ">
+                                                            <div className="flex items-center py-1 md:py-0 ">
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
@@ -1701,7 +1706,7 @@ const Create = ({
                                                                     C.
                                                                 </label>
                                                             </div>
-                                                            <div className="flex items-center ">
+                                                            <div className="flex items-center py-1 md:py-0 ">
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
@@ -1732,7 +1737,7 @@ const Create = ({
                                                                     D.
                                                                 </label>
                                                             </div>
-                                                            <div className="flex items-center ">
+                                                            <div className="flex items-center py-1 md:py-0 ">
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
@@ -1763,7 +1768,7 @@ const Create = ({
                                                                     E.
                                                                 </label>
                                                             </div>
-                                                            <div className="flex items-center ">
+                                                            <div className="flex items-center py-1 md:py-0 ">
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
@@ -1804,7 +1809,7 @@ const Create = ({
                                                     </>
                                                 )}
                                             </div>
-                                            <div className="w-1/5 px-3">
+                                            <div className="md:w-1/5 md:px-3">
                                                 <label
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="regimen_laboral"
@@ -1844,13 +1849,13 @@ const Create = ({
                                 <div className="-mx-3 md:flex mb-2">
                                     <div
                                         ref={componentRefAP}
-                                        className="w-1/4 px-3 mb-6 md:mb-0"
+                                        className="md:w-1/4 md:px-3 md:mb-0"
                                     >
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="apellido_paterno"
                                         >
-                                            Apellido Paterno
+                                            Apellido&nbsp;Paterno
                                         </label>
                                         <input
                                             // required
@@ -1878,13 +1883,13 @@ const Create = ({
 
                                     <div
                                         ref={componentRefAM}
-                                        className="w-1/4 px-3"
+                                        className="md:w-1/4 md:px-3"
                                     >
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="apellido_materno"
                                         >
-                                            Apellido Materno
+                                            Apellido&nbsp;Materno
                                         </label>
                                         <input
                                             // required
@@ -1910,9 +1915,9 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/2 flex ">
+                                    <div className="md:w-1/2 md:flex ">
                                         <div
-                                            className="w-2/3 px-3"
+                                            className="md:md:w-2/3 md:md:px-3"
                                             ref={componentRefNo}
                                         >
                                             <label
@@ -1944,7 +1949,7 @@ const Create = ({
                                                 error={errors.nombres}
                                             />
                                         </div>
-                                        <div className="w-1/3 px-3">
+                                        <div className="md:w-1/3 md:px-3">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="genero"
@@ -1985,12 +1990,12 @@ const Create = ({
                                 </div>
 
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className="w-1/5 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/5 md:px-3 md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="fecha_nacimiento"
                                         >
-                                            Fecha de nacimiento
+                                            Fecha&nbsp;de&nbsp;nacimiento
                                         </label>
                                         <input
                                             value={data.fecha_nacimiento}
@@ -2010,7 +2015,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/5 px-3">
+                                    <div className="md:w-1/5 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="pais"
@@ -2033,7 +2038,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/5 px-3">
+                                    <div className="md:w-1/5 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="departamento"
@@ -2059,7 +2064,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/5 px-3">
+                                    <div className="md:w-1/5 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="provincia"
@@ -2085,7 +2090,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/5 px-3">
+                                    <div className="md:w-1/5 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="distrito"
@@ -2113,7 +2118,7 @@ const Create = ({
                                 </div>
 
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                    <div className="md:w-1/4 md:px-3 md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="tipo_documento"
@@ -2150,7 +2155,7 @@ const Create = ({
                                         />
                                     </div>
                                     {data.tipo_documento == "DNI" ? (
-                                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <div className="md:w-1/4 md:px-3 md:mb-0">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="dni_f"
@@ -2179,12 +2184,12 @@ const Create = ({
 
                                     {data.tipo_documento ==
                                     "CARNET DE EXTRANJERIA" ? (
-                                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <div className="md:w-1/4 md:px-3 md:mb-0">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="carnet_extranjeria"
                                             >
-                                                CARNET DE EXTRANJERIA
+                                                CARNET&nbsp;DE&nbsp;EXTRANJERIA
                                             </label>
                                             <input
                                                 value={data.carnet_extranjeria}
@@ -2210,12 +2215,12 @@ const Create = ({
 
                                     {data.tipo_documento ==
                                     "PARTIDA DE NACIMIENTO" ? (
-                                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <div className="md:w-1/4 md:px-3 md:mb-0">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="partida_nacimiento"
                                             >
-                                                partida de nacimiento
+                                                partida&nbsp;de&nbsp;nacimiento
                                             </label>
                                             <input
                                                 value={data.partida_nacimiento}
@@ -2240,12 +2245,12 @@ const Create = ({
                                     ) : null}
 
                                     {data.tipo_documento == "OTRO DOCUMENTO" ? (
-                                        <div className="w-1/4 px-3 mb-6 md:mb-0">
+                                        <div className="md:w-1/4 md:px-3 md:mb-0">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="otro_documento_f"
                                             >
-                                                OTO DOCUMENTO
+                                                OTO&nbsp;DOCUMENTO
                                             </label>
                                             <input
                                                 value={data.otro_documento}
@@ -2290,12 +2295,12 @@ const Create = ({
                   <input value={data.carnet_identidad} onChange={e=>setData('carnet_identidad',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="carnet_identidad" type="text" placeholder=""/>
                   <InputError message={errors.carnet_identidad} className="mt-.5" />
                 </div> */}
-                                    <div className="w-1/4 px-3">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             htmlFor="dropzone-file_P"
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         >
-                                            documento de validacion
+                                            documento&nbsp;de&nbsp;validacion
                                         </label>
 
                                         <input
@@ -2317,12 +2322,26 @@ const Create = ({
             hover:file:cursor-pointer hover:file:opacity-90 w-full "
                                         />
 
+                                        {/* {progress && (
+                                            <div className="w-full mt-1 bg-gray-200 rounded-full dark:bg-gray-700">
+                                                <div
+                                                    className="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                                                    style={{
+                                                        width: `${progress.percentage}%`,
+                                                    }}
+                                                >
+                                                    {" "}
+                                                    {progress.percentage}%
+                                                </div>
+                                            </div>
+                                        )} */}
+
                                         <InputError
                                             message={errors.val_dni}
                                             className="mt-.5 flex justify-end"
                                         />
                                     </div>
-                                    <div className="w-1/4 px-3">
+                                    <div className="md:w-1/4 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="title"
@@ -2347,7 +2366,7 @@ const Create = ({
                                 </div>
 
                                 <div className="-mx-3 md:flex mb-2 ">
-                                    <div className="w-full px-3">
+                                    <div className="w-full md:px-3">
                                         <div className="items-center">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2356,8 +2375,8 @@ const Create = ({
                                                 estado civil
                                             </label>
                                         </div>
-                                        <div className="flex my-4 justify-between">
-                                            <div className="flex items-center ">
+                                        <div className="md:flex md:my-4 my-1 justify-between">
+                                            <div className="flex items-center py-1 md:py-0 ">
                                                 <input
                                                     checked={
                                                         data.estado_civil ==
@@ -2384,7 +2403,7 @@ const Create = ({
                                                     SOLTERO(A)
                                                 </label>
                                             </div>
-                                            <div className="flex items-center">
+                                            <div className="flex items-center py-1 md:py-0">
                                                 <input
                                                     checked={
                                                         data.estado_civil ==
@@ -2411,7 +2430,7 @@ const Create = ({
                                                     CASADO(A)
                                                 </label>
                                             </div>
-                                            <div className="flex items-center">
+                                            <div className="flex items-center py-1 md:py-0">
                                                 <input
                                                     checked={
                                                         data.estado_civil ==
@@ -2438,7 +2457,7 @@ const Create = ({
                                                     VIUDO(A)
                                                 </label>
                                             </div>
-                                            <div className="flex items-center">
+                                            <div className="flex items-center py-1 md:py-0">
                                                 <input
                                                     checked={
                                                         data.estado_civil ==
@@ -2465,7 +2484,7 @@ const Create = ({
                                                     DIVORCIADO(A)
                                                 </label>
                                             </div>
-                                            <div className="flex items-center">
+                                            <div className="flex items-center py-1 md:py-0">
                                                 <input
                                                     checked={
                                                         data.estado_civil ==
@@ -2500,8 +2519,8 @@ const Create = ({
                                     </div>
                                 </div>
 
-                                <div className="-mx-3 md:flex mb-3">
-                                    <div className="md:w-full px-3">
+                                <div className="-mx-3 md:flex md:mb-3">
+                                    <div className="md:w-full md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="domicilio_actual"
@@ -2528,13 +2547,13 @@ const Create = ({
                                     </div>
                                 </div>
 
-                                <div className="-mx-3 md:flex mb-2">
-                                    <div className="w-1/3 px-3">
+                                <div className="-mx-3 md:flex md:mb-2">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="distrito_actual"
                                         >
-                                            distrito actual
+                                            distrito&nbsp;actual
                                         </label>
                                         <input
                                             value={data.distrito_domicilio}
@@ -2555,12 +2574,12 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="provincia_actual"
                                         >
-                                            provincia actual
+                                            provincia&nbsp;actual
                                         </label>
                                         <input
                                             value={data.provincia_domicilio}
@@ -2581,7 +2600,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="departamaneto_actual"
@@ -2611,7 +2630,7 @@ const Create = ({
                                 </div>
 
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="distrito_actual"
@@ -2637,7 +2656,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="provincia_actual"
@@ -2663,7 +2682,7 @@ const Create = ({
                                         />
                                     </div>
 
-                                    <div className="w-1/3 px-3">
+                                    <div className="md:w-1/3 md:px-3">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="departamaneto_actual"
@@ -2687,7 +2706,7 @@ const Create = ({
                                     </div>
                                 </div>
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className=" w-1/2 px-3">
+                                    <div className=" md:w-1/2 md:px-3">
                                         <div className=" items-center ml-1">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2786,7 +2805,7 @@ const Create = ({
                                     </div>
 
                                     {data.regimen_pensionario == "AFP" ? (
-                                        <div className="w-1/2 px-2  md:mb-0">
+                                        <div className="md:w-1/2 md:px-2  md:mb-0">
                                             <label
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="company"
