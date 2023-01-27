@@ -78,6 +78,10 @@ export default function Welcome(props) {
                         )}
                     </div>
                 </div>
+                <div className="text-white md:font-bold bottom-0 fixed md:p-5 p-1">
+                    Ante cualquier duda o inconveniete comunicarse a los
+                    siguientes números: 917487141 o 997256961
+                </div>
             </div>
         </>
     );
