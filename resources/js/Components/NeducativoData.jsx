@@ -6,7 +6,8 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
 import Swal from "sweetalert2";
 
-function NeducativoData({ neducativoDat }) {
+function NeducativoData({ neducativoDat, img }) {
+    console.log(img);
     const [editingNed, setEditingNed] = useState(false);
     const { data, setData, post, processing, reset, errors } = useForm({
         nivel_educativo_ne: neducativoDat.nivel_educativo_ne || "",
@@ -17,8 +18,8 @@ function NeducativoData({ neducativoDat }) {
         documento_val_ne: neducativoDat.documento_val_ne || "",
         _method: "put",
     });
-    console.log("data.documento_val_ne");
-    console.log(data.nivel_educativo_ne);
+    // console.log("data.documento_val_ne");
+    // console.log(data.nivel_educativo_ne);
     const handleDestroyNed = (e) => {
         e.preventDefault();
         Swal.fire({
@@ -352,12 +353,12 @@ function NeducativoData({ neducativoDat }) {
                                     stroke="currentColor"
                                     fill="currentColor"
                                     strokeWidth="0"
-                                    viewBox="0 0 1024 1024"
+                                    viewBox="0 0 24 24"
                                     height="1em"
                                     width="1em"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    <path d="M893.3 293.3L730.7 130.7c-12-12-28.3-18.7-45.3-18.7H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 176h256v112H384V176zm128 554c-79.5 0-144-64.5-144-144s64.5-144 144-144 144 64.5 144 144-64.5 144-144 144zm0-224c-44.2 0-80 35.8-80 80s35.8 80 80 80 80-35.8 80-80-35.8-80-80-80z"></path>
+                                    <path d="M5 21h14a2 2 0 0 0 2-2V8a1 1 0 0 0-.29-.71l-4-4A1 1 0 0 0 16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zm10-2H9v-5h6zM13 7h-2V5h2zM5 5h2v4h8V5h.59L19 8.41V19h-2v-5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v5H5z"></path>
                                 </svg>
                                 GUARDAR
                             </span>
@@ -374,12 +375,12 @@ function NeducativoData({ neducativoDat }) {
                                     stroke="currentColor"
                                     fill="currentColor"
                                     strokeWidth="0"
-                                    viewBox="0 0 1024 1024"
+                                    viewBox="0 0 512 512"
                                     height="1em"
                                     width="1em"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
-                                    <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
+                                    <path d="M256 16C123.45 16 16 123.45 16 256s107.45 240 240 240 240-107.45 240-240S388.55 16 256 16zm0 60c99.41 0 180 80.59 180 180s-80.59 180-180 180S76 355.41 76 256 156.59 76 256 76zm-80.625 60c-.97-.005-2.006.112-3.063.313v-.032c-18.297 3.436-45.264 34.743-33.375 46.626l73.157 73.125-73.156 73.126c-14.63 14.625 29.275 58.534 43.906 43.906L256 299.906l73.156 73.156c14.63 14.628 58.537-29.28 43.906-43.906l-73.156-73.125 73.156-73.124c14.63-14.625-29.275-58.5-43.906-43.875L256 212.157l-73.156-73.125c-2.06-2.046-4.56-3.015-7.47-3.03z"></path>
                                 </svg>
                                 CANCELAR
                             </span>
@@ -441,7 +442,7 @@ function NeducativoData({ neducativoDat }) {
                                 documento de validacion
                             </label>
 
-                            <input
+                            {/* <input
                                 disabled
                                 value={
                                     neducativoDat.documento_val_ne !== null
@@ -450,7 +451,23 @@ function NeducativoData({ neducativoDat }) {
                                 }
                                 type="text"
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
-                            />
+                            /> */}
+                            {neducativoDat.documento_val_ne ? (
+                                <a
+                                    href={`${img}documento_val_ne_Per/${neducativoDat.documento_val_ne}`}
+                                    type="text"
+                                    className="hover:border-blue-600 flex bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
+                                >
+                                    {neducativoDat.documento_val_ne}
+                                </a>
+                            ) : (
+                                <input
+                                    disabled
+                                    value={""}
+                                    type="text"
+                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="-mx-3 md:flex mb-2">

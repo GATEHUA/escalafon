@@ -218,7 +218,7 @@ const Create = ({
     };
     const exlaboral = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exlaboral.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -226,7 +226,7 @@ const Create = ({
     };
     const exdocente = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exdocente.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -234,7 +234,7 @@ const Create = ({
     };
     const otrotrabajo = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("otrotrabajo.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -242,7 +242,7 @@ const Create = ({
     };
     const resolucionesycontrato = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("resolucionesycontrato.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),

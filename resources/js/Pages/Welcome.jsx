@@ -31,7 +31,7 @@ export default function Welcome(props) {
                         </p>
                         <div className="flex justify-center">
                             <Link
-                                href={route("register")}
+                                href={route("login")}
                                 className="mt-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-full"
                             >
                                 Comienza Ahora
@@ -51,12 +51,14 @@ export default function Welcome(props) {
                             alt=""
                         />
                         {props.auth.user ? (
-                            <Link
-                                href={route("dashboard")}
-                                className="w-1/2 font-semibold text-base text-black border-b-2 border-black hover:text-blue-600 hover:border-b-2 hover:border-blue-700 "
-                            >
-                                Dashboard
-                            </Link>
+                            <div className="py-4">
+                                <Link
+                                    href={route("personal.create")}
+                                    className="w-1/2 font-semibold text-base text-black border-b-2 border-black hover:text-blue-600 hover:border-b-2 hover:border-blue-700 "
+                                >
+                                    Formulario
+                                </Link>
+                            </div>
                         ) : (
                             <div className="py-4">
                                 <Link

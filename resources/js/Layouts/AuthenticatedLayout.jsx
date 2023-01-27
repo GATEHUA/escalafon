@@ -9,7 +9,7 @@ import FlashMessage from "@/Components/FlashMessage";
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
-    console.log(auth.user.id);
+    // console.log(auth.user.id);
 
     return (
         <div className="min-h-screen fondo-general">
@@ -83,7 +83,7 @@ export default function Authenticated({ auth, header, children }) {
                                                 method="post"
                                                 as="button"
                                             >
-                                                Log Out
+                                                Cerrar Sesión
                                             </Dropdown.Link>
                                         </Dropdown.Content>
                                     </Dropdown>

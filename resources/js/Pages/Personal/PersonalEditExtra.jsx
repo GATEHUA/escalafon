@@ -27,7 +27,7 @@ function PersonalEditExtra({
     resolucionesycontratoData,
     img,
 }) {
-    console.log(personalData[0]);
+    // console.log(img);
     const { data, setData, post, processing, reset, errors, progress } =
         useForm({
             fecha_Ingreso_undac: "",
@@ -190,7 +190,7 @@ function PersonalEditExtra({
     };
     const exlaboral = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exlaboral.storeUpdate", personalData[0].id), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -198,7 +198,7 @@ function PersonalEditExtra({
     };
     const exdocente = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exdocente.storeUpdate", personalData[0].id), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -206,7 +206,7 @@ function PersonalEditExtra({
     };
     const otrotrabajo = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("otrotrabajo.storeUpdate", personalData[0].id), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -214,7 +214,7 @@ function PersonalEditExtra({
     };
     const resolucionesycontrato = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("resolucionesycontrato.storeUpdate", personalData[0].id), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -267,8 +267,8 @@ function PersonalEditExtra({
         };
         setData("foto", e.dataTransfer.files[0]);
     };
-    console.log("personalData[0].foto");
-    console.log(personalData[0].foto);
+    // console.log("personalData[0].foto");
+    // console.log(personalData[0].foto);
 
     return (
         <AuthenticatedLayout auth={auth}>
@@ -1244,6 +1244,7 @@ function PersonalEditExtra({
                     {neducativoData.map((neducativoDat) => (
                         <NeducativoData
                             key={neducativoDat.id}
+                            img={img}
                             neducativoDat={neducativoDat}
                         />
                     ))}
@@ -2346,6 +2347,7 @@ function PersonalEditExtra({
                             <DocumentoData
                                 key={documentoDat.id}
                                 documentoDat={documentoDat}
+                                img={img}
                             />
                         ))}
                     </div>

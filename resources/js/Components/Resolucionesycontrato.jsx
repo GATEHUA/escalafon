@@ -9,19 +9,20 @@ import Swal from "sweetalert2";
 function Resolucionesycontrato({ resolucionesycontratoDat }) {
     const [editingRes, setEditingRes] = useState(false);
     const { data, setData, post, processing, reset, errors } = useForm({
-        cod_res: resolucionesycontratoDat.cod_res,
-        tipo_res: resolucionesycontratoDat.tipo_res,
-        fecha_dic_res: resolucionesycontratoDat.fecha_dic_res,
-        des_art_pri_res: resolucionesycontratoDat.des_art_pri_res,
-        vigencia_res: resolucionesycontratoDat.vigencia_res,
-        categoria_alcanz_res: resolucionesycontratoDat.categoria_alcanz_res,
-        nivel_alcanz_res: resolucionesycontratoDat.nivel_alcanz_res,
-        antiguedad_in_res: resolucionesycontratoDat.antiguedad_in_res,
-        antiguedad_sa_res: resolucionesycontratoDat.antiguedad_sa_res,
-        condicion_res: resolucionesycontratoDat.condicion_res,
-        dependencia_res: resolucionesycontratoDat.dependencia_res,
-        observacion_res: resolucionesycontratoDat.observacion_res,
-        documento_val_res: resolucionesycontratoDat.documento_val_res,
+        cod_res: resolucionesycontratoDat.cod_res || "",
+        tipo_res: resolucionesycontratoDat.tipo_res || "",
+        fecha_dic_res: resolucionesycontratoDat.fecha_dic_res || "",
+        des_art_pri_res: resolucionesycontratoDat.des_art_pri_res || "",
+        vigencia_res: resolucionesycontratoDat.vigencia_res || "",
+        categoria_alcanz_res:
+            resolucionesycontratoDat.categoria_alcanz_res || "",
+        nivel_alcanz_res: resolucionesycontratoDat.nivel_alcanz_res || "",
+        antiguedad_in_res: resolucionesycontratoDat.antiguedad_in_res || "",
+        antiguedad_sa_res: resolucionesycontratoDat.antiguedad_sa_res || "",
+        condicion_res: resolucionesycontratoDat.condicion_res || "",
+        dependencia_res: resolucionesycontratoDat.dependencia_res || "",
+        observacion_res: resolucionesycontratoDat.observacion_res || "",
+        documento_val_res: resolucionesycontratoDat.documento_val_res || "",
         _method: "put",
     });
     const handleDestroyRes = (e) => {

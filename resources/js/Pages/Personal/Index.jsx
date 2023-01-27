@@ -36,7 +36,7 @@ const Index = ({ auth, personal, files }) => {
     //     date.slice(8, 10) + "/" + date.slice(5, 7) + "/" + date.slice(0, 4);
     // console.log(newFormat); // "01/01/2022"
 
-    console.log(personal);
+    // console.log(personal);
 
     // const handleSearch = (event) => {
     //     setSearch(event.target.value);

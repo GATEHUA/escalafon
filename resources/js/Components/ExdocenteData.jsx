@@ -9,12 +9,12 @@ import Swal from "sweetalert2";
 function ExdocenteData({ exdocenteDat }) {
     const [editingExd, setEditingExd] = useState(false);
     const { data, setData, put, processing, reset, errors } = useForm({
-        institucion_ed: exdocenteDat.institucion_ed,
-        catedra_ed: exdocenteDat.catedra_ed,
-        categoria_ed: exdocenteDat.categoria_ed,
-        regimen_pensionario_ed: exdocenteDat.regimen_pensionario_ed,
-        fecha_inicio_ed: exdocenteDat.fecha_inicio_ed,
-        fecha_culminacion_ed: exdocenteDat.fecha_culminacion_ed,
+        institucion_ed: exdocenteDat.institucion_ed || "",
+        catedra_ed: exdocenteDat.catedra_ed || "",
+        categoria_ed: exdocenteDat.categoria_ed || "",
+        regimen_pensionario_ed: exdocenteDat.regimen_pensionario_ed || "",
+        fecha_inicio_ed: exdocenteDat.fecha_inicio_ed || "",
+        fecha_culminacion_ed: exdocenteDat.fecha_culminacion_ed || "",
     });
     const handleDestroyExd = (e) => {
         e.preventDefault();
@@ -42,8 +42,8 @@ function ExdocenteData({ exdocenteDat }) {
     };
     const exdocenteEdit = (e) => {
         e.preventDefault();
-        console.log("exdocenteDat.id");
-        console.log(exdocenteDat.id);
+        // console.log("exdocenteDat.id");
+        // console.log(exdocenteDat.id);
         put(route("exdocente.update", exdocenteDat.id), {
             preserveScroll: true,
             onSuccess: () => setEditingExd(false),

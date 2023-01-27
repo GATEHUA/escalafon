@@ -27,7 +27,7 @@ const Create = ({
     // otrotrabajoData,
     // resolucionesycontratoData,
 }) => {
-    console.log(personId);
+    // console.log(personId);
     const [avatar, setAvatar] = useState();
     const [nuevo, setNuevo] = useState("flex");
     const [nuevo2, setNuevo2] = useState("none");
@@ -253,7 +253,7 @@ const Create = ({
                 // cambionew();
             },
         });
-        console.log(data.apellido_paterno);
+        // console.log(data.apellido_paterno);
         // if (
         //     data.apellido_materno != "" &&
         //     data.apellido_paterno != "" &&
@@ -317,7 +317,7 @@ const Create = ({
     };
     const exlaboral = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exlaboral.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -325,7 +325,7 @@ const Create = ({
     };
     const exdocente = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exdocente.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -333,7 +333,7 @@ const Create = ({
     };
     const otrotrabajo = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("otrotrabajo.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -341,7 +341,7 @@ const Create = ({
     };
     const resolucionesycontrato = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("resolucionesycontrato.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),

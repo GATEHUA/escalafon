@@ -6,6 +6,7 @@ use App\Http\Controllers\NeducativoController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\ExdocenteController;
 use App\Http\Controllers\ExlaboralController;
+use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\OtrotrabajoController;
 use App\Http\Controllers\ResolucionesycontratoController;
 
@@ -96,5 +97,10 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::get('auth/google',[GoogleAuthController::class,'redirect'])->name('google-auth');
+Route::get('auth/google/call-back',[GoogleAuthController::class,'callbackGoogle']);
 
 require __DIR__ . '/auth.php';

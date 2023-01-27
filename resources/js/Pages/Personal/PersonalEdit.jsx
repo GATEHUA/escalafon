@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import NavLink from "@/Components/NavLink";
 
 function PersonalEdit({ auth, personalData, img, file }) {
-    console.log(img);
+    // console.log(img);
     const [avatar, setAvatar] = useState(img);
     const [nuevo, setNuevo] = useState("flex");
     const [nuevo2, setNuevo2] = useState("none");
@@ -56,7 +56,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
     };
     const exlaboral = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exlaboral.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -64,7 +64,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
     };
     const exdocente = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("exdocente.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -72,7 +72,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
     };
     const otrotrabajo = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("otrotrabajo.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -80,7 +80,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
     };
     const resolucionesycontrato = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("resolucionesycontrato.store"), {
             preserveScroll: true,
             onSuccess: () => reset(),
@@ -169,52 +169,53 @@ function PersonalEdit({ auth, personalData, img, file }) {
 
     const { data, setData, post, processing, reset, errors, progress } =
         useForm({
-            fecha_Ingreso_undac: personalData[0].fecha_Ingreso_undac,
-            nombra_fecha: personalData[0].nombra_fecha,
-            condicion: personalData[0].condicion,
-            situacion: personalData[0].situacion,
-            foto: personalData[0].foto,
-            estado: personalData[0].estado,
-            fecha_jubilacion: personalData[0].fecha_jubilacion,
-            nombres: personalData[0].nombres,
-            apellido_paterno: personalData[0].apellido_paterno,
-            apellido_materno: personalData[0].apellido_materno,
-            genero: personalData[0].genero,
-            fecha_nacimiento: personalData[0].fecha_nacimiento,
-            pais: personalData[0].pais,
-            departamento: personalData[0].departamento,
-            provincia: personalData[0].provincia,
-            distrito: personalData[0].distrito,
-            tipo_documento: personalData[0].tipo_documento,
-            dni: personalData[0].dni,
-            carnet_extranjeria: personalData[0].carnet_extranjeria,
-            partida_nacimiento: personalData[0].partida_nacimiento,
-            otro_documento: personalData[0].otro_documento,
-            regimen_pensionario: personalData[0].regimen_pensionario,
-            nombre_afp: personalData[0].nombre_afp,
-            ruc: personalData[0].ruc,
-            estado_civil: personalData[0].estado_civil,
-            domicilio_actual: personalData[0].domicilio_actual,
-            distrito_domicilio: personalData[0].distrito_domicilio,
-            provincia_domicilio: personalData[0].provincia_domicilio,
-            departamento_domicilio: personalData[0].departamento_domicilio,
-            email: personalData[0].email,
-            telefono_fijo: personalData[0].telefono_fijo,
-            telefono_celular: personalData[0].telefono_celular,
-            codigo: personalData[0].codigo,
-            val_dni: personalData[0].val_dni,
-            regimen_laboral: personalData[0].regimen_laboral,
-            administrativo_t: est_administrativo_t,
+            fecha_Ingreso_undac: personalData[0].fecha_Ingreso_undac || "",
+            nombra_fecha: personalData[0].nombra_fecha || "",
+            condicion: personalData[0].condicion || "",
+            situacion: personalData[0].situacion || "",
+            foto: personalData[0].foto || "",
+            estado: personalData[0].estado || "",
+            fecha_jubilacion: personalData[0].fecha_jubilacion || "",
+            nombres: personalData[0].nombres || "",
+            apellido_paterno: personalData[0].apellido_paterno || "",
+            apellido_materno: personalData[0].apellido_materno || "",
+            genero: personalData[0].genero || "",
+            fecha_nacimiento: personalData[0].fecha_nacimiento || "",
+            pais: personalData[0].pais || "",
+            departamento: personalData[0].departamento || "",
+            provincia: personalData[0].provincia || "",
+            distrito: personalData[0].distrito || "",
+            tipo_documento: personalData[0].tipo_documento || "",
+            dni: personalData[0].dni || "",
+            carnet_extranjeria: personalData[0].carnet_extranjeria || "",
+            partida_nacimiento: personalData[0].partida_nacimiento || "",
+            otro_documento: personalData[0].otro_documento || "",
+            regimen_pensionario: personalData[0].regimen_pensionario || "",
+            nombre_afp: personalData[0].nombre_afp || "",
+            ruc: personalData[0].ruc || "",
+            estado_civil: personalData[0].estado_civil || "",
+            domicilio_actual: personalData[0].domicilio_actual || "",
+            distrito_domicilio: personalData[0].distrito_domicilio || "",
+            provincia_domicilio: personalData[0].provincia_domicilio || "",
+            departamento_domicilio:
+                personalData[0].departamento_domicilio || "",
+            email: personalData[0].email || "",
+            telefono_fijo: personalData[0].telefono_fijo || "",
+            telefono_celular: personalData[0].telefono_celular || "",
+            codigo: personalData[0].codigo || "",
+            val_dni: personalData[0].val_dni || "",
+            regimen_laboral: personalData[0].regimen_laboral || "",
+            administrativo_t: est_administrativo_t || "",
             dependencia: est_dependencia,
-            nivel_remunerativo: est_nivel_remunerativo,
-            docente_t: est_docente_t,
-            dedicacion_t: est_dedicacion_t,
-            facultad: est_facultad,
-            escuela: est_escuela,
-            horas_d: est_horas_d,
+            nivel_remunerativo: est_nivel_remunerativo || "",
+            docente_t: est_docente_t || "",
+            dedicacion_t: est_dedicacion_t || "",
+            facultad: est_facultad || "",
+            escuela: est_escuela || "",
+            horas_d: est_horas_d || "",
             _method: "put",
         });
-    console.log(personalData[0].id);
+    // console.log(personalData[0].id);
 
     const PersonalEdit = (e) => {
         e.preventDefault();
@@ -228,7 +229,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
         //     timer: 1500,
         // });
     };
-    console.log(file);
+    // console.log(file);
     return (
         <AuthenticatedLayout auth={auth}>
             <div className="md:p-6 p-3 rounded-lg">
