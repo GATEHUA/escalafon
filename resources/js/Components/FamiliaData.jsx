@@ -72,7 +72,7 @@ function FamiliafamiliaDat({ familiaDat }) {
 
     return (
         <div className="bg-transparent shadow-md rounded border border-white px-7 pt-5 pb-5 mb-4 flex flex-col">
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             <div className="flex justify-end">
                 <Dropdown>
                     <Dropdown.Trigger>

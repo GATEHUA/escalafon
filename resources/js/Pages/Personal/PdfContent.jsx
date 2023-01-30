@@ -7,6 +7,7 @@ import Pdf_ex_docente from "./Pdf_ex_docente";
 import Pdf_otro_trabajo from "./Pdf_otro_trabajo";
 import Swal from "sweetalert2";
 import { Link } from "@inertiajs/inertia-react";
+import moment from "moment/moment";
 
 function PdfContent({
     auth,
@@ -1700,19 +1701,24 @@ function PdfContent({
                                                 <td className="border border-black">
                                                     {personalData[0]
                                                         .fecha_nacimiento ? (
-                                                        new Date(
-                                                            Date.parse(
-                                                                personalData[0]
-                                                                    .fecha_nacimiento
-                                                            )
-                                                        ).toLocaleDateString(
-                                                            "es-PE",
-                                                            {
-                                                                year: "numeric",
-                                                                month: "numeric",
-                                                                day: "numeric",
-                                                            }
-                                                        )
+                                                        // new Date(
+                                                        //     Date.parse(
+                                                        //         personalData[0]
+                                                        //             .fecha_nacimiento
+                                                        //     )
+                                                        // ).toLocaleDateString(
+                                                        //     "es-PE",
+                                                        //     {
+                                                        //         year: "numeric",
+                                                        //         month: "numeric",
+                                                        //         day: "numeric",
+                                                        //     }
+                                                        // )
+                                                        moment(
+                                                            personalData[0]
+                                                                .fecha_nacimiento,
+                                                            "YYYY-MM-DD"
+                                                        ).format("DD/MM/YYYY")
                                                     ) : (
                                                         <>&nbsp;</>
                                                     )}

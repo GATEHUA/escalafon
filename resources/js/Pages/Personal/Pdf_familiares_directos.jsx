@@ -1,20 +1,21 @@
-import React from 'react'
+import React from "react";
+import moment from "moment/moment";
 
-function Pdf_familiares_directos({familiaData}) {
-//   console.log(familiaData)
-//   const list = [ 'h', 'e', 'l', 'l', 'o'];
-// list.map((currElement, index) => {
-//   console.log("The current iteration is: " + index);
-//   console.log("The current element is: " + currElement);
-//    // Retorna "f"
- 
-// });
-const string = "freeCodecamp";
+function Pdf_familiares_directos({ familiaData }) {
+    //   console.log(familiaData)
+    //   const list = [ 'h', 'e', 'l', 'l', 'o'];
+    // list.map((currElement, index) => {
+    //   console.log("The current iteration is: " + index);
+    //   console.log("The current element is: " + currElement);
+    //    // Retorna "f"
 
-  console.log(string.charAt(0));
-  return (
-    <>
-    {/* {familiaData.map(familiaDat=>
+    // });
+    const string = "freeCodecamp";
+
+    console.log(string.charAt(0));
+    return (
+        <>
+            {/* {familiaData.map(familiaDat=>
             <div key={familiaDat.id} className="mb-2">
               <div>
         <table className="w-full border-collapse border-x border-t border-black ">
@@ -66,10 +67,10 @@ const string = "freeCodecamp";
        
         </div>
             </div>)} */}
-            
+
             <div className="mb-2">
-              <div>
-        {/* <table className="w-full border-collapse border-x border-t border-black ">
+                <div>
+                    {/* <table className="w-full border-collapse border-x border-t border-black ">
   <thead>
     <tr>
     <th className="border border-black">N°</th>
@@ -96,31 +97,53 @@ const string = "freeCodecamp";
    
   </tbody>
 </table> */}
-<table className="w-full border-collapse border-x  border-black ">
-  <thead>
-    <tr>
-    
-<th className="border w-2/12 border-black"> PARENTEZCO</th>
-<th className="border w-7/12 border-black">APELLIDOS Y NOMBRE(S)</th>
-      <th className="border w-3/12 border-black">FECHA DE NACIMIENTO</th>
-     
-
-    </tr>
-  </thead>
-  <tbody>
-  {familiaData.map((familiaDat,index)=>
-      <tr key={familiaDat.id}>
-    
-            <td className="border border-black">{familiaDat.t_relacion_f?familiaDat.t_relacion_f:<>&nbsp;</>}</td>
-         <td className="border border-black">{familiaDat.apellidos_nombres_f?familiaDat.apellidos_nombres_f:<>&nbsp;</>}</td>   
-      <td className="border  border-black">{familiaDat.fecha_nacimiento_f?new Date(Date.parse(familiaDat.fecha_nacimiento_f)).toLocaleDateString('es-PE', { year: "numeric", month: "numeric", day: "numeric"}):<>&nbsp;</>}</td>
-     
-    </tr>
-    )}
-  </tbody>
-</table>
-       
-        </div>
+                    <table className="w-full border-collapse border-x  border-black ">
+                        <thead>
+                            <tr>
+                                <th className="border w-2/12 border-black">
+                                    {" "}
+                                    PARENTEZCO
+                                </th>
+                                <th className="border w-7/12 border-black">
+                                    APELLIDOS Y NOMBRE(S)
+                                </th>
+                                <th className="border w-3/12 border-black">
+                                    FECHA DE NACIMIENTO
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {familiaData.map((familiaDat, index) => (
+                                <tr key={familiaDat.id}>
+                                    <td className="border border-black">
+                                        {familiaDat.t_relacion_f ? (
+                                            familiaDat.t_relacion_f
+                                        ) : (
+                                            <>&nbsp;</>
+                                        )}
+                                    </td>
+                                    <td className="border border-black">
+                                        {familiaDat.apellidos_nombres_f ? (
+                                            familiaDat.apellidos_nombres_f
+                                        ) : (
+                                            <>&nbsp;</>
+                                        )}
+                                    </td>
+                                    <td className="border  border-black">
+                                        {familiaDat.fecha_nacimiento_f ? (
+                                            moment(
+                                                familiaDat.fecha_nacimiento_f,
+                                                "YYYY-MM-DD"
+                                            ).format("DD/MM/YYYY")
+                                        ) : (
+                                            <>&nbsp;</>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             {/* <div className="mb-2">
               <div>
@@ -172,10 +195,8 @@ SEXO : MASCULINO (M), FEMENINO (F), OTRO (O) - NACIONALIDAD (NAC.)
        
         </div>
             </div> */}
-            
-    
-          </>
-  )
+        </>
+    );
 }
 
-export default Pdf_familiares_directos
+export default Pdf_familiares_directos;
