@@ -47,7 +47,7 @@ class NeducativoController extends Controller
             'nombre_institucion_ne' => '',
             'descripcion_ne' => '',
             'fecha_culminacion_ne' => '',
-            'documento_val_ne' => '',
+            'documento_val_ne' => 'nullable|file|max:11000',
         ]);
         // dd($request->file('documento_val_ne'), $validate['documento_val_ne']);
         // dd($request);
@@ -78,7 +78,7 @@ class NeducativoController extends Controller
             'nombre_institucion_ne' => '',
             'descripcion_ne' => '',
             'fecha_culminacion_ne' => '',
-            'documento_val_ne' => '',
+            'documento_val_ne' => 'nullable|file|max:11000',
         ]);
 
         if ($validate['documento_val_ne'] != '') {
@@ -140,8 +140,10 @@ class NeducativoController extends Controller
             'nombre_institucion_ne' => '',
             'descripcion_ne' => '',
             'fecha_culminacion_ne' => '',
-            'documento_val_ne' => '',
+            'documento_val_ne' => 'nullable|file|max:11000',
         ]);
+
+        // dd($validate['documento_val_ne']);
 
         // dd($request);
         // $url = Storage::url('app/public/documento_val_ne_Per/' . $neducativo->documento_val_ne);

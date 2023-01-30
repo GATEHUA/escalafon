@@ -1078,7 +1078,7 @@ function PersonalEditExtra({
                                         htmlFor="dropzone-file_NE"
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                     >
-                                        documento de validacion
+                                        documento de validacion (max 11mb)
                                     </label>
 
                                     <input
@@ -2200,106 +2200,114 @@ function PersonalEditExtra({
                         </div>
                     </div>
                 ) : null}
-                <div className="fondo-princ p-4 mb-4 rounded-lg">
-                    <form onSubmit={documento} encType="multipart/form-data">
-                        <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="md:text-left text-center uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                documentos extra
-                            </h3>
-                            <div className="-mx-3 md:flex mb-2">
-                                <div className="md:w-1/5 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="t_nombre_documento_d"
-                                    >
-                                        nombre
-                                    </label>
-                                    <input
-                                        value={data.t_nombre_documento_d}
-                                        onChange={(e) =>
-                                            setData(
-                                                "t_nombre_documento_d",
-                                                e.target.value
-                                            )
-                                        }
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="t_nombre_documento_d"
-                                        type="text"
-                                        placeholder=""
-                                    />
-                                    <InputError
-                                        message={errors.t_nombre_documento_d}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="md:w-2/5 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="descripcion_documento_d"
-                                    >
-                                        descripcion
-                                    </label>
-                                    <input
-                                        value={data.descripcion_documento_d}
-                                        onChange={(e) =>
-                                            setData(
-                                                "descripcion_documento_d",
-                                                e.target.value
-                                            )
-                                        }
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="descripcion_documento_d"
-                                        type="text"
-                                        placeholder=""
-                                    />
-                                    <InputError
-                                        message={errors.descripcion_documento_d}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="md:w-1/6 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="fecha_documento_d"
-                                    >
-                                        Fecha deL DOCUMENTO
-                                    </label>
-                                    <input
-                                        value={data.fecha_documento_d}
-                                        onChange={(e) =>
-                                            setData(
-                                                "fecha_documento_d",
-                                                e.target.value
-                                            )
-                                        }
-                                        type="date"
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
-                                        id="fecha_documento_d"
-                                    />
-                                    <InputError
-                                        message={errors.fecha_documento_d}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="md:w-1/4 md:px-3">
-                                    <label
-                                        htmlFor="dropzone-file_docext"
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                    >
-                                        documento de validacion
-                                    </label>
+                {auth.user.id <= 5 ? (
+                    <div className="fondo-princ p-4 mb-4 rounded-lg">
+                        <form
+                            onSubmit={documento}
+                            encType="multipart/form-data"
+                        >
+                            <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
+                                <h3 className="md:text-left text-center uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                                    documentos extra
+                                </h3>
+                                <div className="-mx-3 md:flex mb-2">
+                                    <div className="md:w-1/5 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="t_nombre_documento_d"
+                                        >
+                                            nombre
+                                        </label>
+                                        <input
+                                            value={data.t_nombre_documento_d}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "t_nombre_documento_d",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="t_nombre_documento_d"
+                                            type="text"
+                                            placeholder=""
+                                        />
+                                        <InputError
+                                            message={
+                                                errors.t_nombre_documento_d
+                                            }
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="md:w-2/5 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="descripcion_documento_d"
+                                        >
+                                            descripcion
+                                        </label>
+                                        <input
+                                            value={data.descripcion_documento_d}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "descripcion_documento_d",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="descripcion_documento_d"
+                                            type="text"
+                                            placeholder=""
+                                        />
+                                        <InputError
+                                            message={
+                                                errors.descripcion_documento_d
+                                            }
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="md:w-1/6 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="fecha_documento_d"
+                                        >
+                                            Fecha deL DOCUMENTO
+                                        </label>
+                                        <input
+                                            value={data.fecha_documento_d}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "fecha_documento_d",
+                                                    e.target.value
+                                                )
+                                            }
+                                            type="date"
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                            id="fecha_documento_d"
+                                        />
+                                        <InputError
+                                            message={errors.fecha_documento_d}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="md:w-1/4 md:px-3">
+                                        <label
+                                            htmlFor="dropzone-file_docext"
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                        >
+                                            documento de validacion
+                                        </label>
 
-                                    <input
-                                        name="documento_d"
-                                        onChange={(e) => {
-                                            setData(
-                                                "documento_d",
-                                                e.target.files[0]
-                                            );
-                                        }}
-                                        id="dropzone-file_docext"
-                                        type="file"
-                                        className="
+                                        <input
+                                            name="documento_d"
+                                            onChange={(e) => {
+                                                setData(
+                                                    "documento_d",
+                                                    e.target.files[0]
+                                                );
+                                            }}
+                                            id="dropzone-file_docext"
+                                            type="file"
+                                            className="
                   text-sm text-white border rounded-full border-white hover:border-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600
              file:py-3 file:px-3
             file:rounded-full file:border-0
@@ -2307,51 +2315,52 @@ function PersonalEditExtra({
             file:text-md file:font-semibold  file:text-white
             file:bg-blue-600 
             hover:file:cursor-pointer hover:file:opacity-90 w-full "
-                                    />
+                                        />
 
-                                    <InputError
-                                        message={errors.documento_d}
-                                        className="mt-.5 flex justify-end"
-                                    />
+                                        <InputError
+                                            message={errors.documento_d}
+                                            className="mt-.5 flex justify-end"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="flex md:justify-start justify-center">
-                            <PrimaryButton
-                                className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
-                                disabled={processing}
-                            >
-                                <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
-                                <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
-                                <span className="relative z-20 flex items-center text-sm">
-                                    <svg
-                                        className="relative w-5 h-5 mr-2 text-white"
-                                        stroke="currentColor"
-                                        fill="currentColor"
-                                        strokeWidth="0"
-                                        viewBox="0 0 1024 1024"
-                                        height="1em"
-                                        width="1em"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
-                                    </svg>
-                                    AGREGAR
-                                </span>
-                            </PrimaryButton>
+                            <div className="flex md:justify-start justify-center">
+                                <PrimaryButton
+                                    className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
+                                    disabled={processing}
+                                >
+                                    <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                                    <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                                    <span className="relative z-20 flex items-center text-sm">
+                                        <svg
+                                            className="relative w-5 h-5 mr-2 text-white"
+                                            stroke="currentColor"
+                                            fill="currentColor"
+                                            strokeWidth="0"
+                                            viewBox="0 0 1024 1024"
+                                            height="1em"
+                                            width="1em"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
+                                        </svg>
+                                        AGREGAR
+                                    </span>
+                                </PrimaryButton>
+                            </div>
+                        </form>
+                        <div>
+                            {documentoData.map((documentoDat) => (
+                                <DocumentoData
+                                    key={documentoDat.id}
+                                    documentoDat={documentoDat}
+                                    img={img}
+                                />
+                            ))}
                         </div>
-                    </form>
-                    <div>
-                        {documentoData.map((documentoDat) => (
-                            <DocumentoData
-                                key={documentoDat.id}
-                                documentoDat={documentoDat}
-                                img={img}
-                            />
-                        ))}
                     </div>
-                </div>
+                ) : null}
                 <div className="fondo-princ p-4 mb-4 rounded-lg">
                     <form onSubmit={otrotrabajo} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">

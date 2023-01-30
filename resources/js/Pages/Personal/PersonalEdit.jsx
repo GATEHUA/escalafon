@@ -566,6 +566,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             </div>
 
                                             <input
+                                                accept="image/*"
                                                 name="foto"
                                                 // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
                                                 onChange={(e) => {

@@ -5,7 +5,7 @@ import InputError from "@/Components/InputError";
 import { Inertia } from "@inertiajs/inertia";
 import PrimaryButton from "@/Components/PrimaryButton";
 import { useForm, usePage } from "@inertiajs/inertia-react";
-import { toast, ToastContainer } from "react-toastify";
+// import { toast, ToastContainer } from "react-toastify";
 import Swal from "sweetalert2";
 
 function FamiliafamiliaDat({ familiaDat }) {

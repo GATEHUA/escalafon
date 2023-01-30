@@ -25,7 +25,6 @@
     },
     "dependencies": {
         "react-to-print": "^2.14.9",
-        "react-toastify": "^9.1.1",
         "sweetalert2": "^11.7.0"
     }
 }

@@ -137,14 +137,14 @@ class PersonalController extends Controller
             'nombra_fecha' => '',
             'condicion' => '',
             'situacion' => '',
-            'foto' => '',
+            'foto' => 'nullable|image|max:5000',
             'estado' => '',
             'fecha_jubilacion' => '',
             'nombres' => 'required',
             'apellido_paterno' => 'required',
             'apellido_materno' => 'required',
             'genero' => '',
-            'fecha_nacimiento' => '',
+            'fecha_nacimiento' => 'required',
             'pais' => '',
             'departamento' => '',
             'provincia' => '',
@@ -170,7 +170,7 @@ class PersonalController extends Controller
             'telefono_fijo' => '',
             'telefono_celular' => '',
             'codigo' => '',
-            'val_dni' => '',
+            'val_dni' => 'nullable|file|max:11000',
             'regimen_laboral' => '',
             //ADMINISTRATIVO:
             'administrativo_t' => '',
@@ -350,7 +350,7 @@ class PersonalController extends Controller
             'apellido_paterno' => 'required',
             'apellido_materno' => 'required',
             'genero' => '',
-            'fecha_nacimiento' => '',
+            'fecha_nacimiento' => 'required',
             'pais' => '',
             'departamento' => '',
             'provincia' => '',
@@ -392,7 +392,7 @@ class PersonalController extends Controller
             'horas_d' => ''
 
         ]);
-
+// dd($validate['val_dni']);
         
         
         // dd($validateAd);

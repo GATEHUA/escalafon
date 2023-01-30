@@ -80,7 +80,20 @@ export default function Welcome(props) {
                 </div>
                 <div className="text-white md:font-bold bottom-0 fixed md:p-5 p-1">
                     Ante cualquier duda o inconveniete comunicarse a los
-                    siguientes números: 917487141 o 997256961
+                    siguientes números:&nbsp;
+                    <a
+                        className="border-b border-white hover:border-sky-500 hover:text-sky-500"
+                        href="https://wa.me/51917487141"
+                    >
+                        917487141
+                    </a>{" "}
+                    o&nbsp;
+                    <a
+                        className="border-b border-white hover:border-sky-500 hover:text-sky-500"
+                        href="https://wa.me/51997256961"
+                    >
+                        997256961
+                    </a>
                 </div>
             </div>
         </>

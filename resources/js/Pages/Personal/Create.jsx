@@ -153,6 +153,8 @@ const Create = ({
     const componentRefAP = useRef(null);
     const componentRefAM = useRef(null);
     const componentRefNo = useRef(null);
+    const componentRefFechNa = useRef(null);
+    const componentRefFileVal_DNI = useRef(null);
 
     const ScrollOnError = forwardRef(({ error }, ref) => {
         useEffect(() => {
@@ -717,6 +719,7 @@ const Create = ({
                                                 </div>
 
                                                 <input
+                                                    accept="image/*"
                                                     name="foto"
                                                     // onChange={(e)=>{setData('foto',e.target.files[0]); setAvatar(URL.createObjectURL(e.target.files[0]))}}
                                                     onChange={(e) => {
@@ -1990,7 +1993,10 @@ const Create = ({
                                 </div>
 
                                 <div className="-mx-3 md:flex mb-2">
-                                    <div className="md:w-1/5 md:px-3 md:mb-0">
+                                    <div
+                                        ref={componentRefFechNa}
+                                        className="md:w-1/5 md:px-3 md:mb-0"
+                                    >
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="fecha_nacimiento"
@@ -2009,6 +2015,12 @@ const Create = ({
                                             className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
                                             id="fecha_nacimiento"
                                         />
+
+                                        <ScrollOnError
+                                            ref={componentRefFechNa}
+                                            error={errors.fecha_nacimiento}
+                                        />
+
                                         <InputError
                                             message={errors.fecha_nacimiento}
                                             className="mt-.5"
@@ -2295,12 +2307,16 @@ const Create = ({
                   <input value={data.carnet_identidad} onChange={e=>setData('carnet_identidad',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="carnet_identidad" type="text" placeholder=""/>
                   <InputError message={errors.carnet_identidad} className="mt-.5" />
                 </div> */}
-                                    <div className="md:w-1/4 md:px-3">
+                                    <div
+                                        ref={componentRefFileVal_DNI}
+                                        className="md:w-1/4 md:px-3"
+                                    >
                                         <label
                                             htmlFor="dropzone-file_P"
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         >
                                             documento&nbsp;de&nbsp;validacion
+                                            (MAX 11MB)
                                         </label>
 
                                         <input
@@ -2335,7 +2351,10 @@ const Create = ({
                                                 </div>
                                             </div>
                                         )} */}
-
+                                        <ScrollOnError
+                                            ref={componentRefFileVal_DNI}
+                                            error={errors.val_dni}
+                                        />
                                         <InputError
                                             message={errors.val_dni}
                                             className="mt-.5 flex justify-end"
