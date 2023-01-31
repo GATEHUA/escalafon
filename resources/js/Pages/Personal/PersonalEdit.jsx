@@ -191,6 +191,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
             partida_nacimiento: personalData[0].partida_nacimiento || "",
             otro_documento: personalData[0].otro_documento || "",
             regimen_pensionario: personalData[0].regimen_pensionario || "",
+            aporte_pensionario: personalData[0].aporte_pensionario || "",
             nombre_afp: personalData[0].nombre_afp || "",
             ruc: personalData[0].ruc || "",
             estado_civil: personalData[0].estado_civil || "",
@@ -2454,7 +2455,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                 </div>
                             </div>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className=" md:w-1/2 md:px-3">
+                                <div className=" md:w-1/3 md:px-3">
                                     <div className=" items-center ml-1">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2518,33 +2519,6 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 20530
                                             </label>
                                         </div>
-                                        <div className="flex items-center">
-                                            <input
-                                                checked={
-                                                    data.regimen_pensionario ==
-                                                    "AFP"
-                                                        ? true
-                                                        : false
-                                                }
-                                                onChange={(e) =>
-                                                    setData(
-                                                        "regimen_pensionario",
-                                                        e.target.value
-                                                    )
-                                                }
-                                                id="inline-checked-radio"
-                                                type="radio"
-                                                value="AFP"
-                                                name="inline-radio-group"
-                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                                            />
-                                            <label
-                                                htmlFor="inline-checked-radio"
-                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
-                                            >
-                                                AFP
-                                            </label>
-                                        </div>
                                     </div>
                                     <InputError
                                         message={errors.regimen_pensionario}
@@ -2552,8 +2526,107 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     />
                                 </div>
 
-                                {data.regimen_pensionario == "AFP" ? (
-                                    <div className="md:w-1/2 md:px-2  md:mb-0">
+                                <div className=" md:w-1/3 md:px-3">
+                                    <div className=" items-center ml-1">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
+                                            htmlFor="aporte-pensionario"
+                                        >
+                                            Aporte Penesionario
+                                        </label>
+                                    </div>
+
+                                    <div className="flex my-4 justify-between">
+                                        <div className="flex items-center">
+                                            <input
+                                                checked={
+                                                    data.aporte_pensionario ==
+                                                    "19990"
+                                                        ? true
+                                                        : false
+                                                }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "aporte_pensionario",
+                                                        e.target.value
+                                                    )
+                                                }
+                                                id="aporte-pensionario-1"
+                                                type="radio"
+                                                value="19990"
+                                                name="aporte-pensionario-group"
+                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            />
+                                            <label
+                                                htmlFor="aporte-pensionario-1"
+                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                            >
+                                                19990
+                                            </label>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <input
+                                                checked={
+                                                    data.aporte_pensionario ==
+                                                    "20530"
+                                                        ? true
+                                                        : false
+                                                }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "aporte_pensionario",
+                                                        e.target.value
+                                                    )
+                                                }
+                                                id="aporte-pensionario-2"
+                                                type="radio"
+                                                value="20530"
+                                                name="aporte-pensionario-group"
+                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            />
+                                            <label
+                                                htmlFor="aporte-pensionario-2"
+                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                            >
+                                                20530
+                                            </label>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <input
+                                                checked={
+                                                    data.aporte_pensionario ==
+                                                    "AFP"
+                                                        ? true
+                                                        : false
+                                                }
+                                                onChange={(e) =>
+                                                    setData(
+                                                        "aporte_pensionario",
+                                                        e.target.value
+                                                    )
+                                                }
+                                                id="aporte-pensionario-3"
+                                                type="radio"
+                                                value="AFP"
+                                                name="aporte-pensionario-group"
+                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            />
+                                            <label
+                                                htmlFor="aporte-pensionario-3"
+                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                            >
+                                                AFP
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <InputError
+                                        message={errors.aporte_pensionario}
+                                        className="mt-.5"
+                                    />
+                                </div>
+
+                                {data.aporte_pensionario == "AFP" ? (
+                                    <div className="md:w-1/3 md:px-2  md:mb-0">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                             htmlFor="company"

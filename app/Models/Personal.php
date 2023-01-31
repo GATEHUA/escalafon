@@ -80,6 +80,9 @@ class Personal extends Model
         'partida_nacimiento',
         'otro_documento',
         'regimen_pensionario',
+
+        'aporte_pensionario',
+
         'nombre_afp',
         'ruc',
         'estado_civil',

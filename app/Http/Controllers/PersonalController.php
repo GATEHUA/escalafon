@@ -159,6 +159,9 @@ class PersonalController extends Controller
             'otro_documento' => '',
             //
             'regimen_pensionario' => '',
+
+            'aporte_pensionario'=>'',
+
             'nombre_afp' => '',
             'ruc' => '',
             'estado_civil' => '',
@@ -365,6 +368,9 @@ class PersonalController extends Controller
             'otro_documento' => '',
             //
             'regimen_pensionario' => '',
+
+            'aporte_pensionario'=>'',
+
             'nombre_afp' => '',
             'ruc' => '',
             'estado_civil' => '',

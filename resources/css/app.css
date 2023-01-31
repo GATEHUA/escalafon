@@ -201,6 +201,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     border-left: 13px solid rgb(156, 163, 175);
 }
 
+input::-webkit-input-placeholder {
+    color: rgb(192, 198, 209);
+}
+
+input:-moz-placeholder {
+    color: rgb(192, 198, 209);
+}
+
+input::-moz-placeholder {
+    color: rgb(192, 198, 209);
+}
+
+input:-ms-input-placeholder {
+    color: rgb(192, 198, 209);
+}
+
 /* ::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
     border-color: transparent transparent #777777 transparent;
 }

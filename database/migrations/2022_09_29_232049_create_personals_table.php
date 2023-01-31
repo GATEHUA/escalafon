@@ -47,6 +47,9 @@ return new class extends Migration
 
 
             $table->string('regimen_pensionario')->nullable();
+
+            $table->string('aporte_pensionario')->nullable();
+
             $table->string('nombre_afp')->nullable();
             $table->string('ruc')->nullable();
             $table->string('estado_civil')->nullable();
