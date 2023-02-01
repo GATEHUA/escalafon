@@ -2365,7 +2365,7 @@ function PersonalEditExtra({
                     <form onSubmit={otrotrabajo} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
                             <h3 className="text-center md:text-left uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                A LA FECHA LABORA EN OTRA INSTITUCION
+                                Actualmente LABORA EN OTRA INSTITUCION
                             </h3>
                             <div className="-mx-3 md:flex md:mb-2">
                                 <div className=" md:w-1/5 md:px-3">

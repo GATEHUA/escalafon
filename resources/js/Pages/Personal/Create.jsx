@@ -1976,6 +1976,7 @@ const Create = ({
                                             </label>
                                             {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
                                             <select
+                                                required
                                                 onChange={(e) =>
                                                     setData(
                                                         "genero",
@@ -2050,6 +2051,7 @@ const Create = ({
                                             país
                                         </label>
                                         <input
+                                            required
                                             value={data.pais}
                                             onChange={(e) =>
                                                 setData("pais", e.target.value)
@@ -2073,6 +2075,7 @@ const Create = ({
                                             departamento
                                         </label>
                                         <input
+                                            required
                                             value={data.departamento}
                                             onChange={(e) =>
                                                 setData(
@@ -2099,6 +2102,7 @@ const Create = ({
                                             provincia
                                         </label>
                                         <input
+                                            required
                                             value={data.provincia}
                                             onChange={(e) =>
                                                 setData(
@@ -2125,6 +2129,7 @@ const Create = ({
                                             distrito
                                         </label>
                                         <input
+                                            required
                                             value={data.distrito}
                                             onChange={(e) =>
                                                 setData(
@@ -2190,6 +2195,7 @@ const Create = ({
                                                 D.N.I.
                                             </label>
                                             <input
+                                                required
                                                 value={data.dni_f}
                                                 onChange={(e) =>
                                                     setData(
@@ -2219,6 +2225,7 @@ const Create = ({
                                                 CARNET&nbsp;DE&nbsp;EXTRANJERIA
                                             </label>
                                             <input
+                                                required
                                                 value={data.carnet_extranjeria}
                                                 onChange={(e) =>
                                                     setData(
@@ -2250,6 +2257,7 @@ const Create = ({
                                                 partida&nbsp;de&nbsp;nacimiento
                                             </label>
                                             <input
+                                                required
                                                 value={data.partida_nacimiento}
                                                 onChange={(e) =>
                                                     setData(
@@ -2280,6 +2288,7 @@ const Create = ({
                                                 OTO&nbsp;DOCUMENTO
                                             </label>
                                             <input
+                                                required
                                                 value={data.otro_documento}
                                                 onChange={(e) =>
                                                     setData(
@@ -2330,8 +2339,8 @@ const Create = ({
                                             htmlFor="dropzone-file_P"
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         >
-                                            documento&nbsp;de&nbsp;validacion
-                                            (MAX 11MB)
+                                            Adjuntar&nbsp;Documento (DNI - MAX
+                                            11MB)
                                         </label>
 
                                         <input
@@ -2949,6 +2958,9 @@ const Create = ({
                                                 </option>
                                                 <option value="PROFUTURO">
                                                     PROFUTURO
+                                                </option>
+                                                <option value="OTRO">
+                                                    OTRO
                                                 </option>
                                             </select>
                                             {/* <input

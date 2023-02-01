@@ -1990,7 +1990,63 @@ function PdfContent({
    
   </tbody>
 </table> */}
-                                    <div className="width-full mb-2">
+
+                                    <table className="w-full border-collapse border border-black mb-2">
+                                        <thead>
+                                            <tr>
+                                                <th className="border w-1/3 border-black">
+                                                    REGIMEN PENSIONARIO
+                                                </th>
+                                                <th className="border w-1/3 border-black">
+                                                    APORTE PENSIONARIO
+                                                </th>
+                                                {personalData[0]
+                                                    .aporte_pensionario ==
+                                                "AFP" ? (
+                                                    <th className="border w-1/3 border-black">
+                                                        NOMBRE(AFP)
+                                                    </th>
+                                                ) : null}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td className="border border-black">
+                                                    {personalData[0]
+                                                        .regimen_pensionario ? (
+                                                        personalData[0]
+                                                            .regimen_pensionario
+                                                    ) : (
+                                                        <>&nbsp;</>
+                                                    )}
+                                                </td>
+                                                <td className="border border-black">
+                                                    {personalData[0]
+                                                        .aporte_pensionario ? (
+                                                        personalData[0]
+                                                            .aporte_pensionario
+                                                    ) : (
+                                                        <>&nbsp;</>
+                                                    )}
+                                                </td>
+                                                {personalData[0]
+                                                    .aporte_pensionario ==
+                                                "AFP" ? (
+                                                    <td className="border border-black">
+                                                        {personalData[0]
+                                                            .nombre_afp ? (
+                                                            personalData[0]
+                                                                .nombre_afp
+                                                        ) : (
+                                                            <>&nbsp;</>
+                                                        )}
+                                                    </td>
+                                                ) : null}
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    {/* <div className="width-full mb-2">
                                         <div className=" grid grid-cols-4 ">
                                             <div className=" font-bold  border border-black  ">
                                                 REGIMEN PENSIONARIO
@@ -2004,9 +2060,20 @@ function PdfContent({
                                                     <>&nbsp;</>
                                                 )}
                                             </div>
+                                            <div className=" font-bold  border border-black  ">
+                                                APORTE PENSIONARIO
+                                            </div>
+                                            <div className="  border-black border-r border-y">
+                                                {personalData[0]
+                                                    .aporte_pensionario ? (
+                                                    personalData[0]
+                                                        .aporte_pensionario
+                                                ) : (
+                                                    <>&nbsp;</>
+                                                )}
+                                            </div>
                                             {personalData[0]
-                                                .regimen_pensionario ==
-                                            "AFP" ? (
+                                                .aporte_pensionario == "AFP" ? (
                                                 <>
                                                     <div className=" font-bold border-y border-r border-black ">
                                                         NOMBRE(AFP){" "}
@@ -2023,7 +2090,7 @@ function PdfContent({
                                                 </>
                                             ) : null}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>

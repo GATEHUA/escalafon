@@ -1946,7 +1946,19 @@ function Pdf_personal_one({
                                                 <>&nbsp;</>
                                             )}
                                         </div>
-                                        {personalData[0].regimen_pensionario ==
+                                        <div className=" font-bold  border border-black  ">
+                                            APORTE PENSIONARIO
+                                        </div>
+                                        <div className="  border-black border-r border-y">
+                                            {personalData[0]
+                                                .aporte_pensionario ? (
+                                                personalData[0]
+                                                    .aporte_pensionario
+                                            ) : (
+                                                <>&nbsp;</>
+                                            )}
+                                        </div>
+                                        {personalData[0].aporte_pensionario ==
                                         "AFP" ? (
                                             <>
                                                 <div className=" font-bold border-y border-r border-black ">
