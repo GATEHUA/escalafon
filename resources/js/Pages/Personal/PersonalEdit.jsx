@@ -2532,7 +2532,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
                                             htmlFor="aporte-pensionario"
                                         >
-                                            Aporte Penesionario
+                                            Aporte Pensionario
                                         </label>
                                     </div>
 
