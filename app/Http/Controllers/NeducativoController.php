@@ -81,6 +81,8 @@ class NeducativoController extends Controller
             'documento_val_ne' => 'nullable|file|max:11000',
         ]);
 
+        // dd($validate['documento_val_ne']);
+
         if ($validate['documento_val_ne'] != '') {
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - ' . $validate['nivel_educativo_ne'] . '_' . time() . '.' . $validate['documento_val_ne']->extension();
             // $validate['documento_val_ne']->storeAs('documento_val_ne_Per', $dtemporal, 'public');
@@ -134,14 +136,16 @@ class NeducativoController extends Controller
      */
     public function update(Request $request, Neducativo $neducativo)
     {
+        
         $validate = $request->validate([
             'nivel_educativo_ne' => '',
             'etapa_ne' => '',
             'nombre_institucion_ne' => '',
             'descripcion_ne' => '',
             'fecha_culminacion_ne' => '',
-            'documento_val_ne' => 'nullable|file|max:11000',
+            'documento_val_ne' => '',
         ]);
+        // dd($validate);
 
         // dd($validate['documento_val_ne']);
 
@@ -157,7 +161,7 @@ class NeducativoController extends Controller
 
         // dd($personal)
 
-
+        
         if (is_string($validate['documento_val_ne']) === false && $validate['documento_val_ne']) {
             // Storage::delete('public/documento_val_ne_Per/' . $neducativo->documento_val_ne);
             Storage::disk('s3')->delete('documento_val_ne_Per/' . $neducativo->documento_val_ne);
