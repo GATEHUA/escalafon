@@ -245,7 +245,7 @@ function NeducativoData({ neducativoDat, img }) {
                                 htmlFor="dropzone-file_NE"
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                             >
-                                documento de validacion (max 11mb)sddfs
+                                documento de validacion (max 11mb)
                             </label>
 
                             {/* value={asset(`public/documento_val_ne_Per/${data.documento_val_ne}`)} */}
