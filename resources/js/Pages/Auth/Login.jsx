@@ -144,6 +144,11 @@ export default function Login({ status, canResetPassword }) {
                     Inicia sesión con Google
                 </a>
             </form>
+            <div className="absolute flex text-center text-white left-2 bottom-2">
+                {" "}
+                Nota: Si cuenta con correo institucional por favor ingresar con
+                este, presionando el boton Inicia sesión con Google
+            </div>
         </GuestLayout>
     );
 }

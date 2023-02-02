@@ -2055,7 +2055,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         htmlFor="dropzone-file_P"
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                     >
-                                        documento de validacion
+                                        Adjuntar&nbsp;Documento (DNI - MAX 11MB)
                                     </label>
 
                                     <input
@@ -2455,7 +2455,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                 </div>
                             </div>
                             <div className="-mx-3 md:flex mb-2">
-                                <div className=" md:w-1/3 md:px-3">
+                                {/* <div className=" md:w-1/3 md:px-3">
                                     <div className=" items-center ml-1">
                                         <label
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
@@ -2524,7 +2524,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         message={errors.regimen_pensionario}
                                         className="mt-.5"
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className=" md:w-1/3 md:px-3">
                                     <div className=" items-center ml-1">
@@ -2532,7 +2532,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
                                             htmlFor="aporte-pensionario"
                                         >
-                                            Aporte Pensionario
+                                            Regimen Pensionario
                                         </label>
                                     </div>
 
@@ -2541,7 +2541,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             <input
                                                 checked={
                                                     data.aporte_pensionario ==
-                                                    "19990"
+                                                    "ONP (19990)"
                                                         ? true
                                                         : false
                                                 }
@@ -2553,7 +2553,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 }
                                                 id="aporte-pensionario-1"
                                                 type="radio"
-                                                value="19990"
+                                                value="ONP (19990)"
                                                 name="aporte-pensionario-group"
                                                 className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                             />
@@ -2561,7 +2561,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 htmlFor="aporte-pensionario-1"
                                                 className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
                                             >
-                                                19990
+                                                ONP (19990)
                                             </label>
                                         </div>
                                         <div className="flex items-center">

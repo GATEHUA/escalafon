@@ -322,7 +322,7 @@ function NeducativoData({ neducativoDat, img }) {
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="descripcion_ne"
                                     >
-                                        DESCRIPCION
+                                        DESCRIPCION (MENCION - ESPECIALIZACION)
                                     </label>
                                     <input
                                         value={data.descripcion_ne}
@@ -513,7 +513,7 @@ function NeducativoData({ neducativoDat, img }) {
                                 </div>
                                 <div className="md:w-1/2 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
-                                        DESCRIPCION
+                                        DESCRIPCION (MENCION - ESPECIALIZACION)
                                     </label>
                                     <input
                                         disabled

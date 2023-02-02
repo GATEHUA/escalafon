@@ -27,6 +27,7 @@ function PersonalEditExtra({
     resolucionesycontratoData,
     img,
 }) {
+    console.log(personalData[0]);
     // console.log(img);
     const { data, setData, post, processing, reset, errors, progress } =
         useForm({
@@ -913,7 +914,7 @@ function PersonalEditExtra({
                     <form onSubmit={neducativo} encType="multipart/form-data">
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
                             <h3 className="uppercase text-center md:text-left tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                NIVEL EDUCATIVO
+                                NIVEL EDUCATIVO de usted
                             </h3>
                             <div className="-mx-3 md:flex mb-2">
                                 <div className="md:w-1/4 md:px-3">
@@ -1177,7 +1178,8 @@ function PersonalEditExtra({
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="descripcion_ne"
                                             >
-                                                DESCRIPCION
+                                                DESCRIPCION (MENCION -
+                                                ESPECIALIZACION)
                                             </label>
                                             <input
                                                 value={data.descripcion_ne}
@@ -1200,6 +1202,15 @@ function PersonalEditExtra({
                                     </>
                                 )}
                             </div>
+                        </div>
+                        <div style={{ color: "white" }}>
+                            {" "}
+                            Nota: Los documentos subidos al formulario deben de
+                            traerse legalizados a la oficina de escalafon para
+                            colocarlos en su legajo y sean validados
+                            correctamente; DOCUMENTO DE VALIDACION (campo donde
+                            puede subir el archivo escaneado, preferentemente en
+                            pdf)
                         </div>
 
                         <div className="flex justify-center md:justify-start">
@@ -1263,7 +1274,7 @@ function PersonalEditExtra({
                                             className="uppercase tracking-wide text-white text-xs font-bold mb-2 "
                                             htmlFor="t_lugar_ex_el"
                                         >
-                                            administracion
+                                            &nbsp;
                                         </label>
                                     </div>
                                     <div className="flex my-4 justify-between">
@@ -1557,217 +1568,230 @@ function PersonalEditExtra({
                     </div>
                 </div>
 
-                <div className="fondo-princ p-4 mb-4 rounded-lg">
-                    <form onSubmit={exdocente} encType="multipart/form-data">
-                        <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
-                            <h3 className="text-center md:text-start uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                EXPERIENCIA DOCENTE
-                            </h3>
-                            <div className="-mx-3 md:flex md:mb-2">
-                                <div className="md:w-1/4 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="catedra_ed"
-                                    >
-                                        CATEDRA
-                                    </label>
-                                    <input
-                                        value={data.catedra_ed}
-                                        onChange={(e) =>
-                                            setData(
-                                                "catedra_ed",
-                                                e.target.value
-                                            )
-                                        }
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="catedra_ed"
-                                        type="text"
-                                        placeholder=""
-                                    />
-                                    <InputError
-                                        message={errors.catedra_ed}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="md:w-1/4 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="categoria_ed"
-                                    >
-                                        CATEGORIA
-                                    </label>
+                {personalData[0].situacion == "DOCENTE" ||
+                personalData[0].id <= 5 ? (
+                    <div className="fondo-princ p-4 mb-4 rounded-lg">
+                        <form
+                            onSubmit={exdocente}
+                            encType="multipart/form-data"
+                        >
+                            <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
+                                <h3 className="text-center md:text-start uppercase tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
+                                    EXPERIENCIA DOCENTE
+                                </h3>
+                                <div className="-mx-3 md:flex md:mb-2">
+                                    <div className="md:w-1/4 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="catedra_ed"
+                                        >
+                                            AREA (CURSO DICTADO)
+                                        </label>
+                                        <input
+                                            value={data.catedra_ed}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "catedra_ed",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="catedra_ed"
+                                            type="text"
+                                            placeholder=""
+                                        />
+                                        <InputError
+                                            message={errors.catedra_ed}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="md:w-1/4 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="categoria_ed"
+                                        >
+                                            CATEGORIA
+                                        </label>
 
-                                    <select
-                                        value={data.categoria_ed}
-                                        onChange={(e) =>
-                                            setData(
-                                                "categoria_ed",
-                                                e.target.value
-                                            )
-                                        }
-                                        id="categoria_ed"
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white text-sm rounded py-3 px-4 mb-3 font-medium"
-                                        name="categoria_ed"
-                                    >
-                                        <option value="">-Seleccione-</option>
-                                        <option value="J. PRACTICA">
-                                            J. PRACTICA
-                                        </option>
-                                        <option value="AUXILIAR">
-                                            AUXILIAR
-                                        </option>
-                                        <option value="ASOCIADO">
-                                            ASOCIADO
-                                        </option>
-                                        <option value="PRINCIPAL">
-                                            PRINCIPAL
-                                        </option>
-                                        <option value="OTRO">OTRO</option>
-                                    </select>
-                                    <InputError
-                                        message={errors.categoria_ed}
-                                        className="mt-.5"
-                                    />
+                                        <select
+                                            value={data.categoria_ed}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "categoria_ed",
+                                                    e.target.value
+                                                )
+                                            }
+                                            id="categoria_ed"
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white text-sm rounded py-3 px-4 mb-3 font-medium"
+                                            name="categoria_ed"
+                                        >
+                                            <option value="">
+                                                -Seleccione-
+                                            </option>
+                                            <option value="J. PRACTICA">
+                                                J. PRACTICA
+                                            </option>
+                                            <option value="AUXILIAR">
+                                                AUXILIAR
+                                            </option>
+                                            <option value="ASOCIADO">
+                                                ASOCIADO
+                                            </option>
+                                            <option value="PRINCIPAL">
+                                                PRINCIPAL
+                                            </option>
+                                            <option value="OTRO">OTRO</option>
+                                        </select>
+                                        <InputError
+                                            message={errors.categoria_ed}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="md:w-1/4 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="fecha_inicio_ed"
+                                        >
+                                            Fecha de INICIO
+                                        </label>
+                                        <input
+                                            value={data.fecha_inicio_ed}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "fecha_inicio_ed",
+                                                    e.target.value
+                                                )
+                                            }
+                                            type="date"
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                            id="fecha_inicio_ed"
+                                        />
+                                        <InputError
+                                            message={errors.fecha_inicio_ed}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+                                    <div className="md:w-1/4 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="fecha_culminacion_ed"
+                                        >
+                                            Fecha de culminacion
+                                        </label>
+                                        <input
+                                            value={data.fecha_culminacion_ed}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "fecha_culminacion_ed",
+                                                    e.target.value
+                                                )
+                                            }
+                                            type="date"
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                            id="fecha_culminacion_ed"
+                                        />
+                                        <InputError
+                                            message={
+                                                errors.fecha_culminacion_ed
+                                            }
+                                            className="mt-.5"
+                                        />
+                                    </div>
                                 </div>
-                                <div className="md:w-1/4 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="fecha_inicio_ed"
-                                    >
-                                        Fecha de INICIO
-                                    </label>
-                                    <input
-                                        value={data.fecha_inicio_ed}
-                                        onChange={(e) =>
-                                            setData(
-                                                "fecha_inicio_ed",
-                                                e.target.value
-                                            )
-                                        }
-                                        type="date"
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
-                                        id="fecha_inicio_ed"
-                                    />
-                                    <InputError
-                                        message={errors.fecha_inicio_ed}
-                                        className="mt-.5"
-                                    />
-                                </div>
-                                <div className="md:w-1/4 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="fecha_culminacion_ed"
-                                    >
-                                        Fecha de culminacion
-                                    </label>
-                                    <input
-                                        value={data.fecha_culminacion_ed}
-                                        onChange={(e) =>
-                                            setData(
-                                                "fecha_culminacion_ed",
-                                                e.target.value
-                                            )
-                                        }
-                                        type="date"
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
-                                        id="fecha_culminacion_ed"
-                                    />
-                                    <InputError
-                                        message={errors.fecha_culminacion_ed}
-                                        className="mt-.5"
-                                    />
+                                <div className="-mx-3 md:flex mb-2">
+                                    <div className="md:w-4/6 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="institucion_ed"
+                                        >
+                                            NOMBRE DE LA INSTITUCION
+                                        </label>
+                                        <input
+                                            value={data.institucion_ed}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "institucion_ed",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="institucion_ed"
+                                            type="text"
+                                            placeholder=""
+                                        />
+                                        <InputError
+                                            message={errors.institucion_ed}
+                                            className="mt-.5"
+                                        />
+                                    </div>
+
+                                    <div className="md:w-2/6 md:px-3">
+                                        <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                            htmlFor="regimen_pensionario_ed"
+                                        >
+                                            regimen Pensionario (DESCRIPCION -
+                                            OPCIONAL)
+                                        </label>
+                                        <input
+                                            value={data.regimen_pensionario_ed}
+                                            onChange={(e) =>
+                                                setData(
+                                                    "regimen_pensionario_ed",
+                                                    e.target.value
+                                                )
+                                            }
+                                            className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                            id="regimen_pensionario_ed"
+                                            type="text"
+                                            placeholder=""
+                                        />
+                                        <InputError
+                                            message={
+                                                errors.regimen_pensionario_ed
+                                            }
+                                            className="mt-.5"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                            <div className="-mx-3 md:flex mb-2">
-                                <div className="md:w-4/6 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="institucion_ed"
-                                    >
-                                        NOMBRE DE LA INSTITUCION
-                                    </label>
-                                    <input
-                                        value={data.institucion_ed}
-                                        onChange={(e) =>
-                                            setData(
-                                                "institucion_ed",
-                                                e.target.value
-                                            )
-                                        }
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="institucion_ed"
-                                        type="text"
-                                        placeholder=""
-                                    />
-                                    <InputError
-                                        message={errors.institucion_ed}
-                                        className="mt-.5"
-                                    />
-                                </div>
-
-                                <div className="md:w-2/6 md:px-3">
-                                    <label
-                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                        htmlFor="regimen_pensionario_ed"
-                                    >
-                                        regimen Pensionario (DESCRIPCION -
-                                        OPCIONAL)
-                                    </label>
-                                    <input
-                                        value={data.regimen_pensionario_ed}
-                                        onChange={(e) =>
-                                            setData(
-                                                "regimen_pensionario_ed",
-                                                e.target.value
-                                            )
-                                        }
-                                        className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                                        id="regimen_pensionario_ed"
-                                        type="text"
-                                        placeholder=""
-                                    />
-                                    <InputError
-                                        message={errors.regimen_pensionario_ed}
-                                        className="mt-.5"
-                                    />
-                                </div>
+                            <div className="flex md:justify-start justify-center">
+                                <PrimaryButton
+                                    className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
+                                    disabled={processing}
+                                >
+                                    <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                                    <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                                    <span className="relative z-20 flex items-center text-sm">
+                                        <svg
+                                            className="relative w-5 h-5 mr-2 text-white"
+                                            stroke="currentColor"
+                                            fill="currentColor"
+                                            strokeWidth="0"
+                                            viewBox="0 0 1024 1024"
+                                            height="1em"
+                                            width="1em"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
+                                        </svg>
+                                        AGREGAR
+                                    </span>
+                                </PrimaryButton>
                             </div>
+                        </form>
+                        <div>
+                            {exdocenteData.map((exdocenteDat) => (
+                                <ExdocenteData
+                                    key={exdocenteDat.id}
+                                    exdocenteDat={exdocenteDat}
+                                />
+                            ))}
                         </div>
-                        <div className="flex md:justify-start justify-center">
-                            <PrimaryButton
-                                className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
-                                disabled={processing}
-                            >
-                                <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
-                                <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
-                                <span className="relative z-20 flex items-center text-sm">
-                                    <svg
-                                        className="relative w-5 h-5 mr-2 text-white"
-                                        stroke="currentColor"
-                                        fill="currentColor"
-                                        strokeWidth="0"
-                                        viewBox="0 0 1024 1024"
-                                        height="1em"
-                                        width="1em"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm192 472c0 4.4-3.6 8-8 8H544v152c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V544H328c-4.4 0-8-3.6-8-8v-48c0-4.4 3.6-8 8-8h152V328c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v152h152c4.4 0 8 3.6 8 8v48z"></path>
-                                    </svg>
-                                    AGREGAR
-                                </span>
-                            </PrimaryButton>
-                        </div>
-                    </form>
-                    <div>
-                        {exdocenteData.map((exdocenteDat) => (
-                            <ExdocenteData
-                                key={exdocenteDat.id}
-                                exdocenteDat={exdocenteDat}
-                            />
-                        ))}
                     </div>
-                </div>
-                {auth.user.id <= 5 ? (
+                ) : null}
+                {personalData[0].situacion == "ADMINISTRATIVO" ||
+                personalData[0].id <= 5 ? (
                     <div className="fondo-princ p-4 mb-4 rounded-lg">
                         <form
                             onSubmit={resolucionesycontrato}
@@ -1775,7 +1799,7 @@ function PersonalEditExtra({
                         >
                             <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
                                 <h3 className="uppercase text-center md:text-start tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                    RESOLUCIONES
+                                    RESOLUCIONES (OPCIONAL)
                                 </h3>
                                 <div className="-mx-3 md:flex mb-2">
                                     <div className="md:w-1/4 md:px-3 ">
@@ -2160,7 +2184,15 @@ function PersonalEditExtra({
                                     </div>
                                 </div>
                             </div>
-
+                            <div style={{ color: "white" }}>
+                                {" "}
+                                Nota: Este campo no es obligatorio, pero nos
+                                ayudara a poder contar con las resoluciones que
+                                no estan en su legajo (especialmete el de
+                                ingreso), los campos requeridos son el tipo y
+                                DOCUMENTO DE VALIDACION (campo donde puede subir
+                                el archivo escaneado, preferentemente en pdf)
+                            </div>
                             <div className="flex md:justify-start justify-center">
                                 <PrimaryButton
                                     className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-3 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-green-700 rounded-md cursor-pointer group ring-offset-2 ring-2 focus:ring-green-600 ring-indigo-300 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"

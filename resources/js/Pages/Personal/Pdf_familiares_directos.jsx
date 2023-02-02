@@ -102,7 +102,7 @@ function Pdf_familiares_directos({ familiaData }) {
                             <tr>
                                 <th className="border w-2/12 border-black">
                                     {" "}
-                                    PARENTEZCO
+                                    PARENTESCO
                                 </th>
                                 <th className="border w-7/12 border-black">
                                     APELLIDOS Y NOMBRE(S)
@@ -115,21 +115,21 @@ function Pdf_familiares_directos({ familiaData }) {
                         <tbody>
                             {familiaData.map((familiaDat, index) => (
                                 <tr key={familiaDat.id}>
-                                    <td className="border border-black">
+                                    <td className="border h-7 border-black">
                                         {familiaDat.t_relacion_f ? (
                                             familiaDat.t_relacion_f
                                         ) : (
                                             <>&nbsp;</>
                                         )}
                                     </td>
-                                    <td className="border border-black">
+                                    <td className="border h-7 border-black">
                                         {familiaDat.apellidos_nombres_f ? (
                                             familiaDat.apellidos_nombres_f
                                         ) : (
                                             <>&nbsp;</>
                                         )}
                                     </td>
-                                    <td className="border  border-black">
+                                    <td className="border h-7  border-black">
                                         {familiaDat.fecha_nacimiento_f ? (
                                             moment(
                                                 familiaDat.fecha_nacimiento_f,

@@ -90,7 +90,7 @@ function ExdocenteData({ exdocenteDat }) {
                         <div className="-mx-3 md:flex md:mb-2">
                             <div className="md:w-1/4 md:px-3">
                                 <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
-                                    CATEDRA
+                                    AREA (CURSO DICTADO)
                                 </label>
                                 <input
                                     value={
@@ -275,7 +275,7 @@ function ExdocenteData({ exdocenteDat }) {
                     <div className="-mx-3 md:flex md:mb-2">
                         <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
-                                catedra
+                                AREA (CURSO DICTADO)
                             </label>
                             <input
                                 disabled

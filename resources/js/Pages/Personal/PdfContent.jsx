@@ -8,6 +8,7 @@ import Pdf_otro_trabajo from "./Pdf_otro_trabajo";
 import Swal from "sweetalert2";
 import { Link } from "@inertiajs/inertia-react";
 import moment from "moment/moment";
+import "moment/locale/es";
 
 function PdfContent({
     auth,
@@ -37,6 +38,7 @@ function PdfContent({
     //     });
     // };
     // responsiveAlert();
+
     const qwerty = [1, 2, 5, 7, 8, 6, 4];
     const qwerty2 = [];
     for (let index = 0; index < qwerty.length; index++) {
@@ -51,7 +53,7 @@ function PdfContent({
         // header: () => null,
         pageStyle: `
           @page {
-            margin: 1.1cm 1.4cm;
+            margin: 1.4cm 1.5cm;
           }
         `,
     });
@@ -122,13 +124,15 @@ function PdfContent({
             <div className=" hidden font-sans">
                 <div ref={componentRef}>
                     <div className="bg-white">
-                        <div className="flex justify-between mb-3">
-                            <img
-                                style={{ width: "100px", height: "100px" }}
-                                src="https://undac.edu.pe/wp-content/uploads/elementor/thumbs/cropped-undac-otxjxjp3hh6yj3evud6f4g667rmvghjh2tp91gonu8.png"
-                            />
+                        <div className="flex justify-between mb-1 pt-1">
+                            <div className="pt-3">
+                                <img
+                                    style={{ width: "100px", height: "100px" }}
+                                    src="https://undac.edu.pe/wp-content/uploads/elementor/thumbs/cropped-undac-otxjxjp3hh6yj3evud6f4g667rmvghjh2tp91gonu8.png"
+                                />
+                            </div>
 
-                            <div className="pt-5">
+                            <div className="pt-3">
                                 <h1 className="font-bold justify-center flex  ">
                                     UNIVERSIDAD NACIONAL DANIEL ALCIDES CARRIÓN
                                 </h1>
@@ -139,7 +143,7 @@ function PdfContent({
                                     SUB UNIDAD DE ESCALAFON
                                 </p>
                             </div>
-                            <div>
+                            <div className="pt-3">
                                 <img
                                     className="border border-black"
                                     style={{
@@ -172,7 +176,7 @@ function PdfContent({
                                 </p>
                             </div>
                         </div>
-                        <div className="flex justify-center mb-3">
+                        <div className="flex justify-center mb-4">
                             <p className="font-bold justify-center flex ">
                                 FICHA DE REGISTRO PERSONAL
                             </p>
@@ -232,7 +236,7 @@ function PdfContent({
           </p>
           </div>
         </div> */}
-                        <div className="p-2 mb-4 text-xs border-black rounded-md border-2">
+                        <div className=" mb-4 text-xs  rounded-md ">
                             <div className="flex mb-2 justify-between">
                                 <div className="flex">
                                     <div className="uppercase flex font-bold  mr-3">
@@ -412,23 +416,19 @@ function PdfContent({
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex justify-between">
+                            <div className="flex justify-between mb-3">
                                 <div className="flex">
                                     <div className="uppercase flex font-bold  mr-3">
                                         fecha de ingreso:
                                     </div>
-                                    <div>
+                                    <div className="font-bold uppercase border-b border-black">
                                         {personalData[0].fecha_Ingreso_undac ? (
-                                            new Date(
-                                                Date.parse(
-                                                    personalData[0]
-                                                        .fecha_Ingreso_undac
-                                                )
-                                            ).toLocaleDateString("es-PE", {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            })
+                                            (moment.locale("es"),
+                                            moment(
+                                                personalData[0]
+                                                    .fecha_Ingreso_undac,
+                                                "YYYY-MM-DD"
+                                            ).format("DD [de] MMMM [de] YYYY"))
                                         ) : (
                                             <>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -437,11 +437,11 @@ function PdfContent({
                                     </div>
                                 </div>
                                 <div className="flex">
-                                    <div className="uppercase flex font-bold  mr-3">
+                                    <div className="uppercase flex font-bold mr-3">
                                         fecha de nombramiento:
                                     </div>
-                                    <div>
-                                        {personalData[0].nombra_fecha ? (
+                                    <div className="font-bold uppercase border-b border-black">
+                                        {/* {personalData[0].nombra_fecha ? (
                                             new Date(
                                                 Date.parse(
                                                     personalData[0].nombra_fecha
@@ -455,6 +455,17 @@ function PdfContent({
                                             <>
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </>
+                                        )} */}
+                                        {personalData[0].nombra_fecha ? (
+                                            (moment.locale("es"),
+                                            moment(
+                                                personalData[0].nombra_fecha,
+                                                "YYYY-MM-DD"
+                                            ).format("DD [de] MMMM [de] YYYY"))
+                                        ) : (
+                                            <>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </>
                                         )}
                                     </div>
                                 </div>
@@ -463,7 +474,7 @@ function PdfContent({
                                 {personalData[0].administrativo ? (
                                     <div className=" w-full border-black rounded-md border">
                                         <div className="p-2">
-                                            <div className="flex font-bold justify-center text-center mr-2 mb-2">
+                                            <div className="flex font-bold text-base justify-center text-center mr-2 mb-2">
                                                 ADMINISTRATIVO
                                             </div>
                                             <div className="flex justify-between mb-2">
@@ -1114,20 +1125,36 @@ function PdfContent({
                                                     </>
                                                 )}
                                             </div>
-                                            <div className="flex">
-                                                <div className="uppercase flex font-bold">
-                                                    DEPENDENCIA:
-                                                </div>
-                                                <div className="ml-2">
-                                                    {personalData[0]
-                                                        .administrativo
-                                                        .dependencia ? (
-                                                        personalData[0]
+                                            <div className="flex justify-between">
+                                                <div className="flex">
+                                                    <div className="uppercase flex font-bold">
+                                                        DEPENDENCIA:
+                                                    </div>
+                                                    <div className="ml-2">
+                                                        {personalData[0]
                                                             .administrativo
-                                                            .dependencia
-                                                    ) : (
-                                                        <>&nbsp;</>
-                                                    )}
+                                                            .dependencia ? (
+                                                            personalData[0]
+                                                                .administrativo
+                                                                .dependencia
+                                                        ) : (
+                                                            <>&nbsp;</>
+                                                        )}
+                                                    </div>
+                                                </div>
+                                                <div className="flex">
+                                                    <div className="uppercase flex font-bold">
+                                                        REGIMEN LABORAL:
+                                                    </div>
+                                                    <div className="ml-2 font-bold">
+                                                        {personalData[0]
+                                                            .regimen_laboral ? (
+                                                            personalData[0]
+                                                                .regimen_laboral
+                                                        ) : (
+                                                            <>&nbsp;</>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -1137,7 +1164,7 @@ function PdfContent({
                                 {personalData[0].docente ? (
                                     <div className=" w-full border-black rounded-md border">
                                         <div className="p-2">
-                                            <div className="flex font-bold justify-center text-center mr-2 mb-2">
+                                            <div className="flex font-bold justify-center text-base text-center mr-2 mb-2">
                                                 DOCENTE
                                             </div>
                                             <div className="flex justify-between mb-2">
@@ -1576,7 +1603,7 @@ function PdfContent({
                                                     )}
                                                 </div>
                                             </div>
-                                            <div className="flex justify-between">
+                                            <div className="flex justify-between mb-2">
                                                 <div className="uppercase flex font-bold">
                                                     facultad:
                                                 </div>
@@ -1607,6 +1634,20 @@ function PdfContent({
                                                     )}
                                                 </div>
                                             </div>
+                                            <div className="flex">
+                                                <div className="uppercase flex font-bold">
+                                                    REGIMEN LABORAL:
+                                                </div>
+                                                <div className="ml-2">
+                                                    {personalData[0]
+                                                        .regimen_laboral ? (
+                                                        personalData[0]
+                                                            .regimen_laboral
+                                                    ) : (
+                                                        <>&nbsp;</>
+                                                    )}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 ) : null}
@@ -1616,8 +1657,8 @@ function PdfContent({
                             DATOS PERSONALES
                         </div>
 
-                        <div className="text-xs text-center w-full border-black rounded-md border-2 mb-4 ">
-                            <div className="p-2">
+                        <div className="text-xs text-center w-full rounded-md mb-4 ">
+                            <div className="">
                                 <div>
                                     <table className="w-full border-collapse border  border-black mb-2">
                                         <thead>
@@ -1635,7 +1676,7 @@ function PdfContent({
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .apellido_paterno ? (
                                                         personalData[0]
@@ -1644,7 +1685,7 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .apellido_materno ? (
                                                         personalData[0]
@@ -1653,7 +1694,7 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0].nombres ? (
                                                         personalData[0].nombres
                                                     ) : (
@@ -1698,7 +1739,7 @@ function PdfContent({
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td className="border border-black">
+                                                <td className="border h-7  border-black">
                                                     {personalData[0]
                                                         .fecha_nacimiento ? (
                                                         // new Date(
@@ -1723,14 +1764,14 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0].pais ? (
                                                         personalData[0].pais
                                                     ) : (
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .departamento ? (
                                                         personalData[0]
@@ -1739,7 +1780,7 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .provincia ? (
                                                         personalData[0]
@@ -1748,7 +1789,7 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .distrito ? (
                                                         personalData[0].distrito
@@ -1771,7 +1812,7 @@ function PdfContent({
                                                     }
                                                 </th>
                                                 <th className="border w-1/3 border-black">
-                                                    R.U.C.
+                                                    GENERO
                                                 </th>
                                                 <th className="border w-1/3 border-black">
                                                     ESTADO CIVIL
@@ -1783,7 +1824,7 @@ function PdfContent({
                                                 {personalData[0]
                                                     .tipo_documento == "DNI" ? (
                                                     <>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {personalData[0]
                                                                 .dni ? (
                                                                 personalData[0]
@@ -1798,7 +1839,7 @@ function PdfContent({
                                                     .tipo_documento ==
                                                 "CARNET DE EXTRANJERIA" ? (
                                                     <>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {personalData[0]
                                                                 .carnet_extranjeria ? (
                                                                 personalData[0]
@@ -1813,7 +1854,7 @@ function PdfContent({
                                                     .tipo_documento ==
                                                 "PARTIDA DE NACIMIENTO" ? (
                                                     <>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {personalData[0]
                                                                 .partida_nacimiento ? (
                                                                 personalData[0]
@@ -1828,7 +1869,7 @@ function PdfContent({
                                                     .tipo_documento ==
                                                 "OTRO DOCUMENTO" ? (
                                                     <>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {personalData[0]
                                                                 .otro_documento ? (
                                                                 personalData[0]
@@ -1839,14 +1880,14 @@ function PdfContent({
                                                         </td>
                                                     </>
                                                 ) : null}
-                                                <td className="border border-black">
-                                                    {personalData[0].ruc ? (
-                                                        personalData[0].ruc
+                                                <td className="border h-7 border-black">
+                                                    {personalData[0].genero ? (
+                                                        personalData[0].genero
                                                     ) : (
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .estado_civil ? (
                                                         personalData[0]
@@ -1882,22 +1923,22 @@ function PdfContent({
          </div> */}
                                 <div className="width-full mb-2">
                                     <div className="border border-black grid grid-flow-row-dense grid-cols-3 ">
-                                        <div className=" font-bold  border-r border-black  ">
+                                        <div className=" font-bold   flex items-center justify-center border-r border-black  ">
                                             DOMICILIO ACTUAL
                                         </div>
-                                        <div className="col-span-2 ">
+                                        <div className="col-span-2 h-7 flex items-center justify-center  ">
                                             {personalData[0].domicilio_actual}
                                         </div>
-                                        <div className=" font-bold border-y border-r border-black ">
+                                        <div className=" font-bold   flex items-center justify-center border-y border-r border-black ">
                                             DISTRITO{" "}
                                         </div>
-                                        <div className=" font-bold border-r border-y border-black">
+                                        <div className=" font-bold  flex items-center justify-center  border-r border-y border-black">
                                             PROVINCIA{" "}
                                         </div>
-                                        <div className=" font-bold border-y border-black ">
+                                        <div className=" font-bold  flex items-center justify-center  border-y border-black ">
                                             DEPARTAMENTO{" "}
                                         </div>
-                                        <div className="border-r border-black">
+                                        <div className="border-r h-7 flex items-center justify-center  border-black">
                                             {personalData[0]
                                                 .distrito_domicilio ? (
                                                 personalData[0]
@@ -1906,7 +1947,7 @@ function PdfContent({
                                                 <>&nbsp;</>
                                             )}
                                         </div>
-                                        <div className="border-r border-black">
+                                        <div className="border-r h-7 flex items-center justify-center  border-black">
                                             {personalData[0]
                                                 .provincia_domicilio ? (
                                                 personalData[0]
@@ -1915,7 +1956,7 @@ function PdfContent({
                                                 <>&nbsp;</>
                                             )}
                                         </div>
-                                        <div className="">
+                                        <div className=" h-7 flex items-center justify-center ">
                                             {personalData[0]
                                                 .departamento_domicilio ? (
                                                 personalData[0]
@@ -1944,7 +1985,7 @@ function PdfContent({
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .telefono_fijo ? (
                                                         personalData[0]
@@ -1953,7 +1994,7 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .telefono_celular ? (
                                                         personalData[0]
@@ -1962,7 +2003,7 @@ function PdfContent({
                                                         <>&nbsp;</>
                                                     )}
                                                 </td>
-                                                <td className="border border-black">
+                                                <td className="border h-7 border-black">
                                                     {personalData[0].email ? (
                                                         personalData[0].email
                                                     ) : (
@@ -1972,46 +2013,25 @@ function PdfContent({
                                             </tr>
                                         </tbody>
                                     </table>
-                                    {/* <table className="w-full border-collapse border border-black mb-2">
-  <thead>
-    <tr>
-      
-      <th className="border w-1/3 border-black">REGIMEN PENSIONARIO</th>
-      <th className="border w-1/3 border-black">NOMBRE DE LA AFP</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      
-      <td className="border border-black">{personalData[0].regimen_pensionario?personalData[0].regimen_pensionario:<>&nbsp;</>}</td>
-      <td className="border border-black">{personalData[0].nombre_afp?personalData[0].nombre_afp:<>&nbsp;</>}</td>
-      </tr>
-   
-  </tbody>
-</table> */}
 
                                     <table className="w-full border-collapse border border-black mb-2">
                                         <thead>
                                             <tr>
+                                                {/* <th className="border w-1/3 border-black">
+                                                    REGIMEN PENSIONARIO
+                                                </th> */}
                                                 <th className="border w-1/3 border-black">
                                                     REGIMEN PENSIONARIO
                                                 </th>
+
                                                 <th className="border w-1/3 border-black">
-                                                    APORTE PENSIONARIO
+                                                    NOMBRE(AFP)
                                                 </th>
-                                                {personalData[0]
-                                                    .aporte_pensionario ==
-                                                "AFP" ? (
-                                                    <th className="border w-1/3 border-black">
-                                                        NOMBRE(AFP)
-                                                    </th>
-                                                ) : null}
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td className="border border-black">
+                                                {/* <td className="border border-black">
                                                     {personalData[0]
                                                         .regimen_pensionario ? (
                                                         personalData[0]
@@ -2019,8 +2039,8 @@ function PdfContent({
                                                     ) : (
                                                         <>&nbsp;</>
                                                     )}
-                                                </td>
-                                                <td className="border border-black">
+                                                </td> */}
+                                                <td className="border h-7 border-black">
                                                     {personalData[0]
                                                         .aporte_pensionario ? (
                                                         personalData[0]
@@ -2032,7 +2052,7 @@ function PdfContent({
                                                 {personalData[0]
                                                     .aporte_pensionario ==
                                                 "AFP" ? (
-                                                    <td className="border border-black">
+                                                    <td className="border h-7 border-black">
                                                         {personalData[0]
                                                             .nombre_afp ? (
                                                             personalData[0]
@@ -2041,7 +2061,11 @@ function PdfContent({
                                                             <>&nbsp;</>
                                                         )}
                                                     </td>
-                                                ) : null}
+                                                ) : (
+                                                    <td className="border h-7 border-black">
+                                                        -
+                                                    </td>
+                                                )}
                                             </tr>
                                         </tbody>
                                     </table>
@@ -2097,8 +2121,8 @@ function PdfContent({
                         <div className="uppercase text-sm flex font-bold mb-4 ">
                             familiares directos
                         </div>
-                        <div className="text-xs text-center w-full border-black rounded-md border-2 mb-4 ">
-                            <div className="p-2">
+                        <div className="text-xs text-center w-full rounded-md mb-4 ">
+                            <div className="">
                                 {familiaData[0] ? (
                                     <Pdf_familiares_directos
                                         familiaData={familiaData}
@@ -2111,7 +2135,7 @@ function PdfContent({
                                                     <tr>
                                                         <th className="border w-2/12 border-black">
                                                             {" "}
-                                                            PARENTEZCO
+                                                            PARENTESCO
                                                         </th>
                                                         <th className="border w-7/12 border-black">
                                                             APELLIDOS Y
@@ -2124,13 +2148,13 @@ function PdfContent({
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border  border-black">
+                                                        <td className="border h-7  border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
                                                     </tr>
@@ -2144,8 +2168,8 @@ function PdfContent({
                         <div className="uppercase text-sm flex font-bold mb-4 ">
                             nivel educativo
                         </div>
-                        <div className="text-xs text-center w-full border-black rounded-md border-2 mb-4 ">
-                            <div className="p-2">
+                        <div className="text-xs text-center w-full rounded-md mb-4 ">
+                            <div className="">
                                 {neducativoData[0] ? (
                                     <Pdf_nivel_educativo
                                         neducativoData={novoneducativoData}
@@ -2173,16 +2197,16 @@ function PdfContent({
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border-x  border-black">
+                                                        <td className="border-x h-7  border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
                                                     </tr>
@@ -2193,7 +2217,7 @@ function PdfContent({
                                                 <thead>
                                                     <tr>
                                                         {/* <th className="border  w-1/2 border-black">NOMBRE DE LA INSTITUCION</th> */}
-                                                        <th className="border w-1/6   border-black">
+                                                        <th className="border w-1/6 h-7  border-black">
                                                             DESCRIPCION
                                                         </th>
                                                         <th className="border-l border-y font-normal w-5/6   border-black">
@@ -2348,10 +2372,10 @@ function PdfContent({
           </div>
           </div> */}
                         <div className="uppercase text-sm flex font-bold mb-4 ">
-                            A LA FECHA LABORA EN OTRA INSTITUCION
+                            ACTUALMENTE LABORA EN OTRA INSTITUCION
                         </div>
-                        <div className="text-xs text-center w-full border-black rounded-md border-2 mb-4 ">
-                            <div className="p-2">
+                        <div className="text-xs text-center w-full rounded-md mb-4 ">
+                            <div className="">
                                 {otrotrabajoData[0] ? (
                                     <Pdf_otro_trabajo
                                         otrotrabajoData={otrotrabajoData}
@@ -2378,16 +2402,16 @@ function PdfContent({
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border-x border-t border-black">
+                                                        <td className="border-x h-7 border-t border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
                                                     </tr>
@@ -2407,10 +2431,10 @@ function PdfContent({
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
-                                                        <td className="border border-black">
+                                                        <td className="border h-7 border-black">
                                                             {<>&nbsp;</>}
                                                         </td>
                                                     </tr>

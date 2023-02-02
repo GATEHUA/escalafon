@@ -26,21 +26,21 @@ function Pdf_nivel_educativo({ neducativoData }) {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td className="border border-black">
+                                    <td className="border h-7 border-black">
                                         {neducativoDat.nivel_educativo_ne ? (
                                             neducativoDat.nivel_educativo_ne
                                         ) : (
                                             <>&nbsp;</>
                                         )}
                                     </td>
-                                    <td className="border border-black">
+                                    <td className="border h-7 border-black">
                                         {neducativoDat.etapa_ne ? (
                                             neducativoDat.etapa_ne
                                         ) : (
                                             <>&nbsp;</>
                                         )}
                                     </td>
-                                    <td className="border border-black">
+                                    <td className="border h-7 border-black">
                                         {neducativoDat.fecha_culminacion_ne ? (
                                             moment(
                                                 neducativoDat.fecha_culminacion_ne,
@@ -50,7 +50,7 @@ function Pdf_nivel_educativo({ neducativoData }) {
                                             <>&nbsp;</>
                                         )}
                                     </td>
-                                    <td className="border  border-black">
+                                    <td className="border h-7  border-black">
                                         {neducativoDat.nombre_institucion_ne ? (
                                             neducativoDat.nombre_institucion_ne
                                         ) : (
@@ -71,7 +71,7 @@ function Pdf_nivel_educativo({ neducativoData }) {
                                             <th className="border-x border-b w-1/6   border-black">
                                                 DESCRIPCION
                                             </th>
-                                            <th className="border-l border-b font-normal w-5/6   border-black">
+                                            <th className="border-l h-7 border-b font-normal w-5/6   border-black">
                                                 {neducativoDat.descripcion_ne ? (
                                                     neducativoDat.descripcion_ne
                                                 ) : (
