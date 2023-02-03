@@ -864,12 +864,12 @@ const Create = ({
                                             <option value="ACTIVO">
                                                 ACTIVO
                                             </option>
-                                            <option value="CESADO">
+                                            {/* <option value="CESADO">
                                                 CESADO
                                             </option>
                                             <option value="FALLECIDO">
                                                 FALLECIDO
-                                            </option>
+                                            </option> */}
                                         </select>
                                         <InputError
                                             message={errors.estado}

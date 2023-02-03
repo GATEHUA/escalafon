@@ -695,10 +695,10 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                     >
                                         <option value="">-Seleccione-</option>
                                         <option value="ACTIVO">ACTIVO</option>
-                                        <option value="CESADO">CESADO</option>
+                                        {/* <option value="CESADO">CESADO</option>
                                         <option value="FALLECIDO">
                                             FALLECIDO
-                                        </option>
+                                        </option> */}
                                     </select>
                                     <InputError
                                         message={errors.estado}
