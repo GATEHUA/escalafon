@@ -34,7 +34,7 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'http://escalafon.edoc.pe/auth/google/call-back',
+        'redirect' => 'http://escalafon.undac.edu.pe/auth/google/call-back',
     ],
 
 ];
