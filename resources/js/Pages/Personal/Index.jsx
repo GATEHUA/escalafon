@@ -3,7 +3,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/inertia-react";
 import Swal from "sweetalert2";
 import { Inertia } from "@inertiajs/inertia";
-import { includes } from "lodash";
+import { Collapse } from "react-collapse";
+
+// import { includes } from "lodash";
 
 const Index = ({ auth, personal, files }) => {
     const [search, setSearch] = useState("");
@@ -14,6 +16,7 @@ const Index = ({ auth, personal, files }) => {
     const personnalTot = personal;
     const [results, setResults] = useState(personnalTot);
     const [tt, setTt] = useState("");
+    const [showNe, setShowNe] = useState(false);
 
     // let date = new Date("2022-01-01");
     // let utcDate = new Date(
@@ -56,6 +59,13 @@ const Index = ({ auth, personal, files }) => {
     //     });
     //     setResults(filteredResults);
     // };
+    console.log(personal);
+
+    // if (Array.isArray(personal[0].neducativo)) {
+    //     console.log("attribute es un arreglo");
+    // } else {
+    //     console.log("attribute no es un arreglo");
+    // }
 
     useEffect(() => {
         setResults(personal);
@@ -342,6 +352,8 @@ const Index = ({ auth, personal, files }) => {
     //         );
     //     });
     // });
+    console.log("results");
+    console.log(results);
 
     return (
         <AuthenticatedLayout auth={auth}>
@@ -534,7 +546,7 @@ const Index = ({ auth, personal, files }) => {
                         <p className="text-white">-</p>
                         <input
                             type="date"
-                            className="ml-1 fondo-princ  hover:border-blue-600 w-full bg-transparent text-white border border-white rounded  "
+                            className="ml-1 fondo-princ hover:border-blue-600 w-full bg-transparent text-white border border-white rounded  "
                             id="fecha_final"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
@@ -560,14 +572,16 @@ const Index = ({ auth, personal, files }) => {
                             </svg>
                         </button>
                     </div>
-
-                    <div className="pb-4  dark:bg-gray-900">
-                        <label htmlFor="table-search" className="">
-                            Search
-                        </label>
+                    {/* <div class="relative w-full">
+                        <input
+                            type="search"
+                            class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+                            placeholder="Search for city or address"
+                            required
+                        />
                         <button
-                            onClick={handleSearch2}
-                            class="relative top-0 right-0 p-2.5 text-sm font-medium text-white fondo-princ rounded-r-lg border border-white hover:bg-blue-600   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="submit"
+                            class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             <svg
                                 aria-hidden="true"
@@ -584,30 +598,39 @@ const Index = ({ auth, personal, files }) => {
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 ></path>
                             </svg>
+                            <span class="sr-only">Search</span>
                         </button>
-                        <div className="relative">
-                            <div className="flex   absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                                <svg
-                                    className="w-5 h-5 text-white dark:text-gray-400"
-                                    aria-hidden="true"
-                                    fill="currentColor"
-                                    viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                        clipRule="evenodd"
-                                    ></path>
-                                </svg>
-                            </div>
+                    </div> */}
+                    <div className="pb-4  dark:bg-gray-900">
+                        <div className="relative flex">
+                            {/* <div className="flex   absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></div> */}
                             <input
                                 type="text"
                                 value={search}
                                 onChange={handleSearch}
-                                className="placeholder-gray-400 hover:border-blue-600 fondo-princ block p-2 pl-10 w-80 text-sm text-white bg-transparent rounded-lg border border-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                className="placeholder-gray-400 right-0 absolute hover:border-blue-600 fondo-princ block p-2  w-80 text-sm text-white bg-transparent rounded-lg border border-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="Buscar en la tabla"
                             />
+                            <button
+                                onClick={handleSearch2}
+                                className="relative top-0 right-0 p-2.5 text-sm font-medium text-white fondo-princ rounded-r-lg border border-white hover:bg-blue-600   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            >
+                                <svg
+                                    aria-hidden="true"
+                                    class="w-4 h-4"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                    ></path>
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -624,9 +647,9 @@ const Index = ({ auth, personal, files }) => {
                                         ACCIONES
                                     </div>
                                 </th>
-                                <th className="py-3 px-6">
+                                <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
-                                        FECHA&nbsp;DE&nbsp;INGRESO{" "}
+                                        fecha de nacimiento
                                         <a href="#">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -642,7 +665,39 @@ const Index = ({ auth, personal, files }) => {
                                 </th>
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex justify-center items-center">
-                                        FECHA&nbsp;DE&nbsp;NOMBRAMIENTO
+                                        Apellidos&nbsp;y&nbsp;nombres{" "}
+                                        <a href="#">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="ml-1 w-3 h-3"
+                                                aria-hidden="true"
+                                                fill="currentColor"
+                                                viewBox="0 0 320 512"
+                                            >
+                                                <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th className="py-3">
+                                    <div className="flex items-center">
+                                        FECHA&nbsp;DE INGRESO
+                                        <a href="#">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                className="ml-1 w-3 h-3"
+                                                aria-hidden="true"
+                                                fill="currentColor"
+                                                viewBox="0 0 320 512"
+                                            >
+                                                <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </th>
+                                <th scope="col" className="py-3 px-6">
+                                    <div className="flex justify-center items-center">
+                                        FECHA&nbsp;DE NOMBRAMIENTO
                                         <a href="#">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -688,22 +743,7 @@ const Index = ({ auth, personal, files }) => {
                                         </a>
                                     </div>
                                 </th>
-                                <th scope="col" className="py-3 px-6">
-                                    <div className="flex justify-center items-center">
-                                        foto{" "}
-                                        <a href="#">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="ml-1 w-3 h-3"
-                                                aria-hidden="true"
-                                                fill="currentColor"
-                                                viewBox="0 0 320 512"
-                                            >
-                                                <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </th>
+
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
                                         estado{" "}
@@ -722,7 +762,7 @@ const Index = ({ auth, personal, files }) => {
                                 </th>
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
-                                        fecha_jubilacion{" "}
+                                        Nivel EDUCATIVO
                                         <a href="#">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -738,7 +778,7 @@ const Index = ({ auth, personal, files }) => {
                                 </th>
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
-                                        nombres{" "}
+                                        fecha de jubilacion
                                         <a href="#">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -752,38 +792,7 @@ const Index = ({ auth, personal, files }) => {
                                         </a>
                                     </div>
                                 </th>
-                                <th scope="col" className="py-3 px-6">
-                                    <div className="flex items-center">
-                                        apellido_paterno{" "}
-                                        <a href="#">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="ml-1 w-3 h-3"
-                                                aria-hidden="true"
-                                                fill="currentColor"
-                                                viewBox="0 0 320 512"
-                                            >
-                                                <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </th>
-                                <th scope="col" className="py-3 px-6">
-                                    <div className="flex items-center">
-                                        apellido_materno{" "}
-                                        <a href="#">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="ml-1 w-3 h-3"
-                                                aria-hidden="true"
-                                                fill="currentColor"
-                                                viewBox="0 0 320 512"
-                                            >
-                                                <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </th>
+
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
                                         genero{" "}
@@ -800,22 +809,7 @@ const Index = ({ auth, personal, files }) => {
                                         </a>
                                     </div>
                                 </th>
-                                <th scope="col" className="py-3 px-6">
-                                    <div className="flex items-center">
-                                        fecha_nacimiento{" "}
-                                        <a href="#">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="ml-1 w-3 h-3"
-                                                aria-hidden="true"
-                                                fill="currentColor"
-                                                viewBox="0 0 320 512"
-                                            >
-                                                <path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </th>
+
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
                                         pais{" "}
@@ -1302,6 +1296,31 @@ const Index = ({ auth, personal, files }) => {
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
+                                        {person.fecha_nacimiento}
+                                    </td>
+                                    <td
+                                        scope="row"
+                                        className="capitalize py-4 px-6 font-bold items-center flex text-white whitespace-nowrap dark:text-white"
+                                    >
+                                        <img
+                                            className="w-10 h-10 rounded-full mr-2"
+                                            src={
+                                                person.foto
+                                                    ? `${files}fotoPer/${person.foto}`
+                                                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                                            }
+                                            alt=""
+                                        />
+                                        <p className="justify-center text-center flex">
+                                            {person.apellido_paterno}{" "}
+                                            {person.apellido_materno}{" "}
+                                            {person.nombres}
+                                        </p>
+                                    </td>
+                                    <td
+                                        scope="row"
+                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
+                                    >
                                         {person.fecha_Ingreso_undac}
                                     </td>
                                     <td
@@ -1326,21 +1345,53 @@ const Index = ({ auth, personal, files }) => {
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
-                                        <img
-                                            className="w-10 h-10 rounded-full"
-                                            src={
-                                                person.foto
-                                                    ? `${files}fotoPer/${person.foto}`
-                                                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
-                                            }
-                                            alt=""
-                                        />
+                                        {person.estado}
                                     </td>
                                     <td
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
-                                        {person.estado}
+                                        <button
+                                            onClick={() => setShowNe(!showNe)}
+                                        >
+                                            Show/Hide Company
+                                        </button>
+                                        {/* <Collapse isOpened={showNe}>
+                                            {person.neducativo.length > 0 && (
+                                                <table>
+                                                    <thead>
+                                                        <tr className="bg-gray-800 uppercase text-white">
+                                                            <th className="px-4 py-2">
+                                                                tipo
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                etapa
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {person.neducativo.map(
+                                                            (ne) => (
+                                                                <tr key={ne.id}>
+                                                                    <td className="border p-1">
+                                                                        {
+                                                                            ne.nivel_educativo_ne
+                                                                        }
+                                                                    </td>
+                                                                    <td className="border p-1">
+                                                                        {
+                                                                            ne.etapa_ne
+                                                                        }
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        )}
+                                                    </tbody>
+                                                </table>
+                                            )}
+                                        </Collapse> */}
+
+                                        {/* {person.neducativo} */}
                                     </td>
                                     <td
                                         scope="row"
@@ -1348,36 +1399,14 @@ const Index = ({ auth, personal, files }) => {
                                     >
                                         {person.fecha_jubilacion}
                                     </td>
-                                    <td
-                                        scope="row"
-                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
-                                    >
-                                        {person.nombres}
-                                    </td>
-                                    <td
-                                        scope="row"
-                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
-                                    >
-                                        {person.apellido_paterno}
-                                    </td>
-                                    <td
-                                        scope="row"
-                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
-                                    >
-                                        {person.apellido_materno}
-                                    </td>
+
                                     <td
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
                                         {person.genero}
                                     </td>
-                                    <td
-                                        scope="row"
-                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
-                                    >
-                                        {person.fecha_nacimiento}
-                                    </td>
+
                                     <td
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
@@ -1521,36 +1550,6 @@ const Index = ({ auth, personal, files }) => {
                         </tbody>
                     </table>
                 </div>
-            </div>
-
-            <div class="relative w-full">
-                <input
-                    type="search"
-                    class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                    placeholder="Search for city or address"
-                    required
-                />
-                <button
-                    type="submit"
-                    class="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                    <svg
-                        aria-hidden="true"
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        ></path>
-                    </svg>
-                    <span class="sr-only">Search</span>
-                </button>
             </div>
         </AuthenticatedLayout>
     );
