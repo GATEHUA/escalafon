@@ -189,6 +189,8 @@ class PersonalController extends Controller
             'horas_d' => ''
 
         ]);
+
+        // dd($validate["dni"]);
         // $validateAdministrativo = $request->validate([
         //     //'personal_id'=>'',
         //     'administrativo_t' => '',

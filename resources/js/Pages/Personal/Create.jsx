@@ -2197,10 +2197,10 @@ const Create = ({
                                             </label>
                                             <input
                                                 required
-                                                value={data.dni_f}
+                                                value={data.dni}
                                                 onChange={(e) =>
                                                     setData(
-                                                        "dni_f",
+                                                        "dni",
                                                         e.target.value
                                                     )
                                                 }
