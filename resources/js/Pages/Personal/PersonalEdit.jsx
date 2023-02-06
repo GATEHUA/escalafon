@@ -1925,9 +1925,9 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             D.N.I.
                                         </label>
                                         <input
-                                            value={data.dni_f}
+                                            value={data.dni}
                                             onChange={(e) =>
-                                                setData("dni_f", e.target.value)
+                                                setData("dni", e.target.value)
                                             }
                                             className="hover:border-blue-600 w-full bg-transparent text-white border border-gray-200 rounded py-3 px-4 mb-3"
                                             id="dni_f"
