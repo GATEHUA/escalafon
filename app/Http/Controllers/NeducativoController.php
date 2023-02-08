@@ -197,10 +197,16 @@ class NeducativoController extends Controller
         // if (Storage::delete('public/documento_val_ne_Per/' . $neducativo->documento_val_ne)||!$neducativo->documento_val_ne) {
         //     $neducativo->delete();
         // }
+        // dd($neducativo->documento_val_ne);
         if (Storage::disk('s3')->delete('documento_val_ne_Per/' . $neducativo->documento_val_ne)||!$neducativo->documento_val_ne) {
-            $neducativo->delete();
-        }
-
+           
+            $neducativo->delete();}
+        // }else{
+        //     dd("gringo no se la come");
+        // }
+        // Storage::disk('s3')->delete('documento_val_ne_Per/' . $neducativo->documento_val_ne);
+        // $neducativo->delete();
+        
 
         // return redirect(route('personal.create'));
     }
