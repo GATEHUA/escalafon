@@ -3,7 +3,10 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/inertia-react";
 import Swal from "sweetalert2";
 import { Inertia } from "@inertiajs/inertia";
-import { Collapse } from "react-collapse";
+// import { read, utils, writeFileXLSX } from "xlsx";
+// import XLSX from "xlsx";
+// import XLSX from "xlsx";
+// import { Collapse } from "react-collapse";
 
 // import { includes } from "lodash";
 
@@ -13,8 +16,8 @@ const Index = ({ auth, personal, files }) => {
     const [scolumn, setScolumn] = useState(false);
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const personnalTot = personal;
-    const [results, setResults] = useState(personnalTot);
+    // const personnalTot = personal;
+    const [results, setResults] = useState(personal);
     const [tt, setTt] = useState("");
     const [showNe, setShowNe] = useState(false);
 
@@ -59,7 +62,7 @@ const Index = ({ auth, personal, files }) => {
     //     });
     //     setResults(filteredResults);
     // };
-    console.log(personal);
+    // console.log(personal);
 
     // if (Array.isArray(personal[0].neducativo)) {
     //     console.log("attribute es un arreglo");
@@ -86,11 +89,74 @@ const Index = ({ auth, personal, files }) => {
             }
         });
     };
+    console.log("personal");
+    console.log(personal);
+    // personal.forEach((element) => {
+    //     let allData = Object.values(element);
+    //     function flattenArray(arr) {
+    //         return arr.reduce(
+    //             (acc, val) =>
+    //                 Array.isArray(val)
+    //                     ? acc.concat(flattenArray(val))
+    //                     : acc.concat(val),
+    //             []
+    //         );
+    //     }
+    //     allData = allData.concat(
+    //         flattenArray(element.neducativo.map((x) => Object.values(x)))
+    //     );
+    //     console.log(allData);
+    // });
+
+    // for (let index = 0; index < personal.length; index++) {
+    //     const allData = Object.values(personal[index]).concat(
+    //         personal[index].neducativo.map((x) => Object.values(x))
+    //     );
+    //     console.log(`allData${index}`);
+    //     console.log(allData.flat());
+    // }
+
+    // const allData =
+    // const data = [
+    //     {
+    //         name: "Alice",
+    //         age: 25,
+    //         city: "New York",
+    //     },
+    //     {
+    //         name: "Bob",
+    //         age: 30,
+    //         city: "Chicago",
+    //     },
+    //     {
+    //         name: "Charlie",
+    //         age: 35,
+    //         city: "Los Angeles",
+    //     },
+    //     {
+    //         name: "Dave",
+    //         age: 40,
+    //         city: "New York",
+    //     },
+    // ];
+    // const pruebaMrz2 = data.map((ned) => Object.values(ned));
+    // console.log("pruebaMrz1f");
+    // console.log(pruebaMrz2.flat());
+    // console.log("pruebaMrz2f");
+    // console.log([2, 3].concat(pruebaMrz2));
+    // console.log("personal[3].administrativo");
+    // console.log(personal[3].docente);
 
     const handleSearch = (event) => {
         setSearch(event.target.value);
         let filteredResults = personal.filter((item) => {
-            return Object.values(item).some(
+            const allData = Object.values(item).concat(
+                item.neducativo &&
+                    item.neducativo.map((ned) => Object.values(ned)),
+                item.docente && Object.values(item.docente).flat(),
+                item.administrativo && Object.values(item.administrativo).flat()
+            );
+            return allData.some(
                 (value) =>
                     value &&
                     value
@@ -102,27 +168,122 @@ const Index = ({ auth, personal, files }) => {
         setResults(filteredResults);
     };
 
-    const asd = ["ACTIVO", "NOMBRADO", null].map((x) => {
-        return x ? x.toLocaleLowerCase() : "";
-    });
+    // const asd = ["ACTIVO", "NOMBRADO", null].map((x) => {
+    //     return x ? x.toLocaleLowerCase() : "";
+    // });
     // const num = 5465;
     // console.log(typeof num.toString());
     // console.log(asd);
     // const x = ["qw", "ada", "wddsa"].map((x) => console.log(x));
-    const handleSearch2 = (e) => {
+
+    //modo estricto
+    const handleSearch2 = () => {
         // setSearch(e.target.value);
-        const searchWords = search.split(" ");
-        let filteredResults = personal.filter((obj) => {
-            let valMin = Object.values(obj).map((x) => {
-                return x ? x.toString().toLocaleLowerCase() : "";
-            });
+        const searchWords = search.split(/\s*[,;~]\s*/);
+
+        let filteredResults = personal.filter((item) => {
+            // let valMin = Object.values(obj).map((x) => {
+            //     return x ? x.toString().toLocaleLowerCase() : "";
+            // });
+            const allData = Object.values(item)
+                .concat(
+                    item.neducativo &&
+                        item.neducativo.map((ned) => Object.values(ned)),
+                    item.docente && Object.values(item.docente).flat(),
+                    item.administrativo &&
+                        Object.values(item.administrativo).flat()
+                )
+                .toString()
+                .toLocaleLowerCase();
             let valMinBus = searchWords.map((x) => {
                 return x ? x.toString().toLocaleLowerCase() : "";
             });
-            return valMinBus.every((x) => valMin.includes(x));
+            // console.log("allData2search");
+            // console.log(allData);
+            // return valMinBus.every((x) => valMin.includes(x));
+            // return valMinBus.every((x) => allData.includes(x));
+            return valMinBus.every((x) => allData.split(",").includes(x));
+            // return valMinBus.every((x) => {
+            //     return allData.split(",").some((data) => {
+            //         return data.trim().startsWith(x);
+            //     });
+            // });
         });
         setResults(filteredResults);
     };
+
+    // const handleSearch2 = (e) => {
+    //     const searchWords = search.split(" ");
+    //     let filteredResults = personal.filter((item) => {
+    //         const allData = Object.values(item)
+    //             .concat(
+    //                 item.neducativo &&
+    //                     item.neducativo.map((ned) => Object.values(ned)),
+    //                 item.docente && Object.values(item.docente).flat(),
+    //                 item.administrativo &&
+    //                     Object.values(item.administrativo).flat()
+    //             )
+    //             .join(",") // unir los valores en una cadena
+    //             .toLowerCase();
+
+    //         let valMinBus = searchWords.map((x) => {
+    //             return x ? x.toString().toLocaleLowerCase() : "";
+    //         });
+
+    //         return valMinBus.every((x) => {
+    //             return allData.split(",").some((data) => {
+    //                 return data.trim().indexOf(x) !== -1;
+    //             });
+    //         });
+    //     });
+    //     setResults(filteredResults);
+    // };
+
+    // const handleSearch2 = (e) => {
+    //     const searchWords = search.split(" ");
+    //     let filteredResults = personal.filter((item) => {
+    //         const allData = Object.values(item)
+    //             .concat(
+    //                 item.neducativo &&
+    //                     item.neducativo.map((ned) => Object.values(ned)),
+    //                 item.docente && Object.values(item.docente).flat(),
+    //                 item.administrativo &&
+    //                     Object.values(item.administrativo).flat()
+    //             )
+    //             .toString()
+    //             .toLocaleLowerCase();
+    //         const searchRegex = new RegExp(
+    //             "\\b" + searchWords.join("\\b|\\b") + "\\b",
+    //             "i"
+    //         );
+    //         return searchRegex.test(allData);
+    //     });
+    //     setResults(filteredResults);
+    // };
+
+    //funka pero probar ...
+    // const handleSearch2 = (e) => {
+    //     const searchWords = search.split(" ");
+    //     let filteredResults = personal.filter((item) => {
+    //         const allData = Object.values(item)
+    //             .concat(
+    //                 item.neducativo &&
+    //                     item.neducativo.map((ned) => Object.values(ned)),
+    //                 item.docente && Object.values(item.docente).flat(),
+    //                 item.administrativo &&
+    //                     Object.values(item.administrativo).flat()
+    //             )
+    //             .join(",") // unir los valores en una cadena
+    //             .toLowerCase();
+
+    //         let valMinBus = searchWords.map((x) => {
+    //             return x ? x.toString().toLocaleLowerCase() : "";
+    //         });
+
+    //         return valMinBus.every((x) => allData.includes(x));
+    //     });
+    //     setResults(filteredResults);
+    // };
 
     // console.log(results);
 
@@ -352,8 +513,23 @@ const Index = ({ auth, personal, files }) => {
     //         );
     //     });
     // });
-    console.log("results");
-    console.log(results);
+    // console.log("results");
+    // console.log(results);
+
+    //<----------------------->
+
+    // const exportFile = () => {
+    //     const htmlTable = document.getElementById("tabla-datos");
+    //     // const wb = XLSX.utils.table_to_book(htmlTable);
+    //     const wb = utils.table_to_book(htmlTable);
+    //     writeFileXLSX(wb, "table.xlsx");
+    // };
+    // const exportFile = () => {
+    //     const ws = utils.json_to_sheet(results);
+    //     const wb = utils.book_new();
+    //     utils.book_append_sheet(wb, ws, "Data");
+    //     writeFileXLSX(wb, "SheetJSReactAoO.xlsx");
+    // };
 
     return (
         <AuthenticatedLayout auth={auth}>
@@ -414,7 +590,7 @@ const Index = ({ auth, personal, files }) => {
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                         />
                                         <label
-                                            for="checkbox-item-11"
+                                            htmlFor="checkbox-item-11"
                                             className="ml-2 w-full text-sm font-medium text-white rounded dark:text-gray-300"
                                         >
                                             Bonnie Green
@@ -430,7 +606,7 @@ const Index = ({ auth, personal, files }) => {
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                         />
                                         <label
-                                            for="checkbox-item-12"
+                                            htmlFor="checkbox-item-12"
                                             className="ml-2 w-full text-sm font-medium text-white rounded dark:text-gray-300"
                                         >
                                             Jese Leos
@@ -446,7 +622,7 @@ const Index = ({ auth, personal, files }) => {
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                         />
                                         <label
-                                            for="checkbox-item-13"
+                                            htmlFor="checkbox-item-13"
                                             className="ml-2 w-full text-sm font-medium text-white rounded dark:text-gray-300"
                                         >
                                             Michael Gough
@@ -462,7 +638,7 @@ const Index = ({ auth, personal, files }) => {
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                         />
                                         <label
-                                            for="checkbox-item-14"
+                                            htmlFor="checkbox-item-14"
                                             className="ml-2 w-full text-sm font-medium text-white rounded dark:text-gray-300"
                                         >
                                             Robert Wall
@@ -478,7 +654,7 @@ const Index = ({ auth, personal, files }) => {
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                         />
                                         <label
-                                            for="checkbox-item-15"
+                                            htmlFor="checkbox-item-15"
                                             className="ml-2 w-full text-sm font-medium text-white rounded dark:text-gray-300"
                                         >
                                             Joseph Mcfall
@@ -510,7 +686,7 @@ const Index = ({ auth, personal, files }) => {
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                         />
                                         <label
-                                            for="checkbox-item-17"
+                                            htmlFor="checkbox-item-17"
                                             className="ml-2 w-full text-sm font-medium text-white rounded dark:text-gray-300"
                                         >
                                             Roberta Casas
@@ -553,20 +729,20 @@ const Index = ({ auth, personal, files }) => {
                         />
                         <button
                             onClick={handleFilterDate}
-                            class="relative top-0 right-0 p-2.5 text-sm font-medium text-white fondo-princ rounded-r-lg border border-white hover:bg-blue-600   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="relative top-0 right-0 p-2.5 text-sm font-medium text-white fondo-princ rounded-r-lg border border-white hover:bg-blue-600   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             <svg
                                 aria-hidden="true"
-                                class="w-5 h-5"
+                                className="w-5 h-5"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg"
                             >
                                 <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 ></path>
                             </svg>
@@ -594,7 +770,7 @@ const Index = ({ auth, personal, files }) => {
                                 <path
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeWidth="2"
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                 ></path>
                             </svg>
@@ -617,16 +793,16 @@ const Index = ({ auth, personal, files }) => {
                             >
                                 <svg
                                     aria-hidden="true"
-                                    class="w-4 h-4"
+                                    className="w-4 h-4"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
                                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                     ></path>
                                 </svg>
@@ -634,14 +810,17 @@ const Index = ({ auth, personal, files }) => {
                         </div>
                     </div>
                 </div>
-
+                {/* <button onClick={exportFile}>Export to Excel</button> */}
                 <div
                     className="fondo-princ-table overflow-auto relative shadow-md sm:rounded-lg"
                     style={{ height: "80vh" }}
                 >
-                    <table>
+                    <table id="tabla-datos">
                         <thead className="">
                             <tr className="bg-gray-700 sticky top-0 text-xs text-white uppercase dark:bg-gray-700 dark:text-gray-400">
+                                <th scope="col" className="py-3 px-6">
+                                    <div className="flex items-center">N°</div>
+                                </th>
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
                                         ACCIONES
@@ -761,7 +940,7 @@ const Index = ({ auth, personal, files }) => {
                                     </div>
                                 </th>
                                 <th scope="col" className="py-3 px-6">
-                                    <div className="flex items-center">
+                                    <div className="flex items-center justify-center">
                                         Nivel EDUCATIVO
                                         <a href="#">
                                             <svg
@@ -1181,11 +1360,17 @@ const Index = ({ auth, personal, files }) => {
                             </tr>
                         </thead>
                         <tbody className="">
-                            {results.map((person) => (
+                            {results.map((person, index) => (
                                 <tr
                                     className=" text-xs text-center border-b dark:bg-gray-800 dark:border-gray-700 fondo-princ-table-body dark:hover:bg-gray-600"
                                     key={person.id}
                                 >
+                                    <td
+                                        scope="row"
+                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
+                                    >
+                                        {index + 1}
+                                    </td>
                                     <td
                                         scope="row"
                                         className="py-3 px-6 text-center"
@@ -1300,22 +1485,22 @@ const Index = ({ auth, personal, files }) => {
                                     </td>
                                     <td
                                         scope="row"
-                                        className="capitalize py-4 px-6 font-bold items-center flex text-white whitespace-nowrap dark:text-white"
+                                        className="capitalize py-4 px-6 font-bold text-white whitespace-nowrap dark:text-white"
                                     >
-                                        <img
-                                            className="w-10 h-10 rounded-full mr-2"
-                                            src={
-                                                person.foto
-                                                    ? `${files}fotoPer/${person.foto}`
-                                                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
-                                            }
-                                            alt=""
-                                        />
-                                        <p className="justify-center text-center flex">
+                                        <div className="justify-center text-center flex items-center">
+                                            <img
+                                                className="w-10 h-10 rounded-full mr-2"
+                                                src={
+                                                    person.foto
+                                                        ? `${files}fotoPer/${person.foto}`
+                                                        : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                                                }
+                                                alt=""
+                                            />
                                             {person.apellido_paterno}{" "}
                                             {person.apellido_materno}{" "}
                                             {person.nombres}
-                                        </p>
+                                        </div>
                                     </td>
                                     <td
                                         scope="row"
@@ -1340,6 +1525,113 @@ const Index = ({ auth, personal, files }) => {
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
                                         {person.situacion}
+                                        <div className=" flex justify-center pt-1">
+                                            {person.situacion == "DOCENTE" ? (
+                                                <table>
+                                                    <thead>
+                                                        <tr className="bg-gray-800 uppercase text-white">
+                                                            <th className="px-4 py-2">
+                                                                CATEGORIA
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                DEDICACION
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                FACULTAD
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                ESCUELA
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                HORAS(DIARIAS)
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .docente
+                                                                        .docente_t
+                                                                }
+                                                            </td>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .docente
+                                                                        .dedicacion_t
+                                                                }
+                                                            </td>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .docente
+                                                                        .facultad
+                                                                }
+                                                            </td>
+                                                            <td className="border p-1 ">
+                                                                {
+                                                                    person
+                                                                        .docente
+                                                                        .escuela
+                                                                }
+                                                            </td>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .docente
+                                                                        .horas_d
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            ) : null}
+                                            {person.situacion ==
+                                            "ADMINISTRATIVO" ? (
+                                                <table>
+                                                    <thead>
+                                                        <tr className="bg-gray-800 uppercase text-white">
+                                                            <th className="px-4 py-2">
+                                                                CATEGORIA
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                NIVEL
+                                                            </th>
+                                                            <th className="px-4 py-2">
+                                                                dependencia
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .administrativo
+                                                                        .administrativo_t
+                                                                }
+                                                            </td>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .administrativo
+                                                                        .nivel_remunerativo
+                                                                }
+                                                            </td>
+                                                            <td className="border p-1">
+                                                                {
+                                                                    person
+                                                                        .administrativo
+                                                                        .dependencia
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            ) : null}
+                                        </div>
                                     </td>
                                     <td
                                         scope="row"
@@ -1349,47 +1641,87 @@ const Index = ({ auth, personal, files }) => {
                                     </td>
                                     <td
                                         scope="row"
-                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
+                                        className="py-1 flex justify-center px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
-                                        <button
+                                        {/* <button
                                             onClick={() => setShowNe(!showNe)}
                                         >
                                             Show/Hide Company
-                                        </button>
-                                        {/* <Collapse isOpened={showNe}>
-                                            {person.neducativo.length > 0 && (
-                                                <table>
-                                                    <thead>
-                                                        <tr className="bg-gray-800 uppercase text-white">
-                                                            <th className="px-4 py-2">
-                                                                tipo
-                                                            </th>
-                                                            <th className="px-4 py-2">
-                                                                etapa
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        {person.neducativo.map(
-                                                            (ne) => (
-                                                                <tr key={ne.id}>
-                                                                    <td className="border p-1">
-                                                                        {
-                                                                            ne.nivel_educativo_ne
-                                                                        }
-                                                                    </td>
-                                                                    <td className="border p-1">
-                                                                        {
-                                                                            ne.etapa_ne
-                                                                        }
-                                                                    </td>
-                                                                </tr>
-                                                            )
-                                                        )}
-                                                    </tbody>
-                                                </table>
-                                            )}
-                                        </Collapse> */}
+                                        </button> */}
+                                        {/* <Collapse isOpened={showNe}> */}
+                                        {person.neducativo.length > 0 && (
+                                            <table>
+                                                <thead>
+                                                    <tr className="bg-gray-800 uppercase text-white">
+                                                        <th className="px-4 py-2">
+                                                            tipo
+                                                        </th>
+                                                        <th className="px-4 py-2">
+                                                            etapa
+                                                        </th>
+                                                        <th className="px-4 py-2">
+                                                            institucion
+                                                        </th>
+                                                        <th className="px-4 py-2">
+                                                            descripcion
+                                                        </th>
+                                                        <th className="px-4 py-2">
+                                                            f. culminacion
+                                                        </th>
+                                                        <th className="px-4 py-2">
+                                                            documento
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {person.neducativo.map(
+                                                        (ne) => (
+                                                            <tr key={ne.id}>
+                                                                <td className="border p-1">
+                                                                    {
+                                                                        ne.nivel_educativo_ne
+                                                                    }
+                                                                </td>
+                                                                <td className="border p-1">
+                                                                    {
+                                                                        ne.etapa_ne
+                                                                    }
+                                                                </td>
+                                                                <td className="border p-1">
+                                                                    {
+                                                                        ne.nombre_institucion_ne
+                                                                    }
+                                                                </td>
+                                                                <td className="border p-1 ">
+                                                                    {
+                                                                        ne.descripcion_ne
+                                                                    }
+                                                                </td>
+                                                                <td className="border p-1">
+                                                                    {
+                                                                        ne.fecha_culminacion_ne
+                                                                    }
+                                                                </td>
+                                                                <td className="border p-1">
+                                                                    {ne.documento_val_ne ? (
+                                                                        <a
+                                                                            target="_blank"
+                                                                            href={`${files}documento_val_ne_Per/${ne.documento_val_ne}`}
+                                                                        >
+                                                                            Ver
+                                                                            Documennto
+                                                                        </a>
+                                                                    ) : (
+                                                                        "-"
+                                                                    )}
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    )}
+                                                </tbody>
+                                            </table>
+                                        )}
+                                        {/* </Collapse> */}
 
                                         {/* {person.neducativo} */}
                                     </td>
@@ -1537,8 +1869,18 @@ const Index = ({ auth, personal, files }) => {
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
-                                        {person.val_dni}
+                                        {person.val_dni ? (
+                                            <a
+                                                target="_blank"
+                                                href={`${files}Dni_I_Per/${person.val_dni}`}
+                                            >
+                                                {person.val_dni}
+                                            </a>
+                                        ) : (
+                                            "-"
+                                        )}
                                     </td>
+
                                     <td
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"

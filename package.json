@@ -27,6 +27,7 @@
         "moment": "^2.29.4",
         "react-collapse": "^5.1.1",
         "react-to-print": "^2.14.9",
-        "sweetalert2": "^11.7.0"
+        "sweetalert2": "^11.7.0",
+        "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.2/xlsx-0.19.2.tgz"
     }
 }
