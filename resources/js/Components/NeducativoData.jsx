@@ -455,7 +455,8 @@ function NeducativoData({ neducativoDat, img }) {
                             {neducativoDat.documento_val_ne ? (
                                 <a
                                     href={`${img}documento_val_ne_Per/${neducativoDat.documento_val_ne}`}
-                                    type="text"
+                                    target="_blank"
+                                    // type="text"
                                     className="hover:border-blue-600 flex bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                                 >
                                     {neducativoDat.documento_val_ne}

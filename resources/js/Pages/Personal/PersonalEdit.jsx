@@ -1732,6 +1732,9 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                         </label>
                                         {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-gray-200 rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
                                         <select
+                                            value={
+                                                data.genero ? data.genero : ""
+                                            }
                                             onChange={(e) =>
                                                 setData(
                                                     "genero",

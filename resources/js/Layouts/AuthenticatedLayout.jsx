@@ -13,7 +13,7 @@ export default function Authenticated({ auth, header, children }) {
 
     return (
         <div className="min-h-screen fondo-general">
-            {auth.user.id <= 5 ? (
+            {auth.user.id <= 50000000 ? (
                 <nav className="fondo-nav-yaloged ">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
@@ -25,12 +25,16 @@ export default function Authenticated({ auth, header, children }) {
                                 </div>
 
                                 <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <NavLink
-                                        href={route("dashboard")}
-                                        active={route().current("dashboard")}
-                                    >
-                                        Dashboard
-                                    </NavLink>
+                                    <div className="hidden">
+                                        <NavLink
+                                            href={route("dashboard")}
+                                            active={route().current(
+                                                "dashboard"
+                                            )}
+                                        >
+                                            Dashboard
+                                        </NavLink>
+                                    </div>
                                     <NavLink
                                         href={route("personal.index")}
                                         active={route().current(
@@ -140,12 +144,15 @@ export default function Authenticated({ auth, header, children }) {
                         }
                     >
                         <div className="pt-2 pb-3 space-y-1">
-                            <ResponsiveNavLink
-                                href={route("dashboard")}
-                                active={route().current("dashboard")}
-                            >
-                                Dashboard
-                            </ResponsiveNavLink>
+                            <div className="hidden">
+                                <ResponsiveNavLink
+                                    href={route("dashboard")}
+                                    active={route().current("dashboard")}
+                                >
+                                    Dashboard
+                                </ResponsiveNavLink>
+                            </div>
+
                             <ResponsiveNavLink
                                 href={route("personal.index")}
                                 active={route().current("personal.index")}

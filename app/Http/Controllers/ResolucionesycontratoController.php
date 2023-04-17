@@ -46,7 +46,7 @@ class ResolucionesycontratoController extends Controller
         $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
         if ($validate['documento_val_res'] != '') {
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - '. $validate['tipo_res'] . '_' .time() . '.' . $validate['documento_val_res']->extension();
-            $validate['documento_val_res']->storeAs('documento_val_res_Per', $dtemporal, 's3');
+            $validate['documento_val_res']->storeAs('documento_val_res_Per', $dtemporal, 'public');
             $validate['documento_val_res'] = $dtemporal;
         }
         if ($user == $personal->user_id) {
@@ -74,7 +74,7 @@ class ResolucionesycontratoController extends Controller
 
         if ($validate['documento_val_res'] != '') {
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - '. $validate['tipo_res'] . '_' .time() . '.' . $validate['documento_val_res']->extension();
-            $validate['documento_val_res']->storeAs('documento_val_res_Per', $dtemporal, 's3');
+            $validate['documento_val_res']->storeAs('documento_val_res_Per', $dtemporal, 'public');
             $validate['documento_val_res'] = $dtemporal;
         }
         
@@ -117,10 +117,10 @@ class ResolucionesycontratoController extends Controller
 
         if (is_string($validate['documento_val_res']) === false && $validate['documento_val_res']) {
             // Storage::delete('public/documento_val_res_Per/' . $resolucionesycontrato->documento_val_res);
-            Storage::disk('s3')->delete('documento_val_res_Per/' . $resolucionesycontrato->documento_val_res);
+            Storage::disk('public')->delete('documento_val_res_Per/' . $resolucionesycontrato->documento_val_res);
 
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - '. $validate['tipo_res'] . '_' .time() . '.' . $validate['documento_val_res']->extension();
-            $validate['documento_val_res']->storeAs('documento_val_res_Per', $dtemporal, 's3');
+            $validate['documento_val_res']->storeAs('documento_val_res_Per', $dtemporal, 'public');
             $validate['documento_val_res'] = $dtemporal;
             // Storage::delete('public/' . $validate['documento_val_ne']);
             // $validate['documento_val_ne'] = $validate['documento_val_ne']->store('documento_val_ne_Per', 'public');
@@ -138,7 +138,7 @@ class ResolucionesycontratoController extends Controller
         // if (Storage::delete('public/documento_val_res_Per/' . $resolucionesycontrato->documento_val_res) || !$resolucionesycontrato->documento_val_res ) {
         //     $resolucionesycontrato->delete();
         // }
-        if (Storage::disk('s3')->delete('documento_val_res_Per/' . $resolucionesycontrato->documento_val_res) || !$resolucionesycontrato->documento_val_res ) {
+        if (Storage::disk('public')->delete('documento_val_res_Per/' . $resolucionesycontrato->documento_val_res) || !$resolucionesycontrato->documento_val_res ) {
             $resolucionesycontrato->delete();
         }
 

@@ -45,7 +45,7 @@ class DocumentoController extends Controller
         if ($validate['documento_d'] != '') {
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - ' .time() . '.' . $validate['documento_d']->extension();
             // $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
-            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 's3');
+            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
             $validate['documento_d'] = $dtemporal;
         }
         if ($user == $personal->user_id) {
@@ -66,7 +66,7 @@ class DocumentoController extends Controller
         if ($validate['documento_d'] != '') {
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - ' .time() . '.' . $validate['documento_d']->extension();
             // $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
-            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 's3');
+            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
             $validate['documento_d'] = $dtemporal;
         }
         
@@ -119,10 +119,10 @@ class DocumentoController extends Controller
 
         if (is_string($validate['documento_d']) === false && $validate['documento_d']) {
             // Storage::delete('public/documentoPer/' . $documento->documento_d);
-            Storage::disk('s3')->delete('documentoPer/' . $documento->documento_d);
+            Storage::disk('public')->delete('documentoPer/' . $documento->documento_d);
             $dtemporal = $personal->apellido_paterno . ' ' . $personal->apellido_materno . ' ' . $personal->nombres . ' - ' .time() . '.' . $validate['documento_d']->extension();
             // $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
-            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 's3');
+            $validate['documento_d']->storeAs('documentoPer', $dtemporal, 'public');
             $validate['documento_d'] = $dtemporal;
         }
         $documento->update($validate);
@@ -140,7 +140,7 @@ class DocumentoController extends Controller
         // if (Storage::delete('public/documentoPer/' . $documento->documento_d )|| !$documento->documento_d ) {
         //     $documento->delete();
         // }
-        if (Storage::disk('s3')->delete('documentoPer/' . $documento->documento_d )|| !$documento->documento_d ) {
+        if (Storage::disk('public')->delete('documentoPer/' . $documento->documento_d )|| !$documento->documento_d ) {
             $documento->delete();
         }
 

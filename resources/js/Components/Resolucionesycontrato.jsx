@@ -6,7 +6,7 @@ import { useForm, usePage } from "@inertiajs/inertia-react";
 import { Inertia } from "@inertiajs/inertia";
 import Swal from "sweetalert2";
 
-function Resolucionesycontrato({ resolucionesycontratoDat }) {
+function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
     const [editingRes, setEditingRes] = useState(false);
     const { data, setData, post, processing, reset, errors } = useForm({
         cod_res: resolucionesycontratoDat.cod_res || "",
@@ -417,7 +417,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                         className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                         htmlFor="dependencia_res"
                                     >
-                                        dependencia
+                                        dependencia O FACULTAD
                                     </label>
                                     <input
                                         value={data.dependencia_res}
@@ -562,7 +562,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 documento de validacion
                             </label>
 
-                            <input
+                            {/* <input
                                 disabled
                                 defaultValue={
                                     resolucionesycontratoDat.documento_val_res
@@ -570,7 +570,25 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 type="text"
                                 placeholder=""
                                 className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
-                            />
+                            /> */}
+
+                            {resolucionesycontratoDat.documento_val_res ? (
+                                <a
+                                    href={`${img}documento_val_res_Per/${resolucionesycontratoDat.documento_val_res}`}
+                                    target="_blank"
+                                    // type="text"
+                                    className="hover:border-blue-600 flex bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                >
+                                    {resolucionesycontratoDat.documento_val_res}
+                                </a>
+                            ) : (
+                                <input
+                                    disabled
+                                    value={""}
+                                    type="text"
+                                    className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
+                                />
+                            )}
                         </div>
                     </div>
                     <div className="-mx-3 md:flex ">
@@ -683,7 +701,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat }) {
                                 </div>
                                 <div className="md:w-1/4 md:px-3">
                                     <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
-                                        dependencia
+                                        dependencia O FACULTAD
                                     </label>
 
                                     <input

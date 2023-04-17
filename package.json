@@ -24,9 +24,12 @@
         "vite": "^3.0.0"
     },
     "dependencies": {
+        "jspdf": "^2.5.1",
         "moment": "^2.29.4",
+        "prop-types": "^15.8.1",
         "react-collapse": "^5.1.1",
-        "react-to-print": "^2.14.9",
+        "react-data-export": "^0.6.0",
+        "react-to-print": "^2.14.12",
         "sweetalert2": "^11.7.0",
         "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.2/xlsx-0.19.2.tgz"
     }

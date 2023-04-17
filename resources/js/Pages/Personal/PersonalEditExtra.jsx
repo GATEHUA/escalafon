@@ -14,6 +14,7 @@ import DocumentoData from "@/Components/DocumentoData";
 import OtrotrabajoData from "@/Components/OtrotrabajoData";
 import Swal from "sweetalert2";
 import PdfContent from "./PdfContent";
+import fotopred from "../../../../public/Images/foto_predeterminado.webp";
 
 function PersonalEditExtra({
     auth,
@@ -321,7 +322,7 @@ function PersonalEditExtra({
                             src={
                                 personalData[0].foto
                                     ? `${img}fotoPer/${personalData[0].foto}`
-                                    : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                                    : fotopred
                             }
                             alt=""
                         />
@@ -1569,7 +1570,7 @@ function PersonalEditExtra({
                 </div>
 
                 {personalData[0].situacion == "DOCENTE" ||
-                personalData[0].id <= 5 ? (
+                personalData[0].id <= 50000000 ? (
                     <div className="fondo-princ p-4 mb-4 rounded-lg">
                         <form
                             onSubmit={exdocente}
@@ -2109,7 +2110,7 @@ function PersonalEditExtra({
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="dependencia_res"
                                             >
-                                                dependencia
+                                                dependencia O FACULTAD
                                             </label>
                                             <input
                                                 value={data.dependencia_res}
@@ -2199,6 +2200,7 @@ function PersonalEditExtra({
                             (resolucionesycontratoDat) => (
                                 <Resolucionesycontrato
                                     key={resolucionesycontratoDat.id}
+                                    img={img}
                                     resolucionesycontratoDat={
                                         resolucionesycontratoDat
                                     }

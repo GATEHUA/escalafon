@@ -24,7 +24,7 @@ class PersonalController extends Controller
         // dd(Storage::url(''),"asds");
 
         $user = Auth::user();
-        if($user->id<=5)
+        if($user->id<=50000000)
         {
         return Inertia::render('Personal/Index', [
             'personal' => Personal::with(['user', 'administrativo', 'docente', 'familia', 'neducativo', 'exlaboral' => ['exlabprivada', 'exlabpublica'], 'exdocente', 'otrotrabajo', 'documento', 'resolucionesycontrato'])->latest('id')->get(),
@@ -74,6 +74,14 @@ class PersonalController extends Controller
         // return $pdf->stream();
     }
 
+    public function pdfResoluciones(Personal $personal){
+        // echo($personal);
+        return Inertia::render('Personal/Pdf_Resoluciones', [                
+            'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->with('administrativo', 'docente')->get(),
+            'resolucionesycontratoData' => Resolucionesycontrato::where('personal_id', '=', $personal->id)->latest('id')->get(),
+            'img' => Storage::url('')
+            ]);
+    }
     public function create()
     {
 
@@ -84,7 +92,7 @@ class PersonalController extends Controller
 
     //    dd($user->id,$personal);
 
-        if($user->id<=5){
+        if($user->id<=50000000){
             return Inertia::render('Personal/Create',[
                 'personId'=>$personal,
             ]);
@@ -205,13 +213,13 @@ class PersonalController extends Controller
         if ($validate['foto'] != '') {
             $dtemporal = $validate['apellido_paterno'].' '.$validate['apellido_materno'].' '.$validate['nombres'].' '.time() . '.' . $validate['foto']->extension();
             // $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
-            $validate['foto']->storeAs('fotoPer',  $dtemporal, 's3');
+            $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
             $validate['foto'] = $dtemporal;
         }
         if ($validate['val_dni'] != '') {
             $dtemporal2 = $validate['apellido_paterno'].' '.$validate['apellido_materno'].' '.$validate['nombres'].' '.time() . '.' . $validate['val_dni']->extension();
             // $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal2, 'public');
-            $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal2, 's3');
+            $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal2, 'public');
             $validate['val_dni'] = $dtemporal2;
         }
 
@@ -250,7 +258,7 @@ class PersonalController extends Controller
         // dd(auth()->user()->name);
         // dd($personalVal->id,$personal->id);
         // dd(Storage::url(""));
-        if($user->id<=5){
+        if($user->id<=50000000){
             return Inertia::render('Personal/PersonalEdit', [
                 'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->with('administrativo', 'docente')->get(),
                 // 'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),
@@ -299,7 +307,7 @@ class PersonalController extends Controller
         // dd($personal);
 
         // dd(Storage::url(''));
-        if($user->id<=5){
+        if($user->id<=50000000){
             return Inertia::render('Personal/PersonalEditExtra', [
                 'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->with('administrativo', 'docente')->get(),
                 'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),
@@ -449,21 +457,21 @@ class PersonalController extends Controller
         
         if (is_string($validate['foto']) === false && $validate['foto']) {
             // Storage::delete('public/fotoPer/' . $personal->foto);
-            Storage::disk('s3')->delete('fotoPer/' . $personal->foto);
+            Storage::disk('public')->delete('fotoPer/' . $personal->foto);
 
             $dtemporal = $validate['apellido_paterno'].' '.$validate['apellido_materno'].' '.$validate['nombres'].' '.time() . '.' . $validate['foto']->extension();
             // $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
-            $validate['foto']->storeAs('fotoPer',  $dtemporal, 's3');
+            $validate['foto']->storeAs('fotoPer',  $dtemporal, 'public');
             $validate['foto'] = $dtemporal;
             
         }
 
         if (is_string($validate['val_dni']) === false && $validate['val_dni']) {
             // Storage::delete('public/Dni_I_Per/' . $personal->val_dni);
-            Storage::disk('s3')->delete('Dni_I_Per/' . $personal->val_dni);
+            Storage::disk('public')->delete('Dni_I_Per/' . $personal->val_dni);
             $dtemporal2 = $validate['apellido_paterno'].' '.$validate['apellido_materno'].' '.$validate['nombres'].' '.time() . '.' . $validate['val_dni']->extension();
             // $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal2, 'public');
-            $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal2, 's3');
+            $validate['val_dni']->storeAs('Dni_I_Per', $dtemporal2, 'public');
             $validate['val_dni'] = $dtemporal2;
             
         }
@@ -502,7 +510,7 @@ class PersonalController extends Controller
         // if((Storage::delete('public/fotoPer/' . $personal->foto)||!$personal->foto)&&(Storage::delete('public/Dni_I_Per/' . $personal->val_dni)||!$personal->val_dni)){
         //     $personal->delete();
         // }
-        if((Storage::disk('s3')->delete('fotoPer/' . $personal->foto)||!$personal->foto)&&(Storage::disk('s3')->delete('Dni_I_Per/' . $personal->val_dni)||!$personal->val_dni)){
+        if((Storage::disk('public')->delete('fotoPer/' . $personal->foto)||!$personal->foto)&&(Storage::disk('public')->delete('Dni_I_Per/' . $personal->val_dni)||!$personal->val_dni)){
             $personal->delete();
         }
         // return redirect(route('personal.index'));

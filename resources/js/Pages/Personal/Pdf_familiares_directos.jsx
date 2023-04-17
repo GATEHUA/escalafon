@@ -115,9 +115,21 @@ function Pdf_familiares_directos({ familiaData }) {
                         <tbody>
                             {familiaData.map((familiaDat, index) => (
                                 <tr key={familiaDat.id}>
-                                    <td className="border h-7 border-black">
+                                    {/* <td className="border h-7 border-black">
                                         {familiaDat.t_relacion_f ? (
                                             familiaDat.t_relacion_f
+                                        ) : (
+                                            <>&nbsp;</>
+                                        )}
+                                    </td> */}
+                                    <td className="border h-7 border-black">
+                                        {familiaDat.t_relacion_f ? (
+                                            familiaDat.t_relacion_f ===
+                                            "HIJO" ? (
+                                                "HIJO(A)"
+                                            ) : (
+                                                familiaDat.t_relacion_f
+                                            )
                                         ) : (
                                             <>&nbsp;</>
                                         )}

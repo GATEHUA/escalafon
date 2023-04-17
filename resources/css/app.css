@@ -261,3 +261,104 @@ input:-ms-input-placeholder {
         width: 70%;
     }
 }
+/* @media print {
+    @page {
+        margin-top: 1cm;
+        margin-bottom: 1cm;
+        margin-left: 2cm;
+        margin-right: 2cm;
+        @top-center {
+            content: "Encabezado personalizado";
+        }
+        @bottom-center {
+            content: "Pie de página personalizado";
+        }
+    }
+} */
+
+/* @page {
+    margin-top: 50mm;
+    margin-bottom: 25mm;
+    @top-center {
+        content: "Encabezado personalizado";
+    }
+    @bottom-center {
+        content: "Pie de página personalizado";
+    }
+} */
+/* 
+@media print {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50mm;
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 25mm;
+        background-color: #f2f2f2;
+        text-align: center;
+    }
+
+    main {
+        page-break-before: always;
+    }
+} */
+
+/* body {
+    margin: 0;
+    padding: 0;
+    background-color: #FAFAFA;
+    font: 12pt "Tahoma";
+  } */
+/* @page {
+
+    margin: 1.4cm 0.6cm;
+} */
+/* @media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    .page {
+        margin: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+.page {
+    width: 21cm;
+    min-height: 29.7cm;
+    padding: 2cm;
+    margin: 1cm auto;
+    border: 1px #d3d3d3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+} */
+
+.page {
+    width: 21cm;
+    height: auto;
+    /* min-height: 29.7cm; */
+    padding: 1.4cm 0.6cm 0.7cm 0.6cm;
+    margin: 1cm auto;
+    margin: auto;
+    border: 1px #d3d3d3 solid;
+    border-radius: 5px;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}

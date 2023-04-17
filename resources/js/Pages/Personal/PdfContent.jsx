@@ -2,9 +2,11 @@ import React, { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import Pdf_familiares_directos from "./Pdf_familiares_directos";
 import Pdf_nivel_educativo from "./Pdf_nivel_educativo";
-import Pdf_ex_laboral from "./Pdf_ex_laboral";
-import Pdf_ex_docente from "./Pdf_ex_docente";
+// import Pdf_ex_laboral from "./Pdf_ex_laboral";
+// import Pdf_ex_docente from "./Pdf_ex_docente";
 import Pdf_otro_trabajo from "./Pdf_otro_trabajo";
+import fotopred from "../../../../public/Images/foto_predeterminado.webp";
+
 import Swal from "sweetalert2";
 import { Link } from "@inertiajs/inertia-react";
 import moment from "moment/moment";
@@ -107,8 +109,8 @@ function PdfContent({
         return novo;
     });
 
-    console.log("novoneducativoData");
-    console.log(novoneducativoData);
+    // console.log("novoneducativoData");
+    // console.log(novoneducativoData);
     novoneducativoData.sort((a, b) => {
         if (a.identy < b.identy) {
             return -1;
@@ -153,7 +155,7 @@ function PdfContent({
                                     src={
                                         personalData[0].foto
                                             ? `${img}fotoPer/${personalData[0].foto}`
-                                            : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                                            : fotopred
                                     }
                                     alt=""
                                 />

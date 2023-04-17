@@ -3,7 +3,9 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/inertia-react";
 import Swal from "sweetalert2";
 import { Inertia } from "@inertiajs/inertia";
-// import { read, utils, writeFileXLSX } from "xlsx";
+import { read, utils, writeFileXLSX } from "xlsx";
+import fotopred from "../../../../public/Images/foto_predeterminado.webp";
+
 // import XLSX from "xlsx";
 // import XLSX from "xlsx";
 // import { Collapse } from "react-collapse";
@@ -69,6 +71,8 @@ const Index = ({ auth, personal, files }) => {
     // } else {
     //     console.log("attribute no es un arreglo");
     // }
+    //prueba
+    //prueba
 
     useEffect(() => {
         setResults(personal);
@@ -360,7 +364,7 @@ const Index = ({ auth, personal, files }) => {
                     );
                 });
                 setResults(filteredData);
-            } else if (dateElect == "NACIEMIENTO") {
+            } else if (dateElect == "NACIMIENTO") {
                 let filteredData = personal.filter((person) => {
                     // console.log(fecha.fecha_Ingreso_undac);
                     return (
@@ -380,72 +384,150 @@ const Index = ({ auth, personal, files }) => {
                 setResults(filteredData);
             }
         } else {
+            const searchWords = search.split(/\s*[,;~]\s*/);
             if (dateElect == "INGRESO") {
-                let filteredData = personal.filter((person) => {
-                    // console.log(fecha.fecha_Ingreso_undac);
-                    return (
-                        person.fecha_Ingreso_undac >= startDate &&
-                        person.fecha_Ingreso_undac <= endDate &&
-                        Object.values(person).some(
-                            (value) =>
-                                value &&
-                                value
-                                    .toString()
-                                    .toLowerCase()
-                                    .includes(search.toLowerCase())
+                let filteredData = personal.filter((item) => {
+                    const allData = Object.values(item)
+                        .concat(
+                            item.neducativo &&
+                                item.neducativo.map((ned) =>
+                                    Object.values(ned)
+                                ),
+                            item.docente && Object.values(item.docente).flat(),
+                            item.administrativo &&
+                                Object.values(item.administrativo).flat()
                         )
+                        .toString()
+                        .toLocaleLowerCase();
+                    // console.log(fecha.fecha_Ingreso_undac);
+                    let valMinBus = searchWords.map((x) => {
+                        return x ? x.toString().toLocaleLowerCase() : "";
+                    });
+                    return (
+                        item.fecha_Ingreso_undac >= startDate &&
+                        item.fecha_Ingreso_undac <= endDate &&
+                        valMinBus.every((x) => allData.split(",").includes(x))
                     );
                 });
                 setResults(filteredData);
             } else if (dateElect == "") {
             } else if (dateElect == "NOMBRAMIENTO") {
-                let filteredData = personal.filter((person) => {
-                    // console.log(fecha.fecha_Ingreso_undac);
-                    return (
-                        person.nombra_fecha >= startDate &&
-                        person.nombra_fecha <= endDate &&
-                        Object.values(person).some(
-                            (value) =>
-                                value &&
-                                value
-                                    .toString()
-                                    .toLowerCase()
-                                    .includes(search.toLowerCase())
+                // let filteredData = personal.filter((person) => {
+                //     // console.log(fecha.fecha_Ingreso_undac);
+                //     return (
+                //         person.nombra_fecha >= startDate &&
+                //         person.nombra_fecha <= endDate &&
+                //         Object.values(person).some(
+                //             (value) =>
+                //                 value &&
+                //                 value
+                //                     .toString()
+                //                     .toLowerCase()
+                //                     .includes(search.toLowerCase())
+                //         )
+                //     );
+                // });
+                let filteredData = personal.filter((item) => {
+                    const allData = Object.values(item)
+                        .concat(
+                            item.neducativo &&
+                                item.neducativo.map((ned) =>
+                                    Object.values(ned)
+                                ),
+                            item.docente && Object.values(item.docente).flat(),
+                            item.administrativo &&
+                                Object.values(item.administrativo).flat()
                         )
+                        .toString()
+                        .toLocaleLowerCase();
+                    // console.log(fecha.fecha_Ingreso_undac);
+                    let valMinBus = searchWords.map((x) => {
+                        return x ? x.toString().toLocaleLowerCase() : "";
+                    });
+                    return (
+                        item.nombra_fecha >= startDate &&
+                        item.nombra_fecha <= endDate &&
+                        valMinBus.every((x) => allData.split(",").includes(x))
                     );
                 });
                 setResults(filteredData);
-            } else if (dateElect == "NACIEMIENTO") {
-                let filteredData = personal.filter((person) => {
-                    // console.log(fecha.fecha_Ingreso_undac);
-                    return (
-                        person.fecha_nacimiento >= startDate &&
-                        person.fecha_nacimiento <= endDate &&
-                        Object.values(person).some(
-                            (value) =>
-                                value &&
-                                value
-                                    .toString()
-                                    .toLowerCase()
-                                    .includes(search.toLowerCase())
+            } else if (dateElect == "NACIMIENTO") {
+                // let filteredData = personal.filter((person) => {
+                //     // console.log(fecha.fecha_Ingreso_undac);
+                //     return (
+                //         person.fecha_nacimiento >= startDate &&
+                //         person.fecha_nacimiento <= endDate &&
+                //         Object.values(person).some(
+                //             (value) =>
+                //                 value &&
+                //                 value
+                //                     .toString()
+                //                     .toLowerCase()
+                //                     .includes(search.toLowerCase())
+                //         )
+                //     );
+                // });
+                let filteredData = personal.filter((item) => {
+                    const allData = Object.values(item)
+                        .concat(
+                            item.neducativo &&
+                                item.neducativo.map((ned) =>
+                                    Object.values(ned)
+                                ),
+                            item.docente && Object.values(item.docente).flat(),
+                            item.administrativo &&
+                                Object.values(item.administrativo).flat()
                         )
+                        .toString()
+                        .toLocaleLowerCase();
+                    // console.log(fecha.fecha_Ingreso_undac);
+                    let valMinBus = searchWords.map((x) => {
+                        return x ? x.toString().toLocaleLowerCase() : "";
+                    });
+                    return (
+                        item.fecha_nacimiento >= startDate &&
+                        item.fecha_nacimiento <= endDate &&
+                        valMinBus.every((x) => allData.split(",").includes(x))
                     );
                 });
                 setResults(filteredData);
             } else if (dateElect == "JUBILACION") {
-                let filteredData = personal.filter((person) => {
-                    // console.log(fecha.fecha_Ingreso_undac);
-                    return (
-                        person.fecha_jubilacion >= startDate &&
-                        person.fecha_jubilacion <= endDate &&
-                        Object.values(person).some(
-                            (value) =>
-                                value &&
-                                value
-                                    .toString()
-                                    .toLowerCase()
-                                    .includes(search.toLowerCase())
+                // let filteredData = personal.filter((person) => {
+                //     // console.log(fecha.fecha_Ingreso_undac);
+                //     return (
+                //         person.fecha_jubilacion >= startDate &&
+                //         person.fecha_jubilacion <= endDate &&
+                //         Object.values(person).some(
+                //             (value) =>
+                //                 value &&
+                //                 value
+                //                     .toString()
+                //                     .toLowerCase()
+                //                     .includes(search.toLowerCase())
+                //         )
+                //     );
+                // });
+                let filteredData = personal.filter((item) => {
+                    const allData = Object.values(item)
+                        .concat(
+                            item.neducativo &&
+                                item.neducativo.map((ned) =>
+                                    Object.values(ned)
+                                ),
+                            item.docente && Object.values(item.docente).flat(),
+                            item.administrativo &&
+                                Object.values(item.administrativo).flat()
                         )
+                        .toString()
+                        .toLocaleLowerCase();
+                    // console.log(fecha.fecha_Ingreso_undac);
+                    let valMinBus = searchWords.map((x) => {
+                        return x ? x.toString().toLocaleLowerCase() : "";
+                    });
+                    return (
+                        item.fecha_jubilacion >= startDate &&
+                        item.fecha_jubilacion <= endDate &&
+                        valMinBus.every((x) => allData.split(",").includes(x))
                     );
                 });
                 setResults(filteredData);
@@ -524,18 +606,343 @@ const Index = ({ auth, personal, files }) => {
     //     const wb = utils.table_to_book(htmlTable);
     //     writeFileXLSX(wb, "table.xlsx");
     // };
+
+    // const dataPrueba123 = [
+    //     {
+    //         id: "1",
+    //         loop: "asd",
+    //         asd: "asdsad",
+    //         zxcvvv: "xvdzdf",
+
+    //         prueba2: [
+    //             {
+    //                 id: "1",
+    //                 loop: "asd",
+    //                 asd: "asdsad",
+    //                 zxcvvv: "xvdzdf",
+    //                 asdasdchgj213: "asdasd",
+    //             },
+    //             { id: "12", loop: "asd2", asd: "asdsad2", zxcvvv: "xvdzdf2" },
+    //         ],
+    //     },
+    //     {
+    //         id: "2",
+    //         loop: "asd2",
+    //         asd: "asdsad2",
+    //         xzc: "zxczxc",
+    //         prueba2: [
+    //             {
+    //                 id: "12",
+    //                 loop: "asd2",
+    //                 asd: "asdsad2",
+    //                 zxcvvv: "xvdzdf2",
+    //             },
+    //             {
+    //                 id: "12",
+    //                 loop: "asd2",
+    //                 asd: "asdsad2",
+    //                 zxcvvv: "xvdzdf2",
+    //             },
+    //         ],
+    //     },
+    // ];
+
+    // const data = [
+    //     {
+    //         id: 1,
+    //         name: "John Doe",
+    //         email: "john.doe@example.com",
+    //         address: {
+    //             street: "123 Main St",
+    //             city: "Anytown",
+    //             state: "CA",
+    //             zip: "12345",
+    //         },
+    //     },
+    //     {
+    //         id: 2,
+    //         name: "Jane Smith",
+    //         email: "jane.smith@example.com",
+    //         address: [
+    //             {
+    //                 street: "456 Oak St1",
+    //                 city: "Anytown1",
+    //                 state: "CA1",
+    //                 zip: "1234567891",
+    //             },
+    //             {
+    //                 street: "456 Oak St2",
+    //                 city: "Anytown2",
+    //                 state: "CA2",
+    //                 zip: "1234567892",
+    //             },
+    //             {
+    //                 street: "456 Oak St3",
+    //                 city: "Anytown3",
+    //                 state: "CA3",
+    //                 zip: "1234567893",
+    //             },
+    //         ],
+    //     },
+    // ];
+    const neducativo_results = results.flatMap((item) =>
+        item.neducativo.map((prueba2Item) => prueba2Item)
+    );
+    const resoluciones_results = results.flatMap((item) =>
+        item.resolucionesycontrato.map((prueba2Item) => prueba2Item)
+    );
+    console.log(neducativo_results);
+    const convertDataPersonal = (data) => {
+        const headers = [
+            "ID",
+            "E-MAIL(USER)",
+            "FECHA DE NACIMIENTO",
+            "APELLIDO PATERNO",
+            "APELLIDO MATERNO",
+            "NOMBRES(S)",
+            "FECHA DE INGRESO",
+            "FECHA DE NOMBRAMIENTO",
+            "CONDICION",
+            "SITUACION",
+            "DOCENTE_CATEGORIA",
+            "DOCENTE_DEDICACION",
+            "DOCENTE_FACULTAD",
+            "DOCENTE_ESCUELA",
+            "DOCENTE_HORAS(DIARIAS)",
+            "ADMINISTRATIVO_CATEGORIA",
+            "ADMINISTRATIVO_NIVEL",
+            "ADMINISTRATIVO_DEPENDENCIA",
+            "ESTADO",
+            "FECHA DE JUBILACION",
+            "GENERO",
+            "PAIS",
+            "DEPARTAMENTO",
+            "PROVINCIA",
+            "DISTRITO",
+            "TIPO DE DOCUMENTO",
+            "DNI",
+            "REGIMEN PENSIONARIO",
+            "NOMBRE DE LA AFP",
+            "RUC",
+            "ESTADO CIVIL",
+            "DOMICILIO ACTUAL",
+            "DISTRITO DEL DOMICILIO",
+            "PROVINCIA DEL DOMICILIO",
+            "DEPARTAMENTO DEL DOMICILIO",
+            "EMAIL",
+            "TELEFONO FIJO",
+            "TELEFONO CELULAR",
+            "CODIGO",
+            "REGIMEN LABORAL",
+        ];
+        const rows = data.map((item) => [
+            item.id,
+            item.user.email,
+            item.fecha_nacimiento,
+            item.apellido_paterno,
+            item.apellido_materno,
+            item.nombres,
+            item.fecha_Ingreso_undac,
+            item.nombra_fecha,
+            item.condicion,
+            item.situacion,
+            item.docente ? item.docente.docente_t : null,
+            item.docente ? item.docente.dedicacion_t : null,
+            item.docente ? item.docente.facultad : null,
+            item.docente ? item.docente.escuela : null,
+            item.docente ? item.docente.horas_d : null,
+            item.administrativo ? item.administrativo.administrativo_t : null,
+            item.administrativo ? item.administrativo.nivel_remunerativo : null,
+            item.administrativo ? item.administrativo.dependencia : null,
+            item.estado,
+            item.fecha_jubilacion,
+            item.genero,
+            item.pais,
+            item.departamento,
+            item.provincia,
+            item.distrito,
+            item.tipo_documento,
+            item.dni,
+            item.regimen_pensionario,
+            item.nombre_afp,
+            item.ruc,
+            item.domicilio_actual,
+            item.distrito_domicilio,
+            item.provincia_domicilio,
+            item.departamento_domicilio,
+            item.email,
+            item.telefono_fijo,
+            item.telefono_celular,
+            item.codigo,
+            item.regimen_laboral,
+        ]);
+
+        return [headers, ...rows];
+    };
+    const convertDataNeducativo = (data) => {
+        const headers = [
+            "ID",
+            "PERSONAL_ID",
+            "GRADO",
+            "ETAPA",
+            "NOMBRE DE LA INSTITUCION",
+            "DESCRIPCION",
+            "FECHA DE CULMINACION",
+            "DOCUMENTO CARGADO",
+        ];
+        const rows = data.map((item) => [
+            item.id ? item.id : null,
+            item.personal_id ? item.personal_id : null,
+            item.nivel_educativo_ne ? item.nivel_educativo_ne : null,
+            item.etapa_ne ? item.etapa_ne : null,
+            item.nombre_institucion_ne ? item.nombre_institucion_ne : null,
+            item.descripcion_ne ? item.descripcion_ne : null,
+            item.fecha_culminacion_ne ? item.fecha_culminacion_ne : null,
+            item.documento_val_ne ? item.documento_val_ne : null,
+        ]);
+        return [headers, ...rows];
+    };
+    const convertDataResoluciones = (data) => {
+        const headers = [
+            "ID",
+            "PERSONAL_ID",
+            "CODIGO",
+            "TIPO",
+            "FECHA",
+            "SE RESUELVE",
+            "VIGENCIA",
+            "CATEGORIA ALCANZADA",
+            "NIVEL ALCANZADO",
+            "ANTIGUEDAD DESDE",
+            "ANTIGUEDAD HASTA",
+            "CONDICION",
+            "DEPENDENCIA O FACULTAD",
+            "OBSERVACIONES",
+            "DOCUMENTO CARGADO",
+        ];
+        const rows = data.map((item) => [
+            item.id ? item.id : null,
+            item.personal_id ? item.personal_id : null,
+            item.cod_res ? item.cod_res : null,
+            item.tipo_res ? item.tipo_res : null,
+            item.fecha_dic_res ? item.fecha_dic_res : null,
+            item.des_art_pri_res ? item.des_art_pri_res : null,
+            item.vigencia_res ? item.vigencia_res : null,
+            item.categoria_alcanz_res ? item.categoria_alcanz_res : null,
+            item.nivel_alcanz_res ? item.nivel_alcanz_res : null,
+            item.antiguedad_in_res ? item.antiguedad_in_res : null,
+            item.antiguedad_sa_res ? item.antiguedad_sa_res : null,
+            item.condicion_res ? item.condicion_res : null,
+            item.dependencia_res ? item.dependencia_res : null,
+            item.observacion_res ? item.observacion_res : null,
+            item.documento_val_res ? item.documento_val_res : null,
+        ]);
+        return [headers, ...rows];
+    };
+
+    // console.log(convertData(data));
+
+    console.log("asdasd");
+    // console.log(PRUEBA2_dataPrueba123);
+
+    // function flattenArray(arr) {
+    //     const toReturn = [];
+    //     arr.forEach((obj) => {
+    //         const flatObject = {};
+    //         Object.keys(obj).forEach((key) => {
+    //             if (Array.isArray(obj[key])) {
+    //                 obj[key].forEach((subObj, index) => {
+    //                     Object.keys(subObj).forEach((subKey) => {
+    //                         flatObject[`${key}_${index}_${subKey}`] =
+    //                             subObj[subKey];
+    //                     });
+    //                 });
+    //             } else {
+    //                 flatObject[key] = obj[key];
+    //             }
+    //         });
+    //         toReturn.push(flatObject);
+    //     });
+    //     return toReturn;
+    // }
+    // const qwer2qwe = flattenArray(results);
+
+    function flattenData(array) {
+        return array.map((obj) => {
+            const flattenedObj = {};
+            Object.keys(obj).forEach((key) => {
+                if (typeof obj[key] === "object" && obj[key] !== null) {
+                    Object.keys(obj[key]).forEach((nestedKey) => {
+                        flattenedObj[`${key}_${nestedKey}`] =
+                            obj[key][nestedKey];
+                    });
+                } else {
+                    flattenedObj[key] = obj[key];
+                }
+            });
+            return flattenedObj;
+        });
+    }
+
+    // const dasadsadq = flattenData(dataPrueba123);
+    // console.log("dasadsadq");
+    // console.log(dasadsadq);
+
+    // function flattenObject(ob) {
+    //     const toReturn = {};
+    //     Object.keys(ob).map((i) => {
+    //         if (typeof ob[i] === "object" && ob[i] !== null) {
+    //             // console.log(ob[i]);
+    //             //ob[person]
+    //             const flatObject = flattenObject(ob[i]);
+    //             Object.keys(flatObject).map((x) => {
+    //                 toReturn[`${i}.${x}`] = flatObject[x];
+    //             });
+    //         } else {
+    //             toReturn[i] = ob[i];
+    //         }
+    //     });
+    //     return toReturn;
+    // }
+    // const resultsdefine = flattenObject(results);
+    // console.log("resultsdefine");
+
+    // console.log(resultsdefine);
+
     // const exportFile = () => {
     //     const ws = utils.json_to_sheet(results);
     //     const wb = utils.book_new();
     //     utils.book_append_sheet(wb, ws, "Data");
+
     //     writeFileXLSX(wb, "SheetJSReactAoO.xlsx");
     // };
+
+    const exportFile = () => {
+        const wb = utils.book_new();
+
+        // Creamos la primera hoja de cálculo
+        const ws1 = utils.json_to_sheet(convertDataPersonal(results));
+        utils.book_append_sheet(wb, ws1, "Data1");
+
+        // Creamos la segunda hoja de cálculo
+        const ws2 = utils.json_to_sheet(
+            convertDataNeducativo(neducativo_results)
+        );
+        utils.book_append_sheet(wb, ws2, "Data2");
+        const ws3 = utils.json_to_sheet(
+            convertDataResoluciones(resoluciones_results)
+        );
+        utils.book_append_sheet(wb, ws3, "Data3");
+
+        // Exportamos el libro de trabajo
+        writeFileXLSX(wb, "SheetJSReactAoO.xlsx");
+    };
 
     return (
         <AuthenticatedLayout auth={auth}>
             <div className=" p-3 ">
-                <div className="flex justify-between">
-                    <div>
+                <div className="flex justify-between items-center">
+                    {/* <div>
                         <button
                             className="inline-flex h-10 items-center text-white fondo-princ border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-2 focus:ring-blue-500 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                             //className="border h-10 rounded-lg inline-flex items-center border-gray-300 text-white "
@@ -695,8 +1102,35 @@ const Index = ({ auth, personal, files }) => {
                                 </li>
                             </ul>
                         </>
-                    </div>
+                    </div> */}
 
+                    <button
+                        // onClick={handlePrint}
+                        onClick={exportFile}
+                        style={{ background: "green" }}
+                        className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300  rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-green-600 ring-offset-green-200 hover:ring-offset-green-500 ease focus:outline-none"
+                    >
+                        <span className="absolute bottom-0 right-0 w-8 h-20 -mb-8 -mr-5 transition-all duration-300 ease-out transform rotate-45 translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                        <span className="absolute top-0 left-0 w-20 h-8 -mt-1 -ml-12 transition-all duration-300 ease-out transform -rotate-45 -translate-x-1 sombra border-white border opacity-10 group-hover:translate-x-0"></span>
+                        <span className="relative z-20 flex items-center text-sm">
+                            <svg
+                                className="relative w-5 h-5 mr-2 text-white"
+                                stroke="currentColor"
+                                fill="currentColor"
+                                strokeWidth="0"
+                                viewBox="0 0 24 24"
+                                height="1em"
+                                width="1em"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <g>
+                                    <path fill="none" d="M0 0h24v24H0z"></path>
+                                    <path d="M2.859 2.877l12.57-1.795a.5.5 0 0 1 .571.495v20.846a.5.5 0 0 1-.57.495L2.858 21.123a1 1 0 0 1-.859-.99V3.867a1 1 0 0 1 .859-.99zM17 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1h-4V3zm-6.8 9L13 8h-2.4L9 10.286 7.4 8H5l2.8 4L5 16h2.4L9 13.714 10.6 16H13l-2.8-4z"></path>
+                                </g>
+                            </svg>
+                            Descargar Excel
+                        </span>
+                    </button>
                     <div className="flex pb-2 justify-around items-center ">
                         <select
                             value={dateElect}
@@ -708,7 +1142,7 @@ const Index = ({ auth, personal, files }) => {
                             <option value="">-Seleccione Fecha-</option>
                             <option value="INGRESO">INGRESO</option>
                             <option value="NOMBRAMIENTO">NOMBRAMIENTO</option>
-                            <option value="NACIEMIENTO">NACIEMIENTO</option>
+                            <option value="NACIMIENTO">NACIMIENTO</option>
                             <option value="JUBILACION">JUBILACION</option>
                         </select>
                         <p className="text-white">:</p>
@@ -777,7 +1211,7 @@ const Index = ({ auth, personal, files }) => {
                             <span class="sr-only">Search</span>
                         </button>
                     </div> */}
-                    <div className="pb-4  dark:bg-gray-900">
+                    <div className="pb-2 dark:bg-gray-900 ">
                         <div className="relative flex">
                             {/* <div className="flex   absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></div> */}
                             <input
@@ -811,6 +1245,7 @@ const Index = ({ auth, personal, files }) => {
                     </div>
                 </div>
                 {/* <button onClick={exportFile}>Export to Excel</button> */}
+
                 <div
                     className="fondo-princ-table overflow-auto relative shadow-md sm:rounded-lg"
                     style={{ height: "80vh" }}
@@ -824,6 +1259,11 @@ const Index = ({ auth, personal, files }) => {
                                 <th scope="col" className="py-3 px-6">
                                     <div className="flex items-center">
                                         ACCIONES
+                                    </div>
+                                </th>
+                                <th scope="col" className="py-3 px-6">
+                                    <div className="flex justify-center items-center">
+                                        E-MAIL(USER)
                                     </div>
                                 </th>
                                 <th scope="col" className="py-3 px-6">
@@ -1449,6 +1889,29 @@ const Index = ({ auth, personal, files }) => {
                                                 </svg>
                                             </button>
 
+                                            <Link
+                                                method="get"
+                                                href={route(
+                                                    "personal.pdfResoluciones",
+                                                    person.id
+                                                )}
+                                                className="w-16 ml-1 text-white hover:text-blue-500 hover:scale-110 hover:cursor-pointer"
+                                            >
+                                                <svg
+                                                    stroke="currentColor"
+                                                    fill="currentColor"
+                                                    strokeWidth="0"
+                                                    version="1.1"
+                                                    viewBox="0 0 16 16"
+                                                    height="1em"
+                                                    width="1em"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path d="M13.156 9.211c-0.213-0.21-0.686-0.321-1.406-0.331-0.487-0.005-1.073 0.038-1.69 0.124-0.276-0.159-0.561-0.333-0.784-0.542-0.601-0.561-1.103-1.34-1.415-2.197 0.020-0.080 0.038-0.15 0.054-0.222 0 0 0.339-1.923 0.249-2.573-0.012-0.089-0.020-0.115-0.044-0.184l-0.029-0.076c-0.092-0.212-0.273-0.437-0.556-0.425l-0.171-0.005c-0.316 0-0.573 0.161-0.64 0.403-0.205 0.757 0.007 1.889 0.39 3.355l-0.098 0.239c-0.275 0.67-0.619 1.345-0.923 1.94l-0.040 0.077c-0.32 0.626-0.61 1.157-0.873 1.607l-0.271 0.144c-0.020 0.010-0.485 0.257-0.594 0.323-0.926 0.553-1.539 1.18-1.641 1.678-0.032 0.159-0.008 0.362 0.156 0.456l0.263 0.132c0.114 0.057 0.234 0.086 0.357 0.086 0.659 0 1.425-0.821 2.48-2.662 1.218-0.396 2.604-0.726 3.819-0.908 0.926 0.521 2.065 0.883 2.783 0.883 0.128 0 0.238-0.012 0.327-0.036 0.138-0.037 0.254-0.115 0.325-0.222 0.139-0.21 0.168-0.499 0.13-0.795-0.011-0.088-0.081-0.196-0.157-0.271zM3.307 12.72c0.12-0.329 0.596-0.979 1.3-1.556 0.044-0.036 0.153-0.138 0.253-0.233-0.736 1.174-1.229 1.642-1.553 1.788zM7.476 3.12c0.212 0 0.333 0.534 0.343 1.035s-0.107 0.853-0.252 1.113c-0.12-0.385-0.179-0.992-0.179-1.389 0 0-0.009-0.759 0.088-0.759v0zM6.232 9.961c0.148-0.264 0.301-0.543 0.458-0.839 0.383-0.724 0.624-1.29 0.804-1.755 0.358 0.651 0.804 1.205 1.328 1.649 0.065 0.055 0.135 0.111 0.207 0.166-1.066 0.211-1.987 0.467-2.798 0.779v0zM12.952 9.901c-0.065 0.041-0.251 0.064-0.37 0.064-0.386 0-0.864-0.176-1.533-0.464 0.257-0.019 0.493-0.029 0.705-0.029 0.387 0 0.502-0.002 0.88 0.095s0.383 0.293 0.318 0.333v0z"></path>
+                                                    <path d="M14.341 3.579c-0.347-0.473-0.831-1.027-1.362-1.558s-1.085-1.015-1.558-1.362c-0.806-0.591-1.197-0.659-1.421-0.659h-7.75c-0.689 0-1.25 0.561-1.25 1.25v13.5c0 0.689 0.561 1.25 1.25 1.25h11.5c0.689 0 1.25-0.561 1.25-1.25v-9.75c0-0.224-0.068-0.615-0.659-1.421v0zM12.271 2.729c0.48 0.48 0.856 0.912 1.134 1.271h-2.406v-2.405c0.359 0.278 0.792 0.654 1.271 1.134v0zM14 14.75c0 0.136-0.114 0.25-0.25 0.25h-11.5c-0.135 0-0.25-0.114-0.25-0.25v-13.5c0-0.135 0.115-0.25 0.25-0.25 0 0 7.749-0 7.75 0v3.5c0 0.276 0.224 0.5 0.5 0.5h3.5v9.75z"></path>
+                                                </svg>
+                                            </Link>
+
                                             {/* <Link
                                                 as="button"
                                                 href={route(
@@ -1481,6 +1944,12 @@ const Index = ({ auth, personal, files }) => {
                                         scope="row"
                                         className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
                                     >
+                                        {person.user.email}
+                                    </td>
+                                    <td
+                                        scope="row"
+                                        className="py-4 px-6 font-medium text-white whitespace-nowrap dark:text-white"
+                                    >
                                         {person.fecha_nacimiento}
                                     </td>
                                     <td
@@ -1493,7 +1962,7 @@ const Index = ({ auth, personal, files }) => {
                                                 src={
                                                     person.foto
                                                         ? `${files}fotoPer/${person.foto}`
-                                                        : `https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png`
+                                                        : fotopred
                                                 }
                                                 alt=""
                                             />
@@ -1709,7 +2178,7 @@ const Index = ({ auth, personal, files }) => {
                                                                             href={`${files}documento_val_ne_Per/${ne.documento_val_ne}`}
                                                                         >
                                                                             Ver
-                                                                            Documennto
+                                                                            Documento
                                                                         </a>
                                                                     ) : (
                                                                         "-"
