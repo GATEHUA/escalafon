@@ -886,6 +886,32 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         DCU
                                                     </label>
                                                 </div>
+                                                <div className="flex py-1 md:py-0 items-center">
+                                                    <input
+                                                        checked={
+                                                            data.docente_t == ""
+                                                                ? true
+                                                                : false
+                                                        }
+                                                        onChange={(e) =>
+                                                            setData(
+                                                                "docente_t",
+                                                                e.target.value
+                                                            )
+                                                        }
+                                                        id="inline-e4-radio-D-2-D"
+                                                        type="radio"
+                                                        value=""
+                                                        name="inline-radio-group-Doc"
+                                                        className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                    />
+                                                    <label
+                                                        htmlFor="inline-e4-radio-D-2-D"
+                                                        className="uppercase ml-3 text-sm font-medium text-white dark:text-gray-300"
+                                                    >
+                                                        N.A.
+                                                    </label>
+                                                </div>
                                             </div>
                                             <InputError
                                                 message={errors.docente_t}
@@ -1061,6 +1087,34 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                             className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
                                                         >
                                                             TIEMPO PARCIAL
+                                                        </label>
+                                                    </div>
+                                                    <div className="py-1 md:py-0 flex items-center ">
+                                                        <input
+                                                            checked={
+                                                                data.dedicacion_t ==
+                                                                ""
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            onChange={(e) =>
+                                                                setData(
+                                                                    "dedicacion_t",
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                            id="inline-checked-radio-D"
+                                                            type="radio"
+                                                            value=""
+                                                            name="inline-radio-group-D-D"
+                                                            className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                        />
+                                                        <label
+                                                            htmlFor="inline-checked-radio-D-D"
+                                                            className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                                        >
+                                                            N.A
                                                         </label>
                                                     </div>
                                                     <InputError
@@ -1248,6 +1302,33 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         className="uppercase ml-3 text-sm font-medium text-white dark:text-gray-300"
                                                     >
                                                         FUNCIONARIO
+                                                    </label>
+                                                </div>
+                                                <div className="flex items-center py-1 md:py-0">
+                                                    <input
+                                                        checked={
+                                                            data.administrativo_t ==
+                                                            ""
+                                                                ? true
+                                                                : false
+                                                        }
+                                                        onChange={(e) =>
+                                                            setData(
+                                                                "administrativo_t",
+                                                                e.target.value
+                                                            )
+                                                        }
+                                                        id="inline-e-radio-A4-D"
+                                                        type="radio"
+                                                        value=""
+                                                        name="inline-radio-group-Adm"
+                                                        className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                    />
+                                                    <label
+                                                        htmlFor="inline-e-radio-A4-D"
+                                                        className="uppercase ml-3 text-sm font-medium text-white dark:text-gray-300"
+                                                    >
+                                                        N.A.
                                                     </label>
                                                 </div>
                                             </div>
@@ -1597,6 +1678,34 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 className="uppercase ml-4 text-sm font-medium text-white dark:text-gray-300"
                                                             >
                                                                 F.
+                                                            </label>
+                                                        </div>
+                                                        <div className="flex items-center py-1 md:py-0">
+                                                            <input
+                                                                checked={
+                                                                    data.nivel_remunerativo ==
+                                                                    ""
+                                                                        ? true
+                                                                        : false
+                                                                }
+                                                                onChange={(e) =>
+                                                                    setData(
+                                                                        "nivel_remunerativo",
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                                id="inline-7-radio-Adm-D"
+                                                                type="radio"
+                                                                value=""
+                                                                name="inline-radio-group-Adm2"
+                                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                            />
+                                                            <label
+                                                                htmlFor="inline-7-radio-Adm-D"
+                                                                className="uppercase ml-4 text-sm font-medium text-white dark:text-gray-300"
+                                                            >
+                                                                N.A
                                                             </label>
                                                         </div>
                                                     </div>

@@ -42,7 +42,8 @@ class NeducativoController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nivel_educativo_ne' => 'required',
+            // 'nivel_educativo_ne' => 'required',
+            'nivel_educativo_ne' => '',
             'etapa_ne' => '',
             'nombre_institucion_ne' => '',
             'descripcion_ne' => '',
@@ -73,7 +74,8 @@ class NeducativoController extends Controller
     public function storeUpdate(Request $request,Personal $personal)
     {
         $validate = $request->validate([
-            'nivel_educativo_ne' => 'required',
+            // 'nivel_educativo_ne' => 'required',
+            'nivel_educativo_ne' => '',
             'etapa_ne' => '',
             'nombre_institucion_ne' => '',
             'descripcion_ne' => '',

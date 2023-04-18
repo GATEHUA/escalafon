@@ -760,7 +760,7 @@ const Create = ({
                                                     facultad
                                                 </label>
                                                 <input
-                                                    required
+                                                    //required
                                                     value={data.facultad}
                                                     onChange={(e) =>
                                                         setData(
@@ -787,7 +787,7 @@ const Create = ({
                                                     escuela
                                                 </label>
                                                 <input
-                                                    required
+                                                    //required
                                                     value={data.escuela}
                                                     onChange={(e) =>
                                                         setData(
@@ -817,7 +817,7 @@ const Create = ({
                                                     dependencia
                                                 </label>
                                                 <input
-                                                    required
+                                                    //required
                                                     value={data.dependencia}
                                                     onChange={(e) =>
                                                         setData(
@@ -847,7 +847,7 @@ const Create = ({
                                         </label>
                                         {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
                                         <select
-                                            required
+                                            //required
                                             onChange={(e) =>
                                                 setData(
                                                     "estado",
@@ -1064,6 +1064,34 @@ const Create = ({
                                                             DCU
                                                         </label>
                                                     </div>
+                                                    <div className="flex py-1 md:py-0 items-center">
+                                                        <input
+                                                            checked={
+                                                                data.docente_t ==
+                                                                ""
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            onChange={(e) =>
+                                                                setData(
+                                                                    "docente_t",
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                            id="inline-e4-radio-D-D"
+                                                            type="radio"
+                                                            value=""
+                                                            name="inline-radio-group-Doc"
+                                                            className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                        />
+                                                        <label
+                                                            htmlFor="inline-e4-radio-D-D"
+                                                            className="uppercase ml-3 text-sm font-medium text-white dark:text-gray-300"
+                                                        >
+                                                            N.A.
+                                                        </label>
+                                                    </div>
                                                 </div>
                                                 <InputError
                                                     message={errors.docente_t}
@@ -1241,6 +1269,34 @@ const Create = ({
                                                                 TIEMPO PARCIAL
                                                             </label>
                                                         </div>
+                                                        <div className="flex items-center py-1 md:py-0">
+                                                            <input
+                                                                checked={
+                                                                    data.dedicacion_t ==
+                                                                    ""
+                                                                        ? true
+                                                                        : false
+                                                                }
+                                                                onChange={(e) =>
+                                                                    setData(
+                                                                        "dedicacion_t",
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                                id="inline-checked-radio-D-D"
+                                                                type="radio"
+                                                                value=""
+                                                                name="inline-radio-group-D"
+                                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                            />
+                                                            <label
+                                                                htmlFor="inline-checked-radio-D-D"
+                                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                                            >
+                                                                N.A.
+                                                            </label>
+                                                        </div>
                                                         <InputError
                                                             message={
                                                                 errors.dedicacion_t
@@ -1258,7 +1314,7 @@ const Create = ({
                                                     regimen laboral
                                                 </label>
                                                 <input
-                                                    required
+                                                    //required
                                                     value={data.regimen_laboral}
                                                     onChange={(e) =>
                                                         setData(
@@ -1433,6 +1489,34 @@ const Create = ({
                                                             className="uppercase ml-3 text-sm font-medium text-white dark:text-gray-300"
                                                         >
                                                             FUNCIONARIO
+                                                        </label>
+                                                    </div>
+                                                    <div className="flex items-center py-1 md:py-0">
+                                                        <input
+                                                            checked={
+                                                                data.administrativo_t ==
+                                                                ""
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            onChange={(e) =>
+                                                                setData(
+                                                                    "administrativo_t",
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                            id="inline-e-radio-A4-D"
+                                                            type="radio"
+                                                            value=""
+                                                            name="inline-radio-group-Adm"
+                                                            className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                        />
+                                                        <label
+                                                            htmlFor="inline-e-radio-A4-D"
+                                                            className="uppercase ml-3 text-sm font-medium text-white dark:text-gray-300"
+                                                        >
+                                                            N.A.
                                                         </label>
                                                     </div>
                                                 </div>
@@ -1817,6 +1901,37 @@ const Create = ({
                                                                     F.
                                                                 </label>
                                                             </div>
+                                                            <div className="flex items-center py-1 md:py-0 ">
+                                                                <input
+                                                                    checked={
+                                                                        data.nivel_remunerativo ==
+                                                                        ""
+                                                                            ? true
+                                                                            : false
+                                                                    }
+                                                                    onChange={(
+                                                                        e
+                                                                    ) =>
+                                                                        setData(
+                                                                            "nivel_remunerativo",
+                                                                            e
+                                                                                .target
+                                                                                .value
+                                                                        )
+                                                                    }
+                                                                    id="inline-7-radio-Adm-D"
+                                                                    type="radio"
+                                                                    value=""
+                                                                    name="inline-radio-group-Adm2"
+                                                                    className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                                />
+                                                                <label
+                                                                    htmlFor="inline-7-radio-Adm-D"
+                                                                    className="uppercase ml-4 text-sm font-medium text-white dark:text-gray-300"
+                                                                >
+                                                                    N.A.
+                                                                </label>
+                                                            </div>
                                                         </div>
                                                         <InputError
                                                             message={
@@ -1835,7 +1950,7 @@ const Create = ({
                                                     regimen laboral
                                                 </label>
                                                 <input
-                                                    required
+                                                    //required
                                                     value={data.regimen_laboral}
                                                     onChange={(e) =>
                                                         setData(
@@ -1877,7 +1992,7 @@ const Create = ({
                                             Apellido&nbsp;Paterno
                                         </label>
                                         <input
-                                            // required
+                                            // //required
                                             value={data.apellido_paterno}
                                             onChange={(e) =>
                                                 setData(
@@ -1911,7 +2026,7 @@ const Create = ({
                                             Apellido&nbsp;Materno
                                         </label>
                                         <input
-                                            // required
+                                            // //required
                                             value={data.apellido_materno}
                                             onChange={(e) =>
                                                 setData(
@@ -1946,7 +2061,7 @@ const Create = ({
                                                 Nombres
                                             </label>
                                             <input
-                                                // required
+                                                // //required
                                                 value={data.nombres}
                                                 onChange={(e) =>
                                                     setData(
@@ -1977,7 +2092,7 @@ const Create = ({
                                             </label>
                                             {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
                                             <select
-                                                required
+                                                //required
                                                 onChange={(e) =>
                                                     setData(
                                                         "genero",
@@ -2052,7 +2167,7 @@ const Create = ({
                                             país
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.pais}
                                             onChange={(e) =>
                                                 setData("pais", e.target.value)
@@ -2076,7 +2191,7 @@ const Create = ({
                                             departamento
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.departamento}
                                             onChange={(e) =>
                                                 setData(
@@ -2103,7 +2218,7 @@ const Create = ({
                                             provincia
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.provincia}
                                             onChange={(e) =>
                                                 setData(
@@ -2130,7 +2245,7 @@ const Create = ({
                                             distrito
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.distrito}
                                             onChange={(e) =>
                                                 setData(
@@ -2196,7 +2311,7 @@ const Create = ({
                                                 D.N.I.
                                             </label>
                                             <input
-                                                required
+                                                //required
                                                 value={data.dni}
                                                 onChange={(e) =>
                                                     setData(
@@ -2226,7 +2341,7 @@ const Create = ({
                                                 CARNET&nbsp;DE&nbsp;EXTRANJERIA
                                             </label>
                                             <input
-                                                required
+                                                //required
                                                 value={data.carnet_extranjeria}
                                                 onChange={(e) =>
                                                     setData(
@@ -2258,7 +2373,7 @@ const Create = ({
                                                 partida&nbsp;de&nbsp;nacimiento
                                             </label>
                                             <input
-                                                required
+                                                //required
                                                 value={data.partida_nacimiento}
                                                 onChange={(e) =>
                                                     setData(
@@ -2289,7 +2404,7 @@ const Create = ({
                                                 OTO&nbsp;DOCUMENTO
                                             </label>
                                             <input
-                                                required
+                                                //required
                                                 value={data.otro_documento}
                                                 onChange={(e) =>
                                                     setData(
@@ -2345,7 +2460,7 @@ const Create = ({
                                         </label>
 
                                         <input
-                                            // required
+                                            // //required
                                             name="val_dni"
                                             onChange={(e) => {
                                                 setData(
@@ -2573,7 +2688,7 @@ const Create = ({
                                             domicilio actual
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.domicilio_actual}
                                             onChange={(e) =>
                                                 setData(
@@ -2602,7 +2717,7 @@ const Create = ({
                                             distrito&nbsp;actual
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.distrito_domicilio}
                                             onChange={(e) =>
                                                 setData(
@@ -2629,7 +2744,7 @@ const Create = ({
                                             provincia&nbsp;actual
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.provincia_domicilio}
                                             onChange={(e) =>
                                                 setData(
@@ -2656,7 +2771,7 @@ const Create = ({
                                             departamaneto actual
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.departamento_domicilio}
                                             onChange={(e) =>
                                                 setData(
@@ -2713,7 +2828,7 @@ const Create = ({
                                             N° de Celular
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.telefono_celular}
                                             onChange={(e) =>
                                                 setData(
@@ -2740,7 +2855,7 @@ const Create = ({
                                             E-mail
                                         </label>
                                         <input
-                                            required
+                                            //required
                                             value={data.email}
                                             onChange={(e) =>
                                                 setData("email", e.target.value)

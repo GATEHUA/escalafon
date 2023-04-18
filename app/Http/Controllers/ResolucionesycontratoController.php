@@ -29,7 +29,8 @@ class ResolucionesycontratoController extends Controller
     {
         $validate = $request->validate([
             'cod_res' => '',
-            'tipo_res' => 'required',
+            // 'tipo_res' => 'required',
+            'tipo_res' => '',
             'fecha_dic_res' => '',
             'des_art_pri_res' => '',
             'vigencia_res' => '',
@@ -58,7 +59,8 @@ class ResolucionesycontratoController extends Controller
     {
         $validate = $request->validate([
             'cod_res' => '',
-            'tipo_res' => 'required',
+            // 'tipo_res' => 'required',
+            'tipo_res' => '',
             'fecha_dic_res' => '',
             'des_art_pri_res' => '',
             'vigencia_res' => '',
