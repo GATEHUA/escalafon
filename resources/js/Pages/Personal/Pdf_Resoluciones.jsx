@@ -317,15 +317,22 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     {personalData[0].situacion ==
                                     "ADMINISTRATIVO" ? (
                                         <p className=" text-xs w-80">
-                                            {
-                                                personalData[0].administrativo
-                                                    .administrativo_t
-                                            }{" "}
-                                            -{" "}
-                                            {
-                                                personalData[0].administrativo
-                                                    .nivel_remunerativo
-                                            }
+                                            {personalData[0].administrativo
+                                                .administrativo_t == "-"
+                                                ? " "
+                                                : personalData[0].administrativo
+                                                      .administrativo_t}{" "}
+                                            {personalData[0].administrativo
+                                                .administrativo_t == "-" &&
+                                            personalData[0].administrativo
+                                                .nivel_remunerativo == "-"
+                                                ? " "
+                                                : "-"}{" "}
+                                            {personalData[0].administrativo
+                                                .nivel_remunerativo == "-"
+                                                ? " "
+                                                : personalData[0].administrativo
+                                                      .nivel_remunerativo}
                                         </p>
                                     ) : null}
                                     {personalData[0].situacion == "DOCENTE" ? (

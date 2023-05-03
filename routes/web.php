@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PersonalController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\FamiliaController;
 use App\Http\Controllers\NeducativoController;
 use App\Http\Controllers\DocumentoController;
@@ -33,7 +34,11 @@ Route::resource('personal', PersonalController::class)
     ->only(['index', 'create', 'store', 'update', 'destroy', 'edit', 'show'])
     ->middleware(['auth']);
 
-Route::get('/usuarios',[PersonalController::class, 'vistaPdf'])->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/usuarios',[UsersController::class, 'vistaPdf'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('usuarios', UsersController::class)
+    ->only(['index', 'create', 'store', 'update', 'destroy', 'edit', 'show'])
+    ->middleware(['auth']);
 
 Route::get('personal/{personal}/Pdf', [PersonalController::class, 'vistaPdf'])->name('personal.vistaPdf')
     ->middleware(['auth']);

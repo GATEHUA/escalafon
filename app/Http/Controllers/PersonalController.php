@@ -24,7 +24,7 @@ class PersonalController extends Controller
         // dd(Storage::url(''),"asds");
 
         $user = Auth::user();
-        if($user->id<=50000000)
+        if($user->rol!=="USUARIO")
         {
         return Inertia::render('Personal/Index', [
             'personal' => Personal::with(['user', 'administrativo', 'docente', 'familia', 'neducativo', 'exlaboral' => ['exlabprivada', 'exlabpublica'], 'exdocente', 'otrotrabajo', 'documento', 'resolucionesycontrato'])->latest('id')->get(),
@@ -92,7 +92,7 @@ class PersonalController extends Controller
 
     //    dd($user->id,$personal);
 
-        if($user->id<=50000000){
+        if($user->rol!=="USUARIO"){
             return Inertia::render('Personal/Create',[
                 'personId'=>$personal,
             ]);
@@ -138,6 +138,7 @@ class PersonalController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
         $validate = $request->validate([
             // 'user_id' => '',
             //PERSONAL:
@@ -151,9 +152,9 @@ class PersonalController extends Controller
             // 'nombres' => 'required',
             // 'apellido_paterno' => 'required',
             // 'apellido_materno' => 'required',
-            'nombres' => '',
-            'apellido_paterno' => '',
-            'apellido_materno' => '',
+            'nombres' => ($user->rol !== 'ADMINISTRADOR') ? 'required' : '',
+            'apellido_paterno' => ($user->rol !== 'ADMINISTRADOR') ? 'required' : '',
+            'apellido_materno' => ($user->rol !== 'ADMINISTRADOR') ? 'required' : '',
             'genero' => '',
             // 'fecha_nacimiento' => 'required',
             'fecha_nacimiento' => '',
@@ -263,7 +264,7 @@ class PersonalController extends Controller
         // dd(auth()->user()->name);
         // dd($personalVal->id,$personal->id);
         // dd(Storage::url(""));
-        if($user->id<=50000000){
+        if($user->rol!=="USUARIO"){
             return Inertia::render('Personal/PersonalEdit', [
                 'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->with('administrativo', 'docente')->get(),
                 // 'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),
@@ -312,7 +313,7 @@ class PersonalController extends Controller
         // dd($personal);
 
         // dd(Storage::url(''));
-        if($user->id<=50000000){
+        if($user->rol!=="USUARIO"){
             return Inertia::render('Personal/PersonalEditExtra', [
                 'personalData' => Personal::where('id', '=', $personal->id)->latest('id')->with('administrativo', 'docente')->get(),
                 'documentoData' => Documento::where('personal_id', '=', $personal->id)->latest('id')->get(),

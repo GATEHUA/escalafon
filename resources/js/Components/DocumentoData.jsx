@@ -294,6 +294,7 @@ function DocumentoData({ documentoDat, img }) {
                             <a
                                 href={`${img}documentoPer/${documentoDat.documento_d}`}
                                 type="text"
+                                target="_blank"
                                 className="hover:border-blue-600 flex bg-transparent text-white border border-white rounded py-1 px-4 mb-3 "
                             >
                                 {documentoDat.documento_d}

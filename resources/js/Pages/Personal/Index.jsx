@@ -2059,39 +2059,39 @@ const Index = ({ auth, personal, files }) => {
                                                     <tbody>
                                                         <tr>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .docente
-                                                                        .docente_t
-                                                                }
+                                                                {person.docente
+                                                                    ? person
+                                                                          .docente
+                                                                          .docente_t
+                                                                    : " "}
                                                             </td>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .docente
-                                                                        .dedicacion_t
-                                                                }
+                                                                {person.docente
+                                                                    ? person
+                                                                          .docente
+                                                                          .dedicacion_t
+                                                                    : " "}
                                                             </td>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .docente
-                                                                        .facultad
-                                                                }
+                                                                {person.docente
+                                                                    ? person
+                                                                          .docente
+                                                                          .facultad
+                                                                    : " "}
                                                             </td>
                                                             <td className="border p-1 ">
-                                                                {
-                                                                    person
-                                                                        .docente
-                                                                        .escuela
-                                                                }
+                                                                {person.docente
+                                                                    ? person
+                                                                          .docente
+                                                                          .escuela
+                                                                    : " "}
                                                             </td>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .docente
-                                                                        .horas_d
-                                                                }
+                                                                {person.docente
+                                                                    ? person
+                                                                          .docente
+                                                                          .horas_d
+                                                                    : " "}
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2116,25 +2116,25 @@ const Index = ({ auth, personal, files }) => {
                                                     <tbody>
                                                         <tr>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .administrativo
-                                                                        .administrativo_t
-                                                                }
+                                                                {person.administrativo
+                                                                    ? person
+                                                                          .administrativo
+                                                                          .administrativo_t
+                                                                    : " "}
                                                             </td>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .administrativo
-                                                                        .nivel_remunerativo
-                                                                }
+                                                                {person.administrativo
+                                                                    ? person
+                                                                          .administrativo
+                                                                          .nivel_remunerativo
+                                                                    : " "}
                                                             </td>
                                                             <td className="border p-1">
-                                                                {
-                                                                    person
-                                                                        .administrativo
-                                                                        .dependencia
-                                                                }
+                                                                {person.administrativo
+                                                                    ? person
+                                                                          .administrativo
+                                                                          .dependencia
+                                                                    : " "}
                                                             </td>
                                                         </tr>
                                                     </tbody>

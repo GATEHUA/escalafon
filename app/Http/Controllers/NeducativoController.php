@@ -41,6 +41,8 @@ class NeducativoController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+        // dd($user->rol);
         $validate = $request->validate([
             // 'nivel_educativo_ne' => 'required',
             'nivel_educativo_ne' => '',
@@ -73,11 +75,13 @@ class NeducativoController extends Controller
 
     public function storeUpdate(Request $request,Personal $personal)
     {
+        $user = Auth::user();
+        // dd($user->rol);
         $validate = $request->validate([
             // 'nivel_educativo_ne' => 'required',
             'nivel_educativo_ne' => '',
             'etapa_ne' => '',
-            'nombre_institucion_ne' => '',
+            'nivel_educativo_ne' => ($user->rol !== 'ADMINISTRADOR') ? 'required' : '',
             'descripcion_ne' => '',
             'fecha_culminacion_ne' => '',
             'documento_val_ne' => 'nullable|file|max:11000',

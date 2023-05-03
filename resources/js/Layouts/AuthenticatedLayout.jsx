@@ -13,7 +13,7 @@ export default function Authenticated({ auth, header, children }) {
 
     return (
         <div className="min-h-screen fondo-general">
-            {auth.user.id <= 50000000 ? (
+            {auth.user.rol !== "USUARIO" ? (
                 <nav className="fondo-nav-yaloged ">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16">
@@ -25,16 +25,17 @@ export default function Authenticated({ auth, header, children }) {
                                 </div>
 
                                 <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <div className="hidden">
+                                    {auth.user.rol == "ADMINISTRADOR" && (
                                         <NavLink
-                                            href={route("dashboard")}
+                                            href={route("usuarios.index")}
                                             active={route().current(
-                                                "dashboard"
+                                                "usuarios.index"
                                             )}
                                         >
-                                            Dashboard
+                                            Usuarios
                                         </NavLink>
-                                    </div>
+                                    )}
+
                                     <NavLink
                                         href={route("personal.index")}
                                         active={route().current(
@@ -145,12 +146,16 @@ export default function Authenticated({ auth, header, children }) {
                     >
                         <div className="pt-2 pb-3 space-y-1">
                             <div className="hidden">
-                                <ResponsiveNavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </ResponsiveNavLink>
+                                {auth.user.rol == "ADMINISTRADOR" && (
+                                    <ResponsiveNavLink
+                                        href={route("usuarios.index")}
+                                        active={route().current(
+                                            "usuarios.index"
+                                        )}
+                                    >
+                                        Usuarios
+                                    </ResponsiveNavLink>
+                                )}
                             </div>
 
                             <ResponsiveNavLink

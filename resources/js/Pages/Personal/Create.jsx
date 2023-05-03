@@ -760,7 +760,12 @@ const Create = ({
                                                     facultad
                                                 </label>
                                                 <input
-                                                    //required
+                                                    required={
+                                                        auth.user.rol ==
+                                                        "USUARIO"
+                                                            ? true
+                                                            : false
+                                                    }
                                                     value={data.facultad}
                                                     onChange={(e) =>
                                                         setData(
@@ -787,7 +792,12 @@ const Create = ({
                                                     escuela
                                                 </label>
                                                 <input
-                                                    //required
+                                                    required={
+                                                        auth.user.rol ==
+                                                        "USUARIO"
+                                                            ? true
+                                                            : false
+                                                    }
                                                     value={data.escuela}
                                                     onChange={(e) =>
                                                         setData(
@@ -817,7 +827,12 @@ const Create = ({
                                                     dependencia
                                                 </label>
                                                 <input
-                                                    //required
+                                                    required={
+                                                        auth.user.rol ==
+                                                        "USUARIO"
+                                                            ? true
+                                                            : false
+                                                    }
                                                     value={data.dependencia}
                                                     onChange={(e) =>
                                                         setData(
@@ -847,7 +862,11 @@ const Create = ({
                                         </label>
                                         {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
                                         <select
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             onChange={(e) =>
                                                 setData(
                                                     "estado",
@@ -1068,7 +1087,7 @@ const Create = ({
                                                         <input
                                                             checked={
                                                                 data.docente_t ==
-                                                                ""
+                                                                "-"
                                                                     ? true
                                                                     : false
                                                             }
@@ -1081,7 +1100,7 @@ const Create = ({
                                                             }
                                                             id="inline-e4-radio-D-D"
                                                             type="radio"
-                                                            value=""
+                                                            value="-"
                                                             name="inline-radio-group-Doc"
                                                             className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                         />
@@ -1119,6 +1138,62 @@ const Create = ({
                                                 </div>
                                                 {data.docente_t == "DCU" ? (
                                                     <div className="flex md:my-4 my-2 md:justify-around justify-between">
+                                                        <div className="flex items-center ">
+                                                            <input
+                                                                checked={
+                                                                    data.dedicacion_t ==
+                                                                    "A1"
+                                                                        ? true
+                                                                        : false
+                                                                }
+                                                                onChange={(e) =>
+                                                                    setData(
+                                                                        "dedicacion_t",
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                                id="inline-radio-D-dcu1A"
+                                                                type="radio"
+                                                                value="A1"
+                                                                name="inline-radio-group-D-dcu"
+                                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                            />
+                                                            <label
+                                                                htmlFor="inline-radio-D-dcu1A"
+                                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                                            >
+                                                                A1
+                                                            </label>
+                                                        </div>
+                                                        <div className="flex items-center ">
+                                                            <input
+                                                                checked={
+                                                                    data.dedicacion_t ==
+                                                                    "A2"
+                                                                        ? true
+                                                                        : false
+                                                                }
+                                                                onChange={(e) =>
+                                                                    setData(
+                                                                        "dedicacion_t",
+                                                                        e.target
+                                                                            .value
+                                                                    )
+                                                                }
+                                                                id="inline-2-radio-D-dcu2A"
+                                                                type="radio"
+                                                                value="A2"
+                                                                name="inline-radio-group-D-dcu"
+                                                                className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                            />
+                                                            <label
+                                                                htmlFor="inline-2-radio-D-dcu2A"
+                                                                className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                                            >
+                                                                A2
+                                                            </label>
+                                                        </div>
                                                         <div className="flex items-center ">
                                                             <input
                                                                 checked={
@@ -1273,7 +1348,7 @@ const Create = ({
                                                             <input
                                                                 checked={
                                                                     data.dedicacion_t ==
-                                                                    ""
+                                                                    "-"
                                                                         ? true
                                                                         : false
                                                                 }
@@ -1286,7 +1361,7 @@ const Create = ({
                                                                 }
                                                                 id="inline-checked-radio-D-D"
                                                                 type="radio"
-                                                                value=""
+                                                                value="-"
                                                                 name="inline-radio-group-D"
                                                                 className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                             />
@@ -1314,7 +1389,12 @@ const Create = ({
                                                     regimen laboral
                                                 </label>
                                                 <input
-                                                    //required
+                                                    required={
+                                                        auth.user.rol ==
+                                                        "USUARIO"
+                                                            ? true
+                                                            : false
+                                                    }
                                                     value={data.regimen_laboral}
                                                     onChange={(e) =>
                                                         setData(
@@ -1340,7 +1420,7 @@ const Create = ({
                                                     className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                     htmlFor="horas_d"
                                                 >
-                                                    HORAS
+                                                    HORAS DIARIAS (T.C. - 8 hrs)
                                                 </label>
                                                 <input
                                                     value={data.horas_d}
@@ -1495,7 +1575,7 @@ const Create = ({
                                                         <input
                                                             checked={
                                                                 data.administrativo_t ==
-                                                                ""
+                                                                "-"
                                                                     ? true
                                                                     : false
                                                             }
@@ -1508,7 +1588,7 @@ const Create = ({
                                                             }
                                                             id="inline-e-radio-A4-D"
                                                             type="radio"
-                                                            value=""
+                                                            value="-"
                                                             name="inline-radio-group-Adm"
                                                             className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                         />
@@ -1905,7 +1985,7 @@ const Create = ({
                                                                 <input
                                                                     checked={
                                                                         data.nivel_remunerativo ==
-                                                                        ""
+                                                                        "-"
                                                                             ? true
                                                                             : false
                                                                     }
@@ -1921,7 +2001,7 @@ const Create = ({
                                                                     }
                                                                     id="inline-7-radio-Adm-D"
                                                                     type="radio"
-                                                                    value=""
+                                                                    value="-"
                                                                     name="inline-radio-group-Adm2"
                                                                     className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                                 />
@@ -1950,7 +2030,12 @@ const Create = ({
                                                     regimen laboral
                                                 </label>
                                                 <input
-                                                    //required
+                                                    required={
+                                                        auth.user.rol ==
+                                                        "USUARIO"
+                                                            ? true
+                                                            : false
+                                                    }
                                                     value={data.regimen_laboral}
                                                     onChange={(e) =>
                                                         setData(
@@ -2092,7 +2177,11 @@ const Create = ({
                                             </label>
                                             {/* <input value={data.genero} onChange={e=>setData('genero',e.target.value)} className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3" id="genero" type="text" placeholder=""/> */}
                                             <select
-                                                //required
+                                                required={
+                                                    auth.user.rol == "USUARIO"
+                                                        ? true
+                                                        : false
+                                                }
                                                 onChange={(e) =>
                                                     setData(
                                                         "genero",
@@ -2167,7 +2256,11 @@ const Create = ({
                                             país
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.pais}
                                             onChange={(e) =>
                                                 setData("pais", e.target.value)
@@ -2191,7 +2284,11 @@ const Create = ({
                                             departamento
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.departamento}
                                             onChange={(e) =>
                                                 setData(
@@ -2218,7 +2315,11 @@ const Create = ({
                                             provincia
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.provincia}
                                             onChange={(e) =>
                                                 setData(
@@ -2245,7 +2346,11 @@ const Create = ({
                                             distrito
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.distrito}
                                             onChange={(e) =>
                                                 setData(
@@ -2311,7 +2416,11 @@ const Create = ({
                                                 D.N.I.
                                             </label>
                                             <input
-                                                //required
+                                                required={
+                                                    auth.user.rol == "USUARIO"
+                                                        ? true
+                                                        : false
+                                                }
                                                 value={data.dni}
                                                 onChange={(e) =>
                                                     setData(
@@ -2341,7 +2450,11 @@ const Create = ({
                                                 CARNET&nbsp;DE&nbsp;EXTRANJERIA
                                             </label>
                                             <input
-                                                //required
+                                                required={
+                                                    auth.user.rol == "USUARIO"
+                                                        ? true
+                                                        : false
+                                                }
                                                 value={data.carnet_extranjeria}
                                                 onChange={(e) =>
                                                     setData(
@@ -2373,7 +2486,11 @@ const Create = ({
                                                 partida&nbsp;de&nbsp;nacimiento
                                             </label>
                                             <input
-                                                //required
+                                                required={
+                                                    auth.user.rol == "USUARIO"
+                                                        ? true
+                                                        : false
+                                                }
                                                 value={data.partida_nacimiento}
                                                 onChange={(e) =>
                                                     setData(
@@ -2404,7 +2521,11 @@ const Create = ({
                                                 OTO&nbsp;DOCUMENTO
                                             </label>
                                             <input
-                                                //required
+                                                required={
+                                                    auth.user.rol == "USUARIO"
+                                                        ? true
+                                                        : false
+                                                }
                                                 value={data.otro_documento}
                                                 onChange={(e) =>
                                                     setData(
@@ -2688,7 +2809,11 @@ const Create = ({
                                             domicilio actual
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.domicilio_actual}
                                             onChange={(e) =>
                                                 setData(
@@ -2717,7 +2842,11 @@ const Create = ({
                                             distrito&nbsp;actual
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.distrito_domicilio}
                                             onChange={(e) =>
                                                 setData(
@@ -2744,7 +2873,11 @@ const Create = ({
                                             provincia&nbsp;actual
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.provincia_domicilio}
                                             onChange={(e) =>
                                                 setData(
@@ -2771,7 +2904,11 @@ const Create = ({
                                             departamaneto actual
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.departamento_domicilio}
                                             onChange={(e) =>
                                                 setData(
@@ -2828,7 +2965,11 @@ const Create = ({
                                             N° de Celular
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.telefono_celular}
                                             onChange={(e) =>
                                                 setData(
@@ -2855,7 +2996,11 @@ const Create = ({
                                             E-mail
                                         </label>
                                         <input
-                                            //required
+                                            required={
+                                                auth.user.rol == "USUARIO"
+                                                    ? true
+                                                    : false
+                                            }
                                             value={data.email}
                                             onChange={(e) =>
                                                 setData("email", e.target.value)

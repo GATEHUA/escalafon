@@ -1570,7 +1570,7 @@ function PersonalEditExtra({
                 </div>
 
                 {personalData[0].situacion == "DOCENTE" ||
-                personalData[0].id <= 50000000 ? (
+                auth.user.rol !== "USUARIO" ? (
                     <div className="fondo-princ p-4 mb-4 rounded-lg">
                         <form
                             onSubmit={exdocente}

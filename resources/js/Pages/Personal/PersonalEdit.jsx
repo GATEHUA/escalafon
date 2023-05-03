@@ -9,6 +9,11 @@ import NavLink from "@/Components/NavLink";
 
 function PersonalEdit({ auth, personalData, img, file }) {
     // console.log(img);
+    // console.log(file);
+
+    // console.log("data");
+    // console.log(data);
+
     const [avatar, setAvatar] = useState(img);
     const [nuevo, setNuevo] = useState("flex");
     const [nuevo2, setNuevo2] = useState("none");
@@ -230,6 +235,11 @@ function PersonalEdit({ auth, personalData, img, file }) {
         //     timer: 1500,
         // });
     };
+    console.log(data.administrativo_t);
+    console.log(data.docente_t);
+    console.log(data.dedicacion_t);
+    console.log(data.nivel_remunerativo);
+
     // console.log(file);
     return (
         <AuthenticatedLayout auth={auth}>
@@ -889,7 +899,8 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 <div className="flex py-1 md:py-0 items-center">
                                                     <input
                                                         checked={
-                                                            data.docente_t == ""
+                                                            data.docente_t ==
+                                                            "-"
                                                                 ? true
                                                                 : false
                                                         }
@@ -901,7 +912,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         }
                                                         id="inline-e4-radio-D-2-D"
                                                         type="radio"
-                                                        value=""
+                                                        value="-"
                                                         name="inline-radio-group-Doc"
                                                         className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                     />
@@ -939,6 +950,62 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             </div>
                                             {data.docente_t == "DCU" ? (
                                                 <div className="flex my-4 md:justify-around justify-between">
+                                                    <div className="flex items-center ">
+                                                        <input
+                                                            checked={
+                                                                data.dedicacion_t ==
+                                                                "A1"
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            onChange={(e) =>
+                                                                setData(
+                                                                    "dedicacion_t",
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                            id="inline-radio-D-dcu1A"
+                                                            type="radio"
+                                                            value="A1"
+                                                            name="inline-radio-group-D-dcu"
+                                                            className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                        />
+                                                        <label
+                                                            htmlFor="inline-radio-D-dcu1A"
+                                                            className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                                        >
+                                                            A1
+                                                        </label>
+                                                    </div>
+                                                    <div className="flex items-center ">
+                                                        <input
+                                                            checked={
+                                                                data.dedicacion_t ==
+                                                                "A2"
+                                                                    ? true
+                                                                    : false
+                                                            }
+                                                            onChange={(e) =>
+                                                                setData(
+                                                                    "dedicacion_t",
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                            id="inline-2-radio-D-dcu2A"
+                                                            type="radio"
+                                                            value="A2"
+                                                            name="inline-radio-group-D-dcu"
+                                                            className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                                        />
+                                                        <label
+                                                            htmlFor="inline-2-radio-D-dcu2A"
+                                                            className="uppercase ml-2 text-sm font-medium text-white dark:text-gray-300"
+                                                        >
+                                                            A2
+                                                        </label>
+                                                    </div>
                                                     <div className="flex items-center ">
                                                         <input
                                                             checked={
@@ -1093,7 +1160,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         <input
                                                             checked={
                                                                 data.dedicacion_t ==
-                                                                ""
+                                                                "-"
                                                                     ? true
                                                                     : false
                                                             }
@@ -1104,9 +1171,9 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                         .value
                                                                 )
                                                             }
-                                                            id="inline-checked-radio-D"
+                                                            id="inline-checked-radio-D-D"
                                                             type="radio"
-                                                            value=""
+                                                            value="-"
                                                             name="inline-radio-group-D-D"
                                                             className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                         />
@@ -1157,7 +1224,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="horas_d"
                                             >
-                                                HORAS
+                                                HORAS DIARIAS (T.C. - 8 hrs)
                                             </label>
                                             <input
                                                 value={data.horas_d}
@@ -1308,7 +1375,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                     <input
                                                         checked={
                                                             data.administrativo_t ==
-                                                            ""
+                                                            "-"
                                                                 ? true
                                                                 : false
                                                         }
@@ -1320,7 +1387,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                         }
                                                         id="inline-e-radio-A4-D"
                                                         type="radio"
-                                                        value=""
+                                                        value="-"
                                                         name="inline-radio-group-Adm"
                                                         className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                     />
@@ -1684,7 +1751,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                             <input
                                                                 checked={
                                                                     data.nivel_remunerativo ==
-                                                                    ""
+                                                                    "-"
                                                                         ? true
                                                                         : false
                                                                 }
@@ -1697,7 +1764,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 }
                                                                 id="inline-7-radio-Adm-D"
                                                                 type="radio"
-                                                                value=""
+                                                                value="-"
                                                                 name="inline-radio-group-Adm2"
                                                                 className="hover:border-blue-600 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                                                             />
@@ -1705,7 +1772,7 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                                                 htmlFor="inline-7-radio-Adm-D"
                                                                 className="uppercase ml-4 text-sm font-medium text-white dark:text-gray-300"
                                                             >
-                                                                N.A
+                                                                N.A.
                                                             </label>
                                                         </div>
                                                     </div>
@@ -2201,6 +2268,15 @@ function PersonalEdit({ auth, personalData, img, file }) {
                                             </div>
                                         </div>
                                     )} */}
+                                    {file !== "/storage/Dni_I_Per/" && (
+                                        <a
+                                            href={file}
+                                            target="_blank"
+                                            className="hover:text-blue-500 hover:border-b-2 hover:border-blue-500 uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                        >
+                                            ver documento cargado
+                                        </a>
+                                    )}
                                     <InputError
                                         message={errors.val_dni}
                                         className="mt-.5 flex justify-end"

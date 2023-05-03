@@ -27,10 +27,12 @@ class ResolucionesycontratoController extends Controller
 
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $validate = $request->validate([
             'cod_res' => '',
             // 'tipo_res' => 'required',
-            'tipo_res' => '',
+            'tipo_res' => ($user->rol !== 'ADMINISTRADOR') ? 'required' : '',
             'fecha_dic_res' => '',
             'des_art_pri_res' => '',
             'vigencia_res' => '',
@@ -57,10 +59,12 @@ class ResolucionesycontratoController extends Controller
     }
     public function storeUpdate(Request $request,Personal $personal)
     {
+        $user = Auth::user();
+        
         $validate = $request->validate([
             'cod_res' => '',
             // 'tipo_res' => 'required',
-            'tipo_res' => '',
+            'tipo_res' => ($user->rol !== 'ADMINISTRADOR') ? 'required' : '',
             'fecha_dic_res' => '',
             'des_art_pri_res' => '',
             'vigencia_res' => '',
