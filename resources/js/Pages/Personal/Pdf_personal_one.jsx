@@ -42,6 +42,8 @@ function Pdf_personal_one({
     }
     console.log("qwerty2");
     console.log(qwerty2);
+    console.log("resolucionesycontratoData");
+    console.log(resolucionesycontratoData);
     const componentRef = useRef();
     const [totalnovo, setTotalnovo] = useState([]);
     const handlePrint = useReactToPrint({

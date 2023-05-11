@@ -23,8 +23,21 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
         dependencia_res: resolucionesycontratoDat.dependencia_res || "",
         observacion_res: resolucionesycontratoDat.observacion_res || "",
         documento_val_res: resolucionesycontratoDat.documento_val_res || "",
+        mostrar: resolucionesycontratoDat.mostrar || "",
+        campo_extra: resolucionesycontratoDat.campo_extra || "",
+        data_campo_extra: resolucionesycontratoDat.data_campo_extra || "",
+
         _method: "put",
     });
+
+    let capexInit;
+    if (data.campo_extra != null || data.data_campo_extra != null) {
+        capexInit = true;
+    } else {
+        capexInit = false;
+    }
+    const [campexRes, setCampexRes] = useState(capexInit);
+
     const handleDestroyRes = (e) => {
         e.preventDefault();
         Swal.fire({
@@ -239,12 +252,41 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                     </div>
                     <div className="-mx-3 md:flex ">
                         <div className="md:w-2/5 md:px-3">
-                            <label
-                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
-                                htmlFor="des_art_pri_res"
-                            >
-                                SE RESUELVE (ARTICULO)
-                            </label>
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <label
+                                        className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                        htmlFor="des_art_pri_res"
+                                    >
+                                        SE RESUELVE (ARTICULO)
+                                    </label>
+
+                                    <input
+                                        id="mostrar"
+                                        type="checkbox"
+                                        checked={data.mostrar}
+                                        onChange={(e) =>
+                                            setData("mostrar", e.target.checked)
+                                        }
+                                        className="ml-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                </div>
+                                {/* <label
+                                            className="uppercase tracking-wide text-white text-xs font-bold"
+                                            htmlFor="campex"
+                                        >
+                                            añadir campo extra
+                                            <input
+                                                id="campex"
+                                                type="checkbox"
+                                                checked={campex}
+                                                onChange={(e) =>
+                                                    setCampex(e.target.checked)
+                                                }
+                                                className="ml-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                            />
+                                        </label> */}
+                            </div>
                             <textarea
                                 rows="8"
                                 value={data.des_art_pri_res}
@@ -467,6 +509,52 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                             </div>
                         </div>
                     </div>
+                    <div className="-mx-3 md:flex mb-2">
+                        <div className="md:w-1/3 md:px-3">
+                            <label
+                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                htmlFor="campo_extra"
+                            >
+                                CAMPO EXTRA(TITULO)
+                            </label>
+                            <input
+                                value={data.campo_extra}
+                                onChange={(e) =>
+                                    setData("campo_extra", e.target.value)
+                                }
+                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                id="campo_extra"
+                                type="text"
+                                placeholder=""
+                            />
+                            <InputError
+                                message={errors.campo_extra}
+                                className="mt-.5"
+                            />
+                        </div>
+                        <div className="md:w-3/4 md:px-3">
+                            <label
+                                className="uppercase tracking-wide text-white text-xs font-bold mb-2"
+                                htmlFor="data_campo_extra"
+                            >
+                                CAMPO EXTRA(DESCRIPCION)
+                            </label>
+                            <input
+                                value={data.data_campo_extra}
+                                onChange={(e) =>
+                                    setData("data_campo_extra", e.target.value)
+                                }
+                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                id="data_campo_extra"
+                                type="text"
+                                placeholder=""
+                            />
+                            <InputError
+                                message={errors.data_campo_extra}
+                                className="mt-.5"
+                            />
+                        </div>
+                    </div>
 
                     <div className="flex justify-center md:justify-start">
                         <PrimaryButton className="box-border relative z-30 inline-flex items-center justify-center w-auto px-8 py-2 my-3 overflow-hidden font-bold text-white transition-all duration-300 bg-blue-700 rounded-md cursor-pointer group ring-offset-2 ring-2 ring-indigo-300 focus:ring-blue-600 ring-offset-blue-200 hover:ring-offset-blue-500 ease focus:outline-none">
@@ -593,9 +681,39 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                     </div>
                     <div className="-mx-3 md:flex ">
                         <div className="md:w-2/5 md:px-3">
-                            <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
-                                SE RESUELVE (ARTICULO)
-                            </label>
+                            <div className="flex justify-between items-center">
+                                <div>
+                                    <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
+                                        SE RESUELVE (ARTICULO)
+                                    </label>
+                                    <input
+                                        id="mostrar"
+                                        disabled
+                                        type="checkbox"
+                                        checked={data.mostrar}
+                                        // onChange={(e) =>
+                                        //     setData("mostrar", e.target.checked)
+                                        // }
+                                        className="ml-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                </div>
+                                {/* <label
+                                    className="uppercase tracking-wide text-white text-xs font-bold"
+                                    htmlFor="campex"
+                                >
+                                    añadir campo extra
+                                    <input
+                                        id="campex"
+                                        type="checkbox"
+                                        checked={campex}
+                                        onChange={(e) =>
+                                            setCampex(e.target.checked)
+                                        }
+                                        className="ml-2 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                                    />
+                                </label> */}
+                            </div>
+
                             <textarea
                                 disabled
                                 rows="8"
@@ -732,6 +850,32 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                                     />
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div className="-mx-3 md:flex mb-2">
+                        <div className="md:w-1/3 md:px-3">
+                            <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
+                                CAMPO EXTRA(TITULO)
+                            </label>
+                            <input
+                                disabled
+                                value={data.campo_extra}
+                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                type="text"
+                                placeholder=""
+                            />
+                        </div>
+                        <div className="md:w-3/4 md:px-3">
+                            <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
+                                CAMPO EXTRA(DESCRIPCION)
+                            </label>
+                            <input
+                                disabled
+                                value={data.data_campo_extra}
+                                className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3"
+                                type="text"
+                                placeholder=""
+                            />
                         </div>
                     </div>
                 </>

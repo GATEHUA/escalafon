@@ -43,7 +43,10 @@ class ResolucionesycontratoController extends Controller
             'condicion_res' => '',
             'dependencia_res' => '',
             'observacion_res' => '',
-            'documento_val_res' => '',
+            'documento_val_res' => '',    
+            'mostrar'=>'',
+            'campo_extra'=>'',
+            'data_campo_extra'=>'',
         ]);
         $user = Auth::id();
         $personal = Personal::where('user_id', '=', $user)->latest('id')->first();
@@ -76,6 +79,9 @@ class ResolucionesycontratoController extends Controller
             'dependencia_res' => '',
             'observacion_res' => '',
             'documento_val_res' => '',
+            'mostrar'=>'',
+            'campo_extra'=>'',
+            'data_campo_extra'=>'',
         ]);
 
         if ($validate['documento_val_res'] != '') {
@@ -118,6 +124,9 @@ class ResolucionesycontratoController extends Controller
             'dependencia_res' => '',
             'observacion_res' => '',
             'documento_val_res' => '',
+            'mostrar'=>'',
+            'campo_extra'=>'',
+            'data_campo_extra'=>'',
         ]);
         $personal=Personal::where('id', '=', $resolucionesycontrato->personal_id)->latest('id')->first();
 

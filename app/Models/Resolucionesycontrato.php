@@ -26,5 +26,8 @@ class Resolucionesycontrato extends Model
         'dependencia_res',
         'observacion_res',
         'documento_val_res',
+        'mostrar',
+        'campo_extra',
+        'data_campo_extra',
     ];
 }

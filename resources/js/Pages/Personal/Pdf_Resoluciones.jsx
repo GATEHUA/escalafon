@@ -53,7 +53,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
         // // }`,
         pageStyle: `
           @page {
-            margin: 1.0cm 0.5cm .5cm 0.5cm;
+            margin: 1.0cm 0.5cm .5cm 1cm;
           }`,
     });
 
@@ -140,13 +140,16 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                         <h1 className="font-bold justify-center flex  text-lg">
                             Universidad Nacional Daniel Alcides Carrión
                         </h1>
+                        <h1 className="font-bold justify-center flex text-xs  ">
+                            UNIDAD DE RECURSOS HUMANOS
+                        </h1>
                         <h1 className="font-bold justify-center flex text-lg  ">
                             SUB UNIDAD - ESCALAFON
                         </h1>
-                        <p className=" justify-center flex text-sm">
+                        <p className=" justify-center flex text-xs">
                             Edificio Estatal N° 04 - San Juan Pampa
                         </p>
-                        <p className=" justify-center flex text-sm">
+                        <p className=" justify-center flex text-xs">
                             RUC N° 20154605046
                         </p>
                         <div className=" justify-center flex  ">

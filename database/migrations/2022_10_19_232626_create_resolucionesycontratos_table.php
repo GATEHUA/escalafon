@@ -29,6 +29,9 @@ return new class extends Migration
             $table->string('dependencia_res')->nullable();
             $table->string('observacion_res')->nullable();
             $table->string('documento_val_res')->nullable();
+            $table->boolean('mostrar')->default(true);
+            $table->string('campo_extra')->nullable();
+            $table->string('data_campo_extra')->nullable();
             $table->timestamps();
         });
     }

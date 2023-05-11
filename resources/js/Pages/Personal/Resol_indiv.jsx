@@ -3,8 +3,9 @@ import moment from "moment/moment";
 import "moment/locale/es";
 
 function Resol_indiv({ resolucionesycontratoData, personalData }) {
+    console.log(resolucionesycontratoData);
     resolucionesycontratoData.sort((a, b) => {
-        return new Date(a.fecha_dic_res) - new Date(b.fecha_dic_res);
+        return new Date(a.vigencia_res) - new Date(b.vigencia_res);
     });
 
     return (
@@ -12,7 +13,8 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
             {resolucionesycontratoData.map(
                 (resolucionesycontratoDat, index) => (
                     <div
-                        className="text-xs mb-6 mt-6"
+                        className="text-xs"
+                        style={{ marginTop: "12.4px" }}
                         key={resolucionesycontratoDat.id}
                     >
                         <div
@@ -35,8 +37,15 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                 )}
                             </div>
                         </div>
-                        <div className="font-bold mb-1">SE RESUELVE:</div>
-                        <div className="border border-black h-24 rounded-md p-2 mb-3">
+                        {resolucionesycontratoDat.mostrar ? (
+                            <div className="font-bold mb-1">SE RESUELVE:</div>
+                        ) : (
+                            <div className="font-bold mb-1">&nbsp;</div>
+                        )}
+                        <div
+                            className="border border-black h-24 rounded-md p-2 "
+                            style={{ marginBottom: "6px" }}
+                        >
                             {resolucionesycontratoDat.des_art_pri_res}
                         </div>
                         <div>
@@ -119,6 +128,23 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                 <div className="font-bold">
                                     {resolucionesycontratoDat.dependencia_res ? (
                                         resolucionesycontratoDat.dependencia_res
+                                    ) : (
+                                        <>&nbsp;</>
+                                    )}
+                                </div>
+                            </div>
+                            <div className="flex ">
+                                <div className="w-56">
+                                    {resolucionesycontratoDat.campo_extra ? (
+                                        resolucionesycontratoDat.campo_extra
+                                    ) : (
+                                        <>&nbsp;</>
+                                    )}
+                                </div>
+
+                                <div className="font-bold">
+                                    {resolucionesycontratoDat.data_campo_extra ? (
+                                        resolucionesycontratoDat.data_campo_extra
                                     ) : (
                                         <>&nbsp;</>
                                     )}
