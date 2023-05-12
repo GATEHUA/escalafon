@@ -166,6 +166,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                                     RATIFICACION
                                 </option>
                                 <option value="CONTRATO">CONTRATO</option>
+                                <option value="ASCENSO">ASCENSO</option>
                                 <option value="OTRO">OTRO</option>
                             </select>
                             <InputError
@@ -178,7 +179,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                 htmlFor="cod_res"
                             >
-                                N° de RESOLUCION
+                                DOCUMENTO FUENTE
                             </label>
                             <input
                                 value={data.cod_res}
@@ -620,7 +621,7 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                         </div>
                         <div className="md:w-1/4 md:px-3">
                             <label className="uppercase tracking-wide text-white text-xs font-bold mb-2">
-                                N° de RESOLUCION
+                                DOCUMENTO FUENTE
                             </label>
 
                             <input
