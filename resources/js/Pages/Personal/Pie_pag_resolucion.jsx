@@ -15,7 +15,7 @@ function Pie_pag_resolucion({ numHojas }) {
             }}
         >
             {numeros.map((item, index) => {
-                const posicion = (index + 1) * 1077.16549 - 18.5;
+                const posicion = (index + 1) * 1077.16549 - 23.5;
                 return (
                     <div
                         id="asd"
