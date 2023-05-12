@@ -49,7 +49,7 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                             <div className="font-bold mb-1">&nbsp;</div>
                         )}
                         <div
-                            className="border border-black rounded-md p-2"
+                            className="border border-black rounded-md p-2 text-justify"
                             style={{
                                 marginBottom: "6px",
                                 height: "auto",
