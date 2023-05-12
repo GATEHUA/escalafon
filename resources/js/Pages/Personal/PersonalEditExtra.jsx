@@ -1883,7 +1883,7 @@ function PersonalEditExtra({
                                                 e.target.value
                                             )
                                         }
-                                        type="date"
+                                        type="text"
                                         className="hover:border-blue-600 w-full bg-transparent text-white border border-white rounded py-3 px-4 mb-3 "
                                         id="fecha_dic_res"
                                     />

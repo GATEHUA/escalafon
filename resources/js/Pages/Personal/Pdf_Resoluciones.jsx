@@ -53,7 +53,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
         // // }`,
         pageStyle: `
           @page {
-            margin: 1.0cm 0.5cm .5cm 1cm;
+            margin: 1.0cm 0.5cm 0.2cm 1.7cm;
           }`,
     });
 
@@ -127,7 +127,6 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
             <div className="page">
                 <div ref={componentRef}>
                     <Pie_pag_resolucion numHojas={numHojas} />
-
                     <div
                         className="px-6 relative"
 
@@ -137,250 +136,279 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                         //     },
                         // }}
                     >
-                        <h1 className="font-bold justify-center flex  text-lg">
-                            Universidad Nacional Daniel Alcides Carrión
-                        </h1>
-                        <h1 className="font-bold justify-center flex text-xs  ">
-                            UNIDAD DE RECURSOS HUMANOS
-                        </h1>
-                        <h1 className="font-bold justify-center flex text-lg  ">
-                            SUB UNIDAD - ESCALAFON
-                        </h1>
-                        <p className=" justify-center flex text-xs">
-                            Edificio Estatal N° 04 - San Juan Pampa
-                        </p>
-                        <p className=" justify-center flex text-xs">
-                            RUC N° 20154605046
-                        </p>
-                        <div className=" justify-center flex  ">
-                            <img className="w-20" src={logo} alt="" />
-                        </div>
-                        <div
-                            className="w-full"
-                            style={{
-                                marginTop: "-20px",
-                                marginBottom: "-15px",
-                            }}
-                        >
-                            <p className="font-bold ml-3">
-                                {personalData[0].estado}
+                        <div style={{ minHeight: "532.8px" }}>
+                            <h1 className="font-bold justify-center flex  text-lg">
+                                Universidad Nacional Daniel Alcides Carrión
+                            </h1>
+                            <h1 className="font-bold justify-center flex text-xs  ">
+                                UNIDAD DE RECURSOS HUMANOS
+                            </h1>
+                            <h1 className="font-bold justify-center flex text-lg  ">
+                                SUB UNIDAD - ESCALAFON
+                            </h1>
+                            <p className=" justify-center flex text-xs">
+                                Edificio Estatal N° 04 - San Juan Pampa
                             </p>
-                            <div className="border border-black bg-gray-100 h-3 rounded-md "></div>
-                        </div>
-                        <br />
-                        <h1 className="font-bold justify-center flex text-xl mb-3">
-                            INFORME ESCALAFONARIO
-                        </h1>
+                            <p className=" justify-center flex text-xs">
+                                RUC N° 20154605046
+                            </p>
+                            <div className=" justify-center flex  ">
+                                <img className="w-20" src={logo} alt="" />
+                            </div>
+                            <div
+                                className="w-full"
+                                style={{
+                                    marginTop: "-20px",
+                                    marginBottom: "-15px",
+                                }}
+                            >
+                                <p className="font-bold ml-3">
+                                    {personalData[0].estado}
+                                </p>
+                                <div className="border border-black bg-gray-100 h-3 rounded-md "></div>
+                            </div>
+                            <br />
+                            <h1 className="font-bold justify-center flex text-xl mb-3">
+                                INFORME ESCALAFONARIO
+                            </h1>
 
-                        <div
-                            className="border-2 border-black rounded-md flex p-3"
-                            style={{ minHeight: "6cm" }}
-                        >
-                            {personalData[0].foto ? (
-                                <img
-                                    className="w-28 h-36 top-8 relative mr-8"
-                                    src={`${img}fotoPer/${personalData[0].foto}`}
-                                    alt=""
-                                />
-                            ) : (
-                                <img
-                                    className="w-28 h-36 top-8 relative mr-8"
-                                    src={fotopred}
-                                    alt=""
-                                />
-                            )}
-                            <div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "2.7rem" }}
-                                    >
-                                        APELLIDOS Y NOMBRES
-                                    </p>
-                                    <p className=" text-sm w-80">
-                                        {personalData[0].apellido_paterno}{" "}
-                                        {personalData[0].apellido_materno}{" "}
-                                        {personalData[0].nombres}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "9.4rem" }}
-                                    >
-                                        CODIGO
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].codigo}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "10.2rem" }}
-                                    >
-                                        DNI N°
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].dni}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "3.8rem" }}
-                                    >
-                                        DOMICIOLIO ACTUAL
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].domicilio_actual}
-                                    </p>
-                                </div>
-                                {personalData[0].situacion == "DOCENTE" ? (
-                                    <>
-                                        <div className="flex">
-                                            <p
-                                                className="font-bold text-xs w-48"
-                                                // style={{ marginRight: "8.3rem" }}
-                                            >
-                                                FACULTAD
-                                            </p>
-                                            <p className=" text-xs w-80">
-                                                {
-                                                    personalData[0].docente
-                                                        .facultad
-                                                }
-                                            </p>
-                                        </div>
-                                        <div className="flex">
-                                            <p
-                                                className="font-bold text-xs w-48"
-                                                // style={{ marginRight: "8.8rem" }}
-                                            >
-                                                ESCUELA
-                                            </p>
-                                            <p className=" text-xs w-80">
-                                                {
-                                                    personalData[0].docente
-                                                        .escuela
-                                                }
-                                            </p>
-                                        </div>
-                                    </>
-                                ) : null}
-                                {personalData[0].situacion ==
-                                "ADMINISTRATIVO" ? (
-                                    <>
-                                        <div className="flex">
-                                            <p
-                                                className="font-bold text-xs w-48"
-                                                // style={{ marginRight: "6.6rem" }}
-                                            >
-                                                DEPENDENCIA
-                                            </p>
-                                            <p className=" text-xs w-80">
-                                                {
-                                                    personalData[0]
-                                                        .administrativo
-                                                        .dependencia
-                                                }
-                                            </p>
-                                        </div>
-                                    </>
-                                ) : null}
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "7.8rem" }}
-                                    >
-                                        CONDICION
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].condicion}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "8rem" }}
-                                    >
-                                        SITUACION
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].situacion}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "1.2rem" }}
-                                    >
-                                        CATEGORIA ACTUAL
-                                    </p>
+                            <div
+                                className="border-2 border-black rounded-md flex p-3"
+                                style={{ minHeight: "6cm" }}
+                            >
+                                {personalData[0].foto ? (
+                                    <img
+                                        className="w-28 h-36 top-8 relative mr-8"
+                                        src={`${img}fotoPer/${personalData[0].foto}`}
+                                        alt=""
+                                    />
+                                ) : (
+                                    <img
+                                        className="w-28 h-36 top-8 relative mr-8"
+                                        src={fotopred}
+                                        alt=""
+                                    />
+                                )}
+                                <div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "2.7rem" }}
+                                        >
+                                            APELLIDOS Y NOMBRES
+                                        </p>
+                                        <p className=" text-sm w-80">
+                                            {personalData[0].apellido_paterno}{" "}
+                                            {personalData[0].apellido_materno}{" "}
+                                            {personalData[0].nombres}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "9.4rem" }}
+                                        >
+                                            CODIGO
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].codigo}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "10.2rem" }}
+                                        >
+                                            DNI N°
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].dni}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "3.8rem" }}
+                                        >
+                                            DOMICIOLIO ACTUAL
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].domicilio_actual}
+                                        </p>
+                                    </div>
+                                    {personalData[0].situacion == "DOCENTE" ? (
+                                        <>
+                                            <div className="flex">
+                                                <p
+                                                    className="font-bold text-xs w-48"
+                                                    // style={{ marginRight: "8.3rem" }}
+                                                >
+                                                    FACULTAD
+                                                </p>
+                                                <p className=" text-xs w-80">
+                                                    {
+                                                        personalData[0].docente
+                                                            ?.facultad
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div className="flex">
+                                                <p
+                                                    className="font-bold text-xs w-48"
+                                                    // style={{ marginRight: "8.8rem" }}
+                                                >
+                                                    ESCUELA
+                                                </p>
+                                                <p className=" text-xs w-80">
+                                                    {
+                                                        personalData[0].docente
+                                                            ?.escuela
+                                                    }
+                                                </p>
+                                            </div>
+                                        </>
+                                    ) : null}
                                     {personalData[0].situacion ==
                                     "ADMINISTRATIVO" ? (
-                                        <p className=" text-xs w-80">
-                                            {personalData[0].administrativo
-                                                .administrativo_t == "-"
-                                                ? " "
-                                                : personalData[0].administrativo
-                                                      .administrativo_t}{" "}
-                                            {personalData[0].administrativo
-                                                .administrativo_t == "-" &&
-                                            personalData[0].administrativo
-                                                .nivel_remunerativo == "-"
-                                                ? " "
-                                                : "-"}{" "}
-                                            {personalData[0].administrativo
-                                                .nivel_remunerativo == "-"
-                                                ? " "
-                                                : personalData[0].administrativo
-                                                      .nivel_remunerativo}
+                                        <>
+                                            <div className="flex">
+                                                <p
+                                                    className="font-bold text-xs w-48"
+                                                    // style={{ marginRight: "6.6rem" }}
+                                                >
+                                                    DEPENDENCIA
+                                                </p>
+                                                <p className=" text-xs w-80">
+                                                    {
+                                                        personalData[0]
+                                                            .administrativo
+                                                            .dependencia
+                                                    }
+                                                </p>
+                                            </div>
+                                        </>
+                                    ) : null}
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "7.8rem" }}
+                                        >
+                                            CONDICION
                                         </p>
-                                    ) : null}
-                                    {personalData[0].situacion == "DOCENTE" ? (
-                                        <p className="w-80 text-xs">{`${personalData[0].docente.docente_t} - ${personalData[0].docente.dedicacion_t}`}</p>
-                                    ) : null}
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "9.3rem" }}
-                                    >
-                                        APORTE
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].aporte_pensionario}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "4.5rem" }}
-                                    >
-                                        REGIMEN LABORAL
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].regimen_laboral}
-                                    </p>
-                                </div>
-                                <div className="flex">
-                                    <p
-                                        className="font-bold text-xs w-48"
-                                        // style={{ marginRight: "2.5rem" }}
-                                    >
-                                        REGIMEN PENSIONABLE
-                                    </p>
-                                    <p className=" text-xs w-80">
-                                        {personalData[0].aporte_pensionario}
-                                        {personalData[0].nombre_afp
-                                            ? ` - ${personalData[0].nombre_afp}`
-                                            : null}
-                                    </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].condicion}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "8rem" }}
+                                        >
+                                            SITUACION
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].situacion}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "1.2rem" }}
+                                        >
+                                            CATEGORIA ACTUAL
+                                        </p>
+                                        {personalData[0].situacion ==
+                                        "ADMINISTRATIVO" ? (
+                                            <p className=" text-xs w-80">
+                                                {personalData[0].administrativo
+                                                    .administrativo_t == "-" ||
+                                                personalData[0].administrativo
+                                                    .nivel_remunerativo ==
+                                                    undefined
+                                                    ? " "
+                                                    : personalData[0]
+                                                          .administrativo
+                                                          .administrativo_t}{" "}
+                                                {(personalData[0].administrativo
+                                                    .administrativo_t == "-" &&
+                                                    personalData[0]
+                                                        .administrativo
+                                                        .nivel_remunerativo ==
+                                                        "-") ||
+                                                personalData[0].administrativo
+                                                    .nivel_remunerativo ==
+                                                    undefined
+                                                    ? " "
+                                                    : "-"}{" "}
+                                                {personalData[0].administrativo
+                                                    .nivel_remunerativo ==
+                                                    "-" ||
+                                                personalData[0].administrativo
+                                                    .nivel_remunerativo ==
+                                                    undefined
+                                                    ? " "
+                                                    : personalData[0]
+                                                          .administrativo
+                                                          .nivel_remunerativo}
+                                            </p>
+                                        ) : null}
+                                        {personalData[0].situacion ==
+                                        "DOCENTE" ? (
+                                            <p className="w-80 text-xs">{`${
+                                                personalData[0].docente
+                                                    ? personalData[0].docente
+                                                          .docente_t
+                                                    : ""
+                                            } - ${
+                                                personalData[0].docente
+                                                    ? personalData[0].docente
+                                                          .dedicacion_t
+                                                    : ""
+                                            }`}</p>
+                                        ) : null}
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "9.3rem" }}
+                                        >
+                                            APORTE
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].aporte_pensionario}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "4.5rem" }}
+                                        >
+                                            REGIMEN LABORAL
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].regimen_laboral}
+                                        </p>
+                                    </div>
+                                    <div className="flex">
+                                        <p
+                                            className="font-bold text-xs w-48"
+                                            // style={{ marginRight: "2.5rem" }}
+                                        >
+                                            REGIMEN PENSIONABLE
+                                        </p>
+                                        <p className=" text-xs w-80">
+                                            {personalData[0].aporte_pensionario}
+                                            {personalData[0].nombre_afp
+                                                ? ` - ${personalData[0].nombre_afp}`
+                                                : null}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="font-bold my-3">
+                                DOCUMENTOS FUENTE
+                            </div>
                         </div>
-                        <div className="font-bold my-3">DOCUMENTOS FUENTE</div>
 
                         {resolucionesycontratoData.length == 0 ? (
                             <div className="text-sm">

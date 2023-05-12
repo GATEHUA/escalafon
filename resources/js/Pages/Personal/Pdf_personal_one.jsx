@@ -1547,8 +1547,7 @@ function Pdf_personal_one({
                                                 facultad:
                                             </div>
                                             <div className="ml-2">
-                                                {personalData[0].docente
-                                                    .facultad ? (
+                                                {personalData[0].docente ? (
                                                     personalData[0].docente
                                                         .facultad
                                                 ) : (

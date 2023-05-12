@@ -3,7 +3,7 @@ function Pie_pag_resolucion({ numHojas }) {
     const numeros = Array.from(Array(numHojas), (_, i) => i + 1);
 
     console.log(numeros);
-    const altura = numHojas * 1065.8269059;
+    const altura = numHojas * 1077.16549;
     return (
         <div
             style={{
@@ -15,9 +15,10 @@ function Pie_pag_resolucion({ numHojas }) {
             }}
         >
             {numeros.map((item, index) => {
-                const posicion = (index + 1) * 1065.8269059 - 13.5;
+                const posicion = (index + 1) * 1077.16549 - 13.5;
                 return (
                     <div
+                        id="asd"
                         className="w-full"
                         // style={{
                         //
@@ -50,7 +51,7 @@ function Pie_pag_resolucion({ numHojas }) {
                                 <div className="font-bold">Fuente:</div>
                                 <div>&nbsp;UNDAC/LEGAJO/ESCALAFON</div>
                             </div>
-                            <div className="font-bold">SISMAXCE</div>
+                            {/* <div className="font-bold">SISMAXCE</div> */}
                             <div>Fecha: {moment().format("DD/MM/YYYY")}</div>
                             <div>Hora: {moment().format("HH:mm:ss")}</div>
                             <div>

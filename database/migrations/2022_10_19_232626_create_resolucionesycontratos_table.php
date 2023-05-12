@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('personal_id')->constrained()->cascadeOnDelete();
             $table->string('cod_res')->nullable();
             $table->string('tipo_res')->nullable();
-            $table->date('fecha_dic_res')->nullable();
+            $table->string('fecha_dic_res')->nullable();
             $table->longText('des_art_pri_res')->nullable();
             $table->date('vigencia_res')->nullable();
             $table->string('categoria_alcanz_res')->nullable();
