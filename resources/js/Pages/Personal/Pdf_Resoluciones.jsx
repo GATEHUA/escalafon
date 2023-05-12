@@ -178,8 +178,11 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                             </h1>
 
                             <div
-                                className="border-2 border-black rounded-md flex p-3"
-                                style={{ minHeight: "6cm" }}
+                                className="border-2 border-black rounded-md flex py-3 pl-3"
+                                style={{
+                                    minHeight: "6cm",
+                                    paddingRight: "7px",
+                                }}
                             >
                                 {personalData[0].foto ? (
                                     <img
@@ -235,7 +238,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                             className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "3.8rem" }}
                                         >
-                                            DOMICIOLIO ACTUAL
+                                            DOMICILIO ACTUAL
                                         </p>
                                         <p className=" text-xs w-7/12">
                                             {personalData[0].domicilio_actual}
