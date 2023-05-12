@@ -136,7 +136,12 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                         //     },
                         // }}
                     >
-                        <div style={{ minHeight: "532.8px" }}>
+                        <div
+                            style={{
+                                minHeight: "532.8px",
+                                // maxHeight: "532.8px",
+                            }}
+                        >
                             <h1 className="font-bold justify-center flex  text-lg">
                                 Universidad Nacional Daniel Alcides Carrión
                             </h1>
@@ -149,7 +154,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                             <p className=" justify-center flex text-xs">
                                 Edificio Estatal N° 04 - San Juan Pampa
                             </p>
-                            <p className=" justify-center flex text-xs">
+                            <p className=" justify-center flex text-xs mb-2">
                                 RUC N° 20154605046
                             </p>
                             <div className=" justify-center flex  ">
@@ -405,7 +410,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     </div>
                                 </div>
                             </div>
-                            <div className="font-bold my-3">
+                            <div className="font-bold my-4">
                                 DOCUMENTOS FUENTE
                             </div>
                         </div>
