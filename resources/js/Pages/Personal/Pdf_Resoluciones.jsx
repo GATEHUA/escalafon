@@ -53,7 +53,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
         // // }`,
         pageStyle: `
           @page {
-            margin: 1.0cm 0.5cm 0.2cm 1.7cm;
+            margin: 1.0cm 1.2cm 0.2cm 1.7cm;
           }`,
     });
 
@@ -195,76 +195,76 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     />
                                 )}
                                 <div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "2.7rem" }}
                                         >
                                             APELLIDOS Y NOMBRES
                                         </p>
-                                        <p className=" text-sm w-80">
+                                        <p className=" text-sm w-7/12">
                                             {personalData[0].apellido_paterno}{" "}
                                             {personalData[0].apellido_materno}{" "}
                                             {personalData[0].nombres}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "9.4rem" }}
                                         >
                                             CODIGO
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].codigo}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "10.2rem" }}
                                         >
                                             DNI N°
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].dni}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "3.8rem" }}
                                         >
                                             DOMICIOLIO ACTUAL
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].domicilio_actual}
                                         </p>
                                     </div>
                                     {personalData[0].situacion == "DOCENTE" ? (
                                         <>
-                                            <div className="flex">
+                                            <div className="flex w-full">
                                                 <p
-                                                    className="font-bold text-xs w-48"
+                                                    className="font-bold text-xs w-5/12"
                                                     // style={{ marginRight: "8.3rem" }}
                                                 >
                                                     FACULTAD
                                                 </p>
-                                                <p className=" text-xs w-80">
+                                                <p className=" text-xs w-7/12">
                                                     {
                                                         personalData[0].docente
                                                             ?.facultad
                                                     }
                                                 </p>
                                             </div>
-                                            <div className="flex">
+                                            <div className="flex w-full">
                                                 <p
-                                                    className="font-bold text-xs w-48"
+                                                    className="font-bold text-xs w-5/12"
                                                     // style={{ marginRight: "8.8rem" }}
                                                 >
                                                     ESCUELA
                                                 </p>
-                                                <p className=" text-xs w-80">
+                                                <p className=" text-xs w-7/12">
                                                     {
                                                         personalData[0].docente
                                                             ?.escuela
@@ -276,14 +276,14 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     {personalData[0].situacion ==
                                     "ADMINISTRATIVO" ? (
                                         <>
-                                            <div className="flex">
+                                            <div className="flex w-full">
                                                 <p
-                                                    className="font-bold text-xs w-48"
+                                                    className="font-bold text-xs w-5/12"
                                                     // style={{ marginRight: "6.6rem" }}
                                                 >
                                                     DEPENDENCIA
                                                 </p>
-                                                <p className=" text-xs w-80">
+                                                <p className=" text-xs w-7/12">
                                                     {
                                                         personalData[0]
                                                             .administrativo
@@ -293,38 +293,38 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                             </div>
                                         </>
                                     ) : null}
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "7.8rem" }}
                                         >
                                             CONDICION
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].condicion}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "8rem" }}
                                         >
                                             SITUACION
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].situacion}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "1.2rem" }}
                                         >
                                             CATEGORIA ACTUAL
                                         </p>
                                         {personalData[0].situacion ==
                                         "ADMINISTRATIVO" ? (
-                                            <p className=" text-xs w-80">
+                                            <p className=" text-xs w-7/12">
                                                 {personalData[0].administrativo
                                                     .administrativo_t == "-" ||
                                                 personalData[0].administrativo
@@ -359,7 +359,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                         ) : null}
                                         {personalData[0].situacion ==
                                         "DOCENTE" ? (
-                                            <p className="w-80 text-xs">{`${
+                                            <p className="w-7/12 text-xs">{`${
                                                 personalData[0].docente
                                                     ? personalData[0].docente
                                                           .docente_t
@@ -372,36 +372,36 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                             }`}</p>
                                         ) : null}
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "9.3rem" }}
                                         >
                                             APORTE
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].aporte_pensionario}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "4.5rem" }}
                                         >
                                             REGIMEN LABORAL
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].regimen_laboral}
                                         </p>
                                     </div>
-                                    <div className="flex">
+                                    <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-48"
+                                            className="font-bold text-xs w-5/12"
                                             // style={{ marginRight: "2.5rem" }}
                                         >
                                             REGIMEN PENSIONABLE
                                         </p>
-                                        <p className=" text-xs w-80">
+                                        <p className=" text-xs w-7/12">
                                             {personalData[0].aporte_pensionario}
                                             {personalData[0].nombre_afp
                                                 ? ` - ${personalData[0].nombre_afp}`
