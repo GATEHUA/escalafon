@@ -886,9 +886,17 @@ const Create = ({
                                             <option value="CESADO">
                                                 CESADO
                                             </option>
-                                            {/* <option value="FALLECIDO">
-                                                FALLECIDO
-                                            </option> */}
+
+                                            {auth.user.rol !== "USUARIO" && (
+                                                <>
+                                                    <option value="PENSIONISTA">
+                                                        PENSIONISTA
+                                                    </option>
+                                                    <option value="FALLECIDO">
+                                                        FALLECIDO
+                                                    </option>
+                                                </>
+                                            )}
                                         </select>
                                         <InputError
                                             message={errors.estado}
