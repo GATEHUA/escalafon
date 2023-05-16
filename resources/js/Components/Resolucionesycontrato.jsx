@@ -167,6 +167,9 @@ function Resolucionesycontrato({ resolucionesycontratoDat, img }) {
                                 </option>
                                 <option value="CONTRATO">CONTRATO</option>
                                 <option value="ASCENSO">ASCENSO</option>
+
+                                <option value="CESE">CESE</option>
+
                                 <option value="OTRO">OTRO</option>
                             </select>
                             <InputError
