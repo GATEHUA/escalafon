@@ -842,7 +842,7 @@ const Create = ({
                                                 className="uppercase tracking-wide text-white text-xs font-bold mb-2"
                                                 htmlFor="fecha_jubilacion"
                                             >
-                                                Fecha de jubilacion
+                                                Fecha de cese
                                             </label>
                                             <input
                                                 value={data.fecha_jubilacion}
