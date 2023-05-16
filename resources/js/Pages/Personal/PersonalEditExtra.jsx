@@ -1908,7 +1908,7 @@ function PersonalEditExtra({
                     >
                         <div className="sombrao rounded px-7 pt-5 pb-5 mb-4 flex flex-col">
                             <h3 className="uppercase text-center md:text-start tracking-wide text-white border-b border-gray-400 text-xm font-bold mb-3">
-                                INFORMACION PARA EL INFROME ESCALAFONARIO
+                                INFORMACION PARA EL INFORME ESCALAFONARIO
                             </h3>
                             <div className="-mx-3 md:flex mb-2">
                                 <div className="md:w-1/4 md:px-3 ">

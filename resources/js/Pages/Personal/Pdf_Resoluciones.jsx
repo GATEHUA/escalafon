@@ -53,7 +53,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
         // // }`,
         pageStyle: `
           @page {
-            margin: 1.0cm 1.2cm 0.2cm 1.7cm;
+            margin: 1.0cm 1.5cm 0.2cm 1.7cm;
           }`,
     });
 
@@ -128,7 +128,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                 <div ref={componentRef}>
                     <Pie_pag_resolucion numHojas={numHojas} />
                     <div
-                        className="px-6 relative"
+                        className="pr-0 pl-6 relative"
 
                         // style={{
                         //     "@media print": {
@@ -178,10 +178,9 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                             </h1>
 
                             <div
-                                className="border-2 border-black rounded-md flex py-3 pl-3"
+                                className="border-2 border-black rounded-md flex p-3"
                                 style={{
                                     minHeight: "6cm",
-                                    paddingRight: "7px",
                                 }}
                             >
                                 {personalData[0].foto ? (
@@ -197,15 +196,15 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                         alt=""
                                     />
                                 )}
-                                <div>
+                                <div className="w-full">
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "2.7rem" }}
                                         >
                                             APELLIDOS Y NOMBRES
                                         </p>
-                                        <p className=" text-sm w-7/12">
+                                        <p className=" text-sm w-8/12">
                                             {personalData[0].apellido_paterno}{" "}
                                             {personalData[0].apellido_materno}{" "}
                                             {personalData[0].nombres}
@@ -213,34 +212,34 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "9.4rem" }}
                                         >
                                             CODIGO
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].codigo}
                                         </p>
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "10.2rem" }}
                                         >
                                             DNI N°
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].dni}
                                         </p>
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "3.8rem" }}
                                         >
                                             DOMICILIO ACTUAL
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].domicilio_actual}
                                         </p>
                                     </div>
@@ -248,12 +247,12 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                         <>
                                             <div className="flex w-full">
                                                 <p
-                                                    className="font-bold text-xs w-5/12"
+                                                    className="font-bold text-xs w-4/12"
                                                     // style={{ marginRight: "8.3rem" }}
                                                 >
                                                     FACULTAD
                                                 </p>
-                                                <p className=" text-xs w-7/12">
+                                                <p className=" text-xs w-8/12">
                                                     {
                                                         personalData[0].docente
                                                             ?.facultad
@@ -262,12 +261,12 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                             </div>
                                             <div className="flex w-full">
                                                 <p
-                                                    className="font-bold text-xs w-5/12"
+                                                    className="font-bold text-xs w-4/12"
                                                     // style={{ marginRight: "8.8rem" }}
                                                 >
                                                     ESCUELA
                                                 </p>
-                                                <p className=" text-xs w-7/12">
+                                                <p className=" text-xs w-8/12">
                                                     {
                                                         personalData[0].docente
                                                             ?.escuela
@@ -281,12 +280,12 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                         <>
                                             <div className="flex w-full">
                                                 <p
-                                                    className="font-bold text-xs w-5/12"
+                                                    className="font-bold text-xs w-4/12"
                                                     // style={{ marginRight: "6.6rem" }}
                                                 >
                                                     DEPENDENCIA
                                                 </p>
-                                                <p className=" text-xs w-7/12">
+                                                <p className=" text-xs w-8/12">
                                                     {
                                                         personalData[0]
                                                             .administrativo
@@ -298,36 +297,36 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     ) : null}
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "7.8rem" }}
                                         >
                                             CONDICION
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].condicion}
                                         </p>
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "8rem" }}
                                         >
                                             SITUACION
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].situacion}
                                         </p>
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "1.2rem" }}
                                         >
                                             CATEGORIA ACTUAL
                                         </p>
                                         {personalData[0].situacion ==
                                         "ADMINISTRATIVO" ? (
-                                            <p className=" text-xs w-7/12">
+                                            <p className=" text-xs w-8/12">
                                                 {personalData[0].administrativo
                                                     .administrativo_t == "-" ||
                                                 personalData[0].administrativo
@@ -362,7 +361,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                         ) : null}
                                         {personalData[0].situacion ==
                                         "DOCENTE" ? (
-                                            <p className="w-7/12 text-xs">{`${
+                                            <p className="w-8/12 text-xs">{`${
                                                 personalData[0].docente
                                                     ? personalData[0].docente
                                                           .docente_t
@@ -377,34 +376,34 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "9.3rem" }}
                                         >
                                             APORTE
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].aporte_pensionario}
                                         </p>
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "4.5rem" }}
                                         >
                                             REGIMEN LABORAL
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].regimen_laboral}
                                         </p>
                                     </div>
                                     <div className="flex w-full">
                                         <p
-                                            className="font-bold text-xs w-5/12"
+                                            className="font-bold text-xs w-4/12"
                                             // style={{ marginRight: "2.5rem" }}
                                         >
                                             REGIMEN PENSIONABLE
                                         </p>
-                                        <p className=" text-xs w-7/12">
+                                        <p className=" text-xs w-8/12">
                                             {personalData[0].aporte_pensionario}
                                             {personalData[0].nombre_afp
                                                 ? ` - ${personalData[0].nombre_afp}`
