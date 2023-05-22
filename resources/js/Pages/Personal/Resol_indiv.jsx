@@ -28,8 +28,9 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                             id="resol_indiv"
                             className="text-xs"
                             style={{
-                                marginBottom: mbc,
+                                marginBottom: "12.4px",
                                 maxHeight: "254px",
+                                height: "254px",
                                 minHeight: "127px",
                                 // overflow: "hidden",
                             }}
@@ -41,7 +42,14 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                             >
                                 {index + 1}
                             </div>
-                            <div className="flex font-bold justify-between my-1">
+                            <div
+                                className="flex font-bold justify-between my-1"
+                                style={
+                                    !resolucionesycontratoDat.mostrar
+                                        ? { marginBottom: "15px" }
+                                        : {}
+                                }
+                            >
                                 <div>{resolucionesycontratoDat.cod_res}</div>
                                 <div className="w-56">
                                     FECHA DEL DOCUMENTO:{" "}
@@ -80,9 +88,17 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
 
                             <div
                                 // style={{ marginTop: "4px" }}
-                                style={{ height: mbc2 }}
+                                // style={{ height: mbc2 }}
+                                style={
+                                    !resolucionesycontratoDat.mostrar
+                                        ? { height: "215px" }
+                                        : {}
+                                }
                             >
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">VIGENCIA:</div>
                                     <div className="font-bold w-2/3">
                                         {resolucionesycontratoDat.vigencia_res ? (
@@ -95,7 +111,10 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">
                                         CATEGORIA ALCANZADO(A):
                                     </div>
@@ -107,7 +126,10 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">
                                         NIVEL ALCANZADO(A):
                                     </div>
@@ -119,7 +141,10 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">ANTIGUEDAD:</div>
                                     <div className="font-bold w-2/3">
                                         {resolucionesycontratoDat.antiguedad_in_res ? (
@@ -146,7 +171,10 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">CONDICION:</div>
                                     <div className="font-bold w-2-3">
                                         {resolucionesycontratoDat.condicion_res ? (
@@ -156,7 +184,10 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">
                                         {personalData[0].situacion == "DOCENTE"
                                             ? "FACULTAD: "
@@ -170,7 +201,10 @@ function Resol_indiv({ resolucionesycontratoData, personalData }) {
                                         )}
                                     </div>
                                 </div>
-                                <div className="flex ">
+                                <div
+                                    className="flex "
+                                    style={{ height: "14.3%" }}
+                                >
                                     <div className="w-1/3">
                                         {resolucionesycontratoDat.campo_extra ? (
                                             resolucionesycontratoDat.campo_extra
