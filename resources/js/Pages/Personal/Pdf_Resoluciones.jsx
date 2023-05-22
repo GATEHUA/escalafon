@@ -139,7 +139,7 @@ function Pdf_Resoluciones({ personalData, resolucionesycontratoData, img }) {
                         <div
                             style={{
                                 minHeight: "532.8px",
-                                // maxHeight: "532.8px",
+                                maxHeight: "532.8px",
                             }}
                         >
                             <h1 className="font-bold justify-center flex  text-lg">
